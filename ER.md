@@ -71,11 +71,11 @@
 
 #### UIxx: Page Name
 
-![UIxx](images/Wireframe1.png)
+![UIxx](images/Wireframe_1.png)
 
 #### UIxx: Page Name
 
-![UIxx](images/Wireframe2.png)
+![UIxx](images/Wireframe_2.png)
 
 ---
 
