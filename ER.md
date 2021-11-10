@@ -1,7 +1,4 @@
 # ER: Requirements Specification Component
-
-> Project vision.
-
 ## A1: Grab n' Build
 
 The main goal of ***Grab n’ Build*** is to set up a web-based store to manage the listing and sale of computer parts, as well as their buyers. The store can be used by amateurs or professional computer enthusiasts building their computers.
@@ -36,7 +33,7 @@ The system should also support Help features such as placeholders for forms, con
 ![Actors](images/UML%20Diagram.png)
 
 <p align="center">
-    Figure 1: Actors diagram
+    <strong>Figure 1:</strong> Actors diagram
 </p>
 
 
@@ -197,7 +194,7 @@ There are two components to this artefact:
 ![Sitemap](images/Sitemap.png)
 
 <p align="center">
-    Figure 2: Sitemap
+    <strong>Figure 2:</strong> Sitemap
 </p>
 
 ### 2. Wireframes
@@ -209,7 +206,7 @@ A website wireframe is a visual representation of a website’s skeleton archite
 ![Wireframe 1](images/Wireframe_1.png)
 
 <p align="center">
-    Figure 3: Wireframe 1
+    <strong>Figure 3:</strong> Wireframe 1
 </p>
 
 1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
@@ -223,7 +220,7 @@ A website wireframe is a visual representation of a website’s skeleton archite
 ![Wireframe 2](images/Wireframe_2.png)
 
 <p align="center">
-    Figure 4: Wireframe 2
+    <strong>Figure 4:</strong> Wireframe 2
 </p>
 
 1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
@@ -242,7 +239,7 @@ Changes made to the first submission:
 ***
 GROUP2175, 10/11/2021
 
-* Group member 1 Carlos Veríssimo, up201907716 (Editor)
-* Group member 2 Duarte Sardão, up201905497
-* Group member 3 Nuno Jesus, up201905477
-* Group member 4 Tomás Torres, up201800700 
+* Carlos Veríssimo, up201907716 (Editor)
+* Duarte Sardão, up201905497
+* Nuno Jesus, up201905477
+* Tomás Torres, up201800700 
