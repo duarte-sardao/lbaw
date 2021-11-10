@@ -3,8 +3,6 @@
 Class: 3LEIC07
 Group: 05
 
-Students
-
 Name   | Number
 ------ | ---------------------
 Carlos Veríssimo | up201907716 
