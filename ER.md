@@ -4,11 +4,23 @@
 
 ## A1: Grab n' Build
 
-> Goals, business context and environment.  
-> Motivation.  
-> Main features.  
-> User profiles.
+The main goal of ***Grab n’ Build*** is to set up a web-based store to manage the listing and sale of computer parts, as well as their buyers. The store can be used by amateurs or professional computer enthusiasts building their computers.
 
+All users, including guests, have the ability to Login and Logout, register a new account, recover passwords or delete their accounts, according to business rules, their data is kept but made anonymous. Users are also given access to search features, such as exact match search, full-text search, search over multiple attributes, search filters, with the ability to order results by characteristics such as price, the ability to list products and browse them by categories, view product details and reviews and manage a shopping cart by adding and removing products. Users are separated into two groups: ***System Administrators*** and ***Consumers***.
+
+***System Administrators*** have, aside from default user permissions, the ability to administer other accounts (search, view, edit, create, block, unblock and delete). Aside from managing accounts, administrators can manage stock, add/delete products and manage their information, stock, category and discounts, as well as view their sales statistics. They can also view users' purchase histories and manage their orders and reports. This group is also in charge of editing some of the website’s pages like About, Contacts and FAQs. Although Administrators have their own accounts, they do not possess authenticated user privileges such as having a shopping cart or wishlist.
+
+***Consumers*** are able to manage their shopping cart by adding or deleting items on it. Both authenticated and unauthenticated users can do it, but only those who possess an account are able to check-out. ***Consumers*** can also be split into two different actors: ***Guests*** and ***Authenticated Users***.
+
+***Guests*** are unauthenticated users who have the ability to create an account (if they haven’t been registered into the system yet) and login into their own accounts.
+
+***Authenticated Users*** have accounts, linked to a profile that can be viewed and edited by the owner, supporting a wishlist and personal notifications (which should inform of payment approval, change in the order processing stage, a wishlist product being made available and an update to the price of a product in their cart). When creating an order, this group of users should be able to change between multiple payment methods. Every purchase should be able to be viewed on a complete history.
+
+If one places an order, the ***Buyer*** should be capable to check, track or even cancel the order if needed. 
+
+***Reviewers*** are Buyers who can post a review about a product they acquired. Reviews should be treated not only editable (by the owner), but also deletable as well (by both review owner and System Administrators). 
+
+The system should also support Help features such as placeholders for forms, contextual error messages and help, as well as Product Information: an “About Us”, listing of main features and contacts.
 
 ---
 
