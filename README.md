@@ -5,9 +5,9 @@ Group: 05
 
 Students
 
-    Name   | Number
-    ------ | ---------------------
-    Carlos Veríssimo | up201907716
-    Duarte Sardão | up201905497
-    Nuno Jesus | up201905477
-    Tomás Torres | up201800700
+Name   | Number
+------ | ---------------------
+Carlos Veríssimo | up201907716 
+Duarte Sardão | up201905497
+Nuno Jesus | up201905477
+Tomás Torres | up201800700
