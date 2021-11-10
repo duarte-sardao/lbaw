@@ -200,18 +200,23 @@ There are two components to this artefact:
 
 ### 1. Sitemap
 
-> Sitemap presenting the overall structure of the web application.  
-> Each page must be identified in the sitemap.  
-> Multiple instances of the same page (e.g. student profile in SIGARRA) are presented as page stacks.
+![Sitemap](images/Sitemap.png)
 
+<p align="center">
+    Figure 2: Sitemap
+</p>
 
 ### 2. Wireframes
 
 A website wireframe is a visual representation of a website’s skeleton architecture. Below there are two wireframes, one is a representation of what the item page resembles, while the other one reveals how the user profile looks like.
 
-#### UIxx: Page Name
+#### UI01: Item page
 
-![UIxx](images/Wireframe_1.png)
+![Wireframe 1](images/Wireframe_1.png)
+
+<p align="center">
+    Figure 3: Wireframe 1
+</p>
 
 1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
 2. The search feature is available throughout the whole website;
@@ -219,9 +224,13 @@ A website wireframe is a visual representation of a website’s skeleton archite
 4. Buyers can easily add products to their wishlist, as well as their cart; 
 
 
-#### UIxx: Page Name
+#### UI02: User Profile
 
-![UIxx](images/Wireframe_2.png)
+![Wireframe 2](images/Wireframe_2.png)
+
+<p align="center">
+    Figure 4: Wireframe 2
+</p>
 
 1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
 2. The search feature is available throughout the whole website;
