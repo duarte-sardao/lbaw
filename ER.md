@@ -139,7 +139,7 @@ This section contains tables for business rules, technical requirementes and res
 
 #### 3.1. Business rules
 
-A business rule defines or constrains one aspect of the business, with the intention of asserting business structure or influencing business behaviour. Business rules often supplement usage or user interface requirements; **[Ambler04]** 
+A business rule defines or constrains one aspect of the business, with the intention of asserting business structure or influencing business behaviour. Business rules often supplement usage or user interface requirements;
 
 
 | Identifier | Name | Description |
@@ -152,7 +152,7 @@ A business rule defines or constrains one aspect of the business, with the inten
 
 #### 3.2. Technical requirements
 
-Technical requirements are concerned with the technical aspects that the system must meet, such as performance-related issues, reliability issues and availability issues. Highlight and justify the three most critical technical requirements for your project. **[Ambler04]** 
+Technical requirements are concerned with the technical aspects that the system must meet, such as performance-related issues, reliability issues and availability issues. Highlight and justify the three most critical technical requirements for your project.
 
 | Identifier | Name | Description |
 | -------- | -------- | -------- |
