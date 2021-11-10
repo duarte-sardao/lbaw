@@ -71,8 +71,11 @@
 
 #### UIxx: Page Name
 
+![UIxx](images/Wireframe1.png)
+
 #### UIxx: Page Name
 
+![UIxx](images/Wireframe2.png)
 
 ---
 
