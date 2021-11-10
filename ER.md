@@ -27,9 +27,6 @@ The system should also support Help features such as placeholders for forms, con
 
 ## A2: Actors and User stories
 
-> This artefact contains the specification of the actors and their user stories, serving as agile documentation of the project requirements. 
-
-
 
 ### 1. Actors
 
@@ -59,9 +56,6 @@ The system should also support Help features such as placeholders for forms, con
 
 
 ### 2. User Stories
-
-Each User Story are following the template **[Dennis10]**:
-> As a ***[user]***, I want ***[function]***, so that ***[value]***
 
 #### 2.1. User
 
@@ -133,7 +127,7 @@ Each User Story are following the template **[Dennis10]**:
 | US52     | Track Order     | High     | As a Buyer, I want to track my order, so that I know when it’s getting delivered.     |
 | US53     | Cancel Order     | High     | As a Buyer, I want to cancel my order, so that I can get my money back.     |
 
-#### 2.6. Reviewer
+#### 2.7. Reviewer
 
 | Identifier | Name | Priority | Description |
 | -------- | -------- | -------- | -------- |
