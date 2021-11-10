@@ -53,7 +53,16 @@
 
 ## A3: Information Architecture
 
-> Brief presentation of the artefact goals.
+The Information Architecture artefact provides a high-level overview of the system's information architecture. 
+The main objectives are listed below:
+- Contribute to the identification and description of user needs, as well as the generation of new ones;
+- Examine and test the UI of the product;
+- Allow for several iterations of the user interface design in a short amount of time.
+
+There are two components to this artefact:
+- A sitemap;
+- A pair of wireframes.
+
 
 
 ### 1. Sitemap
@@ -65,17 +74,25 @@
 
 ### 2. Wireframes
 
-> Wireframes for, at least, two main pages of the web application.
-> Do not include trivial use cases.
-
+A website wireframe is a visual representation of a website’s skeleton architecture. Below there are two wireframes, one is a representation of what the item page resembles, while the other one reveals how the user profile looks like.
 
 #### UIxx: Page Name
 
 ![UIxx](images/Wireframe_1.png)
 
+1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
+2. The search feature is available throughout the whole website;
+3. The selected tab is distinguishable from the unselected one due to its size.
+4. Buyers can easily add products to their wishlist, as well as their cart; 
+
+
 #### UIxx: Page Name
 
 ![UIxx](images/Wireframe_2.png)
+
+1. Breadcrumbs help the user navigate the website, making them aware of their current location within the website; 
+2. The search feature is available throughout the whole website;
+3. The selected tab is distinguishable from the unselected one due to its size.
 
 ---
 
