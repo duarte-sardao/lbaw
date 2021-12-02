@@ -51,12 +51,20 @@ drop type if exists CoolerType;
 drop type if exists PowerSupplyType;
 drop type if exists OrderStatusType;
 
+-----------------------
+--       TYPES       --
+-----------------------
 CREATE TYPE MotherboardType as ENUM('ATX', 'MICRO-ATX', 'MINI-ATX', 'EATX', 'MINI-ITX');
 CREATE TYPE StorageType as ENUM('RAM', 'SSD', 'HDD', 'M.2');
 CREATE TYPE CoolerType as ENUM('Water', 'Air');
 CREATE TYPE PowerSupplyType as ENUM('Full-Modular', 'Semi-Modular', 'Non-Modular');
 CREATE TYPE OrderStatusType as ENUM ('Processing', 'Packed', 'Shipped', 'Delivered');
 
+
+
+-----------------------
+--      TABLES       --
+-----------------------
 CREATE TABLE Account(
     id SERIAL,
     username TEXT NOT NULL UNIQUE,
@@ -297,3 +305,170 @@ CREATE TABLE CartProduct(
     CONSTRAINT CartProduct_FK1 FOREIGN KEY(id_Cart) REFERENCES Cart(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT CartProduct_FK2 FOREIGN KEY(id_Product) REFERENCES Product(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
+
+
+
+-----------------------
+--      INDEXES      --
+-----------------------
+CREATE INDEX order_user ON Purchase(id_Customer);
+CLUSTER Purchase USING order_user;
+
+CREATE INDEX product_price ON Product(price);
+
+CREATE INDEX product_brand ON Product USING hash (brand);
+
+CREATE INDEX cooler_type ON Cooler USING hash(type);
+
+CREATE INDEX supply_type ON PowerSupply USING hash(type);
+
+CREATE INDEX case_type ON PcCase USING hash(type);
+
+CREATE INDEX storage_type ON Storage USING hash(type);
+
+CREATE INDEX mb_type ON Motherboard USING hash(type);
+
+CREATE INDEX review_author ON Review USING hash(id_Customer);
+
+CREATE INDEX review_product ON Review (id_Product);
+CLUSTER Order USING order_user;
+
+CREATE INDEX review_rating ON Review(rating);
+
+
+ALTER TABLE Product
+ADD COLUMN tsvectors TSVECTOR;
+
+CREATE FUNCTION product_search_update() RETURNS TRIGGER AS $$
+BEGIN
+ IF TG_OP = 'INSERT' THEN
+        NEW.tsvectors = (
+         setweight(to_tsvector('english', NEW.name), 'A') ||
+         setweight(to_tsvector('english', NEW.brand), 'B')
+        );
+ END IF;
+ IF TG_OP = 'UPDATE' THEN
+         IF (NEW.name <> OLD.name OR NEW.brand <> OLD.brand) THEN
+           NEW.tsvectors = (
+             setweight(to_tsvector('english', NEW.name), 'A') ||
+             setweight(to_tsvector('english', NEW.brand), 'B')
+           );
+         END IF;
+ END IF;
+ RETURN NEW;
+END $$
+LANGUAGE plpgsql;
+
+-----------------------
+--     TRIGGERS      --
+-----------------------
+CREATE TRIGGER productSearchUpdate
+BEFORE INSERT OR UPDATE ON Product
+FOR EACH ROW
+EXECUTE PROCEDURE productSearchUpdate();
+
+CREATE INDEX search_idx ON Product USING GIN (tsvectors);
+
+--
+
+-- TRIGGER TO UPDATE THE RATING OF A PRODUCT WHEN A REVIEW IS ADDED OR CHANGED --
+CREATE FUNCTION updateProductRating() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    Update Product
+    Set rating = (SELECT avg(review.rating) from Review where id_Product = NEW.id_Product)
+    where Product.id = NEW.id_Product;
+	RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER updateProductRating 
+AFTER INSERT OR UPDATE 
+ON Review
+FOR EACH ROW
+EXECUTE PROCEDURE updateProductRating(); 
+
+--
+
+-- TRIGGER TO PREVENT A USER FROM ADDING MORE ITEMS TO THE CART THAN THE AVAILABLE STOCK
+CREATE FUNCTION verificaStock() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF NOT EXISTS(
+    SELECT * from Product
+    WHERE NEW.id_Product = Product.id
+        AND NEW.quantity <= Product.stock
+)
+THEN RAISE EXCEPTION 'You can NOT add that much quantity to the cart';
+END IF;
+RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER verificaStock 
+BEFORE INSERT ON CartProduct
+FOR EACH ROW
+EXECUTE PROCEDURE verificaStock(); 
+
+--    
+
+-- TRIGGER TO BLOCK BANNED USERS FROM WRITING REVIEWS
+CREATE FUNCTION blockBannedUsers() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF NOT EXISTS(
+    SELECT * from Customer
+    WHERE Customer.id = New.id_Customer
+        AND Customer.id in (
+            SELECT id 
+            from account
+            where isBanned = false
+        )
+)
+THEN RAISE EXCEPTION 'You can NOT write reviews as you´ve been banned from the website';
+END IF;
+RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER blockBannedUsers
+AFTER INSERT ON Review
+FOR EACH ROW
+EXECUTE PROCEDURE blockBannedUsers();
+
+--
+
+-- TRIGGER TO SEND A NOTIFICATION TO THE CUSTOMER WHEN THERE IS A CHANGE OF STATUS IN THEIR ORDER
+CREATE FUNCTION orderStatusNotification() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF EXISTS (
+    SELECT * from Customer 
+    where New.id_Customer = Customer.id
+)
+THEN INSERT INTO Notification(content, id_Customer) VALUES ('Your order status has been updated' , New.id_Customer);
+END IF;
+RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER orderStatusNotification
+AFTER UPDATE ON Purchase
+FOR EACH ROW
+EXECUTE PROCEDURE orderStatusNotification(); 
+
+
+
+-----------------------
+--    TRANSACTIONS   --
+-----------------------
+BEGIN TRANSACTION; 
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY; 
+  SELECT Cart.id, Product.name, CartProduct.quantity 
+  FROM CartProduct INNER JOIN Product ON Product.id = CartProduct.id_Product 
+  INNER JOIN Cart ON Cart.id = CartProduct.id_Cart; 
+END TRANSACTION;
