@@ -279,7 +279,7 @@ paths:
                   type: object
                   properties:
                   
- /api/cpu:
+ /api/gpu:
     get:
       operationId: R202
       summary: 'R202: Search GPU API' 
