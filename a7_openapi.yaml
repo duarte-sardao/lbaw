@@ -157,14 +157,14 @@ paths:
      responses:
        '200':
          description: 'Ok. Show User Profile UI'
- /api/works:
+ /api/products:
     get:
       operationId: R202
       summary: 'R202: Search Products API' #different search functions per type of product? since different specs
       description: 'Searches for products and returns the results as JSON. Access: PUB.'
 
       tags: 
-        - 'M02: Works'
+        - 'M02: Products'
 
       parameters:
         - in: query
