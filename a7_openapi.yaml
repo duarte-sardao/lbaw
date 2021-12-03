@@ -5,7 +5,7 @@ info:
  title: 'LBAW GrabNBuild Web API'
  description: 'Web Resources Specification (A7) for GrabNBuild'
  
- servers:
+servers:
 - url: 
  description: Production server
 
