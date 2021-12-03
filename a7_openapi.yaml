@@ -7,7 +7,7 @@ info:
  
 servers:
 - url: 
- description: Production server
+  description: Production server
 
 externalDocs:
  description: Find more info here.
