@@ -211,8 +211,8 @@ paths:
 
  /api/cpu:
     get:
-      operationId: R202
-      summary: 'R202: Search CPU API' 
+      operationId: R203
+      summary: 'R203: Search CPU API' 
       description: 'Searches for CPUs and returns the results as JSON. Access: PUB.'
 
       tags: 
@@ -281,8 +281,8 @@ paths:
                   
  /api/gpu:
     get:
-      operationId: R202
-      summary: 'R202: Search GPU API' 
+      operationId: R204
+      summary: 'R204: Search GPU API' 
       description: 'Searches for GPUs and returns the results as JSON. Access: PUB.'
 
       tags: 
@@ -357,8 +357,8 @@ paths:
                   
  /api/motherboard:
     get:
-      operationId: R202
-      summary: 'R202: Search Motherboards API' 
+      operationId: R205
+      summary: 'R205: Search Motherboards API' 
       description: 'Searches for motherboards and returns the results as JSON. Access: PUB.'
 
       tags: 
@@ -409,8 +409,8 @@ paths:
                   
  /api/storage:
     get:
-      operationId: R202
-      summary: 'R202: Search Storage API' 
+      operationId: R206
+      summary: 'R206: Search Storage API' 
       description: 'Searches for storage and returns the results as JSON. Access: PUB.'
 
       tags: 
@@ -432,6 +432,168 @@ paths:
         - in: query
           name: type
           description: String for storagetype
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: price
+          description: Float with the product price
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: classification
+          description: Integer corresponding to the product classification
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                  
+ /api/case:
+    get:
+      operationId: R207
+      summary: 'R207: Search Case API' 
+      description: 'Searches for cases and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M02: Products'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: color
+          description: String for color
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: weight
+          description: String for weight
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: type
+          description: String for case type
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: price
+          description: Float with the product price
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: classification
+          description: Integer corresponding to the product classification
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                  
+ /api/cooler:
+    get:
+      operationId: R208
+      summary: 'R208: Search Cooler API' 
+      description: 'Searches for coolers and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M02: Products'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: type
+          description: String for cooler type
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: price
+          description: Float with the product price
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: classification
+          description: Integer corresponding to the product classification
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                  
+ /api/powersupply:
+    get:
+      operationId: R209
+      summary: 'R209: Search PowerSupply API' 
+      description: 'Searches for power supplies and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M02: Products'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: wattage
+          description: Int for wattage
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: certification
+          description: String for certification
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: type
+          description: String for supply type
           schema:
             type: string
           required: false
