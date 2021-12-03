@@ -244,8 +244,84 @@ paths:
             type: string
           required: false
         - in: query
+          name: threads
+          description: Integer corresponding to threads
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: cores
+          description: Integer corresponding to cores
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: price
+          description: Float with the product price
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: classification
+          description: Integer corresponding to the product classification
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                  
+ /api/cpu:
+    get:
+      operationId: R202
+      summary: 'R202: Search GPU API' 
+      description: 'Searches for GPUs and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M02: Products'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: memory
+          description: Int with memory
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: coreclock
+          description: Int with the coreclock
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: boostclock
+          description: Int for boostclock
+          schema:
+            type: integer
+          required: false
+        - in: query
           name: boostclock
           description: Integer corresponding to boostclock
+          schema:
+            type: integer
+          required: false
+        - in: query
+          name: hdmiports
+          description: Integer corresponding to hdmi ports
           schema:
             type: integer
           required: false
