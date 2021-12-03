@@ -157,4 +157,54 @@ paths:
      responses:
        '200':
          description: 'Ok. Show User Profile UI'
- 
+ /api/works:
+    get:
+      operationId: R202
+      summary: 'R202: Search Products API' #different search functions per type of product? since different specs
+      description: 'Searches for products and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M02: Works'
+
+      parameters:
+        - in: query
+          name: query
+          description: String to use for full-text search
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: price
+          description: Float with the product price
+          schema:
+            type: number
+          required: false
+        - in: query
+          name: classification
+          description: Integer corresponding to the product classification
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: string
+                    title:
+                      type: string
+                    #obs:
+                    #  type: string
+                    #year:
+                    #  type: string
+                    #owner:
+                    #  type: string
+                    #type:
+                    #  type: string
