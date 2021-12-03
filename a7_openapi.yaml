@@ -1,1 +1,21 @@
 openapi: 3.0.0
+
+info:
+ version: '0.1'
+ title: 'LBAW GrabNBuild Web API'
+ description: 'Web Resources Specification (A7) for GrabNBuild'
+ 
+ servers:
+- url: 
+ description: Production server
+
+externalDocs:
+ description: Find more info here.
+ url: 
+
+tags:
+ - name: 'M01: Authentication and Individual Profile'
+ - name: 'M02: Products'
+ - name: 'M03: Reviews and Wish list'
+ - name: 'M04: Orders'
+ - name: 'M05: User Administration and Static pages'
