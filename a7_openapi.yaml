@@ -691,7 +691,7 @@ paths:
          
  #como fazer insert products? n s muito bem
  
-  /api/usersearch:
+  /api/usersearch: #admins could see blocked users, how?
     get:
       operationId: R501
       summary: 'R501: Search User accounts' 
@@ -724,3 +724,34 @@ paths:
                 items:
                   type: object
                   properties:
+                  
+ /blockusr:
+   get:
+     operationId: R502
+     summary: 'R502: Block User'
+     description: 'Blocks Specified User. Access: ADM'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Block'
+ /unblockusr:
+   get:
+     operationId: R503
+     summary: 'R503: Unblock User'
+     description: 'Unblocks Specified User. Access: ADM'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Unblock'
+ /viewhistory:
+   get:
+     operationId: R504
+     summary: 'R504: View User Purchase History'
+     description: 'Shows purchase history of specified user.. Access: OWN, ADM'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Show'
