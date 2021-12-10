@@ -157,6 +157,58 @@ paths:
      responses:
        '200':
          description: 'Ok. Show User Profile UI'
+         
+ /editprofile:
+   get:
+     operationId: R107
+     summary: 'R107: Register Form'
+     description: 'Provide user profile edit form. Access: USR'
+     tags:
+       - 'M01: Authentication and Individual Profile'
+     responses:
+       '200':
+         description: 'Ok. Show Edit UI'
+
+   post:
+     operationId: R108
+     summary: 'R108: Edit Action'
+     description: 'Processes the new user profile info form submission. Access: USR'
+     tags:
+       - 'M01: Authentication and Individual Profile'
+
+     requestBody:
+       required: true
+       content:
+         application/x-www-form-urlencoded:
+           schema:
+             type: object
+             properties:
+               name:
+                 type: string
+               email:
+                 type: string
+               picture:
+                 type: string
+                 format: binary
+             required:
+                - email
+                - password
+
+     responses:
+       '302':
+         description: 'Redirect after processing the new user information.'
+         headers:
+           Location:
+             schema:
+               type: string
+             examples:
+               302Success:
+                 description: 'Successful authentication. Redirect to user profile.'
+                 value: '/users/{id}'
+               302Failure:
+                 description: 'Failed authentication. Redirect to user profile.'
+                 value: '/users/{id}'
+
  /api/products:
     get:
       operationId: R202
