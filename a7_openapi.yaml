@@ -690,3 +690,40 @@ paths:
          description: 'Ok. Remove'
          
  #como fazer insert products? n s muito bem
+ 
+ 
+ 
+ 
+  /api/usersearch:
+    get:
+      operationId: R501
+      summary: 'R501: Search User accounts' 
+      description: 'Searches for power supplies and returns the results as JSON. Access: PUB.'
+
+      tags: 
+        - 'M05: User Administration and Information Pages'
+
+      parameters:
+        - in: query
+          name: name
+          description: User name
+          schema:
+            type: string
+          required: false
+        - in: query
+          name: email
+          description: User email
+          schema:
+            type: integer
+          required: false
+
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
