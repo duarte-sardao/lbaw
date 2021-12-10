@@ -185,14 +185,9 @@ paths:
              properties:
                name:
                  type: string
-               email:
-                 type: string
                picture:
                  type: string
                  format: binary
-             required:
-                - email
-                - password
 
      responses:
        '302':
