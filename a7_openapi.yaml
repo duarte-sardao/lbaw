@@ -706,7 +706,7 @@ paths:
              properties:
                stars:          
                  type: int
-               tex:    
+               text:    
                  type: string
              required:
                   - stars
