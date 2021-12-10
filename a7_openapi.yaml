@@ -667,7 +667,7 @@ paths:
                 items:
                   type: object
                   properties:
- /viewprod:
+ /products/{id}:
    get:
      operationId: R210
      summary: 'R210: Product Info'
@@ -688,6 +688,44 @@ paths:
      responses:
        '200':
          description: 'Ok. Remove'
+       
+ /addreview:
+    post:
+     operationId: R301
+     summary: 'R301: Add Review to product'
+     description: 'Adds review to specified product: Access: OWN'
+     tags:
+       - 'M03: Reviews and Wish list'
+       
+     requestBody:
+       required: true
+       content:
+         application/x-www-form-urlencoded:
+           schema:
+             type: object
+             properties:
+               stars:          
+                 type: int
+               tex:    
+                 type: string
+             required:
+                  - stars
+                  - text
+
+     responses:
+       '302':
+         description: 'Redirect after processing the review.'
+         headers:
+           Location:
+             schema:
+               type: string
+             examples:
+               302Success:
+                 description: 'Successful authentication. Redirect to prod.'
+                 value: '/products/{id}'
+               302Failure:
+                 description: 'Failed authentication. Redirect to prod.'
+                 value: '/products/{id}'
          
  #como fazer insert products? n s muito bem
  /api/usersearch: #admins could see blocked users, how?
