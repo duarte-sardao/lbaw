@@ -749,7 +749,40 @@ paths:
    post:
      operationId: R504
      summary: 'R504: View User Purchase History'
-     description: 'Shows purchase history of specified user.. Access: OWN, ADM'
+     description: 'Shows purchase history of specified user. Access: OWN, ADM'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Show'
+         
+ /viewcontact:
+   post:
+     operationId: R505
+     summary: 'R505: View Contact Page'
+     description: 'View the Contact Page. Access: PUB'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Show'
+         
+ /viewabout:
+   post:
+     operationId: R506
+     summary: 'R506: View About Page'
+     description: 'View the About Page. Access: PUB'
+     tags:
+       - 'M05: User Administration and Information Pages'
+     responses:
+       '200':
+         description: 'Ok. Show'
+
+ /viewfaq:
+   post:
+     operationId: R507
+     summary: 'R507: View Faq Page'
+     description: 'View the Faq Page. Access: PUB'
      tags:
        - 'M05: User Administration and Information Pages'
      responses:
