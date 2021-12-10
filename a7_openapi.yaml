@@ -162,7 +162,7 @@ paths:
    get:
      operationId: R107
      summary: 'R107: Register Form'
-     description: 'Provide user profile edit form. Access: USR'
+     description: 'Provide user profile edit form. Access: OWN'
      tags:
        - 'M01: Authentication and Individual Profile'
      responses:
@@ -172,7 +172,7 @@ paths:
    post:
      operationId: R108
      summary: 'R108: Edit Action'
-     description: 'Processes the new user profile info form submission. Access: USR'
+     description: 'Processes the new user profile info form submission. Access: OWN'
      tags:
        - 'M01: Authentication and Individual Profile'
 
