@@ -667,3 +667,13 @@ paths:
                 items:
                   type: object
                   properties:
+ /viewprod:
+   get:
+     operationId: R210
+     summary: 'R210: Product Info'
+     description: 'Provides info on specified product. Access: PUB'
+     tags:
+       - 'M02: Products'
+     responses:
+       '200':
+         description: 'Ok. Show Prod Info'
