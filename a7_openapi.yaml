@@ -691,7 +691,7 @@ paths:
          
  #como fazer insert products? n s muito bem
  
-  /api/usersearch: #admins could see blocked users, how?
+ /api/usersearch: #admins could see blocked users, how?
     get:
       operationId: R501
       summary: 'R501: Search User accounts' 
