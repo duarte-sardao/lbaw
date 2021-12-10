@@ -691,9 +691,6 @@ paths:
          
  #como fazer insert products? n s muito bem
  
- 
- 
- 
   /api/usersearch:
     get:
       operationId: R501
