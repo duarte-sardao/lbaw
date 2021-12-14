@@ -10,6 +10,9 @@ class Account extends Authenticatable {
     // Don't add create and update timestamps in database.
     public $timestamps  = false;
 
+    //Defines the table's name
+    protected $table = 'Account';
+    
     /**
      * The attributes that are mass assignable.
      *
