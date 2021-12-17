@@ -13,6 +13,10 @@ class GPU extends Model {
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'memory', 'coreClock', 'boostClock ', 'hdmiPorts ', 'displayPorts '];
+
+    public function product(){
+        return $this->belongsTo('App\Models\Product');
+    }
 }
 
 ?>
