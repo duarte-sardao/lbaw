@@ -726,6 +726,110 @@ paths:
                302Failure:
                  description: 'Failed authentication. Redirect to prod.'
                  value: '/products/{id}'
+            
+ /editreview:
+    post:
+     operationId: R302
+     summary: 'R302: Edit Product Review'
+     description: 'Edits review given to specified product: Access: OWN'
+     tags:
+       - 'M03: Reviews and Wish list'
+       
+     requestBody:
+       required: true
+       content:
+         application/x-www-form-urlencoded:
+           schema:
+             type: object
+             properties:
+               stars:          
+                 type: int
+               text:    
+                 type: string
+             required:
+                  - stars
+                  - text
+
+     responses:
+       '302':
+         description: 'Redirect after processing the review.'
+         headers:
+           Location:
+             schema:
+               type: string
+             examples:
+               302Success:
+                 description: 'Successful authentication. Redirect to prod.'
+                 value: '/products/{id}'
+               302Failure:
+                 description: 'Failed authentication. Redirect to prod.'
+                 value: '/products/{id}'
+
+ /removereview:
+    post:
+     operationId: R303
+     summary: 'R303: Remove Review from product'
+     description: 'Removes review from specified product: Access: OWN'
+     tags:
+       - 'M03: Reviews and Wish list'
+
+     responses:
+       '302':
+         description: 'Redirect after processing the review.'
+         headers:
+           Location:
+             schema:
+               type: string
+             examples:
+               302Success:
+                 description: 'Successful authentication. Redirect to prod.'
+                 value: '/products/{id}'
+               302Failure:
+                 description: 'Failed authentication. Redirect to prod.'
+                 value: '/products/{id}'
+
+ /addtowishlist:
+    post:
+     operationId: R304
+     summary: 'R304: Add Product to Wishlist'
+     description: 'Adds Product to User Wishlist: Access: USR'
+     tags:
+       - 'M03: Reviews and Wish list'
+       
+     responses:
+       '200':
+         description: Success
+
+ /removefromwishlist:
+    post:
+     operationId: R305
+     summary: 'R305: Remove Product from Wishlist'
+     description: 'Removes Product from User Wishlist: Access: OWN'
+     tags:
+       - 'M03: Reviews and Wish list'
+       
+     responses:
+       '200':
+         description: Success
+
+ /viewwishlist:
+    post:
+     operationId: R306
+     summary: 'R306: List products in wishlist'
+     description: 'Lists Products from User Wishlist: Access: OWN'
+     tags:
+       - 'M03: Reviews and Wish list'
+       
+     responses:
+       '200':
+         description: Success
+         content:
+           application/json:
+             schema:
+               type: array
+               items:
+                 type: object
+                 properties:
          
  #como fazer insert products? n s muito bem
  /api/usersearch: #admins could see blocked users, how?
