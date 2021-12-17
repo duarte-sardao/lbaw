@@ -1006,16 +1006,6 @@ paths:
        '200':
          description: 'Ok. Show Prod Info'
          
- /removeprod:
-   get:
-     operationId: R211
-     summary: 'R211: Remove product'
-     description: 'Removes specified product. Access: ADM'
-     tags:
-       - 'M02: Products'
-     responses:
-       '200':
-         description: 'Ok. Remove'
        
  /addreview:
     post:
