@@ -13,6 +13,11 @@ class Paypal extends Model {
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'email'];
+
+    //Linking Paypal to PaymentMethod table overriding the FK name
+    public function paymentMethods(){
+        return $this->belongsTo('App\Models\PaymentMethod', 'id');
+    }
 }
 
 ?>

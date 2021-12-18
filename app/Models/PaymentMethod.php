@@ -13,6 +13,21 @@ class PaymentMethod extends Model {
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id'];
+
+    //Linking PaymentMethod to Paypal table overriding FK name
+    public function paypals(){
+        return $this->hasMany('App\Model\Paypal', 'id');
+    }
+
+    //Linking PaymentMethod to Card table overriding FK name
+    public function cards(){
+        return $this->hasMany('App\Model\Card', 'id');
+    }
+
+    //Linking PaymentMethod to Transfer table overriding FK name
+    public function tranfers(){
+        return $this->hasMany('App\Model\Transfer', 'id');
+    }
 }
 
 ?>

@@ -13,6 +13,11 @@ class Transfer extends Model {
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'entity', 'reference', 'validFor'];
+
+    //Linking Transfer to PaymentMethod table overriding the FK name
+    public function paymentMethods(){
+        return $this->belongsTo('App\Models\PaymentMethod', 'id');
+    }
 }
 
 ?>

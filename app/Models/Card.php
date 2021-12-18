@@ -12,6 +12,11 @@ class Card extends Model {
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'name', 'number', 'expDate', 'cvv'];
+
+    //Linking Card to PaymentMethod table overriding the FK name
+    public function paymentMethods(){
+        return $this->belongsTo('App\Models\PaymentMethod', 'id');
+    }
 }
 
 ?>

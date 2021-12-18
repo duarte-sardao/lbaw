@@ -19,7 +19,7 @@ class Account extends Authenticatable {
      * @var array
      */
     protected $fillable = [
-        'id', 'username', 'email', 'password', 'phone', 'isBanned', 'profilePic',
+        'id', 'username', 'email', 'password', 'phone', 'isBanned', 'profilePic'
     ];
 
     /**
@@ -28,10 +28,16 @@ class Account extends Authenticatable {
      * @var array
      */
     protected $hidden = [
-        'password', 
+        'password' 
     ];
 
-    
+    public function admins(){
+        return $this->hasMany('App\Models\Admin', 'id');
+    }
+
+    public function customers(){
+        return $this->hasMany('App\Models\Customer', 'id');
+    }
 }
 
 

@@ -14,8 +14,9 @@ class PcCase extends Model {
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'color', 'weight', 'type'];
 
-    public function product(){
-        return $this->belongsTo('App\Models\Product');
+    //Linking PcCase to Product table overriding the FK name
+    public function products(){
+        return $this->belongsTo('App\Models\Product', 'id');
     }
 }
 

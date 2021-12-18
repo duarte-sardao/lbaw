@@ -14,8 +14,9 @@ class Motherboard extends Model {
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'socket', 'type'];
 
-    public function product(){
-        return $this->belongsTo('App\Models\Product');
+    //Linking Motherboard to Product table overriding the FK name
+    public function products(){
+        return $this->belongsTo('App\Models\Product', 'id');
     }
 }
 
