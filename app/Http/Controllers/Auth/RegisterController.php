@@ -27,7 +27,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/user/{id}';
+    protected $redirectTo = '/Home';
 
     /**
      * Create a new controller instance.
@@ -48,9 +48,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6|confirmed',
+            'name' => 'required|string|min:8|max:255',
+            'email' => 'required|string|email|max:255|unique:User',
+            'password' => 'required|string|min:8|confirmed',
+            'phone' => 'integer',
+            'profilePic' => 'image',
         ]);
     }
 
@@ -58,14 +60,17 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\User
+     * @return \App\Models\Account
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
+        return Account::create([
+            'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'phone' => $data['phone'],
+            'isBanned' => 0,
+            'profilePic' => $data['profilePic']
         ]);
     }
 }
