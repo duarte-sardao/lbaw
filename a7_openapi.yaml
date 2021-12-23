@@ -70,7 +70,7 @@ paths:
                  value: '/login'
         
  /logout:
-   post:
+   get:
      operationId: R103
      summary: 'R103: Logout Action'
      description: 'Logout the current authenticated user. Access: USR, ADM'
@@ -782,7 +782,7 @@ paths:
           description: Success
                   
  /addprod/gpu:
-    get:
+    post:
       operationId: R214
       summary: 'R214: Add GPU Product' 
       description: 'Sets GPU features after setting initally prod features. Access: ADM.'
@@ -833,7 +833,7 @@ paths:
           description: Success
                   
  /addprod/motherboard:
-    get:
+    post:
       operationId: R215
       summary: 'R215: Add Motherboard Product' 
       description: 'Sets Motherboard features after setting initally prod features. Access: ADM.'
@@ -860,7 +860,7 @@ paths:
           description: Success
                   
  /addprod/storage:
-    get:
+    post:
       operationId: R216
       summary: 'R216: Adds Storage Features after Base Prod Specification' 
       description: 'Sets Storage features after setting initally prod features. Access: ADM.'
@@ -887,7 +887,7 @@ paths:
           description: Success
                   
  /addprod/case:
-    get:
+    post:
       operationId: R217
       summary: 'R217: Add Case Product' 
       description: 'Sets Case features after setting initally prod features. Access: ADM.'
@@ -920,7 +920,7 @@ paths:
           description: Success
                   
  /addprod/cooler:
-    get:
+    post:
       operationId: R218
       summary: 'R218: Add Cooler Product' 
       description: 'Sets Cooler features after setting initally prod features. Access: ADM.'
@@ -941,7 +941,7 @@ paths:
           description: Success
 
  /addprod/powersupply:
-    get:
+    post:
       operationId: R219
       summary: 'R219: Add PowerSupply Product' 
       description: 'Sets CPU features after setting initally prod features. Access: ADM.'

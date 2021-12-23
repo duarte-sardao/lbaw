@@ -10,19 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-// Home
-Route::get('/', 'Auth\LoginController@home');
+
+// Static Pages
+Route::get('/', 'StaticController@index');
+Route::get('about', 'StaticController@about');
+Route::get('faq', 'StaticController@faq');
+Route::get('contact', 'StaticController@contact');
+
+//Other Pages
+Route::get('/user/{id}', function ($id) {
+    return 'User '.$id;
+});
+
+Route::get('/store/{id}', function ($id) {
+    return 'Product '.$id;
+});
 
 // Cards
-Route::get('cards', 'CardController@list');
-Route::get('cards/{id}', 'CardController@show');
+//Route::get('cards', 'CardController@list');
+//Route::get('cards/{id}', 'CardController@show');
 
 // API
-Route::put('api/cards', 'CardController@create');
-Route::delete('api/cards/{card_id}', 'CardController@delete');
-Route::put('api/cards/{card_id}/', 'ItemController@create');
-Route::post('api/item/{id}', 'ItemController@update');
-Route::delete('api/item/{id}', 'ItemController@delete');
+//Route::put('api/cards', 'CardController@create');
+//Route::delete('api/cards/{card_id}', 'CardController@delete');
+//Route::put('api/cards/{card_id}/', 'ItemController@create');
+//Route::post('api/item/{id}', 'ItemController@update');
+//Route::delete('api/item/{id}', 'ItemController@delete');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
