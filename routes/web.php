@@ -26,14 +26,20 @@ Route::get('/store/{id}', function ($id) {
     return 'Product '.$id;
 });
 
-// Cards
-//Route::get('cards', 'CardController@list');
-//Route::get('cards/{id}', 'CardController@show');
+// Cart
+Route::get('/user/{id}/cart', 'CartController@list', function ($id) {
+    return 'User '.$id;
+});
 
-// API
-//Route::put('api/cards', 'CardController@create');
-//Route::delete('api/cards/{card_id}', 'CardController@delete');
-//Route::put('api/cards/{card_id}/', 'ItemController@create');
+Route::put('/user/{id}/cart', 'CartController@create', function ($id) {
+    return 'User '.$id;
+});
+Route::delete('/user/{id}/cart/{prod_id}', 'CardController@delete', function($id, $prod_id) {
+	return ('User '.$id, 'Product'.$id);
+});
+Route::put('/user/{id}/cart/{prod_id}', 'CartElementController@create', function ($id, $prod_id) {
+    return ('User '.$id, 'Product'.$id);
+});
 //Route::post('api/item/{id}', 'ItemController@update');
 //Route::delete('api/item/{id}', 'ItemController@delete');
 
