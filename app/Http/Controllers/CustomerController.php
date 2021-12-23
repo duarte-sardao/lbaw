@@ -8,21 +8,6 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 { 
   /**
-   * @method Processes the data inputed on the creation form to create a new instance of the Customer Model
-   * @param request HTTP request with the input data
-   * @return customer The new customer
-   */
-  public function store(Request $request)
-  {
-    $customer = new Customer();
-    $customer->id = $request->input('id');
-    $customer->cart_id = $request->input('id');
-    $customer->save();
-
-    return $customer;
-  }
-  
-  /**
    * @method Displays the customer's profile
    * @param id Id of the customer whose profile will be displayed
    */

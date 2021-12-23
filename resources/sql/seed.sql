@@ -27,11 +27,13 @@ drop trigger if exists verificaStock on CartProduct;
 drop trigger if exists blockBannedUsers on Review;
 drop trigger if exists orderStatusNotification on Purchase;
 drop trigger if exists productSearchUpdate on Product;
+drop trigger if exists cartCustomer on Customer;
 drop function if exists updateProductRating;
 drop function if exists verificaStock;
 drop function if exists blockBannedUsers;
 drop function if exists orderStatusNotification;
 drop function if exists productSearchUpdate;
+drop function if exists cartCustomer on Customer;
 drop index if exists acc_id;
 drop index if exists product_price;
 drop index if exists product_brand;
@@ -460,6 +462,26 @@ CREATE TRIGGER orderStatusNotification
 AFTER UPDATE ON Purchase
 FOR EACH ROW
 EXECUTE PROCEDURE orderStatusNotification(); 
+
+
+
+-- TRIGGER TO CREATE A CART WHEN A NEW ACCOUNT IS CREATED
+CREATE FUNCTION cartCustomer() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+INSERT INTO Customer(id, id_Cart) VALUES (NEW.id, NEW.id);
+END IF;
+RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER cartCustomer
+BEFORE INSERT ON CUSTOMER
+FOR EACH ROW
+EXECUTE PROCEDURE cartCustomer(); 
+
+
 
 
 
