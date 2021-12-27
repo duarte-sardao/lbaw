@@ -8,18 +8,6 @@ use Illuminate\Http\Request;
 class AccountController extends Controller
 { 
   /**
-   * @method Displays the Account's profile
-   * @param id Id of the Account whose profile will be displayed
-   */
-  public function show($id)
-  { 
-    $account = Account::find($id);
-    $this->authorize('show', $account);
-
-    return view('pages.user_profile', ['account' => $account]);
-  }
-
-  /**
    * @method Displays the edit profile form
    * @param id Id of the Account whose profile will be edited
    */
@@ -28,7 +16,7 @@ class AccountController extends Controller
     $account = Account::find($id);
     $this->authorize('update', $account);
 
-    return view('pages.edit_profile', ['account' => $account]);
+    return view('pages.profile.edit_profile', ['account' => $account]);
   }
 
   /**
@@ -84,6 +72,7 @@ class AccountController extends Controller
     $this->authorize('delete', $account);
     $account->delete();
   }
+  
 }
 
->
+?>

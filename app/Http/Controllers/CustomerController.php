@@ -13,7 +13,10 @@ class CustomerController extends Controller
    */
   public function show($id)
   { 
-    return Account::find($id)->show($id);
+    $customer = Customer::find($id);
+    $this->authorize('show', $customer);
+
+    return view('pages.profile.customer_profile', ['customer' => $customer]);
   }
 
   /**
@@ -43,5 +46,4 @@ class CustomerController extends Controller
     return Account::find($id)->delete($id);
   }
 }
-
->
+?>
