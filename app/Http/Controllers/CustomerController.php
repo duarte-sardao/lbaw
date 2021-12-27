@@ -13,10 +13,7 @@ class CustomerController extends Controller
    */
   public function showProfile($id)
   { 
-    $customer = Customer::find($id);
-    $this->authorize('show', $customer);
-
-    return view('pages.profile.customer_profile', ['customer' => $customer]);
+    return Account::find($id)->showProfile($id);
   }
 
   /**

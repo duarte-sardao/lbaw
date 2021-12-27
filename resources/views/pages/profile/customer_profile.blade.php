@@ -27,15 +27,15 @@
     <div class="user-info w-25 d-flex flex-column">
       <div class="d-flex justify-content-between">
         <h4>Your account data</h4>
-        <span class = "btn btn-primary">Edit</span>
+        <span class = "btn btn-primary" id = "editProfileButton">Edit</span>
       </div>
       
       <hr>
 
-      <form>
+      <form id = "profile-form">
         <div class="form-group">
           <label for="username"><h6>Username</h6></label>
-          <input type="text" class="form-control" id="username" placeholder="Nuno67713" disabled>
+          <input type="text" class="form-control" id="username" placeholder="{{$account->username}}" disabled>
         </div>
         
         <div class="form-group mt-3">
@@ -45,21 +45,25 @@
 
         <div class="form-group mt-3">
           <label for="email"><h6>Email</h6></label>
-          <input type="email" class="form-control" id="email" placeholder="nunomiguel533@gmail.com" disabled>
+          <input type="email" class="form-control" id="email" placeholder="{{$account->email}}" disabled>
         </div>
 
         <div class="form-group mt-3">
           <label for="phone"><h6>Phone</h6></label>
-          <input type="phone" class="form-control" id="phone" placeholder="915756849" disabled>
+          <input type="phone" class="form-control" id="phone" placeholder="{{$account->phone}}" disabled>
         </div>
   
-        <button type="submit" class="btn btn-primary mt-5" hidden>Submit</button>
+        <button type="submit" class="btn btn-primary mt-5" id = "profileSubmitButton"hidden>Submit</button>
       </form>
     </div>
 
     <div class="user-photo d-flex flex-column w-25">
-      <div class="d-flex justify-content-between">
-        <h5 class>Nuno67713</h5>
+      <div class="d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class>{{$account->username}}</h5>
+          <span id = "userId" hidden>{{$account->id}}</span>
+        </div>
+
         <label class = "btn btn-primary" for="profilePic">Upload a picture</label>
         <input type="file" class="form-control-file" id="profilePic" hidden>
       </div>

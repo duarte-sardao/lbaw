@@ -17,6 +17,8 @@
     <link href="{{ asset('css/milligram.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/faq.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/aboutus.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/contacts.css')}}" rel ="stylesheet">
     
     <!-- Scripts -->
     <script type="text/javascript" src={{ asset('js/app.js') }} defer></script>

@@ -11,6 +11,14 @@ class AccountController extends Controller
    * @method Displays the edit profile form
    * @param id Id of the Account whose profile will be edited
    */
+   
+  public function showProfile($id){
+    $account = Account::find($id);
+    $this->authorize('show', $account);
+
+    return view('pages.profile.customer_profile', ['account' => $account]);
+  }
+  
   public function edit($id)
   {
     $account = Account::find($id);

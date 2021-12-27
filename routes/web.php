@@ -27,7 +27,6 @@ Route::post('register', 'Auth\RegisterController@register');
 //Admin Profile
 Route::get('/admins/{id}', 'AdminController@showProfile');
 
-
 //Customer Profile
 Route::get('/customers/{id}', 'CustomerController@showProfile')->name('customerProfile');
 Route::delete('/customers/{id}', 'CustomerController@delete')->name('delete');
@@ -42,25 +41,17 @@ Route::get('/customers/{id}/cart', 'CustomerController@showCart')->name('cart');
 
 //Other Pages
 
-Route::get('/store/{id}', function ($id) {
+/* Route::get('/store/{id}', function ($id) {
     return 'Product '.$id;
-});
+}); */
 
 // Cart
-Route::get('/user/{id}/cart', 'CartController@list', function ($id) {
-    return 'User '.$id;
-});
+Route::get('/user/{id}/cart', 'CartController@list');
 
-Route::put('/user/{id}/cart', 'CartController@create', function ($id) {
-    return 'User '.$id;
-});
+Route::put('/user/{id}/cart', 'CartController@create');
 
-Route::delete('/user/{id}/cart/{prod_id}', 'CardController@delete', function($id, $prod_id) {
-	return ('User '.$id, 'Product'.$id);
-});
+Route::delete('/user/{id}/cart/{prod_id}', 'CartController@delete');
 
-Route::put('/user/{id}/cart/{prod_id}', 'CartElementController@create', function ($id, $prod_id) {
-    return ('User '.$id, 'Product'.$id);
-});
+Route::put('/user/{id}/cart/{prod_id}', 'CartElementController@create');
 //Route::post('api/item/{id}', 'ItemController@update');
 //Route::delete('api/item/{id}', 'ItemController@delete');
