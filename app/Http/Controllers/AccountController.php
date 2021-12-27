@@ -16,7 +16,7 @@ class AccountController extends Controller
     $account = Account::find($id);
     $this->authorize('update', $account);
 
-    return view('pages.profile.edit_profile', ['account' => $account]);
+    return view('pages.profile.edit', ['account' => $account]);
   }
 
   /**

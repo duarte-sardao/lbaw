@@ -21,9 +21,14 @@
         Categories
       </button>
       <nav class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
+        <a class="dropdown-item" href="#">CPUs</a>
+        <a class="dropdown-item" href="#">GPUs</a>
+        <a class="dropdown-item" href="#">Motherboards</a>
+        <a class="dropdown-item" href="#">Storage</a>
+        <a class="dropdown-item" href="#">Cases</a>
+        <a class="dropdown-item" href="#">Coolers</a>
+        <a class="dropdown-item" href="#">Power Supplies</a>
+        <a class="dropdown-item" href="#">Other</a>
       </nav>
     </div>
   </div>  
@@ -34,9 +39,9 @@
   
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-      <a class="button" href="{{ route('logout') }}"> Logout </a> 
+      <a class="button" href="{{ url('/logout') }}"> Logout </a> 
     @else
-      <a class="button" href="{{ route('login') }}"> Login </a>
+      <a class="button" href="{{ url('/login') }}"> Login </a>
     @endif
   </div>
 </header>
