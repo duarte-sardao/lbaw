@@ -11,7 +11,7 @@ class CustomerController extends Controller
    * @method Displays the customer's profile
    * @param id Id of the customer whose profile will be displayed
    */
-  public function show($id)
+  public function showProfile($id)
   { 
     $customer = Customer::find($id);
     $this->authorize('show', $customer);
@@ -23,7 +23,7 @@ class CustomerController extends Controller
    * @method Displays the edit profile form
    * @param id Id of the customer whose profile will be edited
    */
-  public function edit($id)
+  public function editProfile($id)
   {
     return Account::find($id)->edit($id);
   }
@@ -32,7 +32,7 @@ class CustomerController extends Controller
    * @method Processes the data inputed on the edit profile form to update the customer's data
    * @param id Id of the user to update
    */
-  public function update(Request $request, $id)
+  public function updateProfile(Request $request, $id)
   {
     return Account::find($id)->update($request, $id);
   }
@@ -44,6 +44,22 @@ class CustomerController extends Controller
   public function delete($id)
   {
     return Account::find($id)->delete($id);
+  }
+
+  public function showAddresses($id){
+    
+  }
+
+  public function showOrders($id){
+
+  }
+
+  public function showWishlist($id){
+
+  }
+
+  public function showCart($id){
+
   }
 }
 ?>

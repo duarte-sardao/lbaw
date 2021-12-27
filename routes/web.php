@@ -17,10 +17,30 @@ Route::get('about', 'StaticController@about');
 Route::get('faq', 'StaticController@faq');
 Route::get('contact', 'StaticController@contact');
 
+// Authentication
+Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('login', 'Auth\LoginController@login');
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
+Route::post('register', 'Auth\RegisterController@register');
+
+//Admin Profile
+Route::get('/admins/{id}', 'AdminController@showProfile');
+
+
+//Customer Profile
+Route::get('/customers/{id}', 'CustomerController@showProfile')->name('customerProfile');
+Route::delete('/customers/{id}', 'CustomerController@delete')->name('delete');
+
+Route::get('/customers/{id}/edit', 'CustomerController@editProfile')->name('editProfile');
+Route::post('/customers/{id}/edit', 'CustomerController@updateProfile');
+
+Route::get('/customers/{id}/addresses', 'CustomerController@showAddresses')->name('addresses');
+Route::get('/customers/{id}/orders', 'CustomerController@showOrders')->name('orders');
+Route::get('/customers/{id}/wishlist', 'CustomerController@showWishlist')->name('wishlist');
+Route::get('/customers/{id}/cart', 'CustomerController@showCart')->name('cart');
+
 //Other Pages
-Route::get('/user/{id}', function ($id) {
-    return 'User '.$id;
-});
 
 Route::get('/store/{id}', function ($id) {
     return 'Product '.$id;
@@ -34,18 +54,13 @@ Route::get('/user/{id}/cart', 'CartController@list', function ($id) {
 Route::put('/user/{id}/cart', 'CartController@create', function ($id) {
     return 'User '.$id;
 });
+
 Route::delete('/user/{id}/cart/{prod_id}', 'CardController@delete', function($id, $prod_id) {
 	return ('User '.$id, 'Product'.$id);
 });
+
 Route::put('/user/{id}/cart/{prod_id}', 'CartElementController@create', function ($id, $prod_id) {
     return ('User '.$id, 'Product'.$id);
 });
 //Route::post('api/item/{id}', 'ItemController@update');
 //Route::delete('api/item/{id}', 'ItemController@delete');
-
-// Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
-Route::post('login', 'Auth\LoginController@login');
-Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
