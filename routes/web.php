@@ -48,10 +48,9 @@ Route::get('/customers/{id}/cart', 'CustomerController@showCart')->name('cart');
 // Cart
 Route::get('/user/{id}/cart', 'CartController@list');
 
-Route::put('/user/{id}/cart', 'CartController@create');
+Route::put('/user/{id}/cart', 'CartController@add');
 
-Route::delete('/user/{id}/cart/{prod_id}', 'CartController@delete');
+Route::delete('/user/{id}/cart', 'CartController@delete');
 
-Route::put('/user/{id}/cart/{prod_id}', 'CartElementController@create');
 //Route::post('api/item/{id}', 'ItemController@update');
 //Route::delete('api/item/{id}', 'ItemController@delete');
