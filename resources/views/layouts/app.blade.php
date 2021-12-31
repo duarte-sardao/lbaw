@@ -19,6 +19,7 @@
     <link href="{{ asset('css/faq.css')}}" rel="stylesheet">
     <link href="{{ asset('css/contacts.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/login_register.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/home.css')}}" rel ="stylesheet">
     
     <!-- Scripts -->
     <script type="text/javascript" src={{ asset('js/app.js') }} defer></script>
