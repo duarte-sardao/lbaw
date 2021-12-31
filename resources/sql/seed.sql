@@ -27,13 +27,13 @@ drop trigger if exists verificaStock on CartProduct;
 drop trigger if exists blockBannedUsers on Review;
 drop trigger if exists orderStatusNotification on Purchase;
 drop trigger if exists productSearchUpdate on Product;
-drop trigger if exists cartCustomer on Customer;
+--drop trigger if exists cartCustomer on Customer;
 drop function if exists updateProductRating;
 drop function if exists verificaStock;
 drop function if exists blockBannedUsers;
 drop function if exists orderStatusNotification;
 drop function if exists productSearchUpdate;
-drop function if exists cartCustomer on Customer;
+--drop function if exists cartCustomer;
 drop index if exists acc_id;
 drop index if exists product_price;
 drop index if exists product_brand;
@@ -333,7 +333,7 @@ CREATE INDEX mb_type ON Motherboard USING hash(type);
 CREATE INDEX review_author ON Review USING hash(id_Customer);
 
 CREATE INDEX review_product ON Review (id_Product);
-CLUSTER Order USING order_user;
+CLUSTER Purchase USING order_user;
 
 CREATE INDEX review_rating ON Review(rating);
 
@@ -341,7 +341,7 @@ CREATE INDEX review_rating ON Review(rating);
 ALTER TABLE Product
 ADD COLUMN tsvectors TSVECTOR;
 
-CREATE FUNCTION product_search_update() RETURNS TRIGGER AS $$
+CREATE FUNCTION productSearchUpdate() RETURNS TRIGGER AS $$
 BEGIN
  IF TG_OP = 'INSERT' THEN
         NEW.tsvectors = (
@@ -465,12 +465,11 @@ EXECUTE PROCEDURE orderStatusNotification();
 
 
 
--- TRIGGER TO CREATE A CART WHEN A NEW ACCOUNT IS CREATED
+/* -- TRIGGER TO CREATE A CART WHEN A NEW ACCOUNT IS CREATED
 CREATE FUNCTION cartCustomer() RETURNS TRIGGER AS
 $BODY$
 BEGIN
 INSERT INTO Customer(id, id_Cart) VALUES (NEW.id, NEW.id);
-END IF;
 RETURN NULL;
 END
 $BODY$
@@ -480,12 +479,12 @@ CREATE TRIGGER cartCustomer
 BEFORE INSERT ON CUSTOMER
 FOR EACH ROW
 EXECUTE PROCEDURE cartCustomer(); 
+ */
 
 
 
 
-
------------------------
+/* -----------------------
 --    TRANSACTIONS   --
 -----------------------
 BEGIN TRANSACTION; 
@@ -493,9 +492,7 @@ SET TRANSACTION ISOLATION LEVEL SERIALIZABLE READ ONLY;
   SELECT Cart.id, Product.name, CartProduct.quantity 
   FROM CartProduct INNER JOIN Product ON Product.id = CartProduct.id_Product 
   INNER JOIN Cart ON Cart.id = CartProduct.id_Cart; 
-END TRANSACTION;
-
-
+END TRANSACTION; */
 
 
 
