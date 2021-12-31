@@ -2,14 +2,13 @@
   --website-main-color: #0d6efd;
 }
 
+/*!********************************** COMMON TAGS **********************************!*/
 body{
   overflow-y: scroll;
 }
 
-footer{
-  position:fixed;
-  bottom:0;
-  width:100%;
+footer, header{
+  width: 100%;
 }
 
 a{
@@ -25,6 +24,8 @@ input:focus{
   border-color: var(--website-main-color);
   box-shadow: none !important;
 }
+
+/*!********************************** COMMON TAGS **********************************!*/
 
 #content{
   margin: 30px 8%;
@@ -47,6 +48,11 @@ input:focus{
 
 .profile-title{
   font-size: 24px;
+  font-weight: bold;
+}
+
+.price{
+  color: var(--website-main-color);
   font-weight: bold;
 }
 
