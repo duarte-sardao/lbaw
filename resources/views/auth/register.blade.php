@@ -1,40 +1,73 @@
 @extends('layouts.app')
 
 @section('content')
-<form method="POST" action="{{ route('register') }}">
-    {{ csrf_field() }}
+  <section class="d-flex justify-content-center m-5">
+    <div class="card w-50 d-flex flex-column align-items-center">
+      <h3 class = "m-4">Join us!</h3>
+      <form class = "d-flex flex-column w-75" method="POST" action="{{ route('register') }}">
+        {{ csrf_field() }}
+        
+        <div class="form-group m-2 d-flex flex-column">
+          <label class = "mb-2" for="name">
+            <span>Username</span>
+            <small class = "required_input">*</small>
+          </label>
+          <input class = "form-control" id="username" type="text" name="username" value="" required>
+          @if ($errors->has('name'))
+            <span class="error">
+                {{ $errors->first('name') }}
+            </span>
+          @endif
+        </div>    
+            
+        <div class="form-group m-2 d-flex flex-column">
+          <label class = "mb-2" for="email">
+            <span>Email</span>
+            <small class = "required_input">*</small>
+          </label>
+          <input class = "form-control" id="email" type="email" name="email" value="" required>
+            @if ($errors->has('email'))
+              <span class="error">
+                  {{ $errors->first('email') }}
+              </span>
+            @endif  
+        </div>
+        
+        <div class="form-group d-flex justify-content-between">
+          <div class="form-group m-2 d-flex flex-column w-100">
+            <label class = "mb-2" for="password">
+              <span>Password</span>
+              <small class = "required_input">*</small>
+            </label>
+            <input class = "form-control" id="password" type="password" name="password" required>
+              @if ($errors->has('password'))
+                <span class="error">
+                    {{ $errors->first('password') }}
+                </span>
+              @endif  
+          </div>
 
-    <label for="name">Username</label>
-    <input id="username" type="text" name="username" value="{{ old('username') }}" required autofocus>
-    @if ($errors->has('name'))
-      <span class="error">
-          {{ $errors->first('name') }}
-      </span>
-    @endif
+          <div class="form-group m-2 d-flex flex-column w-100">
+            <label class = "mb-2" for="password-confirm">
+              <span>Confirm Password</span>
+              <small class = "required_input">*</small>
+            </label>
+            <input class = "form-control" id="password-confirm" type="password" name="password_confirmation" required>
+          </div>
+        </div>
+        
 
-    
-    <label for="email">E-Mail Address</label>
-    <input id="email" type="email" name="email" value="{{ old('email') }}" required>
-    @if ($errors->has('email'))
-      <span class="error">
-          {{ $errors->first('email') }}
-      </span>
-    @endif
+        <div class="form-group m-2 d-flex flex-column">
+          <label class = "mb-2" for="phone">
+            <span>Phone</span>
+          </label>
+          <input class = "form-control" id="phone" type="phone" name="phone">
+        </div>
 
-    <label for="password">Password</label>
-    <input id="password" type="password" name="password" required>
-    @if ($errors->has('password'))
-      <span class="error">
-          {{ $errors->first('password') }}
-      </span>
-    @endif
-
-    <label for="password-confirm">Confirm Password</label>
-    <input id="password-confirm" type="password" name="password_confirmation" required>
-
-    <button type="submit">
-      Register
-    </button>
-    <a class="button button-outline" href="{{ route('login') }}">Login</a>
-</form>
+        <div class="form-group m-2 d-flex flex-column">
+          <button class = "btn btn-primary" type="submit">Register</button>
+        </div>
+      </form>
+    </div>
+  </section>
 @endsection

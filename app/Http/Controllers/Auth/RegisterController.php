@@ -71,7 +71,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'isBanned' => 0,
             'profilePic' => $data['profilePic']
-        ])
+        ]);
 
         $newCustomer = Customer::create([
             'id' => $newAccount->id,

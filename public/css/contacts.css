@@ -1,15 +1,4 @@
-body {
-    font-family: 'Work Sans', sans-serif;
-    margin: 0;
-  }
-  
-html {
-    box-sizing: border-box;
-}
-  
-*, *:before, *:after {
-    box-sizing: inherit;
-}
+
   
 .contacts-column {
     float: left;

@@ -1,7 +1,9 @@
 <header class="navbar navbar-expand-lg bg-dark sticky-top justify-content-between">
   <!-- Navbar left container -->
-  <div class="navbar-nav">
-    <a class="navbar-brand m-2" href="#">Grab N' Build</a>
+  <div class="navbar-nav d-flex align-items-center">
+    <div class="logo">
+      <a class="navbar-brand m-2" href=" {{ route('home') }}">Grab N' Build</a>
+    </div>
 
     <!-- Brand Dropdown -->
     <div class="dropdown m-2">
@@ -33,15 +35,16 @@
     </div>
   </div>  
 
-  <div class="search-bar d-flex justify-content-center w-50" >
-    <input class = "w-75" type = "text">
+  <div class="d-flex justify-content-center w-50" >
+    <input class = "w-75" type = "text" placeholder = "Search">
   </div>
   
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-      <a class="button" href="{{ url('/logout') }}"> Logout </a> 
+      <a class="btn btn-primary m-2" href="{{ route('logout') }}"> Logout </a> 
     @else
-      <a class="button" href="{{ url('/login') }}"> Login </a>
+      <a class="btn btn-primary m-2" href="{{ route('login') }}"> Login </a>
     @endif
   </div>
+
 </header>

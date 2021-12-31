@@ -1,0 +1,18 @@
+#login-form input[required]{
+  height: 50px;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+#register-button{
+  border-color: var(--website-main-color);
+}
+
+#register-button:hover{
+  background: none;
+}
+
+.required_input{
+  color: #ff5555;
+  font-weight: bold;
+}
