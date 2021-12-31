@@ -9,7 +9,7 @@ class Admin extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Admin';
+    protected $table = 'admin';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id'];

@@ -9,7 +9,7 @@ class GPU extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'GPU';
+    protected $table = 'gpu';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'memory', 'coreClock', 'boostClock ', 'hdmiPorts ', 'displayPorts '];

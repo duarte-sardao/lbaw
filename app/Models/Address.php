@@ -9,7 +9,7 @@ class Address extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Address';
+    protected $table = 'address';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'streeName', 'streetNumber', 'zipcode', 'floor', 'aptNumber'];

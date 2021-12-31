@@ -9,7 +9,7 @@ class Storage extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Storage';
+    protected $table = 'storage';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'capacity', 'type'];

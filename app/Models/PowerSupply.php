@@ -9,7 +9,7 @@ class PowerSupply extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'PowerSupply';
+    protected $table = 'powersupply';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'wattage', 'certification', 'type'];

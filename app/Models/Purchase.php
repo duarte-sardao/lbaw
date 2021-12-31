@@ -9,7 +9,7 @@ class Purchase extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Purchase';
+    protected $table = 'purchase';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'orderDate', 'deliveryDate', 'orderStatus', 'id_Customer', 'id_Address', 'id_PaymentMethod', 'id_Cart'];

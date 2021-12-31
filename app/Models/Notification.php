@@ -9,7 +9,7 @@ class Notification extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Notification';
+    protected $table = 'notification';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'content', 'id_Customer'];

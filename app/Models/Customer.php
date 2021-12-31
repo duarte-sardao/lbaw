@@ -9,7 +9,7 @@ class Customer extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Customer';
+    protected $table = 'customer';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'id_Cart'];

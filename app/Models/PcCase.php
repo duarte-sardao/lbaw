@@ -9,7 +9,7 @@ class PcCase extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'PcCase';
+    protected $table = 'pccase';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'color', 'weight', 'type'];

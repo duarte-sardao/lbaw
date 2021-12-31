@@ -12,7 +12,7 @@ class Account extends Model {
     public $timestamps  = false;
 
     //Defines the table's name
-    protected $table = 'Account';
+    protected $table = 'account';
     
     /**
      * The attributes that are mass assignable.

@@ -9,7 +9,7 @@ class Transfer extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Transfer';
+    protected $table = 'transfer';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'entity', 'reference', 'validFor'];

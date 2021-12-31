@@ -9,7 +9,7 @@ class Review extends Model {
     public $timestamps = false;
 
     //Defines the table's name
-    protected $table = 'Review';
+    protected $table = 'review';
     
     //Attributes of the relation that can be modified upon creation or update
     protected $fillable = ['id', 'text', 'rating', 'yesVotes', 'noVotes', 'id_Customer', 'id_Product'];
