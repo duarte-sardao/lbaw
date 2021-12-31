@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Authenticatable {
+class Product extends Model {
 
     //The relation does not have created_at and updated_at columns
     public $timestamps = false;

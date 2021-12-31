@@ -12,7 +12,7 @@
 */
 
 // Static Pages
-Route::get('/', 'StaticController@index')->name('home');
+Route::get('/', 'HomeController@home')->name('home');
 Route::get('about', 'StaticController@about');
 Route::get('faq', 'StaticController@faq');
 Route::get('contact', 'StaticController@contact');

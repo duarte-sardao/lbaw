@@ -27,7 +27,7 @@ class Cart extends Model {
     //Linking Cart to CartProduct table overriding its name and FKs 
     public function products(){
         return $this
-            ->belongsToMany('App\Models\Product', 'CartProducts', 'id_Cart', 'id_Product');
+            ->belongsToMany('App\Models\Product', 'CartProducts', 'id_Cart', 'id_Product')
             ->withPivot('quantity');
     }
 }
