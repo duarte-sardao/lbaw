@@ -16,8 +16,8 @@ class CartController extends Controller
   {
       if (!Auth.check()) return redirect('/login');
       $this->authorize('list', CartItem::class);
-      $cart = Auth:user()->cart()->orderBy('created_at')->get();
-      return view('pages.cart', ['cart' => $cart])
+      $cart = Auth::user()->cart()->orderBy('created_at')->get();
+      return view('pages.cart', ['cart' => $cart]);
   }
 
   /**Adds product to cart.
