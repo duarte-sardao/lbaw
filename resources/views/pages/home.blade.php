@@ -1,14 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class = "d-flex flex-column m-5" id="content">
-    <div class="carousel slide" data-bs-ride="carousel">
-      <div class="carousel-indicators">
-        <button data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-        <button data-bs-slide-to="1" aria-label="Slide 2"></button>
-        <button data-bs-slide-to="2" aria-label="Slide 3"></button>
-      </div>
-      
+  <section class = "d-flex flex-column" id="content">
+    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img src="{{asset('images/img1.jpg')}}" class="d-block w-100" alt="...">
@@ -20,8 +14,55 @@
           <img src="{{asset('images/img3.jpg')}}" class="d-block w-100" alt="...">
         </div>
       </div>
+
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
     </div>
 
+    <div class = "container mt-5" id="homeProductGrid">
+      <div class="row">
+        <h5>Most ordered products:</h5>
+      </div>
+      
+      <div class="row d-flex m-1">
+        @foreach($productsList2 as $product)
+          <div class="card col m-1">
+            <div class="card-body d-flex flex-column align-items-center justify-content-around">
+              <a href = "#">
+                <img src = {{asset($product->image)}} width = 250>
+              </a>
+              <div class="card-title">{{$product->name}}</div>
+            </div>
+          </div>
+        @endforeach
+      </div>
+
+      <div class="row mt-5">
+        <h5>Products you might like:</h5>
+      </div>
+  
+      <div class="row d-flex m-1">
+        @foreach($productsList1 as $product)
+          <div class="card col m-1">
+            <div class="card-body d-flex flex-column align-items-center justify-content-around">
+              <a href = "#">
+                <img src = {{asset($product->image)}} width = 250>
+              </a>
+              
+              <div class="card-title">{{$product->name}}</div>
+            </div>
+          </div>
+        @endforeach
+      </div>  
+    </div>
+            
     
   </section>
 @endsection

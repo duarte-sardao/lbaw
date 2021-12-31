@@ -1,4 +1,4 @@
-<footer class = "d-flex justify-content-between bg-light mt-5 fixed-bottom">
+<footer class = "d-flex justify-content-between bg-light mt-5">
   <span class = "m-5">@Copyrights 2021</span>
 
   <div class = "m-5">

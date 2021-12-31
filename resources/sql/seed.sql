@@ -658,7 +658,7 @@ INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (3
 INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (36, 'ASUS P10S-X', 365.04, 'ASUS', 0, 'images/36.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (37, 'ATX ASRock TRX40 Taichi', 499.90, 'ASRock', 4, 'images/37.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (38, 'Gigabyte B450 Gaming X', 75.90, 'Gigabyte', 7, 'images/38.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (39, 'Asus ROG Maximus XII Apex', 495.90, 'ASUS', 3, 'images/39.png',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(id, name, price, brand, stock, image, description) VALUES (39, 'Asus ROG Maximus XII Apex', 495.90, 'ASUS', 3, 'images/39.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 
 INSERT INTO Motherboard(id, socket, type) VALUES (30, 'LGA1151', 'ATX');

@@ -2,14 +2,14 @@
   --website-main-color: #0d6efd;
 }
 
-html{
+body{
   overflow-y: scroll;
 }
 
 footer{
-  position: absolute;
-  width: 100%;
-  bottom: 0px;
+  position:fixed;
+  bottom:0;
+  width:100%;
 }
 
 a{
@@ -24,6 +24,10 @@ a:hover{
 input:focus{
   border-color: var(--website-main-color);
   box-shadow: none !important;
+}
+
+#content{
+  margin: 30px 8%;
 }
 
 .dropdown-toggle{
