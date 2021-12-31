@@ -15,7 +15,6 @@ class HomeController extends Controller
         for($i = 0; $i < 4; $i++){
             $random = rand(0, count($products) - 1);
             
-
             array_push($productsList1, $products[$random]);
             array_push($productsList2, $products[$random]);
         }

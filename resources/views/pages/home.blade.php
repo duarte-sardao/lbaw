@@ -36,7 +36,7 @@
           <div class="card col m-1">
             <div class="card-body d-flex flex-column align-items-center justify-content-around">
               <a href = "#">
-                <img src = {{asset($product->image)}} width = 250>
+                <img src = {{asset($product->image)}} width = "100%">
               </a>
               <div class="card-title">{{$product->name}}</div>
             </div>
@@ -53,9 +53,8 @@
           <div class="card col m-1">
             <div class="card-body d-flex flex-column align-items-center justify-content-around">
               <a href = "#">
-                <img src = {{asset($product->image)}} width = 250>
+                <img src = {{asset($product->image)}} width = "100%">
               </a>
-              
               <div class="card-title">{{$product->name}}</div>
             </div>
           </div>
