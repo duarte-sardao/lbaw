@@ -11,11 +11,15 @@
 |
 */
 
-// Static Pages
+Auth::routes();
+
+// Home
 Route::get('/', 'HomeController@home')->name('home');
-Route::get('about', 'StaticController@about');
-Route::get('faq', 'StaticController@faq');
-Route::get('contact', 'StaticController@contact');
+
+// Static Pages
+Route::get('about', 'StaticController@about')->name('about');
+Route::get('faq', 'StaticController@faq')->name('faq');
+Route::get('contacts', 'StaticController@contacts')->name('contacts');
 
 // Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');

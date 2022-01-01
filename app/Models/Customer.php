@@ -16,7 +16,7 @@ class Customer extends Model {
 
     //Pointing Customer to Account table overriding FK name
     public function accounts(){
-        return $this->belongsTo('App\Models\Account', 'id');
+        return $this->belongsTo('App\Models\User', 'id');
     }
 
     //Pointing Customer to Notification table overriding FK name

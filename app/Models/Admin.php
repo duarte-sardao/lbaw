@@ -16,7 +16,7 @@ class Admin extends Model {
 
     //Pointing Admin to Account table overriding FK name
     public function accounts(){
-        return $this->belongsTo('App\Models\Account', 'id');
+        return $this->belongsTo('App\Models\User', 'id');
     }
 }
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="content d-flex justify-content-evenly m-5" id = "content">
+    <section class="d-flex justify-content-center m-5" id = "content">
         <div class="card w-50 d-flex flex-column align-items-center">
             <h3 class = "m-3">Login to your account</h3>
 
@@ -9,13 +9,13 @@
                 {{ csrf_field() }}
 
                 <div class="form-group d-flex flex-column mt-3">
-                    <label for="email">
-                        <h6>Email</h6>
+                    <label for="username">
+                        <h6>Username</h6>
                     </label>
-                    <input class = "form-control" id="email" type="email" name="email" value="" required>
-                    @if ($errors->has('email'))
+                    <input class = "form-control" id="username" type="text" name="username" required>
+                    @if ($errors->has('username'))
                         <span class="error">
-                        {{ $errors->first('email') }}
+                        {{ $errors->first('username') }}
                         </span>
                     @endif
                 </div>

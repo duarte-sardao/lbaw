@@ -8,10 +8,10 @@
           <img src="{{asset('images/img1.jpg')}}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="{{asset('images/img2.jpg')}}" class="d-block w-100" alt="...">
+          <img src="{{asset('images/img1.jpg')}}" class="d-block w-100" alt="...">
         </div>
         <div class="carousel-item">
-          <img src="{{asset('images/img3.jpg')}}" class="d-block w-100" alt="...">
+          <img src="{{asset('images/img1.jpg')}}" class="d-block w-100" alt="...">
         </div>
       </div>
 
@@ -56,21 +56,23 @@
       </div>
   
       <div class="row d-flex m-1">
-        @foreach($productsList1 as $product)
+        @foreach($productsList2 as $product)
           <div class="card col m-1">
-            <div class="card-body d-flex flex-column align-items-center justify-content-around">
+            <div class="card-body d-flex flex-column justify-content-between">
               <a href = "#">
                 <img src = {{asset($product->image)}} width = "100%">
               </a>
 
-              <strong>{{$product->name}}</strong>
+              <div class="product-info d-flex flex-column">
+                <strong>{{$product->name}}</strong>
+                <small>{{$product->description}}</small>
+
+                <h3 class="mt-2 price">{{$product->price}}€</h3>
+              </div>
 
             </div>
           </div>
         @endforeach
       </div>  
-    </div>
-            
-    
   </section>
 @endsection
