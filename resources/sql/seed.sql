@@ -772,26 +772,26 @@ INSERT INTO PowerSupply(id, wattage, certification, type) VALUES (79, 650, '80+ 
 
 
 -------------------------------------------------------------------------------------------------------------- Address ------------------------------------------------------------------------------------------------------------
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (5, 'Rua Costa' , 108, '4795-158');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (6, 'Rua Nossa Senhora Fátima', 95, '3330-078');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (7, 'Rua Capitão Henrique Galvão', 94, '2705-210', 3, 'Esquerdo');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (8, 'Rua Caminho Cruz' , 102, '4450-540', 7, 'Trás');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (9, 'Rua Germana Tânger' , 123, '2725-239');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (10, 'Rua Cruzes', 72, '4750-791');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (11, 'Rua Poeta João Ruiz', 151, '6225-259');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (12, 'Rua Parque Gondarim', 82, '4405-747');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (13, 'Praceta Conde Arnoso', 102, '2640-097', 2, 'Frente');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (14, 'Rua Regato ', 83, '6090-025', 0, 'Direito');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (15, 'Rua Vale Formoso', 18, '8000-426');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (16, 'Rua Projetada', 108, '2900-593', 6, 'Trás');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (17, 'Rua São Gonçalo', 1052, '7830-374', 1, 'Esquerdo');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (18, 'Avenida Boavista', 108, '4920-100');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (19, 'Rua Cabral Antunes', 69, '3750-721');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (20, 'Avenida Boavista', 108, '4920-100');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (21, 'Rua Heróis Ultramar', 56, '2205-623');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (22, 'Rua Doutor Alfredo Freitas', 128, '3700-383', 3, 'Frente');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (23, 'Rua Rainha Santa Isabel', 1044, '3250-265');
-INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (24, 'Rua Cimo Vila', 125, '4590-083', 1, 'Esquerdo');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (5, 'Rua Costa' , 108, '4795-158 Santo Tirso');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (6, 'Rua Nossa Senhora Fátima', 95, ' Góis');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (7, 'Rua Capitão Henrique Galvão', 94, '2705-210 Sintra', 3, 'Esquerdo');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (8, 'Rua Caminho Cruz' , 102, '4450-540 Matosinhos', 7, 'Trás');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (9, 'Rua Germana Tânger' , 123, '2725-239 Mem-Martins');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (10, 'Rua Cruzes', 72, '4750-791 Esposende');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (11, 'Rua Poeta João Ruiz', 151, '6225-259 Covilhã');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (12, 'Rua Parque Gondarim', 82, '4405-747 Vila Nova de Gaia');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (13, 'Praceta Conde Arnoso', 102, '2640-097 Mafra', 2, 'Frente');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (14, 'Rua Regato ', 83, '6090-025 Penamacor', 0, 'Direito');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (15, 'Rua Vale Formoso', 18, '8000-426 Faro');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (16, 'Rua Projetada', 108, '2900-593 Setúbal', 6, 'Trás');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (17, 'Rua São Gonçalo', 1052, '7830-374 Serpa', 1, 'Esquerdo');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (18, 'Avenida Boavista', 108, '4920-100 Vila Nova de Cerveira');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (19, 'Rua Cabral Antunes', 69, '3750-721 Águeda');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (20, 'Rua da Estrada', 108, '6512-100 Beja');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (21, 'Rua Heróis Ultramar', 56, '2205-623 Abrantes');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (22, 'Rua Doutor Alfredo Freitas', 128, '3700-383 Santa Maria da Feira', 3, 'Frente');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (23, 'Rua Rainha Santa Isabel', 1044, '3250-265 Alvaiázere');
+INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (24, 'Rua Cimo Vila', 125, '4590-083 Paços de Ferreira', 1, 'Esquerdo');
 
 ------------- PaymentMethod -------------
 INSERT INTO PaymentMethod(id) VALUES (5);
