@@ -773,7 +773,7 @@ INSERT INTO PowerSupply(id, wattage, certification, type) VALUES (79, 650, '80+ 
 
 -------------------------------------------------------------------------------------------------------------- Address ------------------------------------------------------------------------------------------------------------
 INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (5, 'Rua Costa' , 108, '4795-158 Santo Tirso');
-INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (6, 'Rua Nossa Senhora Fátima', 95, ' Góis');
+INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (6, 'Rua Nossa Senhora Fátima', 95, '3330-350 Góis');
 INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (7, 'Rua Capitão Henrique Galvão', 94, '2705-210 Sintra', 3, 'Esquerdo');
 INSERT INTO Address(id, streetName, streetNumber, zipcode, floor, aptNumber) VALUES (8, 'Rua Caminho Cruz' , 102, '4450-540 Matosinhos', 7, 'Trás');
 INSERT INTO Address(id, streetName, streetNumber, zipcode) VALUES (9, 'Rua Germana Tânger' , 123, '2725-239 Mem-Martins');
