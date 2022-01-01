@@ -5,7 +5,7 @@
   <nav class = "m-3" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{$account->username}}</li>
+      <li class="breadcrumb-item active" aria-current="page">{{$user->username}}</li>
     </ol>
   </nav>
 
@@ -35,7 +35,7 @@
       <form id = "profile-form">
         <div class="form-group">
           <label for="username"><h6>Username</h6></label>
-          <input type="text" class="form-control" id="username" placeholder="{{$account->username}}" disabled>
+          <input type="text" class="form-control" id="username" placeholder="{{$user->username}}" disabled>
         </div>
         
         <div class="form-group mt-3">
@@ -45,12 +45,12 @@
 
         <div class="form-group mt-3">
           <label for="email"><h6>Email</h6></label>
-          <input type="email" class="form-control" id="email" placeholder="{{$account->email}}" disabled>
+          <input type="email" class="form-control" id="email" placeholder="{{$user->email}}" disabled>
         </div>
 
         <div class="form-group mt-3">
           <label for="phone"><h6>Phone</h6></label>
-          <input type="phone" class="form-control" id="phone" placeholder="{{$account->phone}}" disabled>
+          <input type="phone" class="form-control" id="phone" placeholder="{{$user->phone}}" disabled>
         </div>
   
         <button type="submit" class="btn btn-primary mt-5" id = "profileSubmitButton"hidden>Submit</button>
@@ -60,8 +60,8 @@
     <div class="user-photo d-flex flex-column w-25">
       <div class="d-flex justify-content-between align-items-center">
         <div>
-          <h5 class>{{$account->username}}</h5>
-          <span id = "userId" hidden>{{$account->id}}</span>
+          <h5 class>{{$user->username}}</h5>
+          <span id = "userId" hidden>{{$user->id}}</span>
         </div>
 
         <label class = "btn btn-primary" for="profilePic">Upload a picture</label>

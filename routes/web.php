@@ -22,11 +22,10 @@ Route::get('faq', 'StaticController@faq')->name('faq');
 Route::get('contacts', 'StaticController@contacts')->name('contacts');
 
 // Authentication
-Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
+/* 
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
-Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
-Route::post('register', 'Auth\RegisterController@register');
+Route::post('register', 'Auth\RegisterController@register'); */
 
 //Admin Profile
 Route::get('/admins/{id}', 'AdminController@showProfile');
