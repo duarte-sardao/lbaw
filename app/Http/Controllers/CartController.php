@@ -14,9 +14,12 @@ class CartController extends Controller
   */
   public function list()
   {
-      if (!Auth::check()) return redirect('/login');
-      $this->authorize('list', CartItem::class);
+      if (!Auth::check()) 
+        return redirect('/login');
+
+      $this->authorize('list', CartProduct::class);
       $cart = Auth::user()->cart()->orderBy('created_at')->get();
+
       return view('pages.cart', ['cart' => $cart]);
   }
 
@@ -27,7 +30,7 @@ class CartController extends Controller
   */
   public function add(Request $request)
   {
-      $cartitem = new CartItem();
+      $cartitem = new CartProduct();
       $this->authorize('add', $cartitem);
       $cartitem->amount = $request->input('amount');
       $cartitem->user_id = Auth::user()->id;
@@ -43,7 +46,7 @@ class CartController extends Controller
   */
   public function delete(Request $request, $id)
   {
-      $cartitem -> CartItem::find($id);
+      $cartitem = CartProduct::find($id);
 
       $this->authorize('delete', $cartitem);
       $cartitem->delete();
