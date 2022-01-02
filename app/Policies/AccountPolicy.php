@@ -3,26 +3,26 @@
 
 namespace App\Policies;
 
-use App\Models\Account;
+use App\Models\User;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AccountPolicy
+class UserPolicy
 {
   use HandlesAuthorization;
 
-  public function show(Account $Account)
+  public function show(User $user)
   {
-    return Auth::user()->id == $Account->id; 
+    return Auth::user()->id == $user->id; 
   }
 
-  public function update(Account $Account)
+  public function update(User $user)
   {
-    return Auth::user()->id == $Account->id;
+    return Auth::user()->id == $user->id;
   }
 
-  public function delete(Account $Account)
+  public function delete(User $user)
   {
-    return Auth::user()->id == $Account->id;
+    return Auth::user()->id == $user->id;
   }
 }
 
