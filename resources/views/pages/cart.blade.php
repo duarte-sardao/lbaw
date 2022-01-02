@@ -41,7 +41,7 @@
 			  </div>
 			</div>
 		  </div>
-		@foreach($cartList1 as $cartProduct)
+		@foreach($cart as $cartProduct)
 		  <div class="card col m-1">
 			<div class="card-body d-flex flex-row justify-content-between">
 			  <a href = "#">
