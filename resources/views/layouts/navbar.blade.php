@@ -41,7 +41,16 @@
   
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-      <a class="btn btn-primary m-2" href="{{ route('logout') }}"> Logout </a> 
+      <div class="btn btn-primary m-2 bg-none">
+        <i class="fa fa-user"></i>
+        <span>{{Auth::user()->id}}</span>
+        
+        <div class="card">
+          <div class="card-body">
+            <a href = "{{route('logout')}}">Logout</a>
+          </div>
+        </div>
+      </div> 
     @else
       <a class="btn btn-primary m-2" href="{{ route('login') }}"> Login </a>
     @endif

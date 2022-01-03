@@ -12,7 +12,7 @@ class User extends Authenticatable {
     public $timestamps  = false;
 
     //Defines the table's name
-    protected $table = 'account';
+    protected $table = 'User';
     
     /**
      * The attributes that are mass assignable.

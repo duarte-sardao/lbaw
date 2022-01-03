@@ -1,4 +1,4 @@
-drop table if exists Account CASCADE;
+drop table if exists "User" CASCADE;
 drop table if exists Address CASCADE;
 drop table if exists Admin CASCADE;
 drop table if exists Card CASCADE;
@@ -67,7 +67,7 @@ CREATE TYPE OrderStatusType as ENUM ('Processing', 'Packed', 'Shipped', 'Deliver
 -----------------------
 --      TABLES       --
 -----------------------
-CREATE TABLE Account(
+CREATE TABLE "User"(
     id SERIAL,
     username TEXT NOT NULL UNIQUE,
     password TEXT NOT NULL check (LENGTH(password) > 8),
@@ -75,8 +75,9 @@ CREATE TABLE Account(
     phone INTEGER,
     profilePic TEXT DEFAULT 'images/default.jpg',
     isBanned BOOLEAN DEFAULT false,
+    remember_token VARCHAR,
     
-    CONSTRAINT Account_PK PRIMARY KEY (id)
+    CONSTRAINT User_PK PRIMARY KEY (id)
 );
 
 CREATE TABLE Cart(
@@ -90,7 +91,7 @@ CREATE TABLE Customer(
     id_Cart INTEGER NOT NULL UNIQUE,
     
     CONSTRAINT Customer_PK PRIMARY KEY(id),
-    CONSTRAINT Customer_FK1 FOREIGN KEY(id) REFERENCES Account(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT Customer_FK1 FOREIGN KEY(id) REFERENCES "User"(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT Customer_FK2 FOREIGN KEY(id_Cart) REFERENCES Cart(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -98,7 +99,7 @@ CREATE TABLE Admin(
     id INTEGER,
     
     CONSTRAINT Admin_PK PRIMARY KEY(id),
-    CONSTRAINT Admin_FK FOREIGN KEY(id) REFERENCES Account(id) ON DELETE CASCADE ON UPDATE CASCADE
+    CONSTRAINT Admin_FK FOREIGN KEY(id) REFERENCES "User"(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE Product(
@@ -425,7 +426,7 @@ IF NOT EXISTS(
     WHERE Customer.id = New.id_Customer
         AND Customer.id in (
             SELECT id 
-            from account
+            from "User"
             where isBanned = false
         )
 )
@@ -465,7 +466,7 @@ EXECUTE PROCEDURE orderStatusNotification();
 
 
 
-/* -- TRIGGER TO CREATE A CART WHEN A NEW ACCOUNT IS CREATED
+/* -- TRIGGER TO CREATE A CART WHEN A NEW USERS IS CREATED
 CREATE FUNCTION cartCustomer() RETURNS TRIGGER AS
 $BODY$
 BEGIN
@@ -501,38 +502,38 @@ END TRANSACTION; */
 --  POPULATING DB  --
 ---------------------
 
-------------------------------------------------------- ACCOUNT ------------------------------------------------------
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (1, 'up201907716', '123456789', 'up201907716@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (2, 'up201905497', '123456789', 'up201905497@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (3, 'up201905477', '123456789', 'up201905477@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (4, 'up201800700', '123456789', 'up201800700@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (5, 'firstUser', 'ZC73\Trx5/N$L7', 'vova10000@bukan.es');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (6, 'PaxBrandom', 'paxa213841' ,'paxa949494@barretodrums.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (7, 'MarkPeterson', 'iammark@2312', 'iammarkp@uioct.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (8, 'LenaMaxwell' , 'lenamax2138@pwd', 'lenamax@uioct.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (9, 'EvelinWatson', 'evelynwat321', 'evelinWatson@pickuplanet.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (10, 'JaggerSmith', 'jAGGERsmth', 'jaggerSmith@pickuplanet.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (11, 'GageHubbard', 'hubbard88213', 'GageHubbard@pesssink.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (12, 'MaeveSchwartz', 'maesch3952', 'Maeve Schwartz@shirtsthatshouldexist.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (13, 'AlexiaDickerson', 'ALEXDICKesrson@@,', 'alexiaDickerson@oanghika.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (14, 'ArmaniFischer', 'aRmAnIfish', 'armaniFischer54@furnitt.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (15, 'FrankCurry', 'frankkcur2', 'frankCurry99@furnitt.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (16, 'AmareBurnett', 'amrBrunette8', 'amareBurnett76@pesssink.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (17, 'JakaylaMercer', 'jakylaMercer22', 'JakaylaMercer12@oanghika.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (18, 'MarvinKeller', 'Mrvinkeller', 'MarvinKeller55@furnitt.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (19, 'DestinyJacobs', 'jacobDstny', 'DestinyJacobs2@shirtsthatshouldexist.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (20, 'QuintenCrosby', 'QuentinCosby212', 'QuintenCrosby22@pesssink.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (21, 'DarnellDrake', 'darnellgodsPlan', 'DarnellDrake69@oanghika.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (22, 'WillLarson', 'willlarrrsun2', 'WillLarson23@shirtsthatshouldexist.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (23, 'OdinHarrell', 'odinodinharell', 'OdinHarrel1992@shirtsthatshouldexist.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (24, 'RihannaRosales', 'rosaumbrella23>', 'RihannaRosales1990@pesssink.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (25, 'GideonRuiz', 'ruizzz*-*', 'GideonRuiz2002@shirtsthatshouldexist.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (26, 'GianniPotts', 'gianniPotts+', 'GianniPotts42@oanghika.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (27, 'NikoValencia', 'nikoMadrid3<', 'NikoValencia97@oanghika.es');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (28, 'GaryOdom', 'garrryOdomm2', 'GaryOdom33@furnitt.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (29, 'CamrenSpears', 'camrenBritney', 'CamrenSpears88@furnitt.com');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (30, 'MohamedKaiser', 'mohamedKais-', 'MohamedKaiser123@pesssink.com');
-INSERT INTO ACCOUNT (id, username, password, email, isBanned) VALUES (31, 'BannedUser', 'Banneduser2-', 'Banneduser@pesssink.com', True);
+------------------------------------------------------- USER ------------------------------------------------------
+INSERT INTO "User" (id, username, password, email) VALUES (1, 'up201907716', '$2a$12$2G4raEwids5Bo4DWb4OoMuekza2vBLycBntZkZgfg2e4ZMUflkQkq', 'up201907716@up.pt');
+INSERT INTO "User" (id, username, password, email) VALUES (2, 'up201905497', '$2a$12$2G4raEwids5Bo4DWb4OoMuekza2vBLycBntZkZgfg2e4ZMUflkQkq', 'up201905497@up.pt');
+INSERT INTO "User" (id, username, password, email) VALUES (3, 'up201905477', '$2a$12$2G4raEwids5Bo4DWb4OoMuekza2vBLycBntZkZgfg2e4ZMUflkQkq', 'up201905477@up.pt');
+INSERT INTO "User" (id, username, password, email) VALUES (4, 'up201800700', '$2a$12$2G4raEwids5Bo4DWb4OoMuekza2vBLycBntZkZgfg2e4ZMUflkQkq', 'up201800700@up.pt');
+INSERT INTO "User" (id, username, password, email) VALUES (5, 'firstUser', '$2a$12$S23eyGrEUB1Bm/f0ZmRKfem0cHX2aLBV5Ba.1NA/FH5m2g4QNPV8C', 'vova10000@bukan.es');
+INSERT INTO "User" (id, username, password, email) VALUES (6, 'PaxBrandom', '$2a$12$VEdTeuHyJnJzzF4psvUHl./4/W3FEEi3mFOC63f8S5D9X6q3VJceC' ,'paxa949494@barretodrums.com');
+INSERT INTO "User" (id, username, password, email) VALUES (7, 'MarkPeterson', '$2a$12$A82n361fUb6LDK5lNjWC9eFexeR3GSS2sFym3awdAYHkyGZdByxai', 'iammarkp@uioct.com');
+INSERT INTO "User" (id, username, password, email) VALUES (8, 'LenaMaxwell' , '$2a$12$pEtkJSWrV07jGqUX0GFFfeFtVFZiFaZWgDnh1fL0vzhuxKLiYBgIe', 'lenamax@uioct.com');
+INSERT INTO "User" (id, username, password, email) VALUES (9, 'EvelinWatson', '$2a$12$.uRqgjKxw95SbgHDI3cYO.ySuUkWZ.4WDYAGOvv8WPJmBQX5bmKZu', 'evelinWatson@pickuplanet.com');
+INSERT INTO "User" (id, username, password, email) VALUES (10, 'JaggerSmith', '$2a$12$vAoUZ6jWSFUk0kC7BKLxN.84CSRGrv1VHH5i5H7drn0xJT.EVFtZi', 'jaggerSmith@pickuplanet.com');
+INSERT INTO "User" (id, username, password, email) VALUES (11, 'GageHubbard', '$2a$12$MLoqdeRqOFtMfkEbQTwRX.pczBEw9sDkQJXLYqF4wK3HW1Nq4b9FW', 'GageHubbard@pesssink.com');
+INSERT INTO "User" (id, username, password, email) VALUES (12, 'MaeveSchwartz', '$2a$12$8O4CiAb63K5kXmGJaiR.UOIL36DktkDrzQWIQPFL4YxbfDhpO6qom', 'Maeve Schwartz@shirtsthatshouldexist.com');
+INSERT INTO "User" (id, username, password, email) VALUES (13, 'AlexiaDickerson', '$2a$12$/I0xSWek3ek0zTy5aZNiq.zFcmoATETrPuZQQcMdmDJAeIWnHm5aq', 'alexiaDickerson@oanghika.com');
+INSERT INTO "User" (id, username, password, email) VALUES (14, 'ArmaniFischer', '$2a$12$GGzV4RaszJseKe7CsQZDqeSmY3TxDS6xz9Lm3x4FD.4Hz7A9Cmt1G', 'armaniFischer54@furnitt.com');
+INSERT INTO "User" (id, username, password, email) VALUES (15, 'FrankCurry', '$2a$12$OUraKC042t5gpoJANkvxYuMdU7jcoGV949Q/KSqe29mooeFO6SAru', 'frankCurry99@furnitt.com');
+INSERT INTO "User" (id, username, password, email) VALUES (16, 'AmareBurnett', '$2a$12$qBKAwvWdqyPK.CVY3/zKKOPaNCeEcZRtybKnddbBvrkGCOcTo8PL.', 'amareBurnett76@pesssink.com');
+INSERT INTO "User" (id, username, password, email) VALUES (17, 'JakaylaMercer', '$2a$12$Ujjp0P6IVQKPZNmAXOysvuXMsDkTcHntuK9ylkXmOvtCakafqUDcS', 'JakaylaMercer12@oanghika.com');
+INSERT INTO "User" (id, username, password, email) VALUES (18, 'MarvinKeller', '$2a$12$QZQPvDdXIoE7UgRP5VyFtOxsMVXEXxr1cS2p.7oQueY816CtFcFbK', 'MarvinKeller55@furnitt.com');
+INSERT INTO "User" (id, username, password, email) VALUES (19, 'DestinyJacobs', '$2a$12$g1mKNdb90Cps.hXZZVrNOuiVZqkaWl/ED.BryvLIcU80DPgxMAgbO', 'DestinyJacobs2@shirtsthatshouldexist.com');
+INSERT INTO "User" (id, username, password, email) VALUES (20, 'QuintenCrosby', '$2a$12$RGJ2gizpMBNqvJuXIhDIWeqbry7j0hZ6I4H8Fa4EQa5mzdDOWpy/a', 'QuintenCrosby22@pesssink.com');
+INSERT INTO "User" (id, username, password, email) VALUES (21, 'DarnellDrake', '$2a$12$cPlSlwJZRoGdnqb36HrIy./q3ZUtyieEJ0Bf3qzHFi3fOgUdJ0dfK', 'DarnellDrake69@oanghika.com');
+INSERT INTO "User" (id, username, password, email) VALUES (22, 'WillLarson', '$2a$12$hPeLerI3W6ltR3ecuETYYODB740XnYmOzaiXVj8s1pJ8yrB65VeBe', 'WillLarson23@shirtsthatshouldexist.com');
+INSERT INTO "User" (id, username, password, email) VALUES (23, 'OdinHarrell', '$2a$12$XADtifoRpl7Cw/Ju392QoOEsaED5oJD5UcvqRqjVuJVLQBBG1iTS.', 'OdinHarrel1992@shirtsthatshouldexist.com');
+INSERT INTO "User" (id, username, password, email) VALUES (24, 'RihannaRosales', '$2a$12$fNm.hHEx81mG.S.NT6A9oeaZPWWRkjnvJPgxw2D5vg0mymY5qcrUG', 'RihannaRosales1990@pesssink.com');
+INSERT INTO "User" (id, username, password, email) VALUES (25, 'GideonRuiz', '$2a$12$8YJKRaqD4PDVb17IYc9Jou3t0RtTND/p8Fwuu3FrDp94rQvrBOPCm', 'GideonRuiz2002@shirtsthatshouldexist.com');
+INSERT INTO "User" (id, username, password, email) VALUES (26, 'GianniPotts', '$2a$12$7lutxXb3yaMyK4UVw5qJs.1y8IE3cBEsx697VZHwZBW6m7ELV2w4y', 'GianniPotts42@oanghika.com');
+INSERT INTO "User" (id, username, password, email) VALUES (27, 'NikoValencia', '$2a$12$Fywos/9DM/WId1vOnVnHxO8Jkvza7DEbqk9SNMzNO/O0eHuNxuLc.', 'NikoValencia97@oanghika.es');
+INSERT INTO "User" (id, username, password, email) VALUES (28, 'GaryOdom', '$2a$12$VLg/g4F..eDdnFNxdznfvuvAu4iRdUvHAxG7AzPqs4qokINBNB44e', 'GaryOdom33@furnitt.com');
+INSERT INTO "User" (id, username, password, email) VALUES (29, 'CamrenSpears', '$2a$12$D96dLBEmF2A5tJkwei7eBOfx.8xpQ0Gyu4FRV.CnOXcu5RTVB5mTq', 'CamrenSpears88@furnitt.com');
+INSERT INTO "User" (id, username, password, email) VALUES (30, 'MohamedKaiser', '$2a$12$qBzFtr0L9jxm/rPUxO2Uqe.0d41qjzIuNAW2I7X.OUnALqS4oj75C', 'MohamedKaiser123@pesssink.com');
+INSERT INTO "User" (id, username, password, email, isBanned) VALUES (31, 'BannedUser', '$2a$12$rpiLNuZzwTrTfIQ9Xmze.u4BHyL34d4Vr65jH8ZsL.dZcovmskYUm', 'Banneduser@pesssink.com', true);
     
 ------------- ADMIN -------------
 INSERT INTO ADMIN (id) VALUES (1);

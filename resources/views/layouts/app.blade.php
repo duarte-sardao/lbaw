@@ -21,6 +21,9 @@
     <link href="{{ asset('css/login_register.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/home.css')}}" rel ="stylesheet">
     
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
     <!-- Scripts -->
     <script type="text/javascript" src={{ asset('js/app.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/faq.js')}} defer></script>

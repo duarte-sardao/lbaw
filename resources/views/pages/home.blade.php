@@ -31,10 +31,10 @@
         <h5>Most ordered products:</h5>
       </div>
       
-      <div class="row d-flex m-1 flex-wrap">
+      <div class="row d-flex m-1">
         @foreach($productsList1 as $product)
           <div class="card col m-1">
-            <div class="card-body flex-column justify-content-between">
+            <div class="card-body d-flex flex-column justify-content-between">
               <a href = "#">
                 <img src = {{asset($product->image)}} width = "100%">
               </a>
@@ -55,10 +55,10 @@
         <h5>Products you might like:</h5>
       </div>
   
-      <div class="row d-flex m-1 flex-wrap">
+      <div class="row d-flex m-1">
         @foreach($productsList2 as $product)
           <div class="card col m-1">
-            <div class="card-body flex-column justify-content-between">
+            <div class="card-body d-flex flex-column justify-content-between">
               <a href = "#">
                 <img src = {{asset($product->image)}} width = "100%">
               </a>
