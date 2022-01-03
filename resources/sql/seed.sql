@@ -502,10 +502,10 @@ END TRANSACTION; */
 ---------------------
 
 ------------------------------------------------------- ACCOUNT ------------------------------------------------------
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (1, 'up201907716', '{a!.z27*NL-d$J7M', 'up201907716@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (2, 'up201905497', '_Cw<n2wPmBVkL\gj', 'up201905497@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (3, 'up201905477', 'p8%A6mGe@(]*D:GT', 'up201905477@up.pt');
-INSERT INTO ACCOUNT (id, username, password, email) VALUES (4, 'up201800700', 'Wb%hQD,6uB$/xc6D', 'up201800700@up.pt');
+INSERT INTO ACCOUNT (id, username, password, email) VALUES (1, 'up201907716', '123456789', 'up201907716@up.pt');
+INSERT INTO ACCOUNT (id, username, password, email) VALUES (2, 'up201905497', '123456789', 'up201905497@up.pt');
+INSERT INTO ACCOUNT (id, username, password, email) VALUES (3, 'up201905477', '123456789', 'up201905477@up.pt');
+INSERT INTO ACCOUNT (id, username, password, email) VALUES (4, 'up201800700', '123456789', 'up201800700@up.pt');
 INSERT INTO ACCOUNT (id, username, password, email) VALUES (5, 'firstUser', 'ZC73\Trx5/N$L7', 'vova10000@bukan.es');
 INSERT INTO ACCOUNT (id, username, password, email) VALUES (6, 'PaxBrandom', 'paxa213841' ,'paxa949494@barretodrums.com');
 INSERT INTO ACCOUNT (id, username, password, email) VALUES (7, 'MarkPeterson', 'iammark@2312', 'iammarkp@uioct.com');

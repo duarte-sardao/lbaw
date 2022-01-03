@@ -28,7 +28,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/Home';
+    protected $redirectTo = '/home';
 
     /**
      * Create a new controller instance.
@@ -61,11 +61,11 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\Models\Account
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
-        $newAccount = Account::create([
+        $newUser = User::create([
             'username' => $data['username'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
@@ -74,11 +74,11 @@ class RegisterController extends Controller
             'profilePic' => $data['profilePic']
         ]);
 
-        $newCustomer = Customer::create([
-            'id' => $newAccount->id,
-            'id_Cart' => $newAccount->id
+        Customer::create([
+            'id' => $newUser->id,
+            'id_Cart' => $newUser->id
         ]);
 
-        return $newAccount;
+        return $newUser;
     }
 }

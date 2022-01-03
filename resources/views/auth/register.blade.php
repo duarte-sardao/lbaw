@@ -8,14 +8,14 @@
         {{ csrf_field() }}
         
         <div class="form-group m-2 d-flex flex-column">
-          <label class = "mb-2" for="name">
+          <label class = "mb-2" for="username">
             <span>Username</span>
             <small class = "required_input">*</small>
           </label>
           <input class = "form-control" id="username" type="text" name="username" value="" required>
-          @if ($errors->has('name'))
+          @if ($errors->has('username'))
             <span class="error">
-                {{ $errors->first('name') }}
+                {{ $errors->first('username') }}
             </span>
           @endif
         </div>    

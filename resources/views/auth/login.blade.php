@@ -9,13 +9,13 @@
                 {{ csrf_field() }}
 
                 <div class="form-group d-flex flex-column mt-3">
-                    <label for="username">
-                        <h6>Username</h6>
+                    <label for="email">
+                        <h6>Email</h6>
                     </label>
-                    <input class = "form-control" id="username" type="text" name="username" required>
-                    @if ($errors->has('username'))
+                    <input class = "form-control" type = "email" id="email" name="email" value = "{{old('email')}}" required autofocus>
+                    @if ($errors->has('email'))
                         <span class="error">
-                        {{ $errors->first('username') }}
+                        {{ $errors->first('email') }}
                         </span>
                     @endif
                 </div>
@@ -34,7 +34,7 @@
                 
                 <div class="form-group d-flex justify-content-between align-items-center mt-2">
                     <label>
-                        <input class = "m-1" type="checkbox" name="remember">Remember Me
+                        <input class = "m-1" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     </label>
                     <small><a href = "#">Can't remember your password?</a></small>
                 </div>
