@@ -25,6 +25,10 @@ input:focus{
   box-shadow: none !important;
 }
 
+/*!******************************** NAVBAR CLASSES *********************************!*/
+.navbar-button{
+  background: none !important;
+}
 /*!********************************** COMMON TAGS **********************************!*/
 
 #content{

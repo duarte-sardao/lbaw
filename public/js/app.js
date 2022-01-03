@@ -1,29 +1,51 @@
+//!****************************** GLOBAL VARIABLES ******************************!\\
 
-function addEventListeners() {
-  const editProfileButton = document.getElementById("editProfileButton");
-  editProfileButton.addEventListener("click", displayEditForm);
+var editProfileButton;
+var submitProfileButton;
+var navbarProfileButton;
+var navbarCartButton;
 
-  const submitProfileButton = form.getElementById("profileSubmitButton");
-  submitProfileButton.addEventListener("click", sendEditProfileRequest); 
+//!*********************************** EVENTS ***********************************!\\
+
+window.onload = function(){
+  getGlobalVariables();
+  addEventListeners();
 }
 
-function encodeForAjax(data) {
-  if (data == null) return null;
-  return Object.keys(data).map(function(k){
-    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
-  }).join('&');
+//!*************************** VARS AND EVENTS METHODS **************************!\\
+
+function getGlobalVariables(){
+  navbarProfileButton = document.getElementById("navbarProfileButton");
+  navbarCartButton = document.getElementById("navbarCartButton");
+
+  //editProfileButton = document.getElementById("editProfileButton");
+  //submitProfileButton = document.getElementById("profileSubmitButton");
 }
 
-function sendAjaxRequest(method, url, data, handler) {
-  let request = new XMLHttpRequest();
+function addEventListeners(){
+  navbarProfileButton.addEventListener("click", getProfilePageRequest);
 
-  request.open(method, url, true);
-  request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
-  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  request.addEventListener('load', handler);
-  request.send(encodeForAjax(data));
+  //editProfileButton.addEventListener("click", displayEditForm);
+  //submitProfileButton.addEventListener("click", sendEditProfileRequest); 
 }
 
+//!*********************************** UMA COISA QUALQUER ***********************************!\\
+function getProfilePageRequest(){
+  let id = document.getElementById("userId");
+
+  sendAjaxRequest('get', '/users/' + id.innerText, null, getProfilePageHandler);
+}
+
+function getProfilePageHandler(){
+  if(this.status != 200){
+    window.location = "/";
+    alert("An error occurred when accessing your profile.");
+  }
+}
+
+
+
+//!*********************************** EDIT PROFILE ***********************************!\\
 function displayEditForm(){
   const form = document.getElementById("profile-form");
   const inputs = form.getElementsByTagName("input");
@@ -56,4 +78,23 @@ function profileEditedHandler(){
   }
 }
 
-addEventListeners();
+
+//!******************************** HTML REQUEST ********************************!\\
+
+function encodeForAjax(data) {
+  if (data == null) return null;
+  return Object.keys(data).map(function(k){
+    return encodeURIComponent(k) + '=' + encodeURIComponent(data[k])
+  }).join('&');
+}
+
+
+function sendAjaxRequest(method, url, data, handler) {
+  let request = new XMLHttpRequest();
+
+  request.open(method, url, true);
+  request.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').content);
+  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  request.addEventListener('load', handler);
+  request.send(encodeForAjax(data));
+}

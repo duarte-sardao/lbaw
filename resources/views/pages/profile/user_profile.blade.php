@@ -5,70 +5,24 @@
   <nav class = "m-3" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="#">Home</a></li>
-      <li class="breadcrumb-item active" aria-current="page">{{$user->username}}</li>
+      <li class="breadcrumb-item" aria-current="page">{{$user->username}}</li>
     </ol>
   </nav>
 
-  <section class="d-flex justify-content-evenly">
-    <div class="card" style = "width:25rem">
-      <div class="card-body text-center d-flex flex-column justify-content-center align-items-center">
-        <h5 class="card-title">Account Panel</h5>
-        
-        <nav class="user-pages w-75 d-flex flex-column justify-content-center">
-          <a class="btn btn-secondary m-1 active" href = "#" >Personal Info</a>
-          <a class="btn btn-secondary m-1" href = "#">Orders</a>
-          <a class="btn btn-secondary m-1" href = "#">Addresses</a>
-          <a class="btn btn-secondary m-1" href = "#">Wishlist</a>
-          <a class="btn btn-secondary m-1" href = "#">Preferences</a>
-        </nav> 
-      </div>
-    </div>
+  <section class="d-flex justify-content-around">
+    <!-- Side panel -->
+    @if(Auth::user()->id >= 5)
+      @include('partials.profile.sidebar') 
 
-    <div class="user-info w-25 d-flex flex-column">
-      <div class="d-flex justify-content-between">
-        <h4>Your account data</h4>
-        <span class = "btn btn-primary" id = "editProfileButton">Edit</span>
-      </div>
-      
-      <hr>
+    @else
+      @include('partials.admin.sidebar')
 
-      <form id = "profile-form">
-        <div class="form-group">
-          <label for="username"><h6>Username</h6></label>
-          <input type="text" class="form-control" id="username" placeholder="{{$user->username}}" disabled>
-        </div>
-        
-        <div class="form-group mt-3">
-          <label for="password"><h6>Password</h6></label>
-          <input type="password" class="form-control" id="password" placeholder="***********" disabled>
-        </div>
+    @endif
 
-        <div class="form-group mt-3">
-          <label for="email"><h6>Email</h6></label>
-          <input type="email" class="form-control" id="email" placeholder="{{$user->email}}" disabled>
-        </div>
+    <!-- User Information -->
+    @include('partials.profile.user_data', ['user' => $user])
 
-        <div class="form-group mt-3">
-          <label for="phone"><h6>Phone</h6></label>
-          <input type="phone" class="form-control" id="phone" placeholder="{{$user->phone}}" disabled>
-        </div>
-  
-        <button type="submit" class="btn btn-primary mt-5" id = "profileSubmitButton"hidden>Submit</button>
-      </form>
-    </div>
-
-    <div class="user-photo d-flex flex-column w-25">
-      <div class="d-flex justify-content-between align-items-center">
-        <div>
-          <h5 class>{{$user->username}}</h5>
-          <span id = "userId" hidden>{{$user->id}}</span>
-        </div>
-
-        <label class = "btn btn-primary" for="profilePic">Upload a picture</label>
-        <input type="file" class="form-control-file" id="profilePic" hidden>
-      </div>
-      
-      <img src = "default.jpg" alt = "Your profile picture">
-    </div>
+    <!-- User photo -->
+    @include('partials.profile.user_photo', ['user' => $user])
   </section>
 @endsection

@@ -2,7 +2,7 @@
   <!-- Navbar left container -->
   <div class="navbar-nav d-flex align-items-center">
     <div class="logo">
-      <a class="navbar-brand m-2" href=" {{ route('home') }}">Grab N' Build</a>
+      <a class="navbar-brand m-2" href = "{{ route('home') }}">Grab N' Build</a>
     </div>
 
     <!-- Brand Dropdown -->
@@ -35,24 +35,30 @@
     </div>
   </div>  
 
-  <div class="d-flex justify-content-center w-50" >
-    <input class = "w-75" type = "text" placeholder = "Search">
-  </div>
+  <form class="form-inline d-flex w-50">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  </form>
   
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-      <div class="btn btn-primary m-2 bg-none">
+    <span hidden id = "userId">{{Auth::user()->id}}</span>
+      <a class="btn btn-primary m-2" href = "{{route('profile')}}">
         <i class="fa fa-user"></i>
-        <span>{{Auth::user()->id}}</span>
-        
-        <div class="card">
-          <div class="card-body">
-            <a href = "{{route('logout')}}">Logout</a>
-          </div>
-        </div>
-      </div> 
+      </a> 
+
+      @if(Auth::user()->id > 5)
+      <a class="btn btn-primary m-2" href = "{{route('cart')}}">
+        <i class="fa fa-shopping-cart"></i>
+      </a> 
+      @endif
+
+      <a class="btn btn-primary m-2" href = "{{route('logout')}}">
+        <i class="fa fa-sign-out"></i>
+      </a> 
     @else
-      <a class="btn btn-primary m-2" href="{{ route('login') }}"> Login </a>
+      <a class="btn btn-primary m-2" href = "{{ route('login') }}"> 
+        <i class="fa fa-sign-in"></i>
+      </a>
     @endif
   </div>
 

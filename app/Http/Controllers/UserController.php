@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
+use App\Models\User;
 
 class UserController extends Controller
 { 
@@ -12,17 +14,18 @@ class UserController extends Controller
    * @param id Id of the User whose profile will be edited
    */
    
-  public function showProfile($id){
-    $user = User::find($id);
-    $this->authorize('show', $user);
+  public function showProfile()
+  {
+    $user = User::find(Auth::user()->id);
+    //$this->authorize('show', $user);
 
     return view('pages.profile.user_profile', ['user' => $user]);
   }
   
-  public function edit($id)
+  public function editProfile()
   {
-    $user = User::find($id);
-    $this->authorize('update', $user);
+    $user = User::find(Auth::user()->id);
+    //$this->authorize('update', $user);
 
     return view('pages.profile.edit', ['user' => $user]);
   }
@@ -31,16 +34,15 @@ class UserController extends Controller
    * @method Processes the data inputed on the edit profile form to update the User's data
    * @param id Id of the user to update
    */
-  public function update(Request $request, $id)
+  public function updateProfile(Request $request)
   {
     try{
-      $user = User::find($id);
+      $user = User::find(Auth::user()->id);
 
       $newUsername = $request->input('username');
       $newPassword = $request->input('password');
       $newEmail = $request->input('email');
       $newPhone = $request->input('phone');
-      $newProfilePic = $request->input('profilePic');
 
       if(!is_null($newUsername)){
         $user->username = $newUsername;
@@ -58,10 +60,6 @@ class UserController extends Controller
         $user->phone = $newPhone;
       }
 
-      if(!is_null($newProfilePic)){
-        $user->profilePic = $newProfilePic;
-      }
-
       $user->save();
     }
     
@@ -76,8 +74,8 @@ class UserController extends Controller
    */
   public function delete($id)
   {
-    $user = User::find($id);
-    $this->authorize('delete', $user);
+    $user = User::find(Auth::user()->id);
+    //$this->authorize('delete', $user);
     $user->delete();
   }
   

@@ -11,51 +11,41 @@
 |
 */
 
-//Auth::routes();
-
-// Home
+//! Home
 Route::get('/', 'HomeController@home')->name('home');
 
-// Static Pages
+//! Static Pages
 Route::get('about', 'StaticController@about')->name('about');
 Route::get('faq', 'StaticController@faq')->name('faq');
 Route::get('contacts', 'StaticController@contacts')->name('contacts');
 
-// Authentication
-
+//! Authentication
 Route::get('login', 'Auth\LoginController@showLoginForm')->name('login');
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//Admin Profile
+//!Admin Profile
 Route::get('/admins/{id}', 'AdminController@showProfile');
 
-//Customer Profile
-Route::get('/customers/{id}', 'CustomerController@showProfile')->name('customerProfile');
-Route::delete('/customers/{id}', 'CustomerController@delete')->name('delete');
+//!Customer Profile
+Route::get('users', 'UserController@showProfile')->name('profile');
+Route::delete('users', 'UserController@delete')->name('deleteProfile');
 
-Route::get('/customers/{id}/edit', 'CustomerController@editProfile')->name('editProfile');
-Route::post('/customers/{id}/edit', 'CustomerController@updateProfile');
+Route::get('/users/edit', 'UserController@editProfile')->name('editProfile');
+Route::post('/users/edit', 'UserController@updateProfile');
 
-Route::get('/customers/{id}/addresses', 'CustomerController@showAddresses')->name('addresses');
-Route::get('/customers/{id}/orders', 'CustomerController@showOrders')->name('orders');
-Route::get('/customers/{id}/wishlist', 'CustomerController@showWishlist')->name('wishlist');
-Route::get('/customers/{id}/cart', 'CustomerController@showCart')->name('cart');
+Route::get('/users/addresses', 'CustomerController@showAddresses')->name('addresses');
+Route::get('/users/orders', 'CustomerController@showOrders')->name('orders');
+Route::get('/users/wishlist', 'CustomerController@showWishlist')->name('wishlist');
+Route::get('/users/cart', 'CustomerController@showCart')->name('cart');
 
-//Other Pages
+//!Other Pages
 
-/* Route::get('/store/{id}', function ($id) {
-    return 'Product '.$id;
-}); */
-
-// Cart
-Route::get('/user/{id}/cart', 'CartController@list');
+//!Cart
+/* Route::get('/user/{id}/cart', 'CartController@list');
 
 Route::put('/user/{id}/cart', 'CartController@add');
 
-Route::delete('/user/{id}/cart', 'CartController@delete');
-
-//Route::post('api/item/{id}', 'ItemController@update');
-//Route::delete('api/item/{id}', 'ItemController@delete');
+Route::delete('/user/{id}/cart', 'CartController@delete'); */
