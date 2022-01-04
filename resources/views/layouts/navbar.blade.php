@@ -35,10 +35,12 @@
     </div>
   </div>  
 
+  <!-- Search bar -->
   <form class="form-inline d-flex w-50">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
   </form>
   
+  <!-- User features -->
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
     <span hidden id = "userId">{{Auth::user()->id}}</span>
@@ -46,7 +48,7 @@
         <i class="fa fa-user"></i>
       </a> 
 
-      @if(Auth::user()->id > 5)
+      @if(Auth::user()->id >= 5)
       <a class="btn btn-primary m-2" href = "{{route('cart')}}">
         <i class="fa fa-shopping-cart"></i>
       </a> 
@@ -58,6 +60,7 @@
     @else
       <a class="btn btn-primary m-2" href = "{{ route('login') }}"> 
         <i class="fa fa-sign-in"></i>
+        <span>Login</span>
       </a>
     @endif
   </div>

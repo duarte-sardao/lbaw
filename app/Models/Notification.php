@@ -12,11 +12,11 @@ class Notification extends Model {
     protected $table = 'notification';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'content', 'id_Customer'];
+    protected $fillable = ['id', 'content', 'id_customer'];
 
     //Linking Notification to Customer table overriding FK name
     public function customers(){
-        return $this->belongsTo('App\Model\Customer', 'id_Customer');
+        return $this->belongsTo('App\Model\Customer', 'id_customer');
     }
 }
 

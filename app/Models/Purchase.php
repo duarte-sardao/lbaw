@@ -12,21 +12,21 @@ class Purchase extends Model {
     protected $table = 'purchase';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'orderDate', 'deliveryDate', 'orderStatus', 'id_Customer', 'id_Address', 'id_PaymentMethod', 'id_Cart'];
+    protected $fillable = ['id', 'orderdate', 'deliverydate', 'orderstatus', 'id_customer', 'id_address', 'id_PaymentMethod', 'id_cart'];
 
     //Linking Purchase to Customer table overriding the FK name
     public function customers(){
-        return $this->belongsTo('App\Models\Customer', 'id_Customer');
+        return $this->belongsTo('App\Models\Customer', 'id_customer');
     }
 
     //Linking Purchase to Address table overriding the FK name
     public function addresses(){
-        return $this->belongsTo('App\Models\Address', 'id_Customer');
+        return $this->belongsTo('App\Models\Address', 'id_customer');
     }
 
     //Linking Purchase to Cart table overriding the FK name
     public function carts(){
-        return $this->hasOne('App\Models\Cart', 'id_Cart');
+        return $this->hasOne('App\Models\Cart', 'id_cart');
     }
 
     //Linking Purchase to PaymentMethods table overriding the FK name

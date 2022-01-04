@@ -16,18 +16,18 @@ class Product extends Model {
 
     //Linking Product to Review table overriding the FK name
     public function reviews(){
-        return $this->hasMany('App\Models\Review', 'id_Product');
+        return $this->hasMany('App\Models\Review', 'id_product');
     }
 
     //Linking Product to Wishlist table overriding its name and FKs
     public function customers(){
-        return $this->belongsToMany('App\Models\Customer', 'Wishlist', 'id_Product', 'id_Customer');
+        return $this->belongsToMany('App\Models\Customer', 'Wishlist', 'id_product', 'id_customer');
     }
 
     //Linking Product to CartProduct table overriding its name and FKs
     public function carts(){
         return $this
-            ->belongsToMany('App\Models\Cart', 'CartProduct', 'id_Product', 'id_Cart')
+            ->belongsToMany('App\Models\Cart', 'cartproduct', 'id_product', 'id_cart')
             ->withPivot('quantity');
     }
 

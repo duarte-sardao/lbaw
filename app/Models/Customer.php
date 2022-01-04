@@ -12,7 +12,7 @@ class Customer extends Model {
     protected $table = 'customer';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'id_Cart'];
+    protected $fillable = ['id', 'id_cart'];
 
     //Pointing Customer to Account table overriding FK name
     public function accounts(){
@@ -21,32 +21,32 @@ class Customer extends Model {
 
     //Pointing Customer to Notification table overriding FK name
     public function notifications(){
-        return $this->hasMany('App\Models\Notification', 'id_Customer');
+        return $this->hasMany('App\Models\Notification', 'id_customer');
     }
 
     //Pointing Customer to Purchase table overriding FK name
     public function purchases(){
-        return $this->hasMany('App\Models\Purchase', 'id_Customer');
+        return $this->hasMany('App\Models\Purchase', 'id_customer');
     }
 
     //Pointing Customer to CustomerAddress table overriding its name and FKs
     public function addresses(){
-        return $this->belongsToMany('App\Models\Address', 'CustomerAddress', 'id_Customer', 'id_Address');
+        return $this->belongsToMany('App\Models\Address', 'customeraddress', 'id_customer', 'id_address');
     }
 
     //Pointing Customer to Cart table overriding FK name
     public function carts(){
-        return $this->hasOne('App\Models\Cart', 'id_Cart');
+        return $this->hasOne('App\Models\Cart', 'id_cart');
     }
 
     //Pointing Customer to Wishlist table overriding its name and FKs
     public function products(){
-        return $this->belongsToMany('App\Models\Product', 'Wishlist', 'id_Customer', 'id_Product');
+        return $this->belongsToMany('App\Models\Product', 'wishlist', 'id_customer', 'id_product');
     }
 
     //Pointing Customer to Review table overriding FK name
     public function reviews(){
-        return $this->hasMany('App\Models\Review', 'id_Customer');
+        return $this->hasMany('App\Models\Review', 'id_customer');
     }
 
 

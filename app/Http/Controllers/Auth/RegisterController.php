@@ -65,8 +65,8 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         $newId = count(User::all());
+
         $newUser = User::create([
             'id' => $newId + 1,
             'username' => $data['name'],
@@ -75,6 +75,10 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'isbanned' => 0,
             'profilepic' => 'images/default.jpg'
+        ]);
+        
+        Cart::create([
+            'id' => $newUser->id       
         ]);
 
         Customer::create([

@@ -12,7 +12,7 @@ class CPU extends Model {
     protected $table = 'cpu';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'baseFreq', 'turboFreq', 'socket', 'threads', 'cores'];
+    protected $fillable = ['id', 'basefreq', 'turbofreq', 'socket', 'threads', 'cores'];
 
     //Linking CPU to Product table overriding the FK name
     public function products(){

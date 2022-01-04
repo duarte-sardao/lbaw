@@ -12,16 +12,16 @@ class Address extends Model {
     protected $table = 'address';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'streeName', 'streetNumber', 'zipcode', 'floor', 'aptNumber'];
+    protected $fillable = ['id', 'streename', 'streetnumber', 'zipcode', 'floor', 'aptnumber'];
 
     //Linking Address to CustomerAddress table overriding its name and FKs
     public function customers(){
-        return $this->belongsToMany('App\Models\Customer', 'CustomerAddress', 'id_Address', 'id_Customer');
+        return $this->belongsToMany('App\Models\Customer', 'customeraddress', 'id_address', 'id_customer');
     }
 
     //Linking Address to Purchase table overriding the FK name
     public function purchases(){
-        return $this->hasMany('App\Models\Purchase', 'id_Address');
+        return $this->hasMany('App\Models\Purchase', 'id_address');
     }
 }
 
