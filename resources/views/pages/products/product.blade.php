@@ -1,6 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+
+  <!-- Breadcrumbs -->
+  <nav class = "m-3" aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+      <li class="breadcrumb-item" aria-current="page">{{$product->name}}</li>
+    </ol>
+  </nav>
+
   <div class = "container mt-5" id="homeProductGrid">
     <div class="row d-flex m-1">
       <div class="card col m-1">

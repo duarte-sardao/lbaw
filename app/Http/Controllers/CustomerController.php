@@ -30,16 +30,17 @@ class CustomerController extends Controller
     $cart = array();
     $quantities = array();
 
-    foreach($products as $product){
+    foreach($products as $product){ 
       array_push($cart, $product);
       array_push($quantities, $product->pivot->quantity);
-      $total += $product->price;
+      $total += $product->price * $product->pivot->quantity;
     }
 
     return view('pages.profile.cart', [
       'user' => $user,
       'cart' => $cart,
-      'total' => $total
+      'total' => $total,
+      'quantities' => $quantities
     ]);
   }
 }

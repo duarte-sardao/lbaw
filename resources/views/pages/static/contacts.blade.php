@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
+    <!-- Breadcrumbs -->
+    <nav class = "m-3" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
+            <li class="breadcrumb-item" aria-current="page">Contacts</li>
+        </ol>
+    </nav>
 
-<main>
+    <!-- Content -->
     <div class="contacts-row">
         <div class="contacts-column">
             <div class="contacts-card">
@@ -55,8 +62,6 @@
                 </div>
             </div>
         </div>
-
     </div>
-</main>
 
 @endsection
