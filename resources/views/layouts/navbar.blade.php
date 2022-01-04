@@ -36,8 +36,8 @@
   </div>  
 
   <!-- Search bar -->
-  <form class="form-inline d-flex w-50">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+  <form class="form-inline d-flex w-50" method = "GET" action = "{{route('search')}}">
+    <input class="form-control mr-sm-2" type="search" name = "search" placeholder="Search" aria-label="Search">
   </form>
   
   <!-- User features -->
