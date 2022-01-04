@@ -28,11 +28,15 @@ class CustomerController extends Controller
     $total = 0;
     
     $cart = array();
-    $quantities = array();
 
     foreach($products as $product){ 
-      array_push($cart, $product);
-      array_push($quantities, $product->pivot->quantity);
+      array_push(
+        $cart, 
+        [
+          'product' => $product, 
+          'quantity' => $product->pivot->quantity
+        ]);
+
       $total += $product->price * $product->pivot->quantity;
     }
 
@@ -40,7 +44,6 @@ class CustomerController extends Controller
       'user' => $user,
       'cart' => $cart,
       'total' => $total,
-      'quantities' => $quantities
     ]);
   }
 }

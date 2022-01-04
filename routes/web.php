@@ -43,10 +43,9 @@ Route::get('/users/cart', 'CustomerController@showCart')->name('cart');
 
 //!Cart
 Route::get('/user/cart', 'CartController@list');
-
 Route::put('/user/cart', 'CartController@add');
-
 Route::delete('/user/cart', 'CartController@empty')->name('emptyCart');
 
+Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
+
 //!Other Pages
-Route::get('users/cart/checkout', 'SeiLaController@seila')->name('checkout');

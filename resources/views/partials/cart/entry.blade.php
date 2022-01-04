@@ -1,14 +1,22 @@
 <tr class = "text-center mt-3 mb-3">
   <th>
     <a href = "#">
-      <img src = {{asset($cartProduct->image)}} height = "150px">
+      <img src = {{asset($item['product']->image)}} height = "150px">
     </a>
   </th>
-  <td class="col m-1">
-    <div class="d-flex flex-row justify-content-between">
-      <span>{{$cartProduct->name}}</span>
+
+  <td class="cart-entry">
+    <div class="d-flex flex-column align-items-start">
+      <strong>{{$item['product']->name}}</strong>
+      <p>{{$item['product']->description}}</p>
     </div>
   </td>
-  <td><span>Undefined</span></td>
-  <td><h3 class="price">{{$cartProduct->price}}€</h3></td>
+
+  <td class = "cart-entry">
+    <span>{{$item['quantity']}}</span>
+  </td>
+
+  <td class = "cart-entry">
+    <h3 class="price">{{$item['product']->price}}€</h3>
+  </td>
 </tr>					

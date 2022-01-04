@@ -28,8 +28,8 @@
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($cart as $cartProduct)
-						@include('partials.cart.entry', ['cartProduct' => $cartProduct])
+					@foreach($cart as $item)
+						@include('partials.cart.entry', ['item' => $item])
 					@endforeach	
 			</table> 
 			

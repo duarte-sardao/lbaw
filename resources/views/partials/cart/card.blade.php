@@ -19,7 +19,7 @@
     </div>
 
     <div class="btn btn-outline-danger m-2 w-50">
-      <a href="#">Empty Cart</a>
+      <a href="{{route('emptyCart')}}">Empty Cart</a>
     </div>
   </div>
 </div>
