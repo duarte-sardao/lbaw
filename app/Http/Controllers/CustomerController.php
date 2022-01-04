@@ -25,12 +25,11 @@ class CustomerController extends Controller
   public function showCart(){
     $user = Customer::find(Auth::user()->id);
     $products = Cart::find(Auth::user()->id)->Products;
+    
     $cart = array();
 
     foreach($products as $product)
       array_push($cart, $product);
-
-
 
     return view('pages.profile.cart', [
       'user' => $user,

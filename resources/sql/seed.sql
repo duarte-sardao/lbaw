@@ -405,7 +405,7 @@ IF NOT EXISTS(
 )
 THEN RAISE EXCEPTION 'You can NOT add that much quantity to the cart';
 END IF;
-RETURN NULL;
+RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
@@ -859,6 +859,13 @@ INSERT INTO CustomerAddress (id_Customer, id_Address) VALUES (19, 19);
 
 ------------------------------ CartProduct -------------------------------
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 10, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 21, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 32, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 43, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 54, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 60, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 70, 1);
+
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (7, 21, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (7, 11, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (9, 31, 1);
@@ -867,7 +874,6 @@ INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (18, 73, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (23, 77, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (25, 12, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (29, 44, 3);
-
 
 ------------------------ Wishlist --------------------------
 INSERT INTO Wishlist(id_Customer, id_Product) VALUES (6, 14);
