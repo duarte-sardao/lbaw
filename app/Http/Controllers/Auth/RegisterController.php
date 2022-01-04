@@ -76,10 +76,6 @@ class RegisterController extends Controller
             'isbanned' => 0,
             'profilepic' => 'images/default.jpg'
         ]);
-        
-        Cart::create([
-            'id' => $newUser->id       
-        ]);
 
         Customer::create([
             'id' => $newUser->id,

@@ -41,11 +41,12 @@ Route::get('/users/orders', 'CustomerController@showOrders')->name('orders');
 Route::get('/users/wishlist', 'CustomerController@showWishlist')->name('wishlist');
 Route::get('/users/cart', 'CustomerController@showCart')->name('cart');
 
-//!Other Pages
-
 //!Cart
-/* Route::get('/user/{id}/cart', 'CartController@list');
+Route::get('/user/cart', 'CartController@list');
 
-Route::put('/user/{id}/cart', 'CartController@add');
+Route::put('/user/cart', 'CartController@add');
 
-Route::delete('/user/{id}/cart', 'CartController@delete'); */
+Route::delete('/user/cart', 'CartController@empty')->name('emptyCart');
+
+//!Other Pages
+Route::get('users/cart/checkout', 'SeiLaController@seila')->name('checkout');
