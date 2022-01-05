@@ -38,7 +38,7 @@
       </a> 
 
       @if(Auth::user()->id >= 5)
-      <a class="btn btn-primary m-2" href = "{{route('cart')}}">
+      <a class="btn btn-primary m-2" href = "{{route('showCart')}}">
         <i class="fa fa-shopping-cart"></i>
       </a> 
       @endif

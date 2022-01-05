@@ -40,10 +40,12 @@ Route::get('/users/orders', 'CustomerController@showOrders')->name('showOrders')
 Route::get('/users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
 
 //! Cart
-Route::get('/users/cart', 'CartController@show')->name('cart');
-Route::put('/users/cart/{product_id}', 'CartController@addNewEntry');
-Route::post('/users/cart/{product_id}', 'CartController@incrementQuantity');
+Route::get('/users/cart', 'CartController@show')->name('showCart');
 Route::delete('/users/cart', 'CartController@empty')->name('emptyCart');
+
+Route::put('/users/cart/{product_id}', 'CartController@addEntry');
+Route::delete('/users/cart/{product_id}', 'CartController@deleteEntry');
+Route::post('/users/cart/{product_id}', 'CartController@incrementQuantity');
 
 Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
 
@@ -53,7 +55,7 @@ Route::put('/users/wishlist/{product_id}', 'WishlistController@add')->name('addT
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
-Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
+//Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
 Route::get('products/search', 'ProductController@search')->name('search');
 
 Route::get('products/{id}', 'ProductController@showProduct')->name('productPage');

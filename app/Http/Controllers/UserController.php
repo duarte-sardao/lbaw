@@ -22,6 +22,7 @@ class UserController extends Controller
 
     return view('pages.profile.user_profile', [
       'user' => $user,
+      'entries' => null,
       'content' => 'partials.profile.user_data'
     ]);
   }

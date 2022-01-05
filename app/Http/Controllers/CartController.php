@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
-use App\Models\Customer;
 use App\Models\Cart;
 use App\Models\CartProduct;
+use App\Models\Customer;
+use App\Models\Product;
+use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -13,12 +14,11 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 { 
   public function show(){
-    $user = Customer::find(Auth::user()->id);
+    $user = User::find(Auth::user()->id);
     $products = Cart::find(Auth::user()->id)->Products;
-    $total = 0;
-    
     $cart = array();
 
+    $total = 0;
     foreach($products as $product){ 
       array_push(
         $cart, 
@@ -37,7 +37,7 @@ class CartController extends Controller
     ]);
   }
 
-  public function addNewEntry(Request $request, $product_id)
+  public function addEntry(Request $request, $product_id)
   {
     $entry = new CartProduct();
 
@@ -52,6 +52,19 @@ class CartController extends Controller
     return redirect()->back();
   }
 
+  public function deleteEntry(Request $request, $product_id)
+  {
+    $entry = CartProduct::
+      where('id_cart', '=', Auth::user()->id)
+      ->where('id_product', '=', $product_id);
+
+    dd($entry);
+
+    $entry->delete();
+
+    return redirect()->back();
+  }
+
   public function incrementQuantity(Request $request, $product_id)
   {
 
@@ -59,10 +72,10 @@ class CartController extends Controller
 
   public function empty()
   {
-    $cart = CartProduct::where('id_cart', '=', Auth::user()->id);
+    $cart = Cart::find(Auth::user()->id)->Products;
     
-    foreach($cart as $product){
-      $product->delete();
+    foreach($cart as $entry){
+      $entry->delete();
     }
 
     return redirect()->back();

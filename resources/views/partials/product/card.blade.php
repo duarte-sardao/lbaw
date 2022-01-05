@@ -11,23 +11,27 @@
       <div class="d-flex justify-content-between align-items-center">
         <h3 class="mt-2 price">{{$product->price}}€</h3>
         
-        <form method = "POST" action = {{url('/users/cart/'.$product->id)}}>
-          @csrf
-          @method('PUT')
-
-          <button class="btn btn-outline-primary" type = "submit">
-            <i class="fa fa-shopping-cart"></i>
-          </button>
-        </form>
-
-        <form method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
-          @csrf
-          @method('PUT')
-
-          <button class="btn btn-outline-danger" type = "submit">
-            <i class="fa fa-heart"></i>
-          </button>
-        </form>
+        <div class="d-flex justify-content-between align-items-center">
+          @if($product->stock > 0)
+            <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
+              @csrf
+              @method('PUT')
+    
+              <button class="btn btn-outline-primary" type = "submit">
+                <i class="fa fa-cart-plus"></i>
+              </button>
+            </form>
+          @endif
+          
+          <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
+            @csrf
+            @method('PUT')
+  
+            <button class="btn btn-outline-danger" type = "submit">
+              <i class="fa fa-heart"></i>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </div>

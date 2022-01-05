@@ -14,12 +14,16 @@
   </div>
 
   <div class="d-flex justify-content-around">
-    <div class="btn btn-success m-2 w-50">
+    <div class="btn btn-success m-2 w-100">
       <a href="{{route('checkout')}}">Checkout</a>
     </div>
 
-    <div class="btn btn-outline-danger m-2 w-50">
-      <a href="{{route('emptyCart')}}">Empty Cart</a>
-    </div>
+    <form class = "m-2 w-100" method = "POST" action = "{{route('emptyCart')}}">
+      @csrf
+      @method('delete')
+      <button class="btn btn-outline-danger w-100" type = "submit">
+        Empty Cart
+      </button>
+    </form>
   </div>
 </div>
