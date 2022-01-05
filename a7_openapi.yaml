@@ -63,8 +63,8 @@ paths:
                type: string
              examples:
                302Success:
-                 description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 description: 'Successful authentication. Redirect to home page.'
+                 value: '/'
                302Error:
                  description: 'Failed authentication. Redirect to login form.'
                  value: '/login'
@@ -133,13 +133,13 @@ paths:
                type: string
              examples:
                302Success:
-                 description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 description: 'Successful authentication. Redirect to home page.'
+                 value: '/'
                302Failure:
-                 description: 'Failed authentication. Redirect to login form.'
-                 value: '/login'
+                 description: 'Failed authentication. Redirect to register form.'
+                 value: '/register'
 
- /users/{id}:
+ /users:
    get:
      operationId: R106
      summary: 'R106: View user profile'
@@ -158,20 +158,10 @@ paths:
        '200':
          description: 'Ok. Show User Profile UI'
          
- /editprofile:
-   get:
-     operationId: R107
-     summary: 'R107: Register Form'
-     description: 'Provide user profile edit form. Access: OWN'
-     tags:
-       - 'M01: Authentication and Individual Profile'
-     responses:
-       '200':
-         description: 'Ok. Show Edit UI'
-
+ /users/edit/{id}:
    post:
-     operationId: R108
-     summary: 'R108: Edit Action'
+     operationId: R107
+     summary: 'R107: Edit Action'
      description: 'Processes the new user profile info form submission. Access: OWN'
      tags:
        - 'M01: Authentication and Individual Profile'
@@ -199,10 +189,10 @@ paths:
              examples:
                302Success:
                  description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 value: '/users'
                302Failure:
                  description: 'Failed authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 value: '/users'
 
  /api/products:
     get:
@@ -667,7 +657,9 @@ paths:
                 items:
                   type: object
                   properties:
-#addproduct beggining
+
+
+ #addproduct beggining
  /addprod:
     post:
       operationId: R212
@@ -1148,7 +1140,7 @@ paths:
                  type: object
                  properties:
 
- /cart/view:
+ /users/cart:
    get:
      operationId: R400
      summary: 'R400: Shows given users cart' 
@@ -1323,7 +1315,7 @@ paths:
          description: 'Ok. Show'
          
  /viewcontact:
-   post:
+   get:
      operationId: R505
      summary: 'R505: View Contact Page'
      description: 'View the Contact Page. Access: PUB'
@@ -1334,7 +1326,7 @@ paths:
          description: 'Ok. Show'
          
  /viewabout:
-   post:
+   get:
      operationId: R506
      summary: 'R506: View About Page'
      description: 'View the About Page. Access: PUB'
@@ -1345,7 +1337,7 @@ paths:
          description: 'Ok. Show'
 
  /viewfaq:
-   post:
+   get:
      operationId: R507
      summary: 'R507: View Faq Page'
      description: 'View the Faq Page. Access: PUB'
