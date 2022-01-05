@@ -32,40 +32,37 @@ class UserController extends Controller
 
   /**
    * @method Processes the data inputed on the edit profile form to update the User's data
+   * @param request Request data to be parsed
    * @param id Id of the user to update
    */
-  public function updateProfile(Request $request)
+  public function updateProfile(Request $request, $id)
   {
-    try{
-      $user = User::find(Auth::user()->id);
+    $user = User::find($id);
 
-      $newUsername = $request->input('username');
-      $newPassword = $request->input('password');
-      $newEmail = $request->input('email');
-      $newPhone = $request->input('phone');
+    $newUsername = $request->input('username');
+    $newPassword = $request->input('password');
+    $newEmail = $request->input('email');
+    $newPhone = $request->input('phone');
 
-      if(!is_null($newUsername)){
-        $user->username = $newUsername;
-      }
-
-      if(!is_null($newPassword)){
-        $user->password = $newPassword;
-      }
-
-      if(!is_null($newEmail)){
-        $user->email = $newEmail;
-      }
-
-      if(!is_null($newPhone)){
-        $user->phone = $newPhone;
-      }
-
-      $user->save();
+    if(!is_null($newUsername)){
+      $user->username = $newUsername;
     }
-    
-    catch(Exception $e){
-      echo $e->getMessage();
+
+    if(!is_null($newPassword)){
+      $user->password = $newPassword;
     }
+
+    if(!is_null($newEmail)){
+      $user->email = $newEmail;
+    }
+
+    if(!is_null($newPhone)){
+      $user->phone = $newPhone;
+    }
+
+    $user->save(); 
+
+    return redirect('/users');
   }
 
   /**
@@ -74,7 +71,7 @@ class UserController extends Controller
    */
   public function delete($id)
   {
-    $user = User::find(Auth::user()->id);
+    $user = User::find($id);
     //$this->authorize('delete', $user);
     $user->delete();
   }

@@ -34,7 +34,7 @@ Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
 
 Route::get('/users/edit', 'UserController@editProfile')->name('editProfile');
-Route::post('/users/edit', 'UserController@updateProfile');
+Route::post('/users/edit/{id}', 'UserController@updateProfile');
 
 Route::get('/users/addresses', 'CustomerController@showAddresses')->name('addresses');
 Route::get('/users/orders', 'CustomerController@showOrders')->name('orders');

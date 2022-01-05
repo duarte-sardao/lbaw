@@ -2,8 +2,6 @@
 
 var editProfileButton;
 var submitProfileButton;
-var navbarProfileButton;
-var navbarCartButton;
 
 //!*********************************** EVENTS ***********************************!\\
 
@@ -15,41 +13,22 @@ window.onload = function(){
 //!*************************** VARS AND EVENTS METHODS **************************!\\
 
 function getGlobalVariables(){
-  navbarProfileButton = document.getElementById("navbarProfileButton");
-  navbarCartButton = document.getElementById("navbarCartButton");
-
-  //editProfileButton = document.getElementById("editProfileButton");
-  //submitProfileButton = document.getElementById("profileSubmitButton");
+  editProfileButton = document.getElementById("editProfileButton");
+  submitProfileButton = document.getElementById("profileSubmitButton");
 }
 
 function addEventListeners(){
-  navbarProfileButton.addEventListener("click", getProfilePageRequest);
-
-  //editProfileButton.addEventListener("click", displayEditForm);
+  editProfileButton.addEventListener("click", displayEditForm);
   //submitProfileButton.addEventListener("click", sendEditProfileRequest); 
 }
 
 //!*********************************** UMA COISA QUALQUER ***********************************!\\
-function getProfilePageRequest(){
-  let id = document.getElementById("userId");
-
-  sendAjaxRequest('get', '/users/' + id.innerText, null, getProfilePageHandler);
-}
-
-function getProfilePageHandler(){
-  if(this.status != 200){
-    window.location = "/";
-    alert("An error occurred when accessing your profile.");
-  }
-}
-
 
 
 //!*********************************** EDIT PROFILE ***********************************!\\
 function displayEditForm(){
   const form = document.getElementById("profile-form");
   const inputs = form.getElementsByTagName("input");
-  const submitProfileButton = form.getElementById("profileSubmitButton");
 
   for(let i = 0 ; i < inputs.length; i++){
     inputs[i].removeAttribute("disabled");
@@ -59,21 +38,26 @@ function displayEditForm(){
 }
 
 function sendEditProfileRequest(){
-  let id = document.getElementById("userId").innerHTML;
+  let id = document.getElementById("userId").innerText;
 
   const data = {
-    'username' : document.getElementById("email").innerHTML,
-    'password' : document.getElementById("password").innerHTML,
-    'email' : document.getElementById("email").innerHTML,
-    'phone' : document.getElementById("phone").innerHTML,
+    'username' : document.getElementById("username").value,
+    'password' : document.getElementById("password").value,
+    'email' : document.getElementById("email").value,
+    'phone' : document.getElementById("phone").value,
   };
 
-  sendAjaxRequest('put', '/customers/' + id + '/edit', data, profileEditedHandler);
+  console.log(data.username);
+  console.log(data.password);
+  console.log(data.email);
+  console.log(data.phone);
+
+  sendAjaxRequest('PUT', '/users/edit/' + id, data, profileEditedHandler);
 }
 
 function profileEditedHandler(){
   if(this.status != 200){
-    window.location = "/home";
+    window.location = "/users";
     alert("An error occurred when editing your profile.");
   }
 }
