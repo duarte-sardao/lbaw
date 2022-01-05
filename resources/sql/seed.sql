@@ -858,7 +858,7 @@ INSERT INTO CustomerAddress (id_Customer, id_Address) VALUES (18, 18);
 INSERT INTO CustomerAddress (id_Customer, id_Address) VALUES (19, 19); 
 
 ------------------------------ CartProduct -------------------------------
-INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 10, 1);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 10, 2);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 21, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 32, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (5, 43, 1);

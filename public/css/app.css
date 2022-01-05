@@ -1,13 +1,5 @@
 :root{
   --website-main-color: #0d6efd;
-  --bs-primary: #0d6efd;
-  --bs-secondary: #6c757d;
-  --bs-success: #198754;
-  --bs-info: #0dcaf0;
-  --bs-warning: #ffc107;
-  --bs-danger: #dc3545;
-  --bs-light: #f8f9fa;
-  --bs-dark: #212529;
 }
 
 /*!********************************** COMMON TAGS **********************************!*/
@@ -16,7 +8,7 @@ body{
   overflow-x: hidden;
 }
 
-footer, header{
+header, footer{
   width: 100%;
 }
 
@@ -63,6 +55,7 @@ input:focus{
 .btn a{
   color: inherit;
 }
+
 /*!********************************** USEFUL SIZES *********************************!*/
 
 .w-15{
