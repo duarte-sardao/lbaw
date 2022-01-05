@@ -16,3 +16,20 @@
   color: #ff5555;
   font-weight: bold;
 }
+
+#togglePassword {
+  margin-left: 590px;
+  cursor: pointer;
+}
+
+#pwd {
+  position:relative;
+}
+
+#pwd i {
+  position:absolute;
+  left:0;
+  top:29px;
+  padding:10px 10px;
+  
+}

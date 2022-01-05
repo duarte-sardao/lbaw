@@ -20,11 +20,14 @@
                     @endif
                 </div>
                 
-                <div class="form-group d-flex flex-column mt-3">
+                <div class="form-group d-flex flex-column mt-3" id="pwd">
                     <label for="password">
                         <h6>Password</h6>
                     </label>
                     <input class = "form-control" id="password" type="password" name="password" required>
+                    <span title="Show password">
+                        <i class="bi bi-eye-slash" id="togglePassword"></i>
+                    </span> 
                     @if ($errors->has('password'))
                         <span class="error">
                             {{ $errors->first('password') }}
