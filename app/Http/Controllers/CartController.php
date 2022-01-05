@@ -58,16 +58,13 @@ class CartController extends Controller
       where('id_cart', '=', Auth::user()->id)
       ->where('id_product', '=', $product_id);
 
-    dd($entry);
-
     $entry->delete();
-
     return redirect()->back();
   }
 
   public function incrementQuantity(Request $request, $product_id)
   {
-
+    
   }
 
   public function empty()
