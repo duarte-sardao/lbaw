@@ -27,28 +27,33 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 //! Admins
-Route::get('/admins/{id}', 'AdminController@showProfile');
+Route::get('admins/{id}', 'AdminController@showProfile');
 
 //! Users
 Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
-Route::post('/users/edit/{id}', 'UserController@updateProfile');
-Route::get('/users/addresses', 'CustomerController@showAddresses')->name('showAddresses');
-Route::get('/users/orders', 'CustomerController@showOrders')->name('showOrders');
-Route::get('/users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
+Route::post('users/edit/{id}', 'UserController@updateProfile');
+Route::get('users/addresses', 'CustomerController@showAddresses')->name('showAddresses');
+Route::get('users/orders', 'CustomerController@showOrders')->name('showOrders');
+Route::get('users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
 
 //! Cart
-Route::get('/users/cart', 'CartController@show')->name('showCart');
-Route::delete('/users/cart', 'CartController@empty')->name('emptyCart');
-Route::put('/users/cart/{product_id}', 'CartController@addEntry');
-Route::delete('/users/cart/{product_id}', 'CartController@deleteEntry');
-Route::post('/users/cart/{product_id}', 'CartController@incrementQuantity');
+Route::get('users/cart', 'CartController@show')->name('showCart');
+Route::delete('users/cart', 'CartController@empty')->name('emptyCart');
 
-Route::get('/users/cart/checkout', 'CartController@checkout')->name('checkout');
+Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
+
+Route::put('users/cart/{product_id}', 'CartController@addEntry');
+Route::delete('users/cart/{product_id}', 'CartController@deleteEntry');
+Route::post('users/cart/{product_id}/quantity', 'CartController@incrementQuantity')->name('incrementQuantity');
+Route::post('users/cart/{product_id}/quantity', 'CartController@decrementQuantity')->name('decrementQuantity');
 
 //! Wishlist
-Route::get('/users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
-Route::put('/users/wishlist/{product_id}', 'WishlistController@add');
+Route::get('users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
+Route::delete('users/wishlist', 'WishlistController@empty')->name('emptyWhislist');
+
+Route::put('users/wishlist/{product_id}', 'WishlistController@addEntry');
+Route::delete('users/wishlist/{product_id}', 'WishlistController@deleteEntry');
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');

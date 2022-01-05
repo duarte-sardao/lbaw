@@ -27,11 +27,11 @@ class WishlistController extends Controller
     ]); */
   }
   
-  public function add(){
+  public function addEntry(){
 
   }
 
-  public function delete(){
+  public function deleteEntry(){
 
   }
 

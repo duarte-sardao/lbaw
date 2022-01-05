@@ -11,6 +11,16 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 { 
+  public function getCartEntry($id){
+    return CartProduct::
+      where('id_cart', '=', Auth::user()->id)
+      ->where('id_product', '=', $id);
+  }
+
+  public function getAllCartEntries(){
+    return CartProduct::where('id_cart', '=', Auth::user()->id);
+  }
+
   public function show(){
     $user = User::find(Auth::user()->id);
     $products = Cart::find(Auth::user()->id)->Products;
@@ -52,9 +62,7 @@ class CartController extends Controller
 
   public function deleteEntry(Request $request, $product_id)
   {
-    $entry = CartProduct::
-      where('id_cart', '=', Auth::user()->id)
-      ->where('id_product', '=', $product_id);
+    $entry = $this->getCartEntry($product_id);
 
     $entry->delete();
     return redirect()->back();
@@ -62,12 +70,27 @@ class CartController extends Controller
 
   public function incrementQuantity(Request $request, $product_id)
   {
+    $entry = $this->getCartEntry($product_id);
 
+    $entry->quantity++;
+    $entry->save();
+
+    return redirect()->back();
+  }
+
+  public function decrementQuantity(Request $request, $product_id)
+  {
+    $entry = $this->getCartEntry($product_id);
+
+    $entry->quantity--;
+    $entry->save();
+
+    return redirect()->back();
   }
 
   public function empty()
   {
-    $cart = CartProduct::where('id_cart', '=', Auth::user()->id);
+    $cart = $this->getAllCartEntries();
     
     foreach($cart as $entry){
       $entry->delete();
