@@ -9,7 +9,7 @@
       </button>
     </form>
     
-    <a href = "#">
+    <a href = {{url('products/'.$item['product']->id)}}>
       <img src = {{asset($item['product']->image)}} height = "150px">
     </a>
   </th>

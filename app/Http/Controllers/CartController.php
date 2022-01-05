@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartProduct;
-use App\Models\Customer;
-use App\Models\Product;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -64,12 +62,12 @@ class CartController extends Controller
 
   public function incrementQuantity(Request $request, $product_id)
   {
-    
+
   }
 
   public function empty()
   {
-    $cart = Cart::find(Auth::user()->id)->Products;
+    $cart = CartProduct::where('id_cart', '=', Auth::user()->id);
     
     foreach($cart as $entry){
       $entry->delete();

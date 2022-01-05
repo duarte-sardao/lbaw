@@ -32,9 +32,7 @@ Route::get('/admins/{id}', 'AdminController@showProfile');
 //! Users
 Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
-
 Route::post('/users/edit/{id}', 'UserController@updateProfile');
-
 Route::get('/users/addresses', 'CustomerController@showAddresses')->name('showAddresses');
 Route::get('/users/orders', 'CustomerController@showOrders')->name('showOrders');
 Route::get('/users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
@@ -42,21 +40,18 @@ Route::get('/users/notifications', 'CustomerController@showNotifications')->name
 //! Cart
 Route::get('/users/cart', 'CartController@show')->name('showCart');
 Route::delete('/users/cart', 'CartController@empty')->name('emptyCart');
-
 Route::put('/users/cart/{product_id}', 'CartController@addEntry');
 Route::delete('/users/cart/{product_id}', 'CartController@deleteEntry');
 Route::post('/users/cart/{product_id}', 'CartController@incrementQuantity');
 
-Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
+Route::get('/users/cart/checkout', 'CartController@checkout')->name('checkout');
 
 //! Wishlist
 Route::get('/users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
-Route::put('/users/wishlist/{product_id}', 'WishlistController@add')->name('addToWishlist');
+Route::put('/users/wishlist/{product_id}', 'WishlistController@add');
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
-//Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
+Route::get('products/{id}', 'ProductController@showProduct');
 Route::get('products/search', 'ProductController@search')->name('search');
-
-Route::get('products/{id}', 'ProductController@showProduct')->name('productPage');
-Route::put('products/{id}', 'ProductController@addToWishlist')->name('addToWishlist');
+Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
