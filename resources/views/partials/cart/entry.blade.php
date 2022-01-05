@@ -18,6 +18,6 @@
 
   <td class = "cart-entry">
     <h3 class="price">{{$item['product']->price * $item['quantity']}}€</h3>
-    <small>{{$item['quantity'].' x '.$item['product']->price}}</small>
+    <small>{{$item['quantity'].' x '.$item['product']->price.'€'}}</small>
   </td>
 </tr>					

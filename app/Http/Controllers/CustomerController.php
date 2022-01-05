@@ -22,29 +22,6 @@ class CustomerController extends Controller
 
   }
 
-  public function showCart(){
-    $user = Customer::find(Auth::user()->id);
-    $products = Cart::find(Auth::user()->id)->Products;
-    $total = 0;
-    
-    $cart = array();
-
-    foreach($products as $product){ 
-      array_push(
-        $cart, 
-        [
-          'product' => $product, 
-          'quantity' => $product->pivot->quantity
-        ]);
-
-      $total += $product->price * $product->pivot->quantity;
-    }
-
-    return view('pages.profile.cart', [
-      'user' => $user,
-      'cart' => $cart,
-      'total' => $total,
-    ]);
-  }
+  
 }
 ?>

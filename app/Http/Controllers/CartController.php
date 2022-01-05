@@ -3,56 +3,69 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Customer;
+use App\Models\Cart;
+use App\Models\CartProduct;
+
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
 { 
+  public function show(){
+    $user = Customer::find(Auth::user()->id);
+    $products = Cart::find(Auth::user()->id)->Products;
+    $total = 0;
+    
+    $cart = array();
 
-  /**Show Cart
-  *
-  *
-  * @return Response
-  */
-  public function list()
-  {
-      if (!Auth::check()) 
-        return redirect('/login');
+    foreach($products as $product){ 
+      array_push(
+        $cart, 
+        [
+          'product' => $product, 
+          'quantity' => $product->pivot->quantity
+        ]);
 
-      $this->authorize('list', CartProduct::class);
-      $cart = Auth::user()->cart()->orderBy('created_at')->get();
+      $total += $product->price * $product->pivot->quantity;
+    }
 
-      return view('pages.cart', ['cart' => $cart]);
+    return view('pages.profile.cart', [
+      'user' => $user,
+      'cart' => $cart,
+      'total' => $total,
+    ]);
   }
 
-  /**Adds product to cart.
-  *
-  *
-  * @return Cart item
-  */
-  public function add(Request $request)
+  public function addNewEntry(Request $request, $product_id)
   {
-      $cartitem = new CartProduct();
-      $this->authorize('add', $cartitem);
-      $cartitem->amount = $request->input('amount');
-      $cartitem->user_id = Auth::user()->id;
-      $cartitem->save();
+    $entry = new CartProduct();
 
-      return $cartitem;
+    $entry->id_cart = Auth::user()->id;
+    $entry->id_product = (int)$product_id;
+    $entry->quantity = 0;
+    
+    $entry->quantity++;
+    $entry->save();
+
+    //dd($entry);
+    return redirect()->back();
   }
 
-  /**Removes a product from cart.
-  *
-  *
-  * @return Removed cart item
-  */
-  public function delete(Request $request, $id)
+  public function incrementQuantity(Request $request, $product_id)
   {
-      $cartitem = CartProduct::find($id);
 
-      $this->authorize('delete', $cartitem);
-      $cartitem->delete();
+  }
 
-      return $cartitem;
+  public function empty()
+  {
+    $cart = CartProduct::where('id_cart', '=', Auth::user()->id);
+    
+    foreach($cart as $product){
+      $product->delete();
+    }
+
+    return redirect()->back();
   }
 }
 ?>

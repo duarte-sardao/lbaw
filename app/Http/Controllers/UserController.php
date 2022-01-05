@@ -20,15 +20,10 @@ class UserController extends Controller
     $user = User::find(Auth::user()->id);
     //$this->authorize('show', $user);
 
-    return view('pages.profile.user_profile', ['user' => $user]);
-  }
-  
-  public function editProfile()
-  {
-    $user = User::find(Auth::user()->id);
-    //$this->authorize('update', $user);
-
-    return view('pages.profile.edit', ['user' => $user]);
+    return view('pages.profile.user_profile', [
+      'user' => $user,
+      'content' => 'partials.profile.user_data'
+    ]);
   }
 
   /**
@@ -45,7 +40,7 @@ class UserController extends Controller
     }
 
     if(!is_null($request->input('password'))){
-      $user->password = $request->input('password');
+      $user->password = bcrypt($request->input('password'));
     }
 
     if(!is_null($request->input('email'))){
@@ -58,7 +53,7 @@ class UserController extends Controller
 
     $user->save(); 
 
-    return redirect('/users');
+    return redirect()->back();
   }
 
   /**

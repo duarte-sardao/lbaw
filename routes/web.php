@@ -26,35 +26,35 @@ Route::get('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 Route::post('register', 'Auth\RegisterController@register');
 
-//!Admin Profile
+//! Admins
 Route::get('/admins/{id}', 'AdminController@showProfile');
 
-//!Customer Profile
+//! Users
 Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
 
-Route::get('/users/edit', 'UserController@editProfile')->name('editProfile');
 Route::post('/users/edit/{id}', 'UserController@updateProfile');
 
-Route::get('/users/addresses', 'CustomerController@showAddresses')->name('addresses');
-Route::get('/users/orders', 'CustomerController@showOrders')->name('orders');
-Route::get('/users/wishlist', 'CustomerController@showWishlist')->name('wishlist');
-Route::get('/users/cart', 'CustomerController@showCart')->name('cart');
+Route::get('/users/addresses', 'CustomerController@showAddresses')->name('showAddresses');
+Route::get('/users/orders', 'CustomerController@showOrders')->name('showOrders');
+Route::get('/users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
 
-//!Cart
-Route::get('/user/cart', 'CartController@list');
-Route::put('/user/cart', 'CartController@add');
-Route::delete('/user/cart', 'CartController@empty')->name('emptyCart');
+//! Cart
+Route::get('/users/cart', 'CartController@show')->name('cart');
+Route::put('/users/cart/{product_id}', 'CartController@addNewEntry');
+Route::post('/users/cart/{product_id}', 'CartController@incrementQuantity');
+Route::delete('/users/cart', 'CartController@empty')->name('emptyCart');
 
 Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
+
+//! Wishlist
+Route::get('/users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
+Route::put('/users/wishlist/{product_id}', 'WishlistController@add')->name('addToWishlist');
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
 Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
 Route::get('products/search', 'ProductController@search')->name('search');
 
-
 Route::get('products/{id}', 'ProductController@showProduct')->name('productPage');
 Route::put('products/{id}', 'ProductController@addToWishlist')->name('addToWishlist');
-
-//!Other Pages

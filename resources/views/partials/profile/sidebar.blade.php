@@ -5,33 +5,33 @@
 
   <ul class="list-group list-group-numbered">
     <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Profile</div>
-        <span>Edit your profile</span>
+      <div class="d-flex flex-column ms-2 me-auto">
+        <a class="fw-bold" href = {{route('profile')}}>Profile</a>
+        <small>Edit your profile</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Orders</div>
-        <span>Visit your order history</span>
+      <div class="d-flex flex-column ms-2 me-auto">
+        <a class="fw-bold" href = {{route('showOrders')}}>Orders</a>
+        <small>Visit your order history</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Addresses</div>
-        <span>Edit your addresses</span>
+      <div class="d-flex flex-column ms-2 me-auto">
+        <a class="fw-bold" href = {{route('showAddresses')}}>Addresses</a>
+        <small>Edit your addresses</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Wishlist</div>
-        <span>Check the products you wish for</span>
+      <div class="d-flex flex-column ms-2 me-auto">
+        <a class="fw-bold" href = {{route('showWishlist')}}>Wishlist</a>
+        <small>Check the products you wish for</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
-      <div class="ms-2 me-auto">
-        <div class="fw-bold">Notifications</div>
-        <span>Check for notifications</span>
+      <div class="d-flex flex-column ms-2 me-auto">
+        <a class="fw-bold" href = {{route('showNotifications')}}>Notifications</a>
+        <small>Check for notifications</small>
       </div>
     </li>
   </ul>

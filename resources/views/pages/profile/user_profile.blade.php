@@ -21,8 +21,8 @@
   
       @endif
   
-      <!-- User Information -->
-      @include('partials.profile.user_data', ['user' => $user])
+      <!-- User Data -->
+      @include($content, ['user' => $user, 'entries' => $entries])
     </div>
   </section>
 @endsection

@@ -40,6 +40,4 @@
       <img src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
     </div>
   </form>
-
-
 </div>    
