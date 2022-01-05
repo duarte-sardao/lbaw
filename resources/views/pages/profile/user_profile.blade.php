@@ -9,20 +9,20 @@
     </ol>
   </nav>
 
-  <section class="d-flex justify-content-around">
-    <!-- Side panel -->
-    @if(Auth::user()->id >= 5)
-      @include('partials.profile.sidebar') 
-
-    @else
-      @include('partials.admin.sidebar')
-
-    @endif
-
-    <!-- User Information -->
-    @include('partials.profile.user_data', ['user' => $user])
-
-    <!-- User photo -->
-    @include('partials.profile.user_photo', ['user' => $user])
+  <span id = "userId" hidden>{{$user->id}}</span>
+  <section class="container-fluid d-flex justify-content-around">
+    <div class="row w-100">
+      <!-- Side panel -->
+      @if(Auth::user()->id >= 5)
+        @include('partials.profile.sidebar') 
+  
+      @else
+        @include('partials.admin.sidebar')
+  
+      @endif
+  
+      <!-- User Information -->
+      @include('partials.profile.user_data', ['user' => $user])
+    </div>
   </section>
 @endsection

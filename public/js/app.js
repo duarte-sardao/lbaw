@@ -1,7 +1,6 @@
 //!****************************** GLOBAL VARIABLES ******************************!\\
 
 var editProfileButton;
-var submitProfileButton;
 
 //!*********************************** EVENTS ***********************************!\\
 
@@ -14,12 +13,10 @@ window.onload = function(){
 
 function getGlobalVariables(){
   editProfileButton = document.getElementById("editProfileButton");
-  submitProfileButton = document.getElementById("profileSubmitButton");
 }
 
 function addEventListeners(){
   editProfileButton.addEventListener("click", displayEditForm);
-  //submitProfileButton.addEventListener("click", sendEditProfileRequest); 
 }
 
 //!*********************************** UMA COISA QUALQUER ***********************************!\\
@@ -34,32 +31,15 @@ function displayEditForm(){
     inputs[i].removeAttribute("disabled");
   }
 
-  submitProfileButton.removeAttribute("hidden");
-}
+  editProfileButton.hidden = true;
 
-function sendEditProfileRequest(){
-  let id = document.getElementById("userId").innerText;
-
-  const data = {
-    'username' : document.getElementById("username").value,
-    'password' : document.getElementById("password").value,
-    'email' : document.getElementById("email").value,
-    'phone' : document.getElementById("phone").value,
-  };
-
-  console.log(data.username);
-  console.log(data.password);
-  console.log(data.email);
-  console.log(data.phone);
-
-  sendAjaxRequest('PUT', '/users/edit/' + id, data, profileEditedHandler);
-}
-
-function profileEditedHandler(){
-  if(this.status != 200){
-    window.location = "/users";
-    alert("An error occurred when editing your profile.");
-  }
+  const photoInput = document.getElementById("photo");
+  const submitProfileButton = document.getElementById("profileSubmitButton");
+  const uploadPhotoInput = document.getElementById("uploadPhotoInput");
+  
+  submitProfileButton.hidden = false;
+  uploadPhotoInput.hidden = false;
+  photoInput.hidden = false;
 }
 
 

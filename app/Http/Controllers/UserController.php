@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
 
 use App\Models\User;
 
@@ -39,25 +40,20 @@ class UserController extends Controller
   {
     $user = User::find($id);
 
-    $newUsername = $request->input('username');
-    $newPassword = $request->input('password');
-    $newEmail = $request->input('email');
-    $newPhone = $request->input('phone');
-
-    if(!is_null($newUsername)){
-      $user->username = $newUsername;
+    if(!is_null($request->input('username'))){
+      $user->username = $request->input('username');
     }
 
-    if(!is_null($newPassword)){
-      $user->password = $newPassword;
+    if(!is_null($request->input('password'))){
+      $user->password = $request->input('password');
     }
 
-    if(!is_null($newEmail)){
-      $user->email = $newEmail;
+    if(!is_null($request->input('email'))){
+      $user->email = $request->input('email');
     }
 
-    if(!is_null($newPhone)){
-      $user->phone = $newPhone;
+    if(!is_null($request->input('phone'))){
+      $user->phone = $request->input('phone');
     }
 
     $user->save(); 
