@@ -139,7 +139,7 @@ paths:
                  description: 'Failed authentication. Redirect to login form.'
                  value: '/login'
 
- /users/{id}:
+ /users:
    get:
      operationId: R106
      summary: 'R106: View user profile'
@@ -161,7 +161,7 @@ paths:
  /editprofile:
    get:
      operationId: R107
-     summary: 'R107: Register Form'
+     summary: 'R107: Edit profile form'
      description: 'Provide user profile edit form. Access: OWN'
      tags:
        - 'M01: Authentication and Individual Profile'
@@ -667,7 +667,9 @@ paths:
                 items:
                   type: object
                   properties:
-#addproduct beggining
+
+
+ #addproduct beggining
  /addprod:
     post:
       operationId: R212
@@ -1148,7 +1150,7 @@ paths:
                  type: object
                  properties:
 
- /cart/view:
+ /users/cart:
    get:
      operationId: R400
      summary: 'R400: Shows given users cart' 
@@ -1323,7 +1325,7 @@ paths:
          description: 'Ok. Show'
          
  /viewcontact:
-   post:
+   get:
      operationId: R505
      summary: 'R505: View Contact Page'
      description: 'View the Contact Page. Access: PUB'
@@ -1334,7 +1336,7 @@ paths:
          description: 'Ok. Show'
          
  /viewabout:
-   post:
+   get:
      operationId: R506
      summary: 'R506: View About Page'
      description: 'View the About Page. Access: PUB'
@@ -1345,7 +1347,7 @@ paths:
          description: 'Ok. Show'
 
  /viewfaq:
-   post:
+   get:
      operationId: R507
      summary: 'R507: View Faq Page'
      description: 'View the Faq Page. Access: PUB'
