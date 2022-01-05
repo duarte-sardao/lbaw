@@ -31,7 +31,7 @@
         <h5>Most ordered products:</h5>
       </div>
       
-      <div class="row d-flex m-1">
+      <div class="row card-deck d-flex m-1">
         @foreach($productsList1 as $product)
           @include('partials.product.card', ['product' => $product])
         @endforeach
@@ -41,7 +41,7 @@
         <h5>Products you might like:</h5>
       </div>
   
-      <div class="row d-flex m-1">
+      <div class="row card-deck d-flex m-1">
         @foreach($productsList2 as $product)
           @include('partials.product.card', ['product' => $product])
         @endforeach

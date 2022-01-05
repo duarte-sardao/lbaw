@@ -5,32 +5,20 @@
       <a class="navbar-brand m-2" href = "{{ route('home') }}">Grab N' Build</a>
     </div>
 
-    <!-- Brand Dropdown -->
-    <div class="dropdown m-2">
-      <button class="btn btn-secondary dropdown-toggle" id = "brandsDropdown" data-toggle="dropdown">
-        Brands
-      </button>
-      <nav class="dropdown-menu">
-        <a class="dropdown-item" href="#">Action</a>
-        <a class="dropdown-item" href="#">Another action</a>
-        <a class="dropdown-item" href="#">Something else here</a>
-      </nav>
-    </div>
-
     <!-- Categories Dropdown -->
     <div class="dropdown m-2">
       <button class="btn btn-secondary dropdown-toggle" id = "categoriesDropdown" data-toggle="dropdown">
         Categories
       </button>
       <nav class="dropdown-menu">
-        <a class="dropdown-item" href="#">CPUs</a>
-        <a class="dropdown-item" href="#">GPUs</a>
-        <a class="dropdown-item" href="#">Motherboards</a>
-        <a class="dropdown-item" href="#">Storage</a>
-        <a class="dropdown-item" href="#">Cases</a>
-        <a class="dropdown-item" href="#">Coolers</a>
-        <a class="dropdown-item" href="#">Power Supplies</a>
-        <a class="dropdown-item" href="#">Other</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/CPU')}}" --}}>CPUs</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/GPU')}}" --}}>GPUs</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/Motherboard')}}" --}}>Motherboards</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/Storage')}}" --}}>Storage</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/PcCase')}}" --}}>Cases</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/Cooler')}}" --}}>Coolers</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/Powersupply')}}" --}}>Power Supplies</a>
+        <a class="dropdown-item" {{-- href="{{url('products/categories/Other')}}" --}}>Other</a>
       </nav>
     </div>
   </div>  

@@ -14,6 +14,7 @@ use App\Models\Other;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 { 
@@ -32,6 +33,12 @@ class ProductController extends Controller
   public function getAllProducts(){
     return view('pages.products.products_list', ['results' => Product::all()]);
   }
+
+  public function getCategoryProducts($category){
+    $results = $category::all();
+
+    return view('pages.products.products_list', ['results' => $results]);
+  }
   
   public function showProduct($id){
     $product = Product::find($id);
@@ -44,14 +51,14 @@ class ProductController extends Controller
   }
   
   public function retrieveProductDetails($id){
-    if(CPU::find($id)->exists()) return $this->retrieveCpuDetails($id);
+    /* if(CPU::find($id)->exists()) return $this->retrieveCpuDetails($id);
     else if(GPU::find($id)->exists()) return $this->retrieveGpuDetails($id);
     else if(Motherboard::find($id)->exists()) return $this->retrieveMotherboardDetails($id);
     else if(Cooler::find($id)->exists()) return $this->retrieveCoolerDetails($id);
     else if(PowerSupply::find($id)->exists()) return $this->retrievePowerSupplyDetails($id);
     else if(Storage::find($id)->exists()) return $this->retrieveStorageDetails($id);
     else if(PcCase::find($id)->exists()) return $this->retrievePcCaseDetails($id);
-    else return $this->retrieveOtherDetails($id);
+    else return $this->retrieveOtherDetails($id); */
   }
     
 

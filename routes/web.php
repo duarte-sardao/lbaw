@@ -50,7 +50,9 @@ Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
+Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
 Route::get('products/search', 'ProductController@search')->name('search');
+
 
 Route::get('products/{id}', 'ProductController@showProduct')->name('productPage');
 Route::put('products/{id}', 'ProductController@addToWishlist')->name('addToWishlist');

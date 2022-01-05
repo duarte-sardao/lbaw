@@ -12,7 +12,7 @@
   </nav>
 
   <!-- Products Grid -->
-  <div class="container-fluid m-5">
+  <div class="card-deck m-5">
     <p>Your search retrieved <strong>{{count($results)}} products</strong>.</p>
     @php($i = 0)
 

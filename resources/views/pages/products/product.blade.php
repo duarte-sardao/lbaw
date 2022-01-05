@@ -14,8 +14,8 @@
   <div class = "container-fluid mt-2">
     <div class="row m-5 mt-1">
       <div class="card col-md m-1">
-        <div class="card-body d-flex flex-column justify-content-between">
-          <img src = {{asset($product->image)}} width = "100%">
+        <div class="card-body d-flex justify-content-center">
+          <img src = {{asset($product->image)}} width = "70%">
         </div>
       </div>
 
@@ -27,13 +27,13 @@
           <h3 class="mt-2 price">{{$product->price}}€</h3>
 
           @if($product->stock > 0)
-            <span class = "text-success">
+            <h4 class = "text-success mb-0">
               <i class = "fa fa-check"></i> In Stock
-            </span>
+            </h4>
           @else
-            <span class = "text-danger">
+            <h4 class = "text-danger mb-0">
               <i class = "fa fa-times"></i> Out of Stock
-            </span>
+            </h4>
           @endif
 
           <div class="w-50 d-flex justify-content-between">
@@ -59,7 +59,7 @@
       <h4>Reviews</h4>
       <hr>
 
-      <form class = "card border-primary mt-4">
+      <form class = "card border-primary mt-4" method = "POST" action = "">
         <h4 class="card-title  m-2">
           Write your review!
         </h4>
