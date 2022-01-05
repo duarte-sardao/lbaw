@@ -63,8 +63,8 @@ paths:
                type: string
              examples:
                302Success:
-                 description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 description: 'Successful authentication. Redirect to home page.'
+                 value: '/'
                302Error:
                  description: 'Failed authentication. Redirect to login form.'
                  value: '/login'
@@ -133,11 +133,11 @@ paths:
                type: string
              examples:
                302Success:
-                 description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 description: 'Successful authentication. Redirect to home page.'
+                 value: '/'
                302Failure:
-                 description: 'Failed authentication. Redirect to login form.'
-                 value: '/login'
+                 description: 'Failed authentication. Redirect to register form.'
+                 value: '/register'
 
  /users:
    get:
@@ -158,17 +158,7 @@ paths:
        '200':
          description: 'Ok. Show User Profile UI'
          
- /editprofile:
-   get:
-     operationId: R107
-     summary: 'R107: Edit profile form'
-     description: 'Provide user profile edit form. Access: OWN'
-     tags:
-       - 'M01: Authentication and Individual Profile'
-     responses:
-       '200':
-         description: 'Ok. Show Edit UI'
-
+ /users/edit/{id}:
    post:
      operationId: R108
      summary: 'R108: Edit Action'
@@ -199,10 +189,10 @@ paths:
              examples:
                302Success:
                  description: 'Successful authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 value: '/users'
                302Failure:
                  description: 'Failed authentication. Redirect to user profile.'
-                 value: '/users/{id}'
+                 value: '/users'
 
  /api/products:
     get:
