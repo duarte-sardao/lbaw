@@ -160,8 +160,8 @@ paths:
          
  /users/edit/{id}:
    post:
-     operationId: R108
-     summary: 'R108: Edit Action'
+     operationId: R107
+     summary: 'R107: Edit Action'
      description: 'Processes the new user profile info form submission. Access: OWN'
      tags:
        - 'M01: Authentication and Individual Profile'
