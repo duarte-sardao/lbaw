@@ -1107,8 +1107,7 @@ paths:
        '200':
          description: Success
 
- /users/wishlist/{product_id}:
-    post:
+    delete:
      operationId: R305
      summary: 'R305: Remove Product from Wishlist'
      description: 'Removes Product from User Wishlist: Access: OWN'
