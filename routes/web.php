@@ -27,7 +27,7 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 //! Admins
-Route::get('admins/{id}', 'AdminController@showProfile');
+//Route::get('admins', 'AdminController@showProfile')->name('showAdminProfile');
 
 //! Users
 Route::get('users', 'UserController@showProfile')->name('profile');

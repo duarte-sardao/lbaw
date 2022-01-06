@@ -18,19 +18,19 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
-        <a class="fw-bold" href = {{route('showAddresses')}}>Addresses</a>
+        <a class="fw-bold" href = {{/* route('showAddresses') */}}>Addresses</a>
         <small>Edit your addresses</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
-        <a class="fw-bold" href = {{route('showWishlist')}}>Wishlist</a>
+        <a class="fw-bold" href = {{/* route('showWishlist') */}}>Wishlist</a>
         <small>Check the products you wish for</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
-        <a class="fw-bold" href = {{route('showNotifications')}}>Notifications</a>
+        <a class="fw-bold" href = {{/* route('showNotifications') */}}>Notifications</a>
         <small>Check for notifications</small>
       </div>
     </li>
