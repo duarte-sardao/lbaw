@@ -199,7 +199,7 @@ CREATE TABLE Review(
     rating INTEGER NOT NULL CHECK (rating >= 1 AND rating <= 5),
     yesVotes INTEGER NOT NULL DEFAULT 0,
     noVotes INTEGER NOT NULL DEFAULT 0,
-    id_Customer INTEGER NOT NULL,
+    id_Customer INTEGER,
     id_Product INTEGER NOT NULL,
 
     CONSTRAINT Review_PK PRIMARY KEY(id),

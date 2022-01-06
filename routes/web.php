@@ -33,9 +33,9 @@ Route::get('admins/{id}', 'AdminController@showProfile');
 Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
 Route::post('users/edit/{id}', 'UserController@updateProfile');
-Route::get('users/addresses', 'CustomerController@showAddresses')->name('showAddresses');
-Route::get('users/orders', 'CustomerController@showOrders')->name('showOrders');
-Route::get('users/notifications', 'CustomerController@showNotifications')->name('showNotifications');
+Route::get('users/addresses', 'UserControllerController@showAddresses')->name('showAddresses');
+Route::get('users/orders', 'UserController@showOrders')->name('showOrders');
+Route::get('users/notifications', 'UserController@showNotifications')->name('showNotifications');
 
 //! Cart
 Route::get('users/cart', 'CartController@show')->name('showCart');

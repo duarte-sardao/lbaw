@@ -4,7 +4,7 @@
   </div>
 
   <form class = "d-flex mt-3" id = "profile-form" method = "POST" action = "{{url('/users/edit/'.$user->id)}}">
-    {{ csrf_field() }}
+    @csrf
 
     <div class="container-fluid">
       <div class="form-group">
@@ -29,15 +29,23 @@
 
       <div class="d-flex justify-content-between">
         <span class = "btn btn-primary mt-2" id = "editProfileButton">Edit</span>
-        <button class="btn btn-outline-success mt-1" type="submit"  id = "profileSubmitButton" hidden>Submit</button>
         
         <label class = "btn btn-outline-primary mt-1" for="profilePic" id = "uploadPhotoInput" hidden>Upload a picture</label>
         <input class="form-control-file m-1" type="file" name = "profilePic" id="profilePic" hidden>
+      
+          <button class="btn btn-outline-success m-1" type="submit"  id = "profileSubmitButton" hidden>Submit</button>
       </div> 
     </div>
     
-    <div class="user-photo">
+    <div class="d-flex flex-column">
       <img src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
     </div>
+  </form>
+  <form class="m-1" method = "POST" action = {{route('deleteProfile')}}>
+    @csrf
+    @method('delete')
+    <button class = "btn btn-danger" type = "submit">
+      Delete Account
+    </button>
   </form>
 </div>    

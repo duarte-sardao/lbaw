@@ -33,13 +33,13 @@ function displayEditForm(){
 
   editProfileButton.hidden = true;
 
-  const photoInput = document.getElementById("photo");
   const submitProfileButton = document.getElementById("profileSubmitButton");
   const uploadPhotoInput = document.getElementById("uploadPhotoInput");
+  const profileDeleteButton = document.getElementById("profileDeleteButton");
   
   submitProfileButton.hidden = false;
   uploadPhotoInput.hidden = false;
-  photoInput.hidden = false;
+  profileDeleteButton.hidden = false;
 }
 
 
