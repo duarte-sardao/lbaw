@@ -85,8 +85,8 @@ paths:
                type: string
              examples:
                302Success:
-                 description: 'Successful logout. Redirect to login form.'
-                 value: '/login'
+                 description: 'Successful logout. Redirect to home page.'
+                 value: '/'
 
  /register:
    get:
@@ -113,14 +113,16 @@ paths:
            schema:
              type: object
              properties:
-               name:
+               username:
                  type: string
                email:
                  type: string
-               picture:
+               password:
                  type: string
-                 format: binary
+               phone: 
+                 type: string
              required:
+                - username
                 - email
                 - password
 
@@ -147,17 +149,22 @@ paths:
      tags:
        - 'M01: Authentication and Individual Profile'
 
-     parameters:
-       - in: path
-         name: id
-         schema:
-           type: integer
-         required: true
-
      responses:
        '200':
          description: 'Ok. Show User Profile UI'
-         
+
+
+   delete:
+     operationId: R107
+     summary: 'R107: Delete user profile'
+     description: 'Delete user profile. Access: USR'
+     tags:
+      - 'M01: Authentication and Individual Profile'
+
+     response:
+        '200':
+          description: 'Ok. Delete User Profile'
+
  /users/edit/{id}:
    post:
      operationId: R107
@@ -173,11 +180,14 @@ paths:
            schema:
              type: object
              properties:
-               name:
+               username:
                  type: string
-               picture:
+               password:
                  type: string
-                 format: binary
+               email:
+                 type: string
+               phone: 
+                 type: string
 
      responses:
        '302':
@@ -194,10 +204,10 @@ paths:
                  description: 'Failed authentication. Redirect to user profile.'
                  value: '/users'
 
- /api/products:
+ /products/search:
     get:
       operationId: R202
-      summary: 'R202: Search Products API' #different search functions per type of product? since different specs
+      summary: 'R202: Search Products' #different search functions per type of product? since different specs
       description: 'Searches for products and returns the results as JSON. Access: PUB.'
 
       tags: 
@@ -209,19 +219,7 @@ paths:
           description: String to use for full-text search
           schema:
             type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
+          required: true
 
       responses:
         '200':
@@ -997,7 +995,7 @@ paths:
      responses:
        '200':
          description: 'Ok. Show Prod Info'
-
+   
  /addreview:
     post:
      operationId: R301
@@ -1097,8 +1095,8 @@ paths:
                  description: 'Failed authentication. Redirect to prod.'
                  value: '/products/{id}'
 
- /addtowishlist:
-    post:
+ /products/{id}:
+    put:
      operationId: R304
      summary: 'R304: Add Product to Wishlist'
      description: 'Adds Product to User Wishlist: Access: USR'
@@ -1121,7 +1119,7 @@ paths:
        '200':
          description: Success
 
- /viewwishlist:
+ /users/wishlist:
     get:
      operationId: R306
      summary: 'R306: List products in wishlist'
@@ -1140,11 +1138,24 @@ paths:
                  type: object
                  properties:
 
+ /users/wishlist/{product_id}:
+    put:
+     operationId: R307
+     summary: 'R307: Add product to wishlist'
+     description: 'Add product to wishlist. Access: USR.'
+
+     tags: 
+       - 'M04: Orders'
+
+     responses:
+       '200':
+         description: Success
+     
  /users/cart:
    get:
      operationId: R400
      summary: 'R400: Shows given users cart' 
-     description: 'Show cart. Access: OWN.'
+     description: 'Show cart. Access: USR.'
 
      tags: 
        - 'M04: Orders'
@@ -1159,11 +1170,23 @@ paths:
                items:
                  type: object
                  properties:
-
- /cart/add:
-   post:
+   
+   delete:
      operationId: R401
-     summary: 'R401: Adds product by ID to cart' 
+     summary: 'R401: Empty given users cart'
+     description: 'Empty cart. Access: USR.'
+
+     tags:
+      - 'M04: Orders'
+
+     responses:
+       '200':
+         description: Success
+    
+ /users/cart/{product_id}:
+   put:
+     operationId: R402
+     summary: 'R402: Adds product by ID to cart' 
      description: 'Adds given product to cart. Access: PUB.'
 
      tags: 
@@ -1187,10 +1210,9 @@ paths:
        '200':
          description: Success
 
- /cart/update:
    post:
-     operationId: R402
-     summary: 'R402: Updates quantity of a product in cart' 
+     operationId: R403
+     summary: 'R403: Updates quantity of a product in cart' 
      description: 'Update product in cart. Access: OWN.'
 
      tags: 
@@ -1214,10 +1236,9 @@ paths:
        '200':
          description: Success
 
- /cart/remove:
-   post:
-     operationId: R403
-     summary: 'R403: Removes a product in cart' 
+   delete:
+     operationId: R404
+     summary: 'R404: Removes a product in cart' 
      description: 'Remove product in cart. Access: OWN.'
 
      tags: 
@@ -1235,10 +1256,10 @@ paths:
        '200':
          description: Success
 
- /cart/checkout:
+ /users/cart/checkout:
    post:
-     operationId: R404
-     summary: 'R404: Checkouts cart of Products' 
+     operationId: R405
+     summary: 'R405: Checkouts cart of Products' 
      description: 'Checkout cart of products. Access: OWN.'
 
      tags: 
@@ -1281,9 +1302,7 @@ paths:
                items:
                  type: object
                  properties:
-                  
-
- /blockusr:
+                  /blockusr:
    post:
      operationId: R502
      summary: 'R502: Block User'
@@ -1293,6 +1312,7 @@ paths:
      responses:
        '200':
          description: 'Ok. Block'
+ 
  /unblockusr:
    post:
      operationId: R503
@@ -1303,6 +1323,7 @@ paths:
      responses:
        '200':
          description: 'Ok. Unblock'
+ 
  /viewhistory:
    post:
      operationId: R504
@@ -1314,7 +1335,7 @@ paths:
        '200':
          description: 'Ok. Show'
          
- /viewcontact:
+ /contacts:
    get:
      operationId: R505
      summary: 'R505: View Contact Page'
@@ -1325,7 +1346,7 @@ paths:
        '200':
          description: 'Ok. Show'
          
- /viewabout:
+ /about:
    get:
      operationId: R506
      summary: 'R506: View About Page'
@@ -1336,7 +1357,7 @@ paths:
        '200':
          description: 'Ok. Show'
 
- /viewfaq:
+ /faq:
    get:
      operationId: R507
      summary: 'R507: View Faq Page'
