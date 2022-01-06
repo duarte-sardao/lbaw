@@ -1,7 +1,16 @@
 <div class="col w-60 d-flex flex-column">
   <div class="d-flex justify-content-between">
     <h4>Your account data</h4>
+    <form class="m-1" method = "POST" action = {{route('deleteProfile')}}>
+      @csrf
+      @method('delete')
+      <button class = "btn btn-danger" type = "submit">
+        Delete Account
+      </button>
+    </form>
   </div>
+
+  
 
   <form class = "d-flex mt-3" id = "profile-form" method = "POST" action = "{{url('/users/edit/'.$user->id)}}">
     @csrf
@@ -40,12 +49,5 @@
     <div class="d-flex flex-column">
       <img src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
     </div>
-  </form>
-  <form class="m-1" method = "POST" action = {{route('deleteProfile')}}>
-    @csrf
-    @method('delete')
-    <button class = "btn btn-danger" type = "submit">
-      Delete Account
-    </button>
   </form>
 </div>    

@@ -14,8 +14,7 @@ class CartController extends Controller
   public function getCartEntry($id){
     return CartProduct::
       where('id_cart', '=', Auth::user()->id)
-      ->where('id_product', '=', $id)
-      ->get();
+      ->where('id_product', '=', $id);
   }
 
   public function getAllCartEntries(){
@@ -63,26 +62,26 @@ class CartController extends Controller
 
   public function deleteEntry(Request $request, $product_id)
   {
-    $entry = $this->getCartEntry($product_id)[0];
+    $entry = $this->getCartEntry($product_id);
 
+    //dd($entry);
     $entry->delete();
     return redirect()->back();
   }
 
   public function incrementQuantity(Request $request, $product_id)
   {
-    $entry = $this->getCartEntry($product_id)[0];
-    
+    $entry = $this->getCartEntry($product_id);
+
     $entry->quantity++;
     $entry->save();
     
-    //dd($entry);
     return redirect()->back();
   }
 
   public function decrementQuantity(Request $request, $product_id)
   {
-    $entry = $this->getCartEntry($product_id)[0];
+    $entry = $this->getCartEntry($product_id);
 
     $entry->quantity--;
     $entry->save();
