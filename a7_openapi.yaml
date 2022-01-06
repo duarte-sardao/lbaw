@@ -874,8 +874,8 @@ paths:
 
  /users/cart/checkout:
    post:
-     operationId: R405
-     summary: 'R405: Checkouts cart of Products' 
+     operationId: R406
+     summary: 'R406: Checkouts cart of Products' 
      description: 'Checkout cart of products. Access: OWN.'
 
      tags: 
