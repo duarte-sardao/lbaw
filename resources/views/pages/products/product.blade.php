@@ -36,7 +36,7 @@
             </h4>
           @endif
 
-          <div class="w-50 d-flex justify-content-between">
+          <div class="w-50 d-flex justify-content-end">
             <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
               @csrf
               @method('PUT')
@@ -57,12 +57,41 @@
             </form>
           </div>
         </div>
-      </div>
-    </div>
 
-    <div class="row m-5">
-      <h4>Details</h4>
-      <hr>
+        <div class="row m-5">
+          <table class = "table">
+            <thead>
+              <tr>
+                <th scope = "col">Details</th>
+                <th scope = "col">Values</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if(!is_null($product->size))
+                <tr>
+                  <td>Size</td>
+                  <td>{{$product->size}}</td>
+                </tr>
+              @endif  
+
+              @if(!is_null($product->brand))
+                <tr>
+                  <td>Brand</td>
+                  <td>{{$product->brand}}</td>
+                </tr>
+              @endif 
+
+              @if(!is_null($product->rating))
+                <tr>
+                  <td>Rating</td>
+                  <td>{{$product->rating}} / 5.0</td>
+                </tr>
+              @endif  
+            </tbody>
+            
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="row m-5">

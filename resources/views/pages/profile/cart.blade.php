@@ -30,7 +30,8 @@
 				<tbody>
 					@foreach($cart as $item)
 						@include('partials.cart.entry', ['item' => $item])
-					@endforeach	
+					@endforeach
+				</tbody>
 			</table> 
 			
 			@include('partials.cart.card')
