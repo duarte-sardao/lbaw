@@ -55,14 +55,6 @@
             <input class = "form-control" id="password-confirm" type="password" name="password_confirmation" required>
           </div>
         </div>
-        
-
-        <div class="form-group m-2 d-flex flex-column">
-          <label class = "mb-2" for="phone">
-            <span>Phone</span>
-          </label>
-          <input class = "form-control" id="phone" type="phone" name="phone">
-        </div>
 
         <div class="form-group m-2 d-flex flex-column">
           <button class = "btn btn-primary" type="submit">Register</button>

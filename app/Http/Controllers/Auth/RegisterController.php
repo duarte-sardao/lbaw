@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
+use App\Models\Cart;
 use App\Models\Customer;
+use App\Models\User;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -72,9 +74,13 @@ class RegisterController extends Controller
             'username' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'phone' => $data['phone'],
+            'phone' => null,
             'isbanned' => 0,
             'profilepic' => 'images/default.jpg'
+        ]);
+
+        Cart::create([
+            'id' => $newUser->id
         ]);
 
         Customer::create([

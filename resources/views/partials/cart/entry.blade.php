@@ -22,24 +22,24 @@
   </td>
 
   <td class = "cart-entry">
-    <form class = "m-1" method = "POST" 
+    {{-- <form class = "m-1" method = "POST" 
     action = {{url('users/cart/'.$item['product']->id.'/increment')}}>
       @csrf
 
       <button class="btn" type = "submit">
         <i class="fa fa-plus"></i>
       </button>
-    </form>
+    </form> --}}
 
     <span>{{$item['quantity']}}</span>
 
-    <form class = "m-1" method = "POST" 
+    {{-- <form class = "m-1" method = "POST" 
     action = {{url('users/cart/'.$item['product']->id.'/decrement')}}>
       @csrf
 
       <button class="btn" type = "submit">
         <i class="fa fa-minus"></i>
-      </button>
+      </button> --}}
     </form>
   </td>
 
