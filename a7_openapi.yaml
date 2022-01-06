@@ -256,6 +256,7 @@ paths:
                     #  type: string
                     #type:
                     #  type: string
+ 
  /products/{id}:
    get:
      operationId: R203
