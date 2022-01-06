@@ -798,10 +798,31 @@ paths:
        '200':
          description: Success
 
-   post:
+   delete:
      operationId: R403
-     summary: 'R403: Updates quantity of a product in cart' 
-     description: 'Update product in cart. Access: OWN.'
+     summary: 'R403: Removes a product in cart' 
+     description: 'Remove product in cart. Access: OWN.'
+
+     tags: 
+       - 'M04: Orders'
+
+     parameters:
+       - in: query
+         name: id
+         description: Product ID
+         schema:
+           type: number
+         required: true
+
+     responses:
+       '200':
+         description: Success
+
+ /users/cart/{product_id}/increment:
+   post:
+     operationId: R404
+     summary: 'R404: Increment quantity of a product in cart' 
+     description: 'Increment product in cart. Access: OWN.'
 
      tags: 
        - 'M04: Orders'
@@ -824,10 +845,11 @@ paths:
        '200':
          description: Success
 
-   delete:
-     operationId: R404
-     summary: 'R404: Removes a product in cart' 
-     description: 'Remove product in cart. Access: OWN.'
+ /users/cart/{product_id}/decrement:
+   post:
+     operationId: R405
+     summary: 'R405: Decrement quantity of a product in cart' 
+     description: 'Decrement product in cart. Access: OWN.'
 
      tags: 
        - 'M04: Orders'
@@ -838,6 +860,12 @@ paths:
          description: Product ID
          schema:
            type: number
+         required: true
+       - in: query
+         name: quantity
+         description: Product quantity
+         schema:
+           type: integer
          required: true
 
      responses:
