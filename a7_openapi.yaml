@@ -655,7 +655,16 @@ paths:
                 items:
                   type: object
                   properties:
-
+ /products/{id}:
+   get:
+     operationId: R210
+     summary: 'R210: Product Info'
+     description: 'Provides info on specified product. Access: PUB'
+     tags:
+       - 'M02: Products'
+     responses:
+       '200':
+         description: 'Ok. Show Prod Info'
 
  #addproduct beggining
  /addprod:
@@ -985,16 +994,7 @@ paths:
          '200':
            description: Success
 
- /products/{id}:
-   get:
-     operationId: R210
-     summary: 'R210: Product Info'
-     description: 'Provides info on specified product. Access: PUB'
-     tags:
-       - 'M02: Products'
-     responses:
-       '200':
-         description: 'Ok. Show Prod Info'
+ 
    
  /addreview:
     post:
