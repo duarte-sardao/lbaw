@@ -1,6 +1,6 @@
 <tr class = "text-center mt-3 mb-3">
   <th class = "text-start">
-    <form class = "m-1" method = "POST" action = {{"/users/cart/".$item['product']->id}}>
+    <form class = "m-1" method = "POST" action = {{url('users/cart/'.$item['product']->id)}}>
       @csrf
       @method('delete')
 
@@ -22,7 +22,25 @@
   </td>
 
   <td class = "cart-entry">
+    <form class = "m-1" method = "POST" 
+    action = {{url('users/cart/'.$item['product']->id.'/increment')}}>
+      @csrf
+
+      <button class="btn" type = "submit">
+        <i class="fa fa-plus"></i>
+      </button>
+    </form>
+
     <span>{{$item['quantity']}}</span>
+
+    <form class = "m-1" method = "POST" 
+    action = {{url('users/cart/'.$item['product']->id.'/decrement')}}>
+      @csrf
+
+      <button class="btn" type = "submit">
+        <i class="fa fa-minus"></i>
+      </button>
+    </form>
   </td>
 
   <td class = "cart-entry">

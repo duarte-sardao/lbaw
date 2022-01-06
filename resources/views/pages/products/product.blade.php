@@ -37,14 +37,24 @@
           @endif
 
           <div class="w-50 d-flex justify-content-between">
-            <button class = "btn btn-outline-danger w-100 m-1" type="button">
-              <i class = "fa fa-heart"></i>
-              <span>Add to Wishlist</span> 
-            </button>
-            <button class = "btn btn-outline-primary w-100 m-1" type="button">
-              <i class = "fa fa-cart-plus"></i>
-              <span>Add to Cart</span> 
-            </button>
+            <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
+              @csrf
+              @method('PUT')
+    
+              <button class="btn btn-outline-danger" type = "submit">
+                <i class="fa fa-heart"></i>
+                <span>Add to Wishlist</span>
+              </button>
+            </form>
+            <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
+              @csrf
+              @method('PUT')
+    
+              <button class="btn btn-outline-primary" type = "submit">
+                <i class="fa fa-cart-plus"></i>
+                <span>Add to Cart</span>
+              </button>
+            </form>
           </div>
         </div>
       </div>

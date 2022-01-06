@@ -45,8 +45,8 @@ Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
 
 Route::put('users/cart/{product_id}', 'CartController@addEntry');
 Route::delete('users/cart/{product_id}', 'CartController@deleteEntry');
-Route::post('users/cart/{product_id}/quantity', 'CartController@incrementQuantity')->name('incrementQuantity');
-Route::post('users/cart/{product_id}/quantity', 'CartController@decrementQuantity')->name('decrementQuantity');
+Route::post('users/cart/{product_id}/increment', 'CartController@incrementQuantity');
+Route::post('users/cart/{product_id}/decrement', 'CartController@decrementQuantity');
 
 //! Wishlist
 Route::get('users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
