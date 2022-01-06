@@ -256,8 +256,19 @@ paths:
                     #  type: string
                     #type:
                     #  type: string
+ /products/{id}:
+   get:
+     operationId: R203
+     summary: 'R203: Product Info'
+     description: 'Provides info on specified product. Access: PUB'
+     tags:
+       - 'M02: Products'
+     responses:
+       '200':
+         description: 'Ok. Show Prod Info'
 
  
+
  /addprod:
     post:
       operationId: R212
