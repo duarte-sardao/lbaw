@@ -1095,7 +1095,7 @@ paths:
                  description: 'Failed authentication. Redirect to prod.'
                  value: '/products/{id}'
 
- /products/{id}:
+ /users/wishlist/{product_id}:
     put:
      operationId: R304
      summary: 'R304: Add Product to Wishlist'
@@ -1107,7 +1107,7 @@ paths:
        '200':
          description: Success
 
- /removefromwishlist:
+ /users/wishlist/{product_id}:
     post:
      operationId: R305
      summary: 'R305: Remove Product from Wishlist'
@@ -1125,7 +1125,7 @@ paths:
      summary: 'R306: List products in wishlist'
      description: 'Lists Products from User Wishlist: Access: OWN'
      tags:
-       - 'M03: Reviews and Wish list'
+       - 'M03: Reviews and Wishlist'
        
      responses:
        '200':
@@ -1137,20 +1137,18 @@ paths:
                items:
                  type: object
                  properties:
-
- /users/wishlist/{product_id}:
-    put:
+    
+    delete:
      operationId: R307
-     summary: 'R307: Add product to wishlist'
-     description: 'Add product to wishlist. Access: USR.'
-
-     tags: 
-       - 'M04: Orders'
+     summary: 'R307: Empty Wishlist'
+     description: 'Empties the user wishlist. Access: OWN'
+     tags:
+      - 'M03: Reviews and Wishlist'  
 
      responses:
        '200':
-         description: Success
-     
+         description: Success           
+
  /users/cart:
    get:
      operationId: R400
