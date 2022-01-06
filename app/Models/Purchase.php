@@ -21,7 +21,7 @@ class Purchase extends Model {
 
     //Linking Purchase to Address table overriding the FK name
     public function addresses(){
-        return $this->belongsTo('App\Models\Address', 'id_customer');
+        return $this->belongsTo('App\Models\Address', 'id_address');
     }
 
     //Linking Purchase to Cart table overriding the FK name

@@ -231,7 +231,7 @@ CREATE TABLE Purchase(
     id_Customer INTEGER NOT NULL,
     id_Address INTEGER NOT NULL,
     id_PaymentMethod INTEGER NOT NULL,
-    id_Cart INTEGER NOT NULL UNIQUE,
+    id_Cart INTEGER NOT NULL,
 
     CHECK (deliveryDate > orderDate),
 
