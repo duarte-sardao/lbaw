@@ -167,7 +167,7 @@ paths:
 
  /users/edit/{id}:
    post:
-     operationId: R107
+     operationId: R108
      summary: 'R107: Edit Action'
      description: 'Processes the new user profile info form submission. Access: OWN'
      tags:
