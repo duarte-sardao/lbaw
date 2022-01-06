@@ -1124,7 +1124,7 @@ paths:
      summary: 'R306: List products in wishlist'
      description: 'Lists Products from User Wishlist: Access: OWN'
      tags:
-       - 'M03: Reviews and Wishlist'
+       - 'M03: Reviews and Wish list'
        
      responses:
        '200':
@@ -1142,7 +1142,7 @@ paths:
      summary: 'R307: Empty Wishlist'
      description: 'Empties the user wishlist. Access: OWN'
      tags:
-      - 'M03: Reviews and Wishlist'  
+      - 'M03: Reviews and Wish list'  
 
      responses:
        '200':
