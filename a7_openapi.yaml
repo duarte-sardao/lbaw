@@ -204,6 +204,19 @@ paths:
                  description: 'Failed authentication. Redirect to user profile.'
                  value: '/users'
 
+ /products/categories/{category}:
+    get:
+      operationId: R201
+      summary: 'R201: Show products from a specific category'
+      description: 'Displays all the products that belong to a specific category'
+
+      tags:
+        - 'M02: Products'
+
+      responses:
+       '200':
+         description: 'Ok. Show products from this category'
+ 
  /products/search:
     get:
       operationId: R202
@@ -243,421 +256,20 @@ paths:
                     #  type: string
                     #type:
                     #  type: string
+ 
+ /products/{id}:
+   get:
+     operationId: R203
+     summary: 'R203: Product Info'
+     description: 'Provides info on specified product. Access: PUB'
+     tags:
+       - 'M02: Products'
+     responses:
+       '200':
+         description: 'Ok. Show Prod Info'
 
- /api/cpu:
-    get:
-      operationId: R203
-      summary: 'R203: Search CPU API' 
-      description: 'Searches for CPUs and returns the results as JSON. Access: PUB.'
+ 
 
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: basefreq
-          description: Float with the basefreq
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: turbofreq
-          description: Float with the turbofreq
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: socket
-          description: String for socket
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: threads
-          description: Integer corresponding to threads
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: cores
-          description: Integer corresponding to cores
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/gpu:
-    get:
-      operationId: R204
-      summary: 'R204: Search GPU API' 
-      description: 'Searches for GPUs and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: memory
-          description: Int with memory
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: coreclock
-          description: Int with the coreclock
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: boostclock
-          description: Int for boostclock
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: boostclock
-          description: Integer corresponding to boostclock
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: hdmiports
-          description: Integer corresponding to hdmi ports
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: dispports
-          description: Integer corresponding to display ports
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/motherboard:
-    get:
-      operationId: R205
-      summary: 'R205: Search Motherboards API' 
-      description: 'Searches for motherboards and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: socket
-          description: String for socket
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: type
-          description: String for motherboardtype
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/storage:
-    get:
-      operationId: R206
-      summary: 'R206: Search Storage API' 
-      description: 'Searches for storage and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: capacity
-          description: Int for storage capacity
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: type
-          description: String for storagetype
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/case:
-    get:
-      operationId: R207
-      summary: 'R207: Search Case API' 
-      description: 'Searches for cases and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: color
-          description: String for color
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: weight
-          description: String for weight
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: type
-          description: String for case type
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/cooler:
-    get:
-      operationId: R208
-      summary: 'R208: Search Cooler API' 
-      description: 'Searches for coolers and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: type
-          description: String for cooler type
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-                  
- /api/powersupply:
-    get:
-      operationId: R209
-      summary: 'R209: Search PowerSupply API' 
-      description: 'Searches for power supplies and returns the results as JSON. Access: PUB.'
-
-      tags: 
-        - 'M02: Products'
-
-      parameters:
-        - in: query
-          name: query
-          description: String to use for full-text search
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: wattage
-          description: Int for wattage
-          schema:
-            type: integer
-          required: false
-        - in: query
-          name: certification
-          description: String for certification
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: type
-          description: String for supply type
-          schema:
-            type: string
-          required: false
-        - in: query
-          name: price
-          description: Float with the product price
-          schema:
-            type: number
-          required: false
-        - in: query
-          name: classification
-          description: Integer corresponding to the product classification
-          schema:
-            type: integer
-          required: false
-
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: object
-                  properties:
-
-
- #addproduct beggining
  /addprod:
     post:
       operationId: R212
@@ -985,16 +597,7 @@ paths:
          '200':
            description: Success
 
- /products/{id}:
-   get:
-     operationId: R210
-     summary: 'R210: Product Info'
-     description: 'Provides info on specified product. Access: PUB'
-     tags:
-       - 'M02: Products'
-     responses:
-       '200':
-         description: 'Ok. Show Prod Info'
+ 
    
  /addreview:
     post:
@@ -1207,10 +810,31 @@ paths:
        '200':
          description: Success
 
-   post:
+   delete:
      operationId: R403
-     summary: 'R403: Updates quantity of a product in cart' 
-     description: 'Update product in cart. Access: OWN.'
+     summary: 'R403: Removes a product in cart' 
+     description: 'Remove product in cart. Access: OWN.'
+
+     tags: 
+       - 'M04: Orders'
+
+     parameters:
+       - in: query
+         name: id
+         description: Product ID
+         schema:
+           type: number
+         required: true
+
+     responses:
+       '200':
+         description: Success
+
+ /users/cart/{product_id}/increment:
+   post:
+     operationId: R404
+     summary: 'R404: Increment quantity of a product in cart' 
+     description: 'Increment product in cart. Access: OWN.'
 
      tags: 
        - 'M04: Orders'
@@ -1233,10 +857,11 @@ paths:
        '200':
          description: Success
 
-   delete:
-     operationId: R404
-     summary: 'R404: Removes a product in cart' 
-     description: 'Remove product in cart. Access: OWN.'
+ /users/cart/{product_id}/decrement:
+   post:
+     operationId: R405
+     summary: 'R405: Decrement quantity of a product in cart' 
+     description: 'Decrement product in cart. Access: OWN.'
 
      tags: 
        - 'M04: Orders'
@@ -1248,6 +873,12 @@ paths:
          schema:
            type: number
          required: true
+       - in: query
+         name: quantity
+         description: Product quantity
+         schema:
+           type: integer
+         required: true
 
      responses:
        '200':
@@ -1255,8 +886,8 @@ paths:
 
  /users/cart/checkout:
    post:
-     operationId: R405
-     summary: 'R405: Checkouts cart of Products' 
+     operationId: R406
+     summary: 'R406: Checkouts cart of Products' 
      description: 'Checkout cart of products. Access: OWN.'
 
      tags: 
