@@ -52,6 +52,7 @@ drop type if exists StorageType;
 drop type if exists CoolerType;
 drop type if exists PowerSupplyType;
 drop type if exists OrderStatusType;
+drop type if exists CategoryType;
 
 -----------------------
 --       TYPES       --
