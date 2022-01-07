@@ -37,24 +37,31 @@
           @endif
 
           <div class="w-50 d-flex justify-content-end">
-            <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
-              @csrf
-              @method('PUT')
-    
-              <button class="btn btn-outline-danger" type = "submit">
-                <i class="fa fa-heart"></i>
-                <span>Add to Wishlist</span>
-              </button>
-            </form>
-            <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
-              @csrf
-              @method('PUT')
-    
-              <button class="btn btn-outline-primary" type = "submit">
-                <i class="fa fa-cart-plus"></i>
-                <span>Add to Cart</span>
-              </button>
-            </form>
+              @if(Auth::id() >= 5)
+                <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
+                  @csrf
+                  @method('PUT')
+        
+                  <button class="btn btn-outline-danger" type = "submit">
+                    <i class="fa fa-heart"></i>
+                    <span>Add to Wishlist</span>
+                  </button>
+                </form>
+              @endif
+
+            @if(Auth::id() >= 5 && Auth::check())
+              @if($product->stock > 0)
+                <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
+                  @csrf
+                  @method('PUT')
+        
+                  <button class="btn btn-outline-primary" type = "submit">
+                    <i class="fa fa-cart-plus"></i>
+                    <span>Add to Cart</span>
+                  </button>
+                </form>
+              @endif
+            @endif
           </div>
         </div>
 
@@ -66,6 +73,7 @@
                 <th scope = "col">Values</th>
               </tr>
             </thead>
+
             <tbody>
               @if(!is_null($product->size))
                 <tr>
@@ -88,7 +96,6 @@
                 </tr>
               @endif  
             </tbody>
-            
           </table>
         </div>
       </div>

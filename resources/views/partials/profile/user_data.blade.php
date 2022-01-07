@@ -10,8 +10,6 @@
     </form>
   </div>
 
-  
-
   <form class = "d-flex mt-3" id = "profile-form" method = "POST" action = "{{url('/users/edit/'.$user->id)}}">
     @csrf
 
