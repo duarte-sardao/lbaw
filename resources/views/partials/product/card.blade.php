@@ -1,6 +1,6 @@
 <div class="card col m-1 h-100">
   <div class="card-body d-flex flex-column justify-content-between">
-    <a href = "{{url('products/'.$product->id)}}">
+    <a href = {{'products/'}}>
       <img src = {{asset($product->image)}} width = "100%">
     </a>
 
@@ -12,7 +12,7 @@
         <h3 class="mt-2 price">{{$product->price}}€</h3>
         
         <div class="d-flex justify-content-between align-items-center">
-          @if($product->stock > 0)
+          @if($product->stock > 0 && Auth::id() >= 5)
             <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
               @csrf
               @method('PUT')
@@ -22,7 +22,6 @@
               </button>
             </form>
           @endif
-          
           {{-- <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
             @csrf
             @method('PUT')

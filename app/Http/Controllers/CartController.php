@@ -46,7 +46,11 @@ class CartController extends Controller
   }
 
   public function addEntry(Request $request, $product_id)
-  {
+  { 
+    //! If the user is not authenticated, he is redirected to the login page
+    if(!Auth::check())
+      return redirect(route('login'));
+
     $entry = new CartProduct();
 
     $entry->id_cart = Auth::user()->id;

@@ -28,7 +28,8 @@ class WishlistController extends Controller
   }
   
   public function addEntry(){
-
+    if(!Auth::check())
+      return redirect(route('login'));
   }
 
   public function deleteEntry(){
