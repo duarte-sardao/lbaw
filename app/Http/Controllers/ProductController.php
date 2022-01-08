@@ -14,7 +14,6 @@ use App\Models\Other;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class ProductController extends Controller
 { 
@@ -36,8 +35,21 @@ class ProductController extends Controller
   }
 
   public function getCategoryProducts($category){
-    $results = $category::all();
+    /* dd($category); */
+    $results = array();
+    switch($category){
+      case "CPU": $results = CPU::all(); break;
+      case "GPU": $results = GPU::all(); break;
+      case "Motherboard": $results = Motherboard::all(); break;
+      case "Storage": $results = Storage::all(); break;
+      case "PcCase": $results = PcCase::all(); break;
+      case "Cooler": $results = Cooler::all(); break;
+      case "PowerSupply": $results = PowerSupply::all(); break;
+      case "Other": $results = Other::all(); break;
+      default: return abort(404, "Invalid category");
+    }
 
+    /* dd($results); */
     return view('pages.products.products_list', ['results' => $results]);
   }
   

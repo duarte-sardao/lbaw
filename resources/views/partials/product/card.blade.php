@@ -1,9 +1,10 @@
 <div class="card col m-1 h-100">
+  
   <div class="card-body d-flex flex-column justify-content-between">
     <a href = {{url('products/'.$product->id)}}>
-      <img src = {{asset($product->image)}} width = "100%">
+      <img src = {{asset($product->image)}} width = "100%" alt = "{{$product->name}}">
     </a>
-
+    
     <div class="product-info d-flex flex-column">
       <strong>{{$product->name}}</strong>
       <small>{{$product->description}}</small>

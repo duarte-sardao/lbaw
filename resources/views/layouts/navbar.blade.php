@@ -11,14 +11,14 @@
         Categories
       </button>
       <nav class="dropdown-menu">
-        <a class="dropdown-item" {{-- href="{{url('products/categories/CPU')}}" --}}>CPUs</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/GPU')}}" --}}>GPUs</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/Motherboard')}}" --}}>Motherboards</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/Storage')}}" --}}>Storage</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/PcCase')}}" --}}>Cases</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/Cooler')}}" --}}>Coolers</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/Powersupply')}}" --}}>Power Supplies</a>
-        <a class="dropdown-item" {{-- href="{{url('products/categories/Other')}}" --}}>Other</a>
+        <a class="dropdown-item" href="{{url('products/categories/CPU')}}">CPUs</a>
+        <a class="dropdown-item" href="{{url('products/categories/GPU')}}">GPUs</a>
+        <a class="dropdown-item" href="{{url('products/categories/Motherboard')}}">Motherboards</a>
+        <a class="dropdown-item" href="{{url('products/categories/Storage')}}">Storage</a>
+        <a class="dropdown-item" href="{{url('products/categories/PcCase')}}">Cases</a>
+        <a class="dropdown-item" href="{{url('products/categories/Cooler')}}">Coolers</a>
+        <a class="dropdown-item" href="{{url('products/categories/Powersupply')}}">Power Supplies</a>
+        <a class="dropdown-item" href="{{url('products/categories/Other')}}">Other</a>
       </nav>
     </div>
   </div>  
