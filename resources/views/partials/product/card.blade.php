@@ -12,7 +12,8 @@
         <h3 class="mt-2 price">{{$product->price}}€</h3>
         
         <div class="d-flex justify-content-between align-items-center">
-          @if($product->stock > 0 && Auth::id() >= 5)
+          {{-- Se o utilizador não estiver autenticado ou estiver mas n ser um admin (stock válido) --}}
+          @if(Auth::guest() || (Auth::check() && Auth::id() >= 5 && $product->stock > 0))
             <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
               @csrf
               @method('PUT')
@@ -22,14 +23,17 @@
               </button>
             </form>
           @endif
-          {{-- <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
-            @csrf
-            @method('PUT')
-  
-            <button class="btn btn-outline-danger" type = "submit">
-              <i class="fa fa-heart"></i>
-            </button>
-          </form> --}}
+
+          @if(Auth::guest() || (Auth::check() && Auth::id() >= 5))
+            <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
+              @csrf
+              @method('PUT')
+    
+              <button class="btn btn-outline-danger" type = "submit">
+                <i class="fa fa-heart"></i>
+              </button>
+            </form>
+          @endif
         </div>
       </div>
     </div>
