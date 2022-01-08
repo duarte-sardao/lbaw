@@ -687,7 +687,7 @@ INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 10, 2);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 21, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 32, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 43, 1);
-INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 54, 3);
+INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (1, 54, 2);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (3, 60, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (3, 70, 1);
 INSERT INTO CartProduct(id_Cart, id_Product, quantity) VALUES (3, 21, 1);

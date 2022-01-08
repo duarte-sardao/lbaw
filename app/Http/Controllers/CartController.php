@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\CartProduct;
 use App\Models\Product;
 use App\Models\User;
@@ -11,14 +12,31 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 { 
+  private function getCart(){
+    return Cart::where('id_customer', '=', Auth::id())
+    ->where('isactive', '=', true)
+    ->first();
+  }
+
   private function getCartEntry($id){
-    return CartProduct::
-      where('id_cart', '=', Auth::id())
-      ->where('id_product', '=', $id);
+    //Gets the active cart of the currently authenticated user
+    $cart = $this->getCart();
+
+    //Gets the entry of the active cart
+    $entry = CartProduct::where('id_cart', '=', $cart->id)
+    ->where('id_product', '=', $id);
+
+    return $entry;
   }
 
   private function getAllCartEntries(){
-    return CartProduct::where('id_cart', '=', Auth::id())->get();
+    //Gets the active cart of the currently authenticated user
+    $cart = $this->getCart();
+
+    //Gets the products of the active cart of the user
+    $entries = CartProduct::where('id_cart', '=', $cart->id)->get();
+
+    return $entries;
   }
 
   public function show(){
@@ -57,7 +75,7 @@ class CartController extends Controller
 
     $entry = new CartProduct();
 
-    $entry->id_cart = Auth::id();
+    $entry->id_cart = $this->getCart()->id;
     $entry->id_product = (int)$product_id;
     $entry->quantity = 0;
     
@@ -70,7 +88,7 @@ class CartController extends Controller
   public function deleteEntry(Request $request, $product_id)
   {
     $entry = $this->getCartEntry($product_id);
-
+    //dd($entry);
     $entry->delete();
     return redirect()->back();
   }

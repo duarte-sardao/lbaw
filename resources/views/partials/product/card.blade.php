@@ -14,11 +14,11 @@
         
         <div class="d-flex justify-content-between align-items-center">
           {{-- If the user's unauthenticaded or is not an admin (with valid stock) --}}
-          @if(Auth::guest() || (Auth::check() && Auth::id() >= 5 && $product->stock > 0))
+          @if(Auth::guest() || (Auth::check() && !Auth::user()->isadmin && $product->stock > 0))
             @include('partials.product.add_to_cart_button', ['sentence' => '', 'product' => $product])
           @endif
 
-          @if(Auth::guest() || (Auth::check() && Auth::id() >= 5))
+          @if(Auth::guest() || (Auth::check() && !Auth::user()->isadmin))
             @include('partials.product.add_to_wishlist_button', ['sentence' => '', 'product' => $product])
           @endif
         </div>

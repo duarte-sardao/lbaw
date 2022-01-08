@@ -1,10 +1,11 @@
-
 <?php
 
-//namespace App\Policies;
+namespace App\Policies;
 
-use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Models\User;
+
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
@@ -12,17 +13,17 @@ class UserPolicy
   
   public function show(User $user)
   {
-    return Auth::user()->id == $user->id; 
+    return Auth::id() == $user->id || Auth::user()->isadmin; 
   }
   
   public function update(User $user)
   {
-    return Auth::user()->id == $user->id;
+    return Auth::id() == $user->id || Auth::user()->isadmin;
   }
   
   public function delete(User $user)
   {
-    return Auth::user()->id == $user->id;
+    return Auth::id() == $user->id || Auth::user()->isadmin;
   }
 }
 
