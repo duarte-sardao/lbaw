@@ -131,7 +131,7 @@
       </form>
 
       @foreach($product->reviews as $review)
-        @include('partials.product.review')
+       {{--  @include('partials.product.review') --}}
       @endforeach
     </div>
   </div> 

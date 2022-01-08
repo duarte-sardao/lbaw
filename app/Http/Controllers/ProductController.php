@@ -27,6 +27,7 @@ class ProductController extends Controller
 
     $results = $firstQuery->union($secondQuery)->union($thirdQuery)->get();
 
+
     return view('pages.products.products_list', ['results' => $results]);
   }
 

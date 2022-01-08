@@ -58,5 +58,5 @@ Route::delete('users/wishlist/{product_id}', 'WishlistController@deleteEntry');
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
 Route::get('products/{id}', 'ProductController@showProduct');
-Route::get('products/search', 'ProductController@search')->name('search');
+Route::post('products/search', 'ProductController@search')->name('search');
 Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');

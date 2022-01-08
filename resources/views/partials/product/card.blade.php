@@ -1,6 +1,6 @@
 <div class="card col m-1 h-100">
   <div class="card-body d-flex flex-column justify-content-between">
-    <a href = {{'products/'}}>
+    <a href = {{url('products/'.$product->id)}}>
       <img src = {{asset($product->image)}} width = "100%">
     </a>
 

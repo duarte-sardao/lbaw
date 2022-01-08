@@ -24,14 +24,15 @@
   </div>  
 
   <!-- Search bar -->
-  <form class="form-inline d-flex w-50" method = "GET" action = "{{route('search')}}">
-    <input class="form-control mr-sm-2" type="search" name = "search" placeholder="Search" aria-label="Search">
+  <form class="form-inline d-flex w-50" method = "POST" action = "{{route('search')}}">
+    @csrf
+    
+    <input class="form-control mr-sm-2" type="search" name = "search" placeholder="Search">
   </form>
   
   <!-- User features -->
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-    <span hidden id = "userId">{{Auth::user()->id}}</span>
       <a class="btn btn-primary m-2" href = "{{route('profile')}}">
         <i class="fa fa-user"></i>
         <span>{{Auth::user()->username}}</span>
