@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartProduct;
+use App\Models\Product;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -11,31 +12,33 @@ use Illuminate\Http\Request;
 
 class CartController extends Controller
 { 
-  public function getCartEntry($id){
+  private function getCartEntry($id){
     return CartProduct::
       where('id_cart', '=', Auth::user()->id)
       ->where('id_product', '=', $id);
   }
 
-  public function getAllCartEntries(){
+  private function getAllCartEntries(){
     return CartProduct::where('id_cart', '=', Auth::user()->id)->get();
   }
 
   public function show(){
-    $user = User::find(Auth::user()->id);
-    $products = Cart::find(Auth::user()->id)->Products;
+    $user = User::find(Auth::id());
+    $cartProducts = $this->getAllCartEntries();
     $cart = array();
 
     $total = 0;
-    foreach($products as $product){ 
+    foreach($cartProducts as $entry){
+      $product = Product::find($entry->id_product);
       array_push(
-        $cart, 
+        $cart,
         [
-          'product' => $product, 
-          'quantity' => $product->pivot->quantity
-        ]);
+          'product' => $product,
+          'quantity' => $entry->quantity
+        ]
+      );
 
-      $total += $product->price * $product->pivot->quantity;
+      $total += $product->price * $entry->quantity;
     }
 
     return view('pages.profile.cart', [
@@ -60,7 +63,6 @@ class CartController extends Controller
     $entry->quantity++;
     $entry->save();
 
-    //dd($entry);
     return redirect()->back();
   }
 
@@ -68,7 +70,6 @@ class CartController extends Controller
   {
     $entry = $this->getCartEntry($product_id);
 
-    //dd($entry);
     $entry->delete();
     return redirect()->back();
   }
@@ -90,7 +91,6 @@ class CartController extends Controller
     $entry->quantity--;
     $entry->save();
 
-    //dd($entry);
     return redirect()->back();
   }
 
