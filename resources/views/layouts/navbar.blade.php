@@ -17,7 +17,7 @@
         <a class="dropdown-item" href="{{url('products/categories/Storage')}}">Storage</a>
         <a class="dropdown-item" href="{{url('products/categories/PcCase')}}">Cases</a>
         <a class="dropdown-item" href="{{url('products/categories/Cooler')}}">Coolers</a>
-        <a class="dropdown-item" href="{{url('products/categories/Powersupply')}}">Power Supplies</a>
+        <a class="dropdown-item" href="{{url('products/categories/PowerSupply')}}">Power Supplies</a>
         <a class="dropdown-item" href="{{url('products/categories/Other')}}">Other</a>
       </nav>
     </div>
