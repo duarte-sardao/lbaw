@@ -12,7 +12,7 @@ class Address extends Model {
     protected $table = 'address';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'streename', 'streetnumber', 'zipcode', 'floor', 'aptnumber'];
+    protected $fillable = ['id', 'streetname', 'streetnumber', 'zipcode', 'floor', 'aptnumber'];
 
     //Linking Address to CustomerAddress table overriding its name and FKs
     public function customers(){

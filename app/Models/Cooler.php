@@ -13,7 +13,7 @@ class Cooler extends Model {
     protected $table = 'cooler';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'type'];
+    protected $fillable = ['id', 'type', 'id_product'];
 
     //Linking Cooler to Product table overriding the FK name
     public function products(){

@@ -12,7 +12,7 @@ class PaymentMethod extends Model {
     protected $table = 'paymentmethod';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id'];
+    protected $fillable = ['id', 'type'];
 
     //Linking PaymentMethod to Paypal table overriding FK name
     public function paypals(){

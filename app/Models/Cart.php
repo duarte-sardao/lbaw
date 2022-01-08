@@ -12,7 +12,7 @@ class Cart extends Model {
     protected $table = 'cart';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id'];
+    protected $fillable = ['id', 'isactive', 'id_customer'];
 
     //Linking Cart to Purchase table overriding the FK name
     public function purchases(){

@@ -3,7 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Paypal extends Model {
+class Card extends Model {
     
     //The relation does not have created_at and updated_at columns
     public $timestamps = false;
@@ -12,7 +12,7 @@ class Paypal extends Model {
     protected $table = 'paypal';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'email', 'id_paymentmethod'];
+    protected $fillable = ['id', 'name', 'number', 'expdate', 'cvv', 'id_paymentmethod'];
 
     //Linking Paypal to PaymentMethod table overriding the FK name
     public function paymentMethods(){

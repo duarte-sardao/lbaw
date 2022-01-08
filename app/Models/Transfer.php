@@ -12,7 +12,7 @@ class Transfer extends Model {
     protected $table = 'transfer';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'entity', 'reference', 'validfor'];
+    protected $fillable = ['id', 'entity', 'reference', 'validfor', 'id_paymentmethod'];
 
     //Linking Transfer to PaymentMethod table overriding the FK name
     public function paymentMethods(){

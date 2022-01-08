@@ -12,7 +12,7 @@ class Motherboard extends Model {
     protected $table = 'motherboard';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'socket', 'type'];
+    protected $fillable = ['id', 'socket', 'type', 'id_product'];
 
     //Linking Motherboard to Product table overriding the FK name
     public function products(){

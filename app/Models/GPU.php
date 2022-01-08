@@ -12,7 +12,7 @@ class GPU extends Model {
     protected $table = 'gpu';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'memory', 'coreclock', 'boostclock ', 'hdmiports ', 'displayports '];
+    protected $fillable = ['id', 'memory', 'coreclock', 'boostclock ', 'hdmiports ', 'displayports', 'id_product'];
 
     //Linking GPU to Product table overriding the FK name
     public function products(){

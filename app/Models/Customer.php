@@ -12,10 +12,10 @@ class Customer extends Model {
     protected $table = 'customer';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'id_cart'];
+    protected $fillable = ['id', 'id_user'];
 
     //Pointing Customer to Account table overriding FK name
-    public function accounts(){
+    public function users(){
         return $this->belongsTo('App\Models\User', 'id');
     }
 
@@ -36,7 +36,7 @@ class Customer extends Model {
 
     //Pointing Customer to Cart table overriding FK name
     public function carts(){
-        return $this->hasOne('App\Models\Cart', 'id_cart');
+        return $this->hasMany('App\Models\Cart', 'id_customer');
     }
 
     //Pointing Customer to Wishlist table overriding its name and FKs

@@ -12,7 +12,7 @@ class Other extends Model {
     protected $table = 'other';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id'];
+    protected $fillable = ['id', 'id_product'];
 
     //Linking Other to Product table overriding the FK name
     public function products(){

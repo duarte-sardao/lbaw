@@ -12,7 +12,7 @@ class PcCase extends Model {
     protected $table = 'pccase';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'color', 'weight', 'type'];
+    protected $fillable = ['id', 'color', 'weight', 'type', 'id_product'];
 
     //Linking PcCase to Product table overriding the FK name
     public function products(){

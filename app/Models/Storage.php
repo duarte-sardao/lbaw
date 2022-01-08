@@ -12,7 +12,7 @@ class Storage extends Model {
     protected $table = 'storage';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'capacity', 'type'];
+    protected $fillable = ['id', 'capacity', 'type', 'id_product'];
 
     //Linking Storage to Product table overriding the FK name
     public function products(){
