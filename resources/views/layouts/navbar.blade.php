@@ -38,15 +38,16 @@
         <span>{{Auth::user()->username}}</span>
       </a> 
 
-      @if(Auth::user()->id >= 5)
-      <a class="btn btn-primary m-2" href = "{{route('showCart')}}">
-        <i class="fa fa-shopping-cart"></i>
-      </a> 
+      @if(!Auth::user()->isadmin)
+        <a class="btn btn-primary m-2" href = "{{route('showCart')}}">
+          <i class="fa fa-shopping-cart"></i>
+        </a> 
       @endif
 
       <a class="btn btn-primary m-2" href = "{{route('logout')}}">
         <i class="fa fa-sign-out"></i>
       </a> 
+
     @else
       <a class="btn btn-primary m-2" href = "{{ route('login') }}"> 
         <i class="fa fa-sign-in"></i>

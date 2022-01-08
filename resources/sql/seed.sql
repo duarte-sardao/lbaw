@@ -1,58 +1,63 @@
-drop table if exists "User" CASCADE;
-drop table if exists Address CASCADE;
-drop table if exists Admin CASCADE;
-drop table if exists Card CASCADE;
-drop table if exists Cart CASCADE;
-drop table if exists CartProduct CASCADE;
-drop table if exists Cooler CASCADE;
-drop table if exists CPU CASCADE;
-drop table if exists Customer CASCADE;
-drop table if exists CustomerAddress CASCADE;
-drop table if exists GPU CASCADE;
-drop table if exists Motherboard CASCADE;
-drop table if exists Notification CASCADE;
-drop table if exists Other CASCADE;
-drop table if exists PaymentMethod CASCADE;
-drop table if exists Paypal CASCADE;
-drop table if exists PcCase CASCADE;
-drop table if exists PowerSupply CASCADE;
-drop table if exists Product CASCADE;
-drop table if exists Purchase CASCADE;
-drop table if exists Review CASCADE;
-drop table if exists Storage CASCADE;
-drop table if exists Transfer CASCADE;
-drop table if exists Wishlist CASCADE;
-drop trigger if exists updateProductRating on Review;
-drop trigger if exists verificaStock on CartProduct;
-drop trigger if exists blockBannedUsers on Review;
-drop trigger if exists orderStatusNotification on Purchase;
-drop trigger if exists productSearchUpdate on Product;
---drop trigger if exists cartCustomer on Customer;
-drop function if exists updateProductRating;
-drop function if exists verificaStock;
-drop function if exists blockBannedUsers;
-drop function if exists orderStatusNotification;
-drop function if exists productSearchUpdate;
---drop function if exists cartCustomer;
-drop index if exists acc_id;
-drop index if exists product_price;
-drop index if exists product_brand;
-drop index if exists cooler_type;
-drop index if exists powersupply_type;
-drop index if exists case_type;
-drop index if exists storage_type;
-drop index if exists mb_type;
-drop index if exists review_author;
-drop index if exists review_product;
-drop index if exists review_rating;
-drop index if exists order_user;
-drop index if exists search_idx;
-drop type if exists MotherboardType;
-drop type if exists StorageType;
-drop type if exists CoolerType;
-drop type if exists PowerSupplyType;
-drop type if exists OrderStatusType;
-drop type if exists CategoryType;
+DROP TABLE IF EXISTS "User" CASCADE;
+DROP TABLE IF EXISTS Address CASCADE;
+DROP TABLE IF EXISTS Admin CASCADE;
+DROP TABLE IF EXISTS Card CASCADE;
+DROP TABLE IF EXISTS Cart CASCADE;
+DROP TABLE IF EXISTS CartProduct CASCADE;
+DROP TABLE IF EXISTS Cooler CASCADE;
+DROP TABLE IF EXISTS CPU CASCADE;
+DROP TABLE IF EXISTS Customer CASCADE;
+DROP TABLE IF EXISTS CustomerAddress CASCADE;
+DROP TABLE IF EXISTS GPU CASCADE;
+DROP TABLE IF EXISTS Motherboard CASCADE;
+DROP TABLE IF EXISTS Notification CASCADE;
+DROP TABLE IF EXISTS Other CASCADE;
+DROP TABLE IF EXISTS PaymentMethod CASCADE;
+DROP TABLE IF EXISTS Paypal CASCADE;
+DROP TABLE IF EXISTS PcCase CASCADE;
+DROP TABLE IF EXISTS PowerSupply CASCADE;
+DROP TABLE IF EXISTS Product CASCADE;
+DROP TABLE IF EXISTS Purchase CASCADE;
+DROP TABLE IF EXISTS Review CASCADE;
+DROP TABLE IF EXISTS Storage CASCADE;
+DROP TABLE IF EXISTS Transfer CASCADE;
+DROP TABLE IF EXISTS Wishlist CASCADE;
+
+DROP TRIGGER IF EXISTS updateProductRating on Review;
+DROP TRIGGER IF EXISTS verificaStock on CartProduct;
+DROP TRIGGER IF EXISTS blockBannedUsers on Review;
+DROP TRIGGER IF EXISTS orderStatusNotification on Purchase;
+DROP TRIGGER IF EXISTS productSearchUpdate on Product;
+--DROP TRIGGER IF EXISTS cartCustomer on Customer;
+
+DROP FUNCTION IF EXISTS updateProductRating;
+DROP FUNCTION IF EXISTS verificaStock;
+DROP FUNCTION IF EXISTS blockBannedUsers;
+DROP FUNCTION IF EXISTS orderStatusNotification;
+DROP FUNCTION IF EXISTS productSearchUpdate;
+--DROP FUNCTION IF EXISTS cartCustomer;
+
+DROP INDEX IF EXISTS acc_id;
+DROP INDEX IF EXISTS product_price;
+DROP INDEX IF EXISTS product_brand;
+DROP INDEX IF EXISTS cooler_type;
+DROP INDEX IF EXISTS powersupply_type;
+DROP INDEX IF EXISTS case_type;
+DROP INDEX IF EXISTS storage_type;
+DROP INDEX IF EXISTS mb_type;
+DROP INDEX IF EXISTS review_author;
+DROP INDEX IF EXISTS review_product;
+DROP INDEX IF EXISTS review_rating;
+DROP INDEX IF EXISTS order_user;
+DROP INDEX IF EXISTS search_idx;
+
+DROP TYPE IF EXISTS MotherboardType;
+DROP TYPE IF EXISTS StorageType;
+DROP TYPE IF EXISTS CoolerType;
+DROP TYPE IF EXISTS PowerSupplyType;
+DROP TYPE IF EXISTS OrderStatusType;
+DROP TYPE IF EXISTS CategoryType;
+DROP TYPE IF EXISTS PaymentType;
 
 -----------------------
 --       TYPES       --
@@ -63,6 +68,7 @@ CREATE TYPE CoolerType as ENUM('Water', 'Air');
 CREATE TYPE PowerSupplyType as ENUM('Full-Modular', 'Semi-Modular', 'Non-Modular');
 CREATE TYPE OrderStatusType as ENUM ('Processing', 'Packed', 'Shipped', 'Delivered');
 CREATE TYPE CategoryType as ENUM('CPU', 'GPU', 'Motherboard', 'PcCase', 'PowerSupply', 'Cooler', 'Storage', 'Other');
+CREATE TYPE PaymentType as ENUM('Transfer', 'Card', 'Paypal');
 
 
 
@@ -79,7 +85,6 @@ CREATE TABLE "User"(
     isBanned BOOLEAN DEFAULT false,
     isAdmin BOOLEAN DEFAULT false,
     remember_token VARCHAR,
-    
     
     CONSTRAINT User_PK PRIMARY KEY (id)
 );

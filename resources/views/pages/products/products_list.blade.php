@@ -8,8 +8,6 @@
     @php($i = 0)
     <div class="row m-3">
       @foreach($products as $product)
-
-      @php(dd($product))
         <div class="col-md">
           @include('partials.product.card', ['product' => $product])
         </div>

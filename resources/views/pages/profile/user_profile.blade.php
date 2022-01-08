@@ -6,7 +6,7 @@
   <section class="container-fluid d-flex justify-content-around">
     <div class="row w-100">
       <!-- Side panel -->
-      @if(Auth::user()->id >= 5)
+      @if(!Auth::user()->isadmin)
         @include('partials.profile.sidebar') 
   
       @else

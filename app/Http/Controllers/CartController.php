@@ -13,12 +13,12 @@ class CartController extends Controller
 { 
   private function getCartEntry($id){
     return CartProduct::
-      where('id_cart', '=', Auth::user()->id)
+      where('id_cart', '=', Auth::id())
       ->where('id_product', '=', $id);
   }
 
   private function getAllCartEntries(){
-    return CartProduct::where('id_cart', '=', Auth::user()->id)->get();
+    return CartProduct::where('id_cart', '=', Auth::id())->get();
   }
 
   public function show(){
@@ -57,7 +57,7 @@ class CartController extends Controller
 
     $entry = new CartProduct();
 
-    $entry->id_cart = Auth::user()->id;
+    $entry->id_cart = Auth::id();
     $entry->id_product = (int)$product_id;
     $entry->quantity = 0;
     

@@ -20,7 +20,7 @@ class UserController extends Controller
    
   public function showProfile()
   {
-    $user = User::find(Auth::user()->id);
+    $user = User::find(Auth::id());
     //$this->authorize('show', $user);
 
     return view('pages.profile.user_profile', [

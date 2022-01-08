@@ -11,10 +11,10 @@ use Illuminate\Support\Facades\Auth;
 class WishlistController extends Controller
 { 
   public function showWishlist(){
-    /* $user = User::find(Auth::user()->id);
+    /* $user = User::find(Auth::id());
     $entries = 
       Wishlist::select('id_product', 'id_product as id')
-      ->where('id_cart', '=', Auth::user()->id);
+      ->where('id_cart', '=', Auth::id());
 
     $wishlist = array();
     
