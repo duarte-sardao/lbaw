@@ -28,7 +28,7 @@ class ProductController extends Controller
 
     return view('pages.products.products_list', 
     [
-      'results' => $results,
+      'products' => $results,
       'breadcrumbs' => [route('allProducts') => 'Products'],
       'current' => 'Search'
     ]);
@@ -36,7 +36,7 @@ class ProductController extends Controller
 
   public function getAllProducts(){
     return view('pages.products.products_list', [
-      'results' => Product::all(),
+      'products' => Product::all(),
       'breadcrumbs' => [route('allProducts') => 'Products'],
       'current' => null
     ]);
@@ -44,21 +44,22 @@ class ProductController extends Controller
 
   public function getCategoryProducts($category){
     /* dd($category); */
-    $results = array();
+    $products = array();
     switch($category){
-      case "CPU": $results = CPU::all(); break;
-      case "GPU": $results = GPU::all(); break;
-      case "Motherboard": $results = Motherboard::all(); break;
-      case "Storage": $results = Storage::all(); break;
-      case "PcCase": $results = PcCase::all(); break;
-      case "Cooler": $results = Cooler::all(); break;
-      case "PowerSupply": $results = PowerSupply::all(); break;
-      case "Other": $results = Other::all(); break;
+      case "CPU": $products = CPU::all(); break;
+      case "GPU": $products = GPU::all(); break;
+      case "Motherboard": $products = Motherboard::all(); break;
+      case "Storage": $products = Storage::all(); break;
+      case "PcCase": $products = PcCase::all(); break;
+      case "Cooler": $products = Cooler::all(); break;
+      case "PowerSupply": $products = PowerSupply::all(); break;
+      case "Other": $products = Other::all(); break;
     }
 
-    /* dd($results); */
-    return view('pages.products.products_list', [
-      'results' => $results,
+    /* dd($products); */
+    return view('pages.products.products_list', 
+    [
+      'products' => $products,
       'breadcrumbs' => [route('allProducts') => 'Products'],
       'current' => $category
     ]);
@@ -68,7 +69,8 @@ class ProductController extends Controller
     $product = Product::find($id);
     $details = null;
     
-    return view('pages.products.product', [
+    return view('pages.products.product', 
+    [
       'product' => $product,
       'details' => $details,
       'breadcrumbs' => [route('allProducts') => 'Products'],
