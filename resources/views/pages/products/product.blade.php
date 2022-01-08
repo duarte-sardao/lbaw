@@ -1,16 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-  <!-- Breadcrumbs -->
-  <nav class = "m-3" aria-label="breadcrumb">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{route('allProducts')}}">Products</a></li>
-      <li class="breadcrumb-item" aria-current="page">{{$product->name}}</li>
-    </ol>
-  </nav>
-
   <div class = "container-fluid mt-2">
     <div class="row m-5 mt-1">
       <div class="card col-md m-1">
@@ -37,67 +27,17 @@
           @endif
 
           <div class="w-50 d-flex justify-content-end">
-              @if(Auth::id() >= 5)
-                <form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
-                  @csrf
-                  @method('PUT')
-        
-                  <button class="btn btn-outline-danger" type = "submit">
-                    <i class="fa fa-heart"></i>
-                    <span>Add to Wishlist</span>
-                  </button>
-                </form>
-              @endif
+            @if(Auth::guest() || (Auth::check() && Auth::id() >= 5 && $product->stock > 0))
+              @include('partials.product.add_to_cart_button', ['sentence' => 'Add to Cart', 'product' => $product])
+            @endif
 
-            @if(Auth::id() >= 5 && Auth::check())
-              @if($product->stock > 0)
-                <form class = "m-1" method = "POST" action = {{url('/users/cart/'.$product->id)}}>
-                  @csrf
-                  @method('PUT')
-        
-                  <button class="btn btn-outline-primary" type = "submit">
-                    <i class="fa fa-cart-plus"></i>
-                    <span>Add to Cart</span>
-                  </button>
-                </form>
-              @endif
+            @if(Auth::guest() || (Auth::check() && Auth::id() >= 5))
+              @include('partials.product.add_to_wishlist_button', ['sentence' => 'Add to Wishlist', 'product' => $product])
             @endif
           </div>
         </div>
 
-        <div class="row m-5">
-          <table class = "table">
-            <thead>
-              <tr>
-                <th scope = "col">Details</th>
-                <th scope = "col">Values</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              @if(!is_null($product->size))
-                <tr>
-                  <td>Size</td>
-                  <td>{{$product->size}}</td>
-                </tr>
-              @endif  
-
-              @if(!is_null($product->brand))
-                <tr>
-                  <td>Brand</td>
-                  <td>{{$product->brand}}</td>
-                </tr>
-              @endif 
-
-              @if(!is_null($product->rating))
-                <tr>
-                  <td>Rating</td>
-                  <td>{{$product->rating}} / 5.0</td>
-                </tr>
-              @endif  
-            </tbody>
-          </table>
-        </div>
+        @include('partials.product.details', ['product' => $product])
       </div>
     </div>
 
@@ -105,30 +45,7 @@
       <h4>Reviews</h4>
       <hr>
 
-      <form class = "card border-primary mt-4" method = "POST" action = "">
-        <h4 class="card-title  m-2">
-          Write your review!
-        </h4>
-        <div class="form-group m-2">
-          <label class = "" for="rating"><strong>Rating</strong></label>
-          <select class="form-control" id="rating">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </select>
-        </div>
-
-        <div class="form-group m-2">
-          <label class = "" for="coment"><strong>Your review</strong></label>
-          <textarea class="form-control" id="coment" rows="3"></textarea>
-        </div>
-
-        <div class="form-group m-2">
-          <button class="btn btn-outline-success" type = "submit">Submit</button>
-        </div>
-      </form>
+      @include('partials.product.review_form')
 
       @foreach($product->reviews as $review)
        {{--  @include('partials.product.review') --}}

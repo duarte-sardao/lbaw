@@ -44,6 +44,8 @@ class CartController extends Controller
       'user' => $user,
       'cart' => $cart,
       'total' => $total,
+      'breadcrumbs' => [route('profile') => $user->name],
+      'current' => 'Cart'
     ]);
   }
 

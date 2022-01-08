@@ -1,15 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <!-- Breadcrumbs -->
-    <nav class = "m-3" aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
-            <li class="breadcrumb-item" aria-current="page">FAQ</li>
-        </ol>
-    </nav>
-
-    <!-- Content -->
     <section class="QA-Container">
         <div class="QA-1">
             <!-- faq question -->

@@ -26,7 +26,9 @@ class UserController extends Controller
     return view('pages.profile.user_profile', [
       'user' => $user,
       'content' => 'partials.profile.user_data',
-      'entries' => null
+      'entries' => null,
+      'breadcrumbs' => [],
+      'current' => $user->username
     ]);
   }
 
@@ -93,7 +95,9 @@ class UserController extends Controller
     return view('pages.profile.user_profile', [
       'user' => $user,
       'content' => 'partials.profile.user_orders',
-      'entries' => $entries
+      'entries' => $entries,
+      'breadcrumbs' => [],
+      'current' => $user->name
     ]);
   }
 

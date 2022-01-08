@@ -19,7 +19,9 @@ class HomeController extends Controller
 
         return view('pages.home', [
             'productsList1' => $productsList1,
-            'productsList2' => $productsList2
+            'productsList2' => $productsList2,
+            'breadcrumbs' => [],
+            'current' => null
         ]);
     }
 }

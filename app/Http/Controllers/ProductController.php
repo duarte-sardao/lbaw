@@ -26,12 +26,20 @@ class ProductController extends Controller
 
     $results = $firstQuery->union($secondQuery)->union($thirdQuery)->get();
 
-
-    return view('pages.products.products_list', ['results' => $results]);
+    return view('pages.products.products_list', 
+    [
+      'results' => $results,
+      'breadcrumbs' => [route('allProducts') => 'Products'],
+      'current' => 'Search'
+    ]);
   }
 
   public function getAllProducts(){
-    return view('pages.products.products_list', ['results' => Product::all()]);
+    return view('pages.products.products_list', [
+      'results' => Product::all(),
+      'breadcrumbs' => [route('allProducts') => 'Products'],
+      'current' => null
+    ]);
   }
 
   public function getCategoryProducts($category){
@@ -46,11 +54,14 @@ class ProductController extends Controller
       case "Cooler": $results = Cooler::all(); break;
       case "PowerSupply": $results = PowerSupply::all(); break;
       case "Other": $results = Other::all(); break;
-      default: return abort(404, "Invalid category");
     }
 
     /* dd($results); */
-    return view('pages.products.products_list', ['results' => $results]);
+    return view('pages.products.products_list', [
+      'results' => $results,
+      'breadcrumbs' => [route('allProducts') => 'Products'],
+      'current' => $category
+    ]);
   }
   
   public function showProduct($id){
@@ -59,7 +70,9 @@ class ProductController extends Controller
     
     return view('pages.products.product', [
       'product' => $product,
-      'details' => $details
+      'details' => $details,
+      'breadcrumbs' => [route('allProducts') => 'Products'],
+      'current' => $product->name
     ]);
   }
 }

@@ -23,7 +23,9 @@ class WishlistController extends Controller
     return view('pages.profile.user_profile', [
       'user' => $user,
       'entries' => $wishlist,
-      'content' => 'partials.profile.user_wishlist'
+      'content' => 'partials.profile.user_wishlist',
+      'breadcrumbs' => [route('profile') => $user->name],
+      'current' => 'Wishlist'
     ]); */
   }
   
