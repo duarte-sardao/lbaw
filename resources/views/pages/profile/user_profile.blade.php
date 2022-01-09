@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  <span id = "userId" hidden>{{$user->id}}</span>
-  
-  <section class="container-fluid d-flex justify-content-around">
+  <section class="d-flex justify-content-around m-5">
+    <span id = "userId" hidden>{{$user->id}}</span>
     <div class="row w-100">
       <!-- Side panel -->
       @if(!Auth::user()->isadmin)

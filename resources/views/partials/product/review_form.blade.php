@@ -1,4 +1,4 @@
-<form class = "card border-primary mt-4" method = "POST" action = "">
+<form class = "card border-primary mt-4 mb-5" method = "POST" action = "">
   <h4 class="card-title  m-2">
     Write your review!
   </h4>

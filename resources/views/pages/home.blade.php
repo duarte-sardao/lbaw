@@ -21,7 +21,7 @@
         <h5>Products you might like:</h5>
       </div>
   
-      <div class="row d-flex m-1">
+      <div class="row d-flex m-1 mb-5">
         @foreach($productsList2 as $product)
           <div class="col-md">
             @include('partials.product.card', ['product' => $product])

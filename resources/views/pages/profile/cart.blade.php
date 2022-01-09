@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-	<section class = "d-flex flex-column" id = "content">
+	<section class = "d-flex flex-column m-5">
 		<div class="row mb-2">
 			<h4>Your cart</h4>
 		</div>

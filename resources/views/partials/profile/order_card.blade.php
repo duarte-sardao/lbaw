@@ -1,4 +1,4 @@
-<div class="card mt-2 mb-2">
+<div class="card m4-2 mb-4">
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <h6>
