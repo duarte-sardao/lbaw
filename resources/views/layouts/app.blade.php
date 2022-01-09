@@ -23,6 +23,7 @@
     <link href="{{ asset('css/home.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/cart.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/user.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/not_found.css')}}" rel ="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -39,7 +40,7 @@
     @include('layouts.navbar')
     @include('partials.common.breadcrumbs', ['breadcrumbs' => $breadcrumbs, 'current' => $current])
 
-    <main class = "d-flex flex-column w-100">
+    <main class = "d-flex flex-column w-100 h-75">
       @yield('content')
       
       <!-- BootStrap -->

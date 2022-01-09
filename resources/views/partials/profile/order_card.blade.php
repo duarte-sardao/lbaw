@@ -32,7 +32,11 @@
 
       <ul>
         @foreach($entry['products'] as $product)
-          <li>{{$product->name}} - <strong class = "text-primary">{{$product->price}}€</strong></li>
+          <li>
+            <a class = "text-dark" href={{url('products/'.$product->id)}}>
+              {{$product->name}} - <strong class = "text-primary">{{$product->price}}€</strong>
+            </a>
+          </li>
         @endforeach
       </ul>
       
