@@ -23,7 +23,7 @@ class UserController extends Controller
   public function showProfile()
   {
     $user = User::find(Auth::id());
-    $this->authorize('show', $user);
+    //$this->authorize('show', $user);
 
     return view('pages.profile.user_profile', [
       'user' => $user,
@@ -72,7 +72,7 @@ class UserController extends Controller
   public function delete()
   {
     $user = User::find(Auth::id());
-    $this->authorize('delete', $user);
+    //$this->authorize('delete', $user);
     $user->delete();
 
     return redirect('/');

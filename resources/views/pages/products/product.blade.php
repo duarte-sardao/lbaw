@@ -27,11 +27,11 @@
           @endif
 
           <div class="w-50 d-flex justify-content-end">
-            @if(Auth::guest() || (Auth::check() && Auth::id() >= 5 && $product->stock > 0))
+            @if(Auth::guest() || (Auth::check() && !Auth::user()->isadmin && $product->stock > 0))
               @include('partials.product.add_to_cart_button', ['sentence' => 'Add to Cart', 'product' => $product])
             @endif
 
-            @if(Auth::guest() || (Auth::check() && Auth::id() >= 5))
+            @if(Auth::guest() || (Auth::check() && !Auth::user()->isadmin))
               @include('partials.product.add_to_wishlist_button', ['sentence' => 'Add to Wishlist', 'product' => $product])
             @endif
           </div>
