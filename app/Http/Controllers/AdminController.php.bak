@@ -12,7 +12,7 @@ class AdminController extends Controller
     $admin = User::find(Auth::id());
     $users = User::all();   
 
-    return view('pages.admin.user_management', [
+    return view('partials.admin.user_management', [
       'users' => $users,
       'admin' => $admin,
       'breadcrumbs' => [route('profile') => $admin->name],
@@ -24,7 +24,7 @@ class AdminController extends Controller
     $admin = User::find(Auth::id());
     $products = Product::all();   
 
-    return view('pages.admin.product_management', [
+    return view('partials.admin.product_management', [
       'products' => $products,
       'admin' => $admin,
       'breadcrumbs' => [route('profile') => $admin->name],
@@ -36,7 +36,7 @@ class AdminController extends Controller
     $admin = User::find(Auth::id());
     $orders = Purchase::all();
 
-    return view('pages.admin.order_management', [
+    return view('partials.admin.order_management', [
       'orders' => $orders,
       'admin' => $admin,
       'breadcrumbs' => [route('profile') => $admin->name],

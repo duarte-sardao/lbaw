@@ -18,13 +18,13 @@
     </li>
     <li class="list-group-item">
       <div class="ms-2 me-auto d-flex flex-column">
-        <a href = "{{route('productManagementArea')}}" class="fw-bold">Products Management</a>
+        <a href = "{{route('manageProducts')}}" class="fw-bold">Products Management</a>
         <span>Add, delete or edit products</span>
       </div>
     </li>
     <li class="list-group-item">
       <div class="ms-2 me-auto d-flex flex-column">
-        <a href = "{{route('orderManagementArea')}}" class="fw-bold">Orders Management</a>
+        <a href = "{{route('manageOrders')}}" class="fw-bold">Orders Management</a>
         <span>Change orders states</span>
       </div>
     </li>

@@ -28,9 +28,6 @@ Route::post('register', 'Auth\RegisterController@register');
 
 //! Admins
 //Route::get('admins', 'AdminController@showProfile')->name('showAdminProfile');
-Route::get('admin/users', 'AdminController@userManagementArea')->name('userManagementArea');
-Route::get('admin/orders', 'AdminController@orderManagementArea')->name('orderManagementArea');
-Route::get('admin/products', 'AdminController@productManagementArea')->name('productManagementArea');
 
 //! Users
 Route::get('users', 'UserController@showProfile')->name('profile');
