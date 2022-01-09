@@ -19,5 +19,4 @@
     <h4>Oops...</h4>
     Looks like we couldn't find any results to your search...  Maybe search for something else?
   </p>
-
 </div>

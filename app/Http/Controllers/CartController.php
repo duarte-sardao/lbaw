@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartProduct;
+use App\Models\Customer;
 use App\Models\Product;
 use App\Models\User;
 
@@ -13,7 +14,11 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 { 
   private function getCart(){
-    return Cart::where('id_customer', '=', Auth::id())
+    $entry = Customer::select('id')
+    ->where('id_user', '=', Auth::id())
+    ->first();
+
+    return Cart::where('id_customer', '=', $entry->id)
     ->where('isactive', '=', true)
     ->first();
   }
