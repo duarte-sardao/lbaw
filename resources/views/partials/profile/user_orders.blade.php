@@ -3,7 +3,7 @@
     <h4>Your orders</h4>
   </div>
 
-  <div class="row m-3">
+  <div class="row">
     @foreach($entries as $entry)
       @include('partials.profile.order_card', ['entry' => $entry])
     @endforeach  

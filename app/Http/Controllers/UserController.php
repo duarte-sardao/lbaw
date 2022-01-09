@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Customer;
 use App\Models\Address;
+use App\Models\CartProduct;
+use App\Models\Customer;
+use App\Models\Product;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -84,12 +86,29 @@ class UserController extends Controller
     $user = Customer::find(Auth::id());
     $orders = $user->Purchases;
     $entries = array();
+    $products = array();
     
+    //Gets every order of the user
     foreach($orders as $order){
+      //Finds all the entries of the cart of the current order
+      $cartEntries = CartProduct::where('id_cart', '=', $order->id_cart)->get();
+      
+      $total = 0;
+      $products = array();
+
+      //Finds the prices and quantities of all products in the cart
+      foreach($cartEntries as $entry){
+        $product = Product::find($entry->id_product);
+        $total += $entry->quantity * $product->price;
+        array_push($products, $product);
+      }
+
       array_push($entries,
       [
         'order' => $order,
-        'address' => Address::find($order->id_address)
+        'products' => $products,
+        'address' => Address::find($order->id_address),
+        'total' => $total
       ]);
     }
 
