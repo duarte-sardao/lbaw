@@ -243,7 +243,7 @@ CREATE TABLE Purchase(
     id SERIAL,
     orderDate DATE NOT NULL,
     deliveryDate DATE NOT NULL,
-    orderStatus OrderStatusType NOT NULL,
+    orderStatus OrderStatusType NOT NULL DEFAULT 'Processing',
     id_Customer INTEGER NOT NULL,
     id_Address INTEGER NOT NULL,
     id_PaymentMethod INTEGER NOT NULL,
@@ -637,14 +637,10 @@ INSERT INTO PaymentMethod(type) VALUES ('Paypal');
 INSERT INTO PaymentMethod(type) VALUES ('Card');
 
 --------------------------- Purchase ---------------------------
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/4', 'Processing', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/2', 'Packed', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/7', 'Processing', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/21', '2021/12/23', 'Delivered', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/26', '2021/12/29', 'Delivered', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Delivered', 5, 5, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/27', '2021/11/30', 'Shipped', 5, 5, 1, 1);
-
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/4', 'Processing', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/2', 'Packed', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/27', '2021/11/30', 'Shipped', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Delivered', 1, 1, 1, 1);
 
 --------------------------- Paypal ---------------------------
 INSERT INTO Paypal (email, id_PaymentMethod) VALUES ('vova10000@bukan.es', 1);
@@ -725,9 +721,9 @@ INSERT INTO Wishlist(id_Customer, id_Product) VALUES (27, 57);
 
 
 ---------------------------------------------Review ----------------------------------------------
-INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very nice', 4, 6, 12);
-INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very bad', 1, 15, 14);
-INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very bad', 1, 5, 12);
+INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very nice', 4, 5, 12);
+INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very bad', 1, 5, 13);
+INSERT INTO Review(text, rating, id_Customer, id_Product) VALUES ('Very bad', 1, 5, 14);
 
 
 -----------------------
