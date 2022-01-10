@@ -150,7 +150,7 @@ CREATE TABLE GPU(
 
 CREATE TABLE Motherboard(
     id SERIAL,
-    socket TEXT NOT NULL,
+    chipset TEXT NOT NULL,
     type MotherboardType NOT NULL,
     id_Product INTEGER NOT NULL,
 
@@ -425,16 +425,16 @@ INSERT INTO Cart (id_Customer) VALUES (26);
 INSERT INTO Cart (id_Customer) VALUES (27);
 
 -------------------------------------------------------------------------------------------------------------- CPU ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 9 5950X', 'CPU' , 836.99, 'AMD', 5,'images/10.jpg' , 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL-Core i9-9900K', 'CPU' , 571.99, 'Intel', 3,'images/11.jpg' , 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL Core i5-10600K', 'CPU' , 247.99, 'Intel', 5, 'images/12.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 7 5800X', 'CPU' , 449.99, 'AMD', 4, 'images/13.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL Celeron G5925', 'CPU' , 54.99, 'Intel', 6, 'images/14.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen Threadripper 3990X', 'CPU' , 4299.99, 'AMD', 3, 'images/15.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL Xeon Gold 6248', 'CPU' , 3739.00, 'Intel', 2, 'images/16.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Athlon 240GE', 'CPU' , 118.63, 'AMD', 1, 'images/17.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL-Core i5-9600K', 'CPU' , 188.10, 'Intel', 0, 'images/18.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 5 3600X', 'CPU' , 245.90, 'AMD', 4, 'images/19.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 9 5950X', 'CPU', 836.99, 'AMD', 5, 'images/1.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL-Core i9-9900K', 'CPU', 571.99, 'Intel', 3, 'images/2.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL Core i5-10600K', 'CPU', 247.99, 'Intel', 5, 'images/3.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 7 5800X', 'CPU', 449.99, 'AMD', 4, 'images/4.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL Celeron G5925', 'CPU', 54.99, 'Intel', 6, 'images/5.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen Threadripper 3990X', 'CPU', 4299.99, 'AMD', 3, 'images/6.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Intel Core i9-12900K', 'CPU', 665.90, 'Intel', 2, 'images/7.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 3 3200G', 'CPU', 114.90, 'AMD', 1, 'images/8.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('INTEL-Core i5-9600K', 'CPU', 188.10, 'Intel', 0, 'images/9.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Ryzen 5 3600X', 'CPU', 245.90, 'AMD', 4, 'images/10.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.4, 4.9, 'AM4', 32, 16, 1);
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.6, 5, 'LGA1151', 16, 8, 2);
@@ -442,31 +442,31 @@ INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES 
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.8, 4.7, 'AM4', 16, 8, 4);
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.6, 0, 'LGA1200', 2, 2, 5);
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (2.9, 4.3, 'TRX4', 128, 64, 6);
-INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (2.5, 3.9, 'LGA3647', 40, 20, 7);
-INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.5, 0, 'AM4', 4, 2, 8);
+INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.2, 5.2, 'LGA1700', 24, 16, 7);
+INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.6, 3.9, 'AM4', 4, 4, 8);
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.7, 4.6, 'LGA1151', 6, 6, 9);
 INSERT INTO CPU(baseFreq, turboFreq, socket, threads, cores, id_Product) VALUES (3.8, 4.4, 'AM4', 12, 6, 10);
 
 
 -------------------------------------------------------------------------------------------------------------- GPU ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS GeForce GT 1030', 'GPU', 115.72, 'ASUS', 15, 'images/20.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG STRIX GeForce RTX 3080 Ti', 'GPU', 1899.00, 'ASUS', 2, 'images/21.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI GeForce GT 710', 'GPU', 78.16, 'MSI', 6, 'images/22.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Radeon Pro WX 3100', 'GPU', 299.14, 'AMD', 6, 'images/23.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Raden Pro WX 2100', 'GPU', 205.62, 'AMD', 3, 'images/24.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('HP NVIDIA Tesla K20X', 'GPU', 14421.50, 'HP', 1, 'images/25.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('XFX Radeon RX 6600 XT', 'GPU', 899.90, 'XFX', 2, 'images/26.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte Radeon RX 6900 XT', 'GPU', 1469.90, 'Gigabyte', 8, 'images/27.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum'); 
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA GeForce RTX 3080 FTW', 'GPU', 1499.90, 'EVGA', 7, 'images/28.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Zotac Gaming GeForce RTX 3060 Ti', 'GPU', 1099.00, 'Zotac', 4, 'images/29.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS GeForce GT 1030', 'GPU', 115.72, 'ASUS', 15, 'images/11.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG STRIX GeForce RTX 3080 Ti', 'GPU', 1899.00, 'ASUS', 2, 'images/12.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI GeForce GT 710', 'GPU', 78.16, 'MSI', 6, 'images/13.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte Radeon RX 6700 XT', 'GPU', 929.90, 'Gigabyte', 6, 'images/14.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte Radeon RX 6800 XT', 'GPU', 1399.90, 'Gigabyte', 3, 'images/15.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Zotac Gaming GeForce RTX 3090', 'GPU', 3049.90, 'Zotac', 1, 'images/16.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('XFX Radeon RX 6600 XT', 'GPU', 899.90, 'XFX', 2, 'images/17.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte Radeon RX 6900 XT', 'GPU', 1469.90, 'Gigabyte', 8, 'images/18.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum'); 
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA GeForce RTX 3080 FTW', 'GPU', 1499.90, 'EVGA', 7, 'images/19.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Zotac Gaming GeForce RTX 3060 Ti', 'GPU', 1099.00, 'Zotac', 4, 'images/20.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (2, 1252, 1531, 1, 0, 11);
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (12, 1365, 1845, 2, 3, 12);
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (2, 954, 954, 1, 0, 13);
-INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (4, 925, 1219, 0, 1, 14);
-INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (2, 925, 1219, 0, 1, 15);
-INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (6, 732, 732, 0, 0, 16);
+INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (12, 2321, 2622, 2, 2, 14);
+INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (16, 2045, 2285, 2, 2, 15);
+INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (24, 1395, 1710, 1, 3, 16);
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (8, 2092, 2589, 1, 3, 17);
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (16, 2050, 2285, 1, 2, 18);
 INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Product) VALUES (10, 1440, 1800, 1, 3, 19);
@@ -474,47 +474,47 @@ INSERT INTO GPU(memory, coreClock, boostClock, hdmiPorts, displayPorts, id_Produ
 
 
 -------------------------------------------------------------------------------------------------------------- Motherboard ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS TUF Z390-Plus Gaming', 'Motherboard', 234.81, 'ASUS', 4, 'images/30.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG STRIX Z590-F GAMING WIFI', 'Motherboard', 319.90, 'ASUS', 2, 'images/31.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG X570 Gaming Edge', 'Motherboard', 221.32, 'MSI', 3, 'images/32.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG X570 Gaming Plus', 'Motherboard', 185.29, 'MSI', 6, 'images/33.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG MAXIMUS XIII EXTREME GLACIAL', 'Motherboard', 1717.38, 'ASUS', 1, 'images/34.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('SUPERMICRO X11SBA-LN4F', 'Motherboard', 355.72, 'SUPERMICRO', 0, 'images/35.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS P10S-X', 'Motherboard', 365.04, 'ASUS', 0, 'images/36.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ATX ASRock TRX40 Taichi', 'Motherboard', 499.90, 'ASRock', 4, 'images/37.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte B450 Gaming X', 'Motherboard', 75.90, 'Gigabyte', 7, 'images/38.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Asus ROG Maximus XII Apex', 'Motherboard', 495.90, 'ASUS', 3, 'images/39.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS TUF Gaming X570-PLUS (Wi-fi)', 'Motherboard', 237.90, 'ASUS', 4, 'images/21.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG Strix Z590-F Gaming Wi-Fi', 'Motherboard', 313.90, 'ASUS', 2, 'images/22.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG X570 Gaming Edge', 'Motherboard', 221.32, 'MSI', 3, 'images/23.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG X570 Gaming Plus', 'Motherboard', 185.29, 'MSI', 6, 'images/24.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG Maximus Z690 Extreme Glacial', 'Motherboard', 1928.90, 'ASUS', 1, 'images/25.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG Crosshair VIII Impact', 'Motherboard', 409.90, 'ASUS', 0, 'images/26.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte B450 | Aorus Pro WiFi', 'Motherboard', 116.90, 'Gigabyte', 0, 'images/27.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASRock TRX40 Taichi', 'Motherboard', 499.90, 'ASRock', 4, 'images/28.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte B450 Gaming X', 'Motherboard', 75.90, 'Gigabyte', 7, 'images/29.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('ASUS ROG Maximus XII Apex', 'Motherboard', 495.90, 'ASUS', 3, 'images/30.jpg',  'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('LGA1151', 'ATX', 21);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('LGA1200', 'ATX', 22);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('AM4', 'ATX', 23);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('AM4', 'ATX', 24);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('LGA1200', 'EATX', 25);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('CPU Onboard - Intel Pentium', 'MINI-ITX', 26);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('LGA1151', 'ATX', 27);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('sTRX4', 'ATX', 28);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('AM4', 'ATX', 29);
-INSERT INTO Motherboard(socket, type, id_Product) VALUES ('LGA1200', 'ATX', 30);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AM4 Z570', 'ATX', 21);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('Intel Z590', 'ATX', 22);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AMD X570', 'ATX', 23);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AMD X570', 'ATX', 24);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('Intel Z690', 'EATX', 25);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AM4 Z570', 'MINI-ITX', 26);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AMD B450', 'MINI-ITX', 27);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AMD TRX40', 'ATX', 28);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('AMD B450', 'ATX', 29);
+INSERT INTO Motherboard(chipset, type, id_Product) VALUES ('INTEL Z490', 'ATX', 30);
 
 
 -------------------------------------------------------------------------------------------------------------- Storage ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('DDR3 KINGSTON KVR16N11/8', 'Storage', 50.99, 'KINGSTON', 4, 'images/40.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('DDR4 CISCO UCS-MR-1X322RV-A=', 'Storage', 2727.15, 'CISCO', 5, 'images/41.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('DDR2 NILOX NXS1800H1C6', 'Storage', 8.99, 'NILOX', 0, 'images/42.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('DDR4 G.SKILL F4-2133C15Q-32GVR', 'Storage', 180.29, 'GSKILL', 21, 'images/43.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('DDR4 CORSAIR CMK128GX4M8A2666C16', 'Storage', 780.74, 'CORSAIR', 12, 'images/44.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Samsung 970 Evo Plus', 'Storage', 139.99, 'Samsung', 31, 'images/45.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Kingston A400', 'Storage', 27.99, 'KINGSTON', 4, 'images/46.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Western Digital Caviar Blue', 'Storage', 30.99, 'Western Digital', 7, 'images/47.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Seagate Barracuda Compute', 'Storage', 149.99, 'Seagate', 8, 'images/48.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Samsung 980 Pro', 'Storage', 79.98, 'Samsung', 8, 'images/49.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('G.SKILL Trident Z5 RGB 32GB (2x16GB) DDR5-5600MHz', 'Storage', 393.60, 'G.SKILL', 4, 'images/31.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Kingston Fury Beast 32GB (2x16GB) DDR5-5200MHz', 'Storage', 315.30, 'Kingston', 5, 'images/32.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair Vengeance RGB Pro 16GB (2x8GB) DDR4-3200MHz', 'Storage', 92.70, 'Storage', 0, 'images/33.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('G.SKILL Trident Z 16GB (2x8GB) DDR4-3200MHz', 'Storage', 113.30, 'G.SKILL', 21, 'images/34.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('G.SKILL SNIPER X 16GB (2x8GB) DDR4-3000MHz', 'Storage', 73.70, 'G.SKILL', 12, 'images/35.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Samsung 970 Evo Plus', 'Storage', 139.99, 'Samsung', 31, 'images/36.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Kingston A400', 'Storage', 27.99, 'KINGSTON', 4, 'images/37.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Western Digital Blue 500GB', 'Storage', 59.90, 'Western Digital', 7, 'images/38.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('eagate IronWolf 8TB', 'Storage', 244.90, 'Seagate', 8, 'images/39.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Samsung 980 Pro', 'Storage', 79.98, 'Samsung', 8, 'images/40.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
-INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 8, 31);
+INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 32, 31);
 INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 32, 32);
-INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 1, 33);
-INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 32, 34);
-INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 128, 35);
+INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 16, 33);
+INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 16, 34);
+INSERT INTO Storage(type, capacity, id_Product) VALUES ('RAM', 16, 35);
 INSERT INTO Storage(type, capacity, id_Product) VALUES ('M.2', 1000, 36);
 INSERT INTO Storage(type, capacity, id_Product) VALUES ('SSD', 240, 37);
 INSERT INTO Storage(type, capacity, id_Product) VALUES ('HDD', 500, 38);
@@ -523,39 +523,39 @@ INSERT INTO Storage(type, capacity, id_Product) VALUES ('M.2', 250, 40);
 
 
 -------------------------------------------------------------------------------------------------------------- PcCase ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair 4000D Airflow', 'PcCase', 79.99, 'CORSAIR', '453mm x 230mm x 466mm', 7, 'images/50.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Lian Li PC-O11 Dynamic', 'PcCase', 149.99, 'Lian Li', '445mm x 272mm x 446mm', 4, 'images/51.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Lian Li O11 Dynamic Mini Snow Edition', 'PcCase', 129.90, 'Lian Li', '420mm x 269.5mm x 380mm', 2, 'images/52.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Cooler Master MasterBox NR200P', 'PcCase', 135.98, 'Cooler Master', '376mm x 185mm x 292mm', 21, 'images/53.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Thermaltake Level 20', 'PcCase', 999.99, 'Thermaltake', '732mm x 280mm x 688mm', 3, 'images/54.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Jonsbo TR03-A', 'PcCase', 507.00, 'Jonsbo', '673mm x 238mm x 595mm', 0, 'images/55.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair 760T', 'PcCase', 417.50, 'CORSAIR', '564mm x 246mm x 568mm', 0, 'images/56.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE 4000X RGB', 'PcCase', 114.89, 'CORSAIR', '453mm x 230mm x 466mm', 12, 'images/57.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('NZXT H510', 'PcCase', 79.90, 'NZXT', '428mm x 210mm x 460mm', 6, 'images/58.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('NZXT H710', 'PcCase', 149.90,'NZXT', '494mm x 230mm x 516mm', 7, 'images/58.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair Super-Tower Obsidian 1000D', 'PcCase', 589.90, 'CORSAIR', '697mm x 307mm x 693mm', 7, 'images/41.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Antec Torque', 'PcCase', 389.90, 'Antec', '621mm x 285mm x 644 mm', 0, 'images/42.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Asus ROG Strix Helios', 'PcCase', 305.90, 'Asus', '591mm x 250mm x 565 mm', 2, 'images/43.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Cooler Master MasterBox NR200P', 'PcCase', 135.98, 'Cooler Master', '376mm x 185mm x 292mm', 21, 'images/44.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair Crystal 680X RGB', 'PcCase', 254.90, 'Corsair', '732mm x 280mm x 688mm', 3, 'images/45.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Fractal Design Era ITX Gold', 'PcCase', 149.90, 'Fractal Design', '325mm x 166mm x 310 mm', 4, 'images/46.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Kolink Rocket V2', 'PcCase', 149.90, 'Kolink', '350mm x 150mm x 270mm', 2, 'images/47.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE 4000X RGB', 'PcCase', 114.89, 'CORSAIR', '453mm x 230mm x 466mm', 12, 'images/48.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('NZXT H510', 'PcCase', 79.90, 'NZXT', '428mm x 210mm x 460mm', 6, 'images/49.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('NZXT H710', 'PcCase', 149.90,'NZXT', '494mm x 230mm x 516mm', 7, 'images/50.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 7.8, 'Black', 41);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 11.9, 'Black', 42);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('ATX', 9, 'White', 43);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('MINI-ITX', 5, 'Orange', 44);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 32, 'Black', 45);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('ATX', 15, 'Silver', 46);
-INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 11.15, 'Black', 47);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 29.5, 'Black', 41);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 9.4, 'Black/Red', 42);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 18, 'Black', 43);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('MINI-ITX', 5, 'Black', 44);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 11.6, 'White', 45);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('MINI-ITX', 3, 'Gold', 46);
+INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('MINI-ITX', 2.6, 'Gunmetal', 47);
 INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('ATX', 7.85, 'Black', 48);
 INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('ATX', 6.6, 'White', 49);
 INSERT INTO PcCase(type, weight, color, id_Product) VALUES ('EATX', 12.1, 'White', 50);
 
 -------------------------------------------------------------------------------------------------------------- Cooler ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Cooler Master Hyper 212 RGB Black Edition', 'Cooler', 44.99, 'Cooler Master', 8, 'images/60.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE H100i ELITE CAPELLIX', 'Cooler', 109.99, 'Corsair', '240mm', 4, 'images/61.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('be quiet! Dark Rock Pro 4', 'Cooler', 89.90, 'be quiet!', 12,  'images/62.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Deepcool ASSASSIN II', 'Cooler', 264.30, 'Deepcool', 2, 'images/63.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Thermaltake Engine 27', 'Cooler', 69.99, 'Thermaltake', 2, 'images/64.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('be quiet! Dark Rock TF', 'Cooler', 135.55, 'be quiet!', 3, 'images/65.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair A500', 'Cooler', 92.17, 'Corsair' , 7, 'images/66.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('EK AIO Basic 360', 'Cooler', 128.99, 'EK', '360mm', 3, 'images/67.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE H150i RGB Elite Capellix', 'Cooler', 184.90, 'Corsair', '360mm', 5,'images/68.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Mars Gaming ML120 RGB', 'Cooler', 54.90, 'Mars Gaming', '120mm', 12,'images/69.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Noctua NH-D15', 'Cooler', 109.90, 'Noctua', 8, 'images/51.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE H100i RGB Elite Capellix', 'Cooler', 154.90, 'Corsair', '240mm', 4, 'images/52.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Cooler Master Wraith Ripper', 'Cooler', 119.90, 'Cooler Master', 12,  'images/53.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Arctic Freezer 50 TR', 'Cooler', 74.90, 'Arctic', 2, 'images/54.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('AMD Wraith Prism', 'Cooler', 54.90, 'AMD', 2, 'images/55.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Arctic Freezer 34 eSports DUO', 'Cooler', 44.90, 'Arctic', 3, 'images/56.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Noctua NH-D15 Chromax Black', 'Cooler', 114.90, 'Noctua' , 7, 'images/57.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Cooler CPU Corsair iCUE H150i Elite LCD Display RGB', 'Cooler', 293.90, 'Corsair', '360mm', 3, 'images/58.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Corsair iCUE H150i RGB Elite Capellix', 'Cooler', 184.90, 'Corsair', '360mm', 5,'images/59.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, size, stock, image, description) VALUES ('Mars Gaming ML120 RGB', 'Cooler', 54.90, 'Mars Gaming', '120mm', 12,'images/60.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 
 INSERT INTO Cooler(type, id_Product) VALUES ('Air', 51);
@@ -571,30 +571,47 @@ INSERT INTO Cooler(type, id_Product) VALUES ('Water', 60);
 
 
 -------------------------------------------------------------------------------------------------------------- PowerSupply ------------------------------------------------------------------------------------------------------------
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair RM (2019)', 'PowerSupply', 114.99, 'Corsair', 5, 'images/70.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA BQ', 'PowerSupply', 53.42, 'EVGA',  3, 'images/71.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Cooler Master V SFX', 'PowerSupply', 144.99, 'Cooler Master', 1, 'images/72.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair RMx (2018)', 'PowerSupply', 109.99, 'Corsair', 4, 'images/73.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG A-GF', 'PowerSupply', 69.98, 'MSI', 2, 'images/74.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('be quiet! Straight Power 11', 'PowerSupply', 89.90, 'be quiet!', 0, 'images/75.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('be quiet! Pure Power 11', 'PowerSupply', 137.00, 'be quiet!', 1, 'images/76.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Seasonic Core GC', 'PowerSupply', 79.90, 'Seasonic', 3, 'images/77.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Nox Urano VX', 'PowerSupply', 60.90, 'Nox', 7, 'images/78.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
-INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA SuperNOVA GT', 'PowerSupply', 69.90, 'EVGA', 6, 'images/79.jpg' , 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair RM (2019)', 'PowerSupply', 112.90, 'Corsair', 5, 'images/61.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA BQ', 'PowerSupply', 64.90, 'EVGA',  3, 'images/62.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Nox Urano TX', 'PowerSupply', 64.50, 'Nox', 1, 'images/63.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair RMx Series RM850x', 'PowerSupply', 139.90, 'Corsair', 4, 'images/64.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('MSI MPG A-GF', 'PowerSupply', 124.90, 'MSI', 2, 'images/65.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Gigabyte Aorus P1200', 'PowerSupply', 349.90, 'Gigabyte', 3, 'images/66.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Asus ROG Strix 850W', 'PowerSupply', 204.90, 'Asus', 1, 'images/67.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Seasonic Core GC', 'PowerSupply', 79.90, 'Seasonic', 3, 'images/68.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Nox Urano VX', 'PowerSupply', 60.90, 'Nox', 7, 'images/69.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('EVGA SuperNOVA GT', 'PowerSupply', 98.90, 'EVGA', 6, 'images/70.jpg' , 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
 INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (750, '80+ Gold', 'Full-Modular', 61);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (600, '80+ Bronze', 'Semi-Modular', 62);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (850, '80+ Gold', 'Full-Modular', 63);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (750, '80+ Gold', 'Full-Modular', 64);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (500, '80+ Bronze', 'Semi-Modular', 62);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (850, '80+ Bronze', 'Full-Modular', 63);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (850, '80+ Gold', 'Full-Modular', 64);
 INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (650, '80+ Gold', 'Full-Modular', 65);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (750, '80+ Gold', 'Full-Modular', 66);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (300, '80+ Bronze', 'Non-Modular', 67);
-INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (650, '80+ Gold', 'Non-Modular', 68);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (1200, '80+ Platinum', 'Full-Modular', 66);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (850, '80+ Gold', 'Full-Modular', 67);
+INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (650, '80+ Gold', 'Full-Modular', 68);
 INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (750, '80+ Bronze', 'Full-Modular', 69);
 INSERT INTO PowerSupply(wattage, certification, type, id_Product) VALUES (650, '80+ Gold', 'Full-Modular', 70);
 
 ------------------------------------------------------------------------------------------------------------------ Other ---------------------------------------------------------------------------------------------------------------------------
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Corsair Lighting Node Pro RGB', 'Other', 52.90, 'Corsair', 4, 'images/71.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Thermal Grizzly Kryonaut 11.1g', 'Other', 24.90, 'Thermal Grizzly', 35, 'images/72.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Razer PWM PC Fan Controller', 'Other', 54.90, 'Razer', 6, 'images/73.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Asus Blu-Ray Reader', 'Other', 93.90, 'Asus', 1, 'images/74.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Asus ROG Xonar Phoebus Soundcard', 'Other', 154.90, 'Asus', 2, 'images/75.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('Asus USB-AC53 Nano Wi-Fi Adapter', 'Other', 29.90, 'Asus', 26, 'images/76.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('TP-Link UB500 Bluetooth Adapter', 'Other', 11.90, 'TP-Link', 21, 'images/77.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
+INSERT INTO Product(name, category, price, brand, stock, image, description) VALUES ('TP-Link UH700 7-Port USB HUB', 'Other', 28.90, 'TP-Link', 0,'images/78.jpg', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tellus risus, ornare vel faucibus ut, tempor at ipsum. Nam elementum');
 
+
+INSERT INTO OTHER (id_Product) VALUES (71);
+INSERT INTO OTHER (id_Product) VALUES (72);
+INSERT INTO OTHER (id_Product) VALUES (73);
+INSERT INTO OTHER (id_Product) VALUES (74);
+INSERT INTO OTHER (id_Product) VALUES (75);
+INSERT INTO OTHER (id_Product) VALUES (76);
+INSERT INTO OTHER (id_Product) VALUES (77);
+INSERT INTO OTHER (id_Product) VALUES (78);
 
 -------------------------------------------------------------------------------------------------------------- Address ------------------------------------------------------------------------------------------------------------
 INSERT INTO Address(streetName, streetNumber, zipcode) VALUES ('Rua Costa' , 108, '4795-158 Santo Tirso');
