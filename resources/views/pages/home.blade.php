@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class = "d-flex flex-column" id="content">
+  <section class = "d-flex flex-column">
     @include('partials.home.slider')
 
     <div class = "card-deck container mt-5" id="homeProductGrid">
