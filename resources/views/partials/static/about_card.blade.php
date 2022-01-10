@@ -1,6 +1,6 @@
 <div class="aboutus-column">
   <div class="aboutus-card">
-      <img id= "DeveloperPhoto" src="images/default.jpg" alt="Carlos">
+      <img class = "m-2" id= "DeveloperPhoto" src="{{$image}}" alt="{{$name}}">
       <div class="aboutus-container">
           <h2>{{$name}}</h2>
           <p class="aboutus-title">Developer</p>
