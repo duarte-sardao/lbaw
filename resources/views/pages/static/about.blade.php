@@ -16,7 +16,7 @@
                     <p>Some text that describes me.</p>
                     <p>up201907716@up.pt</p>
                     <button class = "btn btn-outline-primary w-50 m-2">
-                        <a class="w-50 m-2" href="mailto:up201907716@up.pt"> Contact me! </a>
+                        <a class="w-50 m-2" href="mailto:up201907716@up.pt?subject=Question about your website"> Contact me! </a>
                     </button>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                     <p>Some text that describes me.</p>
                     <p> up201905497@up.pt</p>
                     <button class = "btn btn-outline-primary w-50 m-2">
-                        <a class="w-50 m-2" href="mailto:up201905497@up.pt"> Contact me! </a>
+                        <a class="w-50 m-2" href="mailto:up201905497@up.pt?subject=Question about your website""> Contact me! </a>
                     </button>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <p>Some text that describes me.</p>
                     <p>up201905477@up.pt</p>
                     <button class = "btn btn-outline-primary w-50 m-2">
-                        <a class="w-50 m-2" href="mailto:up201905477@up.pt"> Contact me! </a>
+                        <a class="w-50 m-2" href="mailto:up201905477@up.pt?subject=Question about your website""> Contact me! </a>
                     </button>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                     <p>Some text that describes me.</p>
                     <p>up201800700@up.pt</p>
                     <button class = "btn btn-outline-primary w-50 m-2">
-                        <a class="w-50 m-2" href="mailto:up201800700@up.pt"> Contact me! </a>
+                        <a class="w-50 m-2" href="mailto:up201800700@up.pt?subject=Question about your website""> Contact me! </a>
                     </button>
                 </div>
             </div>
