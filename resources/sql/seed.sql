@@ -28,7 +28,7 @@ DROP TRIGGER IF EXISTS blockBannedUsers on Review;
 DROP TRIGGER IF EXISTS orderStatusNotification on Purchase;
 DROP TRIGGER IF EXISTS productSearchUpdate on Product;
 DROP TRIGGER IF EXISTS renewCart on Purchase;
---DROP TRIGGER IF EXISTS cartCustomer on Customer;
+DROP TRIGGER IF EXISTS cartCustomer on Customer;
 
 DROP FUNCTION IF EXISTS updateProductRating;
 DROP FUNCTION IF EXISTS verificaStock;
@@ -36,7 +36,7 @@ DROP FUNCTION IF EXISTS blockBannedUsers;
 DROP FUNCTION IF EXISTS orderStatusNotification;
 DROP FUNCTION IF EXISTS productSearchUpdate;
 DROP FUNCTION IF EXISTS renewCart;
---DROP FUNCTION IF EXISTS cartCustomer;
+DROP FUNCTION IF EXISTS cartCustomer;
 
 DROP INDEX IF EXISTS acc_id;
 DROP INDEX IF EXISTS product_price;

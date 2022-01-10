@@ -8,7 +8,6 @@
 }
   
 .aboutus-card {
-    border: 1px solid #000;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin: 8px;
     text-align: center;
@@ -52,7 +51,7 @@
     background-color: #555;
 }
 
-#developperPhoto{
+#DeveloperPhoto{
     width: 30%;
     margin-left: auto;
     margin-right: auto;
