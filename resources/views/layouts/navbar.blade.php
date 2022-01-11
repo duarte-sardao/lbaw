@@ -33,27 +33,27 @@
   <!-- User features -->
   <div class = "navbar-nav d-flex">
     @if (Auth::check())
-      <a class="btn btn-primary m-2" href = "{{route('profile')}}">
+      <a title="Profile" class="btn btn-primary m-2" href = "{{route('profile')}}">
         <i class="fa fa-user"></i>
         <span>{{Auth::user()->username}}</span>
       </a> 
 
-      @if(!Auth::user()->isadmin)
-        <a class="btn btn-primary m-2" href = "{{route('home')}}">    {{-- Change this --}}
+      <a title="Notifications" class="btn btn-primary m-2" href = "{{route('home')}}">    {{-- Change this --}}
           <i class="fa fa-bell"></i>
         </a> 
       
-        <a class="btn btn-primary m-2" href = "{{route('cart')}}">
+      @if(!Auth::user()->isadmin)
+        <a title="Cart" class="btn btn-primary m-2" href = "{{route('cart')}}">
           <i class="fa fa-shopping-cart"></i>
         </a> 
       @endif
 
-      <a class="btn btn-primary m-2" href = "{{route('logout')}}">
+      <a title="Logout" class="btn btn-primary m-2" href = "{{route('logout')}}">
         <i class="fa fa-sign-out"></i>
       </a> 
 
     @else
-      <a class="btn btn-primary m-2" href = "{{ route('login') }}"> 
+      <a title="Login" class="btn btn-primary m-2" href = "{{ route('login') }}"> 
         <i class="fa fa-sign-in"></i>
         <span>Login</span>
       </a>

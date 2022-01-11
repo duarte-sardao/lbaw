@@ -25,13 +25,13 @@
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
         <a class="fw-bold" href ={{route('wishlist')}}>Wishlist</a>
-        <small>Check the products you wish for</small>
+        <small>Check the products in your wishlist</small>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
         <a class="fw-bold" href ="#">Notifications</a>
-        <small>Check for notifications</small>
+        <small>Check your notifications</small>
       </div>
     </li>
   </ul>
