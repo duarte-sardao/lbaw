@@ -37,7 +37,7 @@ Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
 Route::post('users/edit/{id}', 'UserController@updateProfile');
 Route::get('users/orders', 'UserController@showOrders')->name('showOrders');
-Route::get('users/notifications', 'UserController@showNotifications')->name('showNotifications');
+//Route::get('users/notifications', 'UserController@showNotifications')->name('showNotifications');
 
 //! Cart
 Route::get('users/cart', 'CartController@show')->name('showCart');
@@ -52,16 +52,16 @@ Route::post('users/cart/{product_id}/decrement', 'CartController@decrementQuanti
 
 //! Wishlist
 Route::get('users/wishlist', 'WishlistController@showWishlist')->name('showWishlist');
-Route::delete('users/wishlist', 'WishlistController@empty')->name('emptyWhislist');
-
-Route::put('users/wishlist/{product_id}', 'WishlistController@addEntry');
-Route::delete('users/wishlist/{product_id}', 'WishlistController@deleteEntry');
+Route::delete('users/wishlist', 'WishlistController@empty')->name('emptyWishlist');
+Route::delete('users/wishlist/empty', 'WishlistController@empty')->name('emptyWishlist');
+Route::put('users/wishlist/product/{product_id}', 'WishlistController@addEntry');
+Route::delete('users/wishlist/product/{product_id}', 'WishlistController@deleteEntry');
 
 //! Addresses
 Route::get('users/addresses', 'AddressController@showAddresses')->name('showAddresses');
 Route::get('users/addresses/new', 'AddressController@showAddressForm')->name('newAddress');
 Route::post('users/addresses/new', 'AddressController@addEntry');
-
+Route::delete('users/addresses/{address_id}', 'AddressController@deleteEntry');
 
 //! Orders
 

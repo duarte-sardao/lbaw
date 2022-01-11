@@ -24,8 +24,7 @@ class AddressController extends Controller
         route('profile') => Auth::user()->username,
         route('showAddresses') => 'Addresses'
       ],
-      'current' => 'New',
-      'errors' => []
+      'current' => 'New'
     ]);
   }
 
@@ -46,8 +45,7 @@ class AddressController extends Controller
       'content' => 'partials.profile.user_addresses',
       'entries' => $entries,
       'breadcrumbs' => [route('profile') => Auth::user()->username],
-      'current' => 'Addresses',
-      'errors' => []
+      'current' => 'Addresses'
     ]);
   }
 

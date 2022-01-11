@@ -1,4 +1,4 @@
-<form class = "m-1" method = "POST" action = {{url('/users/wishlist/'.$product->id)}}>
+<form class = "m-1" method = "POST" action = {{url('/users/wishlist/product/'.$product->id)}}>
   @csrf
   @method('PUT')
 

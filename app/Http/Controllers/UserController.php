@@ -120,11 +120,6 @@ class UserController extends Controller
       'current' => $user->name
     ]);
   }
-
-  
-  public function showNotifications(){
-    
-  }
 }
 
 ?>
