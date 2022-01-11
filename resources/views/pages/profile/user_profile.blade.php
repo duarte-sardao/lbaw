@@ -14,7 +14,7 @@
       @endif
   
       <!-- User Data -->
-      @include($content, ['user' => $user, 'entries' => $entries])
+      @include($content, ['user' => $user, 'entries' => $entries, 'errors' => $errors])
     </div>
   </section>
 @endsection

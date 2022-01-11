@@ -24,7 +24,8 @@ class AddressController extends Controller
         route('profile') => Auth::user()->username,
         route('showAddresses') => 'Addresses'
       ],
-      'current' => 'New'
+      'current' => 'New',
+      'errors' => []
     ]);
   }
 
@@ -45,12 +46,53 @@ class AddressController extends Controller
       'content' => 'partials.profile.user_addresses',
       'entries' => $entries,
       'breadcrumbs' => [route('profile') => Auth::user()->username],
-      'current' => 'Addresses'
+      'current' => 'Addresses',
+      'errors' => []
     ]);
   }
 
   public function addEntry(Request $request){
     $address = new Address;
+    $errors = array();
+
+    $streetName = $request->input('streetName');
+    $streetNumber = $request->input('streetNumber');
+    $aptNumber = $request->input('aptNumber');
+    $floor = $request->input('floor');
+    $zipcodeNumber = $request->input('zipcodeNumber');
+    $zipcodeLocation = $request->input('zipcodeLocation');
+
+    if(!is_numeric($streetNumber)){
+      array_push($errors, 'Street Number does not match the specified format.');
+    }
+
+    if(!is_numeric($aptNumber) && !is_null($aptNumber)){
+      array_push($errors, 'Apartment Number does not match the specified format.');
+    }
+
+    if(!is_numeric($floor) && !is_null($floor)){
+      array_push($errors, 'Floor does not match the specified format.');
+    }
+
+    $regex = '/^[0-9]{4}-[0-9]{3}$/';
+    if(!preg_match($regex, $zipcodeNumber)){
+      array_push($errors, 'Zipcode does not match the specified format.');
+    }
+
+    if(count($errors) != 0){
+      return view('pages.profile.user_profile', 
+      [
+        'user' => User::find(Auth::id()),
+        'content' => 'partials.profile.address_form',
+        'entries' => [],
+        'breadcrumbs' => [
+          route('profile') => Auth::user()->username,
+          route('showAddresses') => 'Addresses'
+        ],
+        'current' => 'New',
+        'errors' => $errors
+      ]);
+    }
 
     $address->streetname = $request->input('streetName');
     $address->streetnumber = $request->input('streetNumber');
