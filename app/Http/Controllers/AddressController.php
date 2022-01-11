@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Address;
-use App\Models\CartProduct;
 use App\Models\Customer;
 use App\Models\CustomerAddress;
-use App\Models\Product;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +12,22 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 { 
+  private function getCustomer(){
+    return Customer::where('id_user', '=', Auth::id())->first();
+  }
+
+  private function getCustomerAddressEntry($id){
+    $customer = $this->getCustomer();
+    
+    return CustomerAddress::where('id_customer', '=', $customer->id)
+      ->where('id_address','=', $id);
+  }
+
+  private function getAllCustomerAddress(){
+    $customer = $this->getCustomer();
+    return CustomerAddress::where('id_customer', '=', $customer->id)->get();
+  }
+
   public function showAddressForm(){
     return view('pages.profile.user_profile', 
     [
@@ -22,21 +36,20 @@ class AddressController extends Controller
       'entries' => [],
       'breadcrumbs' => [
         route('profile') => Auth::user()->username,
-        route('showAddresses') => 'Addresses'
+        route('addresses') => 'Addresses'
       ],
       'current' => 'New'
     ]);
   }
 
   public function show(){
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
-    $temps = CustomerAddress::where('id_customer', '=', $customer->id)->get();
+    $customerAddresses = $this->getAllCustomerAddress();
     $entries = array();
 
-    foreach($temps as $temp){
+    foreach($customerAddresses as $customerAddress){
       array_push(
         $entries,
-        Address::find($temp->id_address)
+        Address::find($customerAddress->id_address)
       );
     }
 
@@ -51,7 +64,6 @@ class AddressController extends Controller
   }
 
   public function add(Request $request){
-    $address = new Address;
     $errors = array();
 
     $streetName = $request->input('streetName');
@@ -60,6 +72,8 @@ class AddressController extends Controller
     $floor = $request->input('floor');
     $zipcodeNumber = $request->input('zipcodeNumber');
     $zipcodeLocation = $request->input('zipcodeLocation');
+
+    /********************* INPUT VALIDATION ********************/
 
     if(!is_numeric($streetNumber)){
       array_push($errors, 'Street Number does not match the specified format.');
@@ -82,26 +96,28 @@ class AddressController extends Controller
         'entries' => [],
         'breadcrumbs' => [
           route('profile') => Auth::user()->username,
-          route('showAddresses') => 'Addresses'
+          route('addresses') => 'Addresses'
         ],
         'current' => 'New',
         'errors' => $errors
       ]);
     }
 
-    $address->streetname = $request->input('streetName');
-    $address->streetnumber = $request->input('streetNumber');
-    $address->aptnumber = $request->input('aptNumber');
-    $address->floor = $request->input('floor');
-    $address->zipcode = 
-      $request->input('zipcodeNumber').
-      ' '.
-      $request->input('zipcodeLocation');
+    /***********************************************************/
+    
+    //Insert on the address table first and then...
+    $address = new Address;
+
+    $address->streetname = $streetName;
+    $address->streetnumber = $streetNumber;
+    $address->aptnumber = $aptNumber;
+    $address->floor = $floor;
+    $address->zipcode = $zipcodeNumber.' '.$zipcodeLocation;
 
     $address->save();
 
-    //Insert on intermediate table
-    $customer = Customer::where('id_user', '=', Auth::id())->first(); 
+    //... insert on intermediate table
+    $customer = $this->getCustomer(); 
     $customerAddress = new CustomerAddress;
 
     $customerAddress->id_customer = $customer->id;
@@ -109,13 +125,11 @@ class AddressController extends Controller
 
     $customerAddress->save();
 
-    return redirect(route('showAddresses'));
+    return redirect(route('addresses'));
   }
 
   public function delete($address_id){
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
-    $entry = CustomerAddress::where('id_customer', '=', $customer->id)
-    ->where('id_address', '=', $address_id);
+    $entry = $this->getCustomerAddressEntry($address_id);
 
     $entry->delete();
 

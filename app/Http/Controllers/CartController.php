@@ -24,24 +24,15 @@ class CartController extends Controller
   }
 
   private function getCartEntry($id){
-    //Gets the active cart of the currently authenticated user
     $cart = $this->getCart();
 
-    //Gets the entry of the active cart
-    $entry = CartProduct::where('id_cart', '=', $cart->id)
+    return CartProduct::where('id_cart', '=', $cart->id)
     ->where('id_product', '=', $id);
-
-    return $entry;
   }
 
   private function getAllCartEntries(){
-    //Gets the active cart of the currently authenticated user
     $cart = $this->getCart();
-
-    //Gets the products of the active cart of the user
-    $entries = CartProduct::where('id_cart', '=', $cart->id)->get();
-
-    return $entries;
+    return CartProduct::where('id_cart', '=', $cart->id)->get();;
   }
 
   public function show(){

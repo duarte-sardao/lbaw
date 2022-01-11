@@ -77,45 +77,6 @@ class UserController extends Controller
 
     return redirect('/');
   }
-
-  public function showOrders(){
-    $user = Customer::find(Auth::id());
-    $orders = $user->Purchases;
-    $entries = array();
-    $products = array();
-    
-    //Gets every order of the user
-    foreach($orders as $order){
-      //Finds all the entries of the cart of the current order
-      $cartEntries = CartProduct::where('id_cart', '=', $order->id_cart)->get();
-      
-      $total = 0;
-      $products = array();
-
-      //Finds the prices and quantities of all products in the cart
-      foreach($cartEntries as $entry){
-        $product = Product::find($entry->id_product);
-        $total += $entry->quantity * $product->price;
-        array_push($products, $product);
-      }
-
-      array_push($entries,
-      [
-        'order' => $order,
-        'products' => $products,
-        'address' => Address::find($order->id_address),
-        'total' => $total
-      ]);
-    }
-
-    return view('pages.profile.user_profile', [
-      'user' => $user,
-      'content' => 'partials.profile.user_orders',
-      'entries' => $entries,
-      'breadcrumbs' => [],
-      'current' => $user->name
-    ]);
-  }
 }
 
 ?>

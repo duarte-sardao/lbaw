@@ -58,7 +58,7 @@ Route::post('users/addresses/new', 'AddressController@add');
 Route::delete('users/addresses/{address_id}', 'AddressController@delete');
 
 //! Orders
-Route::get('users/orders', 'UserController@showOrders')->name('orders');
+Route::get('users/orders', 'OrderController@show')->name('orders');
 
 //! Notifications 
 //Route::get('users/notifications', 'NotificationController@show')->name('notifications');
