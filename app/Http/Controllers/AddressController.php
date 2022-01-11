@@ -28,8 +28,9 @@ class AddressController extends Controller
     ]);
   }
 
-  public function showAddresses(){
-    $temps = CustomerAddress::where('id_customer', '=', Auth::id())->get();
+  public function show(){
+    $customer = Customer::where('id_user', '=', Auth::id())->first();
+    $temps = CustomerAddress::where('id_customer', '=', $customer->id)->get();
     $entries = array();
 
     foreach($temps as $temp){
@@ -49,7 +50,7 @@ class AddressController extends Controller
     ]);
   }
 
-  public function addEntry(Request $request){
+  public function add(Request $request){
     $address = new Address;
     $errors = array();
 
@@ -62,10 +63,6 @@ class AddressController extends Controller
 
     if(!is_numeric($streetNumber)){
       array_push($errors, 'Street Number does not match the specified format.');
-    }
-
-    if(!is_numeric($aptNumber) && !is_null($aptNumber)){
-      array_push($errors, 'Apartment Number does not match the specified format.');
     }
 
     if(!is_numeric($floor) && !is_null($floor)){
@@ -104,9 +101,10 @@ class AddressController extends Controller
     $address->save();
 
     //Insert on intermediate table
+    $customer = Customer::where('id_user', '=', Auth::id())->first(); 
     $customerAddress = new CustomerAddress;
 
-    $customerAddress->id_customer = Auth::id();
+    $customerAddress->id_customer = $customer->id;
     $customerAddress->id_address = $address->id;
 
     $customerAddress->save();
@@ -114,6 +112,15 @@ class AddressController extends Controller
     return redirect(route('showAddresses'));
   }
 
+  public function delete($address_id){
+    $customer = Customer::where('id_user', '=', Auth::id())->first();
+    $entry = CustomerAddress::where('id_customer', '=', $customer->id)
+    ->where('id_address', '=', $address_id);
+
+    $entry->delete();
+
+    return redirect()->back();
+  }
 }
 
 ?>

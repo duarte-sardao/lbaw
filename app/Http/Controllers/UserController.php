@@ -20,7 +20,7 @@ class UserController extends Controller
    * @param id Id of the User whose profile will be edited
    */
    
-  public function showProfile()
+  public function show()
   {
     $user = User::find(Auth::id());
     //$this->authorize('show', $user);
@@ -39,7 +39,7 @@ class UserController extends Controller
    * @param request Request data to be parsed
    * @param id Id of the user to update
    */
-  public function updateProfile(Request $request, $id)
+  public function update(Request $request, $id)
   {
     $user = User::find($id);
     $this->authorize('update', $user);
@@ -76,10 +76,6 @@ class UserController extends Controller
     $user->delete();
 
     return redirect('/');
-  }
-  
-  public function showAddresses(){
-    
   }
 
   public function showOrders(){

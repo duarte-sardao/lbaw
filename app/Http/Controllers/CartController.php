@@ -72,7 +72,7 @@ class CartController extends Controller
     ]);
   }
 
-  public function addEntry(Request $request, $product_id)
+  public function add($product_id)
   { 
     //! If the user is not authenticated, he is redirected to the login page
     if(!Auth::check())
@@ -90,7 +90,7 @@ class CartController extends Controller
     return redirect()->back();
   }
 
-  public function deleteEntry(Request $request, $product_id)
+  public function delete($product_id)
   {
     $entry = $this->getCartEntry($product_id);
     //dd($entry);
@@ -98,7 +98,7 @@ class CartController extends Controller
     return redirect()->back();
   }
 
-  public function incrementQuantity(Request $request, $product_id)
+  public function incrementQuantity($product_id)
   {
     $entry = $this->getCartEntry($product_id);
 
@@ -108,7 +108,7 @@ class CartController extends Controller
     return redirect()->back();
   }
 
-  public function decrementQuantity(Request $request, $product_id)
+  public function decrementQuantity($product_id)
   {
     $entry = $this->getCartEntry($product_id);
 

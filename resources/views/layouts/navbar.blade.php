@@ -39,7 +39,7 @@
       </a> 
 
       @if(!Auth::user()->isadmin)
-        <a class="btn btn-primary m-2" href = "{{route('showCart')}}">
+        <a class="btn btn-primary m-2" href = "{{route('cart')}}">
           <i class="fa fa-shopping-cart"></i>
         </a> 
       @endif

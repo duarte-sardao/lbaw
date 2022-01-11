@@ -12,11 +12,24 @@ use Illuminate\Support\Facades\Auth;
 
 class WishlistController extends Controller
 { 
-  public function showWishlist(){
-    $user = User::find(Auth::id());
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
-    $wishlist = Wishlist::where('id_customer', '=', $customer->id)->get();
+  private function getCustomer(){
+    return Customer::where('id_user', '=', Auth::id())->first();
+  }
 
+  private function getWishlistEntry($id){
+    $customer = $this->getCustomer();
+    
+    return Wishlist::where('id_customer', '=', $customer->id)
+      ->where('id_product','=', $id);
+  }
+
+  private function getFullWishlist(){
+    $customer = $this->getCustomer();
+    return Wishlist::where('id_customer', '=', $customer->id)->get();
+  }
+
+  public function show(){
+    $wishlist = $this->getFullWishlist();
     $entries = array();
 
     foreach($wishlist as $product){
@@ -24,19 +37,19 @@ class WishlistController extends Controller
     }
 
     return view('pages.profile.user_profile', [
-      'user' => $user,
+      'user' => User::find(Auth::id()),
       'entries' => $entries,
       'content' => 'partials.profile.user_wishlist',
-      'breadcrumbs' => [route('profile') => $user->username],
+      'breadcrumbs' => [route('profile') => User::find(Auth::id())->username],
       'current' => 'Wishlist'
     ]);
   }
   
-  public function addEntry($product_id){
+  public function add($product_id){
     if(!Auth::check())
       return redirect(route('login'));
 
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
+    $customer = $this->getCustomer();
 
     $entry = new Wishlist;
 
@@ -48,10 +61,8 @@ class WishlistController extends Controller
     return redirect()->back();
   }
 
-  public function deleteEntry($product_id){
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
-    $entry = Wishlist::where('id_customer', '=', $customer->id)
-    ->where('id_product','=', $product_id);
+  public function delete($product_id){
+    $entry = $this->getWishlistEntry($product_id);
 
     $entry->delete();
 
@@ -59,8 +70,7 @@ class WishlistController extends Controller
   }
 
   public function empty(){
-    $customer = Customer::where('id_user', '=', Auth::id())->first();
-    $entries = Wishlist::where('id_customer', '=', $customer->id)->get();
+    $entries = $this->getFullWishlist();
 
     foreach($entries as $entry){
       $entry->delete();
