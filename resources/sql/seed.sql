@@ -663,10 +663,10 @@ INSERT INTO PaymentMethod(type) VALUES ('Card');
 
 --------------------------- Purchase ---------------------------
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/4', 'Processing', 1, 1, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/2', 'Packed', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Accepted', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/2',  'Packed', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/27', '2021/11/30', 'Shipped', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Delivered', 1, 1, 1, 1);
-INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Accepted', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Cancelled by Store', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Cancelled by Customer', 1, 1, 1, 1);
 

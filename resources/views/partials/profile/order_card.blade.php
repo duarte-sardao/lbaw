@@ -50,8 +50,8 @@
           <i class="fa fa-ellipsis-h"></i>
       
       @elseif($entry['order']->orderstatus == 'Accepted')
-        <span class = "text-orange-500">
-          <i class="fas fa-vote-yea"></i> 
+        <span class = "text-teal-500">
+          <i class="fad fa-vote-yea"></i> 
 
       @elseif($entry['order']->orderstatus == 'Packed')
         <span class = "text-orange-500">
@@ -61,13 +61,13 @@
         <span class = "text-info">
           <i class="fa fa-truck"></i>  
       
-      @elseif($entry['order']->orderstatus == 'Cancalled by Store')
-        <span class = "text-orange-500">
-          <i class="fas fa-ban"></i> 
+      @elseif($entry['order']->orderstatus == 'Cancelled by Store')
+        <span class = "text-red-500">
+          <i class="fa fa-ban"></i> 
       
-      @elseif($entry['order']->orderstatus == 'Cancalled by Customer')
-        <span class = "text-orange-500">
-          <i class="fas fa-ban"></i>
+      @elseif($entry['order']->orderstatus == 'Cancelled by Customer')
+        <span class = "text-red-500">
+          <i class="fa fa-ban"></i>
           
       @else
         <span class = "text-teal-500">
