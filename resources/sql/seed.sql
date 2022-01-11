@@ -29,6 +29,10 @@ DROP TRIGGER IF EXISTS orderStatusNotification on Purchase;
 DROP TRIGGER IF EXISTS productSearchUpdate on Product;
 DROP TRIGGER IF EXISTS renewCart on Purchase;
 DROP TRIGGER IF EXISTS cartCustomer on Customer;
+DROP TRIGGER IF EXISTS paymentApproved on Purchase;
+DROP TRIGGER IF EXISTS priceChangeWishlist on Product;
+DROP TRIGGER IF EXISTS priceChangeCart on Product;
+DROP TRIGGER IF EXISTS productBackInStock on Product;
 
 DROP FUNCTION IF EXISTS updateProductRating;
 DROP FUNCTION IF EXISTS verificaStock;
@@ -37,6 +41,11 @@ DROP FUNCTION IF EXISTS orderStatusNotification;
 DROP FUNCTION IF EXISTS productSearchUpdate;
 DROP FUNCTION IF EXISTS renewCart;
 DROP FUNCTION IF EXISTS cartCustomer;
+DROP FUNCTION IF EXISTS paymentApproved;
+DROP FUNCTION IF EXISTS priceChangeWishlist;
+DROP FUNCTION IF EXISTS priceChangeCart;
+DROP FUNCTION IF EXISTS productBackInStock;
+
 
 DROP INDEX IF EXISTS acc_id;
 DROP INDEX IF EXISTS product_price;
@@ -67,7 +76,7 @@ CREATE TYPE MotherboardType as ENUM('ATX', 'MICRO-ATX', 'MINI-ATX', 'EATX', 'MIN
 CREATE TYPE StorageType as ENUM('RAM', 'SSD', 'HDD', 'M.2');
 CREATE TYPE CoolerType as ENUM('Water', 'Air');
 CREATE TYPE PowerSupplyType as ENUM('Full-Modular', 'Semi-Modular', 'Non-Modular');
-CREATE TYPE OrderStatusType as ENUM ('Processing', 'Packed', 'Shipped', 'Delivered');
+CREATE TYPE OrderStatusType as ENUM ('Processing', 'Accepted', 'Packed', 'Shipped', 'Delivered', 'Cancelled by admin', 'Cancelled by Customer');
 CREATE TYPE CategoryType as ENUM('CPU', 'GPU', 'Motherboard', 'PcCase', 'PowerSupply', 'Cooler', 'Storage', 'Other');
 CREATE TYPE PaymentType as ENUM('Transfer', 'Card', 'Paypal');
 
@@ -896,7 +905,6 @@ FOR EACH ROW
 EXECUTE PROCEDURE orderStatusNotification(); 
 
 
-
 -- TRIGGER TO CREATE A CART WHEN A NEW USER IS CREATED
 CREATE FUNCTION cartCustomer() RETURNS TRIGGER AS
 $BODY$
@@ -911,6 +919,7 @@ CREATE TRIGGER cartCustomer
 AFTER INSERT ON Customer
 FOR EACH ROW
 EXECUTE PROCEDURE cartCustomer(); 
+
 
 -- TRIGGER TO CREATE A CART WHEN A NEW USER IS CREATED AND TRASH THE OLD ONE
 CREATE FUNCTION renewCart() RETURNS TRIGGER AS
@@ -935,8 +944,124 @@ EXECUTE PROCEDURE renewCart();
 
 
 
+-- TRIGGER TO SEND A NOTIFICATION TO THE Customer WHEN THEIR PAYMENT HAS BEEN APPROVED BY THE STORE
+CREATE FUNCTION paymentApproved() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+    IF New.orderStatus = 'Accepted' THEN
+    INSERT INTO Notification(content, id_Customer) VALUES ('Your payment method has been approved by the store' , New.id_Customer);
+    END IF;
+    RETURN NULL;
+END
+$BODY$
+LANGUAGE plpgsql;
 
-/* -----------------------
+CREATE TRIGGER paymentApproved
+AFTER UPDATE ON Purchase
+FOR EACH ROW
+EXECUTE PROCEDURE paymentApproved(); 
+
+
+
+/*
+-- Trigger to send a notification when the price of a product in the wishlist has decreased 
+CREATE FUNCTION priceChangeWishlist() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
+AND                                                                     
+EXISTS (                                                                -- And this product is in a wishlist?
+    SELECT *                                                      
+    from Wishlist  
+    where id_Product = OLD.id                                               
+)
+THEN
+
+SELECT id_Customer                                                      -- Selects the id of owner of the wishlist...
+from Wishlist  
+where id_Product = OLD.id;
+
+INSERT INTO NOTIFICATION (content, id_Customer) VALUES ('There has been a price decrease in one of your wishlisted products', id_Customer);
+
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER priceChangeWishlist                  
+BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+FOR EACH ROW                        
+EXECUTE PROCEDURE priceChangeWishlist();    -- We will check if the new price is different from the old price 
+
+
+
+
+-- Trigger to send a notification when the price of a product in the cart has decreased
+CREATE FUNCTION priceChangeCart() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
+AND                                                                     
+EXISTS (                                                                -- And this product is in a cart?
+    SELECT *                                                      
+    from Cart  
+    where id_Product = OLD.id                                               
+)
+THEN
+
+SELECT id_Customer                                                      -- Selects the id of owner of the cart...
+from Cart  
+where id_Product = OLD.id;
+
+INSERT INTO NOTIFICATION (content, id_Customer) VALUES ('There has been a price decrease in one of the products in your cart', id_Customer);
+
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER priceChangeCart                  
+BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+FOR EACH ROW                        
+EXECUTE PROCEDURE priceChangeCart();            -- We will check if the new price is different from the old price 
+
+
+
+-- Trigger to send a notification when a product in the wishlist has become avaliable
+CREATE FUNCTION productBackInStock() RETURNS TRIGGER AS
+$BODY$
+BEGIN
+IF OLD.stock == 0                                                       -- Was the product out of stock?
+AND NEW.stock > 0                                                       -- And the stock is now greater than 0?           
+EXISTS (                                                                -- And this product is in a wishlist?
+    SELECT *                                                      
+    from Wishlist  
+    where id_Product = OLD.id                                               
+)
+THEN
+
+SELECT id_Customer                                                      -- Selects the id of owner of the wishlist...
+from Wishlist  
+where id_Product = OLD.id;
+
+INSERT INTO NOTIFICATION (content, id_Customer) VALUES ('A product from your wishlist is back in stock', id_Customer);
+
+END IF;
+RETURN NEW;
+END
+$BODY$
+LANGUAGE plpgsql;
+
+CREATE TRIGGER productBackInStock                  
+BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+FOR EACH ROW                        
+EXECUTE PROCEDURE productBackInStock();    -- We will check if the new price is different from the old price */
+
+
+/*
+-----------------------
 --    TRANSACTIONS   --
 -----------------------
 BEGIN TRANSACTION; 
