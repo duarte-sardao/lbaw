@@ -76,7 +76,7 @@ CREATE TYPE MotherboardType as ENUM('ATX', 'MICRO-ATX', 'MINI-ATX', 'EATX', 'MIN
 CREATE TYPE StorageType as ENUM('RAM', 'SSD', 'HDD', 'M.2');
 CREATE TYPE CoolerType as ENUM('Water', 'Air');
 CREATE TYPE PowerSupplyType as ENUM('Full-Modular', 'Semi-Modular', 'Non-Modular');
-CREATE TYPE OrderStatusType as ENUM ('Processing', 'Accepted', 'Packed', 'Shipped', 'Delivered', 'Cancelled by admin', 'Cancelled by Customer');
+CREATE TYPE OrderStatusType as ENUM ('Processing', 'Accepted', 'Packed', 'Shipped', 'Delivered', 'Cancelled by Store', 'Cancelled by Customer');
 CREATE TYPE CategoryType as ENUM('CPU', 'GPU', 'Motherboard', 'PcCase', 'PowerSupply', 'Cooler', 'Storage', 'Other');
 CREATE TYPE PaymentType as ENUM('Transfer', 'Card', 'Paypal');
 
@@ -666,6 +666,9 @@ INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Addre
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/28', '2021/12/2', 'Packed', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/27', '2021/11/30', 'Shipped', 1, 1, 1, 1);
 INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Delivered', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Accepted', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Cancelled by Store', 1, 1, 1, 1);
+INSERT INTO Purchase(orderDate, deliveryDate, orderStatus, id_Customer, id_Address, id_PaymentMethod, id_Cart) VALUES ('2021/11/16', '2021/11/19', 'Cancelled by Customer', 1, 1, 1, 1);
 
 --------------------------- Paypal ---------------------------
 INSERT INTO Paypal (email, id_PaymentMethod) VALUES ('vova10000@bukan.es', 1);

@@ -48,6 +48,10 @@
       @if($entry['order']->orderstatus == 'Processing')
         <span class = "text-secondary">
           <i class="fa fa-ellipsis-h"></i>
+      
+      @elseif($entry['order']->orderstatus == 'Accepted')
+        <span class = "text-orange-500">
+          <i class="fas fa-vote-yea"></i> 
 
       @elseif($entry['order']->orderstatus == 'Packed')
         <span class = "text-orange-500">
@@ -56,7 +60,15 @@
       @elseif($entry['order']->orderstatus == 'Shipped')
         <span class = "text-info">
           <i class="fa fa-truck"></i>  
-
+      
+      @elseif($entry['order']->orderstatus == 'Cancalled by Store')
+        <span class = "text-orange-500">
+          <i class="fas fa-ban"></i> 
+      
+      @elseif($entry['order']->orderstatus == 'Cancalled by Customer')
+        <span class = "text-orange-500">
+          <i class="fas fa-ban"></i>
+          
       @else
         <span class = "text-teal-500">
           <i class="fa fa-check"></i>  
