@@ -18,7 +18,7 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
-        <a class="fw-bold" href ="#">Addresses</a>
+        <a class="fw-bold" href = {{route('showAddresses')}}>Addresses</a>
         <small>Edit your addresses</small>
       </div>
     </li>

@@ -33,7 +33,7 @@
     </form>
   
     <div class="d-flex flex-column align-items-center">
-      <img src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
+      <img class = "rounded-circle" src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
       <div class="d-flex align-items-center">
         <form class="m-1" method = "POST" action = "" {{-- {{route('changePhoto')}} --}}>
           @csrf
@@ -54,7 +54,7 @@
           </button>
         </form>
       </div>
-      
+    </div>
   </div>
 
 </div>    

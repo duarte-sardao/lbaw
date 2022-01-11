@@ -36,7 +36,6 @@ Route::get('admin/products', 'AdminController@productManagementArea')->name('pro
 Route::get('users', 'UserController@showProfile')->name('profile');
 Route::delete('users', 'UserController@delete')->name('deleteProfile');
 Route::post('users/edit/{id}', 'UserController@updateProfile');
-Route::get('users/addresses', 'UserControllerController@showAddresses')->name('showAddresses');
 Route::get('users/orders', 'UserController@showOrders')->name('showOrders');
 Route::get('users/notifications', 'UserController@showNotifications')->name('showNotifications');
 
@@ -57,6 +56,14 @@ Route::delete('users/wishlist', 'WishlistController@empty')->name('emptyWhislist
 
 Route::put('users/wishlist/{product_id}', 'WishlistController@addEntry');
 Route::delete('users/wishlist/{product_id}', 'WishlistController@deleteEntry');
+
+//! Addresses
+Route::get('users/addresses', 'AddressController@showAddresses')->name('showAddresses');
+Route::get('users/addresses/new', 'AddressController@showAddressForm')->name('newAddress');
+Route::post('users/addresses/new', 'AddressController@addEntry');
+
+
+//! Orders
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');

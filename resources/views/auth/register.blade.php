@@ -10,7 +10,7 @@
         <div class="form-group m-2 d-flex flex-column">
           <label class = "mb-2" for="name">
             <span>Username</span>
-            <small class = "required_input">*</small>
+            <small class = "required-input">*</small>
           </label>
           <input class = "form-control" id="name" type="text" name="name" required>
           @if ($errors->has('name'))
@@ -23,7 +23,7 @@
         <div class="form-group m-2 d-flex flex-column">
           <label class = "mb-2" for="email">
             <span>Email</span>
-            <small class = "required_input">*</small>
+            <small class = "required-input">*</small>
           </label>
           <input class = "form-control" id="email" type="email" name="email" required>
             @if ($errors->has('email'))
@@ -37,7 +37,7 @@
           <div class="form-group m-2 d-flex flex-column w-100">
             <label class = "mb-2" for="password">
               <span>Password</span>
-              <small class = "required_input">*</small>
+              <small class = "required-input">*</small>
             </label>
             <input class = "form-control" id="password" type="password" name="password" required>
               @if ($errors->has('password'))
@@ -50,7 +50,7 @@
           <div class="form-group m-2 d-flex flex-column w-100">
             <label class = "mb-2" for="password-confirm">
               <span>Confirm Password</span>
-              <small class = "required_input">*</small>
+              <small class = "required-input">*</small>
             </label>
             <input class = "form-control" id="password-confirm" type="password" name="password_confirmation" required>
           </div>
