@@ -16,7 +16,11 @@
         <div class="d-flex justify-content-between align-items-center">
           <h3 class="mt-2 price">{{$product->price}}€</h3>
 
-          @if($product->stock > 0)
+          @if($product->stock > 0 && $product->stock <= 5)
+            <h4 class = "text-warning mb-0">
+              <i class = "fa fa-check"></i> Low Stock
+            </h4>
+          @elseif($product->stock > 5)
             <h4 class = "text-success mb-0">
               <i class = "fa fa-check"></i> In Stock
             </h4>
