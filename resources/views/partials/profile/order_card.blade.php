@@ -51,7 +51,7 @@
       
       @elseif($entry['order']->orderstatus == 'Accepted')
         <span class = "text-teal-500">
-          <i class="fad fa-vote-yea"></i> 
+          <i class="fa fa-check"></i>
 
       @elseif($entry['order']->orderstatus == 'Packed')
         <span class = "text-orange-500">
@@ -59,7 +59,7 @@
 
       @elseif($entry['order']->orderstatus == 'Shipped')
         <span class = "text-info">
-          <i class="fa fa-truck"></i>  
+          <i class="fa fa-ship"></i>  
       
       @elseif($entry['order']->orderstatus == 'Cancelled by Store')
         <span class = "text-red-500">
@@ -71,7 +71,7 @@
           
       @else
         <span class = "text-teal-500">
-          <i class="fa fa-check"></i>  
+          <i class="fa fa-truck"></i>    
 
       @endif
       {{$entry['order']->orderstatus}}

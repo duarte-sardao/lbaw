@@ -33,6 +33,7 @@ DROP TRIGGER IF EXISTS paymentApproved on Purchase;
 DROP TRIGGER IF EXISTS priceChangeWishlist on Product;
 DROP TRIGGER IF EXISTS priceChangeCart on Product;
 DROP TRIGGER IF EXISTS productBackInStock on Product;
+DROP TRIGGER IF EXISTS newPurchase on Purchase;
 
 DROP FUNCTION IF EXISTS updateProductRating;
 DROP FUNCTION IF EXISTS verificaStock;
@@ -45,6 +46,7 @@ DROP FUNCTION IF EXISTS paymentApproved;
 DROP FUNCTION IF EXISTS priceChangeWishlist;
 DROP FUNCTION IF EXISTS priceChangeCart;
 DROP FUNCTION IF EXISTS productBackInStock;
+DROP FUNCTION IF EXISTS newPurchase;
 
 
 DROP INDEX IF EXISTS acc_id;
