@@ -6,7 +6,7 @@
 
     <div class = "card-deck container mt-5" id="homeProductGrid">
       <div class="row">
-        <h5>Most ordered products:</h5>
+        <h5>Products in other users carts:</h5>
       </div>
       
       <div class="row d-flex m-1">
