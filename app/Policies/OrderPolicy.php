@@ -7,23 +7,13 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class AddressPolicy
+class OrderPolicy
 {
   use HandlesAuthorization;
   
   public function show(User $user)
   {
-    return Auth::id() == $user->id; 
-  }
-
-  public function add(User $user)
-  {
-    return Auth::id() == $user->id; 
-  }
-  
-  public function delete(User $user)
-  {
-    return Auth::id() == $user->id;
+    return Auth::id() == $user->id || Auth::user()->isadmin; 
   }
 }
 

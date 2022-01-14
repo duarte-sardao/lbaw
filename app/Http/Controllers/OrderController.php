@@ -18,6 +18,7 @@ class OrderController extends Controller
   }
 
   public function show(){
+    //$this->authorize('show', Auth::user());
     $user = $this->getCustomer();
     $orders = $user->Purchases;
     $entries = array();
