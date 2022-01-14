@@ -29,6 +29,7 @@ class WishlistController extends Controller
   }
 
   public function show(){
+    //$this->authorize('show', Auth::user());
     $wishlist = $this->getFullWishlist();
     $entries = array();
 
@@ -46,6 +47,7 @@ class WishlistController extends Controller
   }
   
   public function add($product_id){
+    //$this->authorize('add', Auth::user());
     if(!Auth::check())
       return redirect(route('login'));
 
@@ -62,6 +64,7 @@ class WishlistController extends Controller
   }
 
   public function delete($product_id){
+    //$this->authorize('delete', Auth::user());
     $entry = $this->getWishlistEntry($product_id);
 
     $entry->delete();
@@ -70,6 +73,7 @@ class WishlistController extends Controller
   }
 
   public function empty(){
+    //$this->authorize('empty', Auth::user());
     $entries = $this->getFullWishlist();
 
     foreach($entries as $entry){
