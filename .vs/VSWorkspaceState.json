@@ -2,6 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\bootstrap",
+    "\\config",
+    "\\database",
+    "\\etc",
+    "\\public",
     "\\routes"
   ],
   "PreviewInSolutionExplorer": false

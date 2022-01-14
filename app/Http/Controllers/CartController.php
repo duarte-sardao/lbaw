@@ -32,13 +32,11 @@ class CartController extends Controller
 
   private function getAllCartEntries(){
     $cart = $this->getCart();
-    return CartProduct::where('id_cart', '=', $cart->id)->get();
+    return CartProduct::where('id_cart', '=', $cart->id)->get();;
   }
 
   public function show(){
-    //$this->authorize('show', Auth::user());
     $user = User::find(Auth::id());
-
     $cartProducts = $this->getAllCartEntries();
     $cart = array();
 
@@ -67,7 +65,6 @@ class CartController extends Controller
 
   public function add($product_id)
   { 
-    //$this->authorize('add', Auth::user());
     //! If the user is not authenticated, he is redirected to the login page
     if(!Auth::check())
       return redirect(route('login'));
@@ -86,7 +83,6 @@ class CartController extends Controller
 
   public function delete($product_id)
   {
-    //$this->authorize('delete', Auth::user());
     $entry = $this->getCartEntry($product_id);
     //dd($entry);
     $entry->delete();
@@ -95,7 +91,6 @@ class CartController extends Controller
 
   public function incrementQuantity($product_id)
   {
-    //$this->authorize('increment', Auth::user());
     $entry = $this->getCartEntry($product_id);
 
     $entry->quantity++;
@@ -106,7 +101,6 @@ class CartController extends Controller
 
   public function decrementQuantity($product_id)
   {
-    //$this->authorize('decrement', Auth::user());
     $entry = $this->getCartEntry($product_id);
 
     $entry->quantity--;
@@ -117,7 +111,6 @@ class CartController extends Controller
 
   public function empty()
   {
-    //$this->authorize('empty', Auth::user());
     $cart = $this->getAllCartEntries();
     
     foreach($cart as $entry){
@@ -125,6 +118,16 @@ class CartController extends Controller
     }
 
     return redirect()->back();
+  }
+
+  public function checkout()
+  {
+    if(!Auth::check()){
+      return redirect(route('login'));
+    }
+
+    $cart = this->getCart();
+    DB::insert('INSERT INTO Purchase(orderDate, deliveryDate, id_Customer, id_Address, id_PaymentMethod, id_Cart) values (?,?,?,?,?,?)', ['2021/11/03', '2021/12/14', $cart->id_Customer, _, _, $cart->id]);
   }
 }
 ?>
