@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Product;
 use App\Models\CPU;
+use App\Models\Product;
 use App\Models\GPU;
 use App\Models\Motherboard;
 use App\Models\Cooler;
@@ -11,6 +11,7 @@ use App\Models\PowerSupply;
 use App\Models\Storage;
 use App\Models\PcCase;
 use App\Models\Other;
+use App\Models\Review;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -55,6 +56,7 @@ class ProductController extends Controller
   
   public function showProduct($id){
     $product = Product::find($id);
+    $reviews = Review::where('id_product', '=', $id)->get();
     $details = null;
     
     return view('pages.products.product', 
@@ -62,7 +64,8 @@ class ProductController extends Controller
       'product' => $product,
       'details' => $details,
       'breadcrumbs' => [route('allProducts') => 'Products'],
-      'current' => $product->name
+      'current' => $product->name,
+      'reviews' => $reviews
     ]);
   }
 }
