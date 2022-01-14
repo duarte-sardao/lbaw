@@ -43,6 +43,7 @@ class AddressController extends Controller
   }
 
   public function show(){
+    //$this->authorize('show', Auth::user());
     $customerAddresses = $this->getAllCustomerAddress();
     $entries = array();
 
@@ -64,6 +65,7 @@ class AddressController extends Controller
   }
 
   public function add(Request $request){
+    //$this->authorize('add', Auth::user());
     $errors = array();
 
     $streetName = $request->input('streetName');
@@ -129,10 +131,11 @@ class AddressController extends Controller
   }
 
   public function delete($address_id){
+    //$this->authorize('delete', Auth::user());
+    
     $entry = $this->getCustomerAddressEntry($address_id);
-
     $entry->delete();
-
+    
     return redirect()->back();
   }
 }
