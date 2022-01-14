@@ -126,8 +126,12 @@ class CartController extends Controller
       return redirect(route('login'));
     }
 
-    $cart = this->getCart();
-    DB::insert('INSERT INTO Purchase(orderDate, deliveryDate, id_Customer, id_Address, id_PaymentMethod, id_Cart) values (?,?,?,?,?,?)', ['2021/11/03', '2021/12/14', $cart->id_Customer, _, _, $cart->id]);
+    //$cart = this->getCart();
+    //DB::insert('INSERT INTO Purchase(orderDate, deliveryDate, id_Customer, id_Address, id_PaymentMethod, id_Cart) values (?,?,?,?,?,?)', ['2021/11/03', '2021/12/14', $cart->id_Customer, _, _, $cart->id]);
+    return view('partials.cart.checkout', [
+      'breadcrumbs' => [route('checkout')],
+      'current' => 'Checkout'
+    ]);
   }
 }
 ?>
