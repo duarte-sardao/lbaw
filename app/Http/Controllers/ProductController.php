@@ -25,7 +25,10 @@ class ProductController extends Controller
     $secondQuery = Product::where('brand', 'like', '%'.$wildcard.'%');
     $thirdQuery = Product::where('description', 'like', '%'.$wildcard.'%');
 
-    $results = $firstQuery->union($secondQuery)->union($thirdQuery)->get();
+    $results = $firstQuery
+    ->union($secondQuery)
+    ->union($thirdQuery)
+    ->get();
 
     return view('pages.products.products_list', 
     [
