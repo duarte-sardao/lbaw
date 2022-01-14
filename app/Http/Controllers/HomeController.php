@@ -21,7 +21,7 @@ class HomeController extends Controller
             ->get();
         
         foreach($inMostCarts as $entry){
-            array_push($productsList1, Product::find($entry->id_)); 
+            array_push($productsList1, Product::find($entry->id_product)); 
         }
         
         for($i = 0; $i < 4; $i++){
