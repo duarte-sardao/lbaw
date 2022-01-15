@@ -3,53 +3,55 @@
     <h4>New address</h4>
   </div>
 
-  <form class = "row g-3" method = "POST" action= {{url('users/addresses/new')}}>
+  <form class = "row g-3" method = "POST" action= {{route('createProduct')}}>
     @csrf
 
     <div class="col-12">
-      <label for="productName" class="form-label">
+      <label for="name" class="form-label">
         <span>Product Name</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="productName" id="productName" placeholder="Saint Louis St." required>
+      <input type="text" class="form-control" name="name" id="name" placeholder="Saint Louis St." required>
     </div>
 
     <div class="col-md-4">
-      <label for="streetNumber" class="form-label">
-        <span>Street Number</span> 
+      <label for="price" class="form-label">
+        <span>Price</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="streetNumber" id="streetNumber" placeholder="123" required>
+      <input type="text" class="form-control" name="price" id="price" placeholder="123" required>
     </div>
 
     <div class="col-md-4">
-      <label for="aptNumber" class="form-label">
-        <span>Apartement Number</span> 
+      <label for="size" class="form-label">
+        <span>Size</span> 
       </label>
-      <input type="text" class="form-control" name="aptNumber" id="aptNumber" placeholder = "10">
+      <input type="text" class="form-control" name="size" id="size" placeholder = "10">
     </div>
-
+    
     <div class="col-md-4">
-      <label for="floor" class="form-label">
-        <span>Floor</span>
-      </label>
-      <input type="text" class="form-control" name="floor" id="floor" placeholder = "1">
-    </div>
-
-    <div class="col-md-4">
-      <label for="zipcodeNumber" class="form-label">
-        <span>Zip Code</span> 
+      <label for="stock" class="form-label">
+        <span>Stock</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="zipcodeNumber" id="zipcodeNumber" placeholder = "4321-567" required>
+      <input type="text" class="form-control" name="stock" id="stock" placeholder = "4321-567" required>
     </div>
+
+    <div class="col-md-4">
+      <label for="brand" class="form-label">
+        <span>Brand</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="brand" id="brand" placeholder = "1" required>
+    </div>
+
 
     <div class="col-md-8">
-      <label for="zipcodeLocation" class="form-label">
-        <span>Zip Code Location</span>
+      <label for="description" class="form-label">
+        <span>Description</span>
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="zipcodeLocation" id="zipcodeLocation" placeholder = "Bullevard" required>
+      <input type="text" class="form-control" name="description" id="description" placeholder = "Bullevard" required>
     </div>
 
     <div class="col-12">

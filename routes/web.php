@@ -40,7 +40,7 @@ Route::delete('admin/users/delete/{user_id}', 'AdminController@deleteUser');
 
 Route::get('admin/products/create', 'AdminController@getCreateProductForm')->name('newProduct');
 Route::post('admin/products/create', 'AdminController@createProduct')->name('createProduct');
-Route::delete('admin/products/delete/{user_id}', 'AdminController@deleteProduct');
+Route::delete('admin/products/delete/{product_id}', 'AdminController@deleteProduct');
 
 //! Users
 Route::get('users', 'UserController@show')->name('profile');
