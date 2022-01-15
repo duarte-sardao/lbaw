@@ -8,6 +8,20 @@
     </thead>
 
     <tbody>
+      @if(!is_null($product->category))
+        <tr>
+          <td>Category</td>
+          <td><a class = "text-dark" href="/products/categories/{{$product->category}}">{{$product->category}}</a></td>
+        </tr>
+      @endif
+
+      @if(!is_null($product->brand))
+        <tr>
+          <td>Brand</td>
+          <td><a class = "text-dark" href="#">{{$product->brand}}</a></td>
+        </tr>
+      @endif
+
       @if(!is_null($product->size))
         <tr>
           <td>Size</td>
@@ -15,12 +29,6 @@
         </tr>
       @endif  
 
-      @if(!is_null($product->brand))
-        <tr>
-          <td>Brand</td>
-          <td>{{$product->brand}}</td>
-        </tr>
-      @endif 
 
       @if(!is_null($product->rating))
         <tr>
