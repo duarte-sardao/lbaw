@@ -8,34 +8,28 @@
     </thead>
 
     <tbody>
-      @if(!is_null($product->category))
-        <tr>
-          <td>Category</td>
+      <tr>
+        <td>Category</td>
           <td><a class = "text-dark" href="/products/categories/{{$product->category}}">{{$product->category}}</a></td>
-        </tr>
-      @endif
-
-      @if(!is_null($product->brand))
-        <tr>
-          <td>Brand</td>
-          <td><a class = "text-dark" href="#">{{$product->brand}}</a></td>
-        </tr>
-      @endif
+      </tr>
+      
+      <tr>
+        <td>Brand</td>
+        <td><a class = "text-dark" href="#">{{$product->brand}}</a></td>
+      </tr>
+      
 
       @if(!is_null($product->size))
         <tr>
           <td>Size</td>
           <td>{{$product->size}}</td>
-        </tr>
+        </tr>   
       @endif  
 
-
-      @if(!is_null($product->rating))
-        <tr>
-          <td>Rating</td>
-          <td>{{$product->rating}} / 5.0</td>
-        </tr>
-      @endif  
+      <tr>
+        <td>Rating</td>
+        <td>{{$product->rating}} / 5.0</td>
+      </tr>  
     </tbody>
   </table>
 </div>

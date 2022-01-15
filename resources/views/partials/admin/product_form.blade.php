@@ -7,11 +7,11 @@
     @csrf
 
     <div class="col-12">
-      <label for="streetName" class="form-label">
-        <span>Street Name</span> 
+      <label for="productName" class="form-label">
+        <span>Product Name</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="streetName" id="streetName" placeholder="Saint Louis St." required>
+      <input type="text" class="form-control" name="productName" id="productName" placeholder="Saint Louis St." required>
     </div>
 
     <div class="col-md-4">

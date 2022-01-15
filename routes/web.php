@@ -27,9 +27,20 @@ Route::get('register', 'Auth\RegisterController@showRegistrationForm')->name('re
 Route::post('register', 'Auth\RegisterController@register');
 
 //! Admins
-Route::get('admin/users', 'AdminController@userManagementArea')->name('userManagementArea');
-Route::get('admin/orders', 'AdminController@orderManagementArea')->name('orderManagementArea');
-Route::get('admin/products', 'AdminController@productManagementArea')->name('productManagementArea');
+Route::get('admin/users', 'AdminController@showAllUsers')->name('showAllUsers');
+Route::get('admin/orders', 'AdminController@showAllOrders')->name('showAllOrders');
+Route::get('admin/products', 'AdminController@showAllProducts')->name('showAllProducts');
+Route::post('admin/users/edit/{user_id}', 'AdminController@editUser');
+Route::post('admin/orders/edit/{order_id}', 'AdminController@editOrder');
+Route::post('admin/products/edit/{product_id}', 'AdminController@editProduct');
+
+Route::get('admin/users/create', 'AdminController@getCreateUserForm')->name('newUser');
+Route::post('admin/users/create', 'AdminController@createUser')->name('createUser');
+Route::delete('admin/users/delete/{user_id}', 'AdminController@deleteUser');
+
+Route::get('admin/products/create', 'AdminController@getCreateProductForm')->name('newProduct');
+Route::post('admin/products/create', 'AdminController@createProduct')->name('createProduct');
+Route::delete('admin/products/delete/{user_id}', 'AdminController@deleteProduct');
 
 //! Users
 Route::get('users', 'UserController@show')->name('profile');
