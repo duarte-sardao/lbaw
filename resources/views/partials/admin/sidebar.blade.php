@@ -12,19 +12,19 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto d-flex flex-column">
-        <a href = "{{route('userManagementArea')}}" class="fw-bold">Users Management</a>
+        <a href = "{{route('showAllUsers')}}" class="fw-bold">Users Management</a>
         <span>Create, delete or ban/unban users</span>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto d-flex flex-column">
-        <a href = "{{route('productManagementArea')}}" class="fw-bold">Products Management</a>
+        <a href = "{{route('showAllProducts')}}" class="fw-bold">Products Management</a>
         <span>Add, delete or edit products</span>
       </div>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="ms-2 me-auto d-flex flex-column">
-        <a href = "{{route('orderManagementArea')}}" class="fw-bold">Orders Management</a>
+        <a href = "{{route('showAllOrders')}}" class="fw-bold">Orders Management</a>
         <span>Manage Orders</span>
       </div>
     </li>

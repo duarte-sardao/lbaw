@@ -1,6 +1,6 @@
-<div class="col w-60 d-flex flex-column">
+<div class="col w-60 d-flex flex-column oy-scroll h-75">
   <div class="d-flex justify-content-between mb-2">
-    <h4>New address</h4>
+    <h4>New product</h4>
   </div>
 
   <form class = "row g-3" method = "POST" action= {{route('createProduct')}}>
@@ -11,7 +11,7 @@
         <span>Product Name</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="name" id="name" placeholder="Saint Louis St." required>
+      <input type="text" class="form-control" name="name" id="name" placeholder="Latest generation processor" required>
     </div>
 
     <div class="col-md-4">
@@ -26,7 +26,7 @@
       <label for="size" class="form-label">
         <span>Size</span> 
       </label>
-      <input type="text" class="form-control" name="size" id="size" placeholder = "10">
+      <input type="text" class="form-control" name="size" id="size" placeholder = "20">
     </div>
     
     <div class="col-md-4">
@@ -34,24 +34,63 @@
         <span>Stock</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="stock" id="stock" placeholder = "4321-567" required>
+      <input type="text" class="form-control" name="stock" id="stock" placeholder = "20" required>
     </div>
 
-    <div class="col-md-4">
+    <div class="col-md-8">
       <label for="brand" class="form-label">
         <span>Brand</span>
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="brand" id="brand" placeholder = "1" required>
+      <input type="text" class="form-control" name="brand" id="brand" placeholder = "Trendy brand" required>
     </div>
 
-
     <div class="col-md-8">
-      <label for="description" class="form-label">
+      <label for="description">
         <span>Description</span>
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="description" id="description" placeholder = "Bullevard" required>
+      <textarea id="description" name="description" placeholder="Write something.." style="height:100px" required></textarea>
+    </div>
+  
+    <div class="col-md-5">
+      <label for="field1" class="form-label">
+        <span>Specific 1</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="field1" id="field1" placeholder = "Some info about the product" required>
+    </div>
+
+    <div class="col-md-5">
+      <label for="field2" class="form-label">
+        <span>Specific 2</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="field2" id="field2" placeholder = "Some info about the product" required>
+    </div>
+
+    <div class="col-md-5">
+      <label for="field3" class="form-label">
+        <span>Specific 3</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="field3" id="field3" placeholder = "Some info about the product" required>
+    </div>
+
+    <div class="col-md-5">
+      <label for="field4" class="form-label">
+        <span>Specific 4</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="field4" id="field4" placeholder = "Some info about the product" required>
+    </div>
+
+    <div class="col-md-5">
+      <label for="field5" class="form-label">
+        <span>Specific 5</span>
+        <small class = "required-input">*</small>
+      </label>
+      <input type="text" class="form-control" name="field5" id="field5" placeholder = "Some info about the product" required>
     </div>
 
     <div class="col-12">

@@ -7,7 +7,7 @@
   <div class="row row-columns-2">
     @foreach($entries as $entry)
       <div class="col-md">
-        @include('partials.profile.product_entry', ['entry' => $entry])
+        @include('partials.admin.product_entry', ['entry' => $entry])
       </div>
 
       @php($i++)

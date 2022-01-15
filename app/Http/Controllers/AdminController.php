@@ -24,35 +24,38 @@ class AdminController extends Controller
     $admin = User::find(Auth::id());
     $users = User::all();   
 
-    return view('pages.admin.user_management', [
-      'users' => $users,
-      'admin' => $admin,
-      'breadcrumbs' => [route('profile') => $admin->name],
-      'current' => null
+    return view('pages.profile.user_profile', [
+      'user' => $admin,
+      'entries' => $users,
+      'content' => 'partials.admin.list_users',
+      'breadcrumbs' => [route('profile') => $admin->username],
+      'current' => 'Users'
     ]);
   }
 
   public function showAllOrders(){
     $admin = User::find(Auth::id());
-    $products = Product::all();   
+    $orders = Purchase::all();
 
-    return view('pages.admin.product_management', [
-      'products' => $products,
-      'admin' => $admin,
-      'breadcrumbs' => [route('profile') => $admin->name],
-      'current' => null
+    return view('pages.profile.user_profile', [
+      'user' => $admin,
+      'entries' => $orders,
+      'content' => 'partials.admin.list_orders',
+      'breadcrumbs' => [route('profile') => $admin->username],
+      'current' => 'Orders'
     ]);
   }
   
   public function showAllProducts(){
     $admin = User::find(Auth::id());
-    $orders = Purchase::all();
+    $products = Product::all();   
 
-    return view('pages.admin.order_management', [
-      'orders' => $orders,
-      'admin' => $admin,
-      'breadcrumbs' => [route('profile') => $admin->name],
-      'current' => null
+    return view('pages.profile.user_profile', [
+      'user' => $admin,
+      'entries' => $products,
+      'content' => 'partials.admin.list_products',
+      'breadcrumbs' => [route('profile') => $admin->username],
+      'current' => 'Products'
     ]);
   }
 
@@ -74,6 +77,7 @@ class AdminController extends Controller
       'user' => User::find(Auth::id()),
       'content' => 'partials.admin.user_form',
       'breadcrumbs' => [route('profile') => Auth::user()->username],
+      'entries' => [],
       'current' => 'Create User'
     ]);
   }  
@@ -92,6 +96,7 @@ class AdminController extends Controller
       'user' => User::find(Auth::id()),
       'content' => 'partials.admin.product_form',
       'breadcrumbs' => [route('profile') => Auth::user()->username],
+      'entries' => [],
       'current' => 'Create Product'
     ]);
   }  
@@ -150,34 +155,34 @@ class AdminController extends Controller
     $product->save();
 
 
-    $campo1 = $request->input('campo1');
-    $campo2 = $request->input('campo2');
-    $campo3 = $request->input('campo3');
-    $campo4 = $request->input('campo4');
-    $campo5 = $request->input('campo5');
+    $field1 = $request->input('field1');
+    $field2 = $request->input('field2');
+    $field3 = $request->input('field3');
+    $field4 = $request->input('field4');
+    $field5 = $request->input('field5');
     
     //... insert on intermediate table
     switch ($category) {
       case "CPU":
-        $this->addCpu($campo1, $campo2, $campo3, $campo4, $campo5, $product->id);
+        $this->addCpu($field1, $field2, $field3, $field4, $field5, $product->id);
         break;
       case "GPU":
-        $this->addGpu($campo1, $campo2, $campo3, $campo4, $campo5, $product->id);
+        $this->addGpu($field1, $field2, $field3, $field4, $field5, $product->id);
         break;
       case "Motherboard":
-        $this->addMotherboard($campo1, $campo2, $product->id);
+        $this->addMotherboard($field1, $field2, $product->id);
         break;
       case "PcCase":
-        $this->addPcCase($campo1, $campo2, $campo3, $product->id);
+        $this->addPcCase($field1, $field2, $field3, $product->id);
         break;
       case "PowerSupply":
-        $this->addPowerSupply($campo1, $campo2, $campo3, $product->id);
+        $this->addPowerSupply($field1, $field2, $field3, $product->id);
         break;
       case "Cooler":
-        $this->addCooler($campo1, $product->id);
+        $this->addCooler($field1, $product->id);
         break;
       case "Storage":
-        $this->addStorage($campo1, $campo2, $product->id);
+        $this->addStorage($field1, $field2, $product->id);
         break;
       case "Other":
         $this->addOther($product->id);
@@ -189,6 +194,10 @@ class AdminController extends Controller
 
   public function deleteProduct($product_id){
     
+    
+    Product::find($product_id)->delete();
+    
+    return redirect()->back();
   }
 
 
