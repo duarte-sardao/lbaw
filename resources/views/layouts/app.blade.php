@@ -17,12 +17,11 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/aboutus.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/faq.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/contacts.css')}}" rel ="stylesheet">
-    <link href="{{ asset('css/login_register.css')}}" rel ="stylesheet">
-    <link href="{{ asset('css/home.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/buttons.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/cart.css')}}" rel ="stylesheet">
-    <link href="{{ asset('css/user.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/contacts.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/faq.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/login_register.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/not_found.css')}}" rel ="stylesheet">
     
     <!-- Icons -->

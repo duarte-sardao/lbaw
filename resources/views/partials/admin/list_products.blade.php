@@ -1,10 +1,12 @@
-<div class="col w-60 d-flex flex-column">
+<div class="col-md w-60 d-flex flex-column">
   <div class="d-flex justify-content-between mb-2">
-    <h4>Available Products</h4>
+    <h4>List of products in the store</h4>
+    @include('partials.buttons.add_button', 
+      ['text' => 'New Product', 'id' => 'newProductButton', 'link' => route('newProduct')])
   </div>
 
   @php($i = 0)
-  <div class="row row-columns-2">
+  <div class="row row-columns-3">
     @foreach($entries as $entry)
       <div class="col-md">
         @include('partials.admin.product_entry', ['entry' => $entry])
@@ -14,7 +16,7 @@
       <!-- Makes columns of 2 -->
       @if($i % 3 == 0)
         </div>
-        <div class="row row-columns-2">
+        <div class="row row-columns-3">
       @endif
     @endforeach  
 
@@ -22,11 +24,4 @@
       <div class="col-md"></div>
     @endfor
   </div>
-
-  <a class = "d-flex justify-content-center" href = {{route('newProduct')}}>
-    <button class = "btn btn-outline-success" type = "submit">
-      <i class="fa fa-plus" aria-hidden="true"></i>
-      New Product
-    </button>
-  </a>  
 </div>
