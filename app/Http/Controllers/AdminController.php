@@ -14,6 +14,7 @@ use App\Models\Storage;
 use App\Models\PcCase; 
 use App\Models\Other;
 use App\Models\Purchase;
+use App\Models\Customer;
 use App\Models\User;
 
 use Illuminate\Support\Facades\Auth;
@@ -76,14 +77,63 @@ class AdminController extends Controller
     [
       'user' => User::find(Auth::id()),
       'content' => 'partials.admin.user_form',
-      'breadcrumbs' => [route('profile') => Auth::user()->username],
+      'breadcrumbs' => [
+        route('profile') => Auth::user()->username,
+        route('showAllUsers') => 'Users',
+      ],
       'entries' => [],
       'current' => 'Create User'
     ]);
   }  
 
   public function createUser(Request $request){
+    $errors = array();
     
+    $username = $request->input('username');
+    $email = $request->input('email');
+    $password = $request->input('password');
+    $phone = $request->input('phone');
+    $isadmin = $request->input('admin');
+
+    if(strlen($username) < 8)
+      array_push($errors, "The username is too small (must be at least 8 characters long).");
+
+    $regex = '/[a-zA-Z0-9]+@[a-zA-Z]+(.[a-zA-Z]+)+/';
+    if(!preg_match($regex, $email))
+      array_push($errors, "The email doesn't fit the required format.");
+
+    if(strlen($password) < 8)
+      array_push($errors, "The password is too small (must be at least 8 characters long).");
+
+    if(count($errors) != 0){
+      return view('pages.profile.user_profile', 
+      [
+        'user' => User::find(Auth::id()),
+        'content' => 'partials.admin.user_form',
+        'breadcrumbs' => [route('profile') => Auth::user()->username],
+        'entries' => [],
+        'current' => 'Create User',
+        'errors' => $errors
+      ]);
+    }     
+
+    $user = new User;
+
+    $user->username = $username;
+    $user->email = $email;
+    $user->password = bcrypt($password);
+    $user->phone = $phone;
+    $isadmin == "false" ? $user->isadmin = false : $user->isadmin = true;
+    $user->save();
+    
+
+    if(!($user->isadmin)){
+      $customer = new Customer;
+      $customer->id_user = $user->id;
+      $customer->save();
+    }
+
+    return redirect(route('showAllUsers'));
   }
 
   public function deleteUser($user_id){
@@ -193,8 +243,6 @@ class AdminController extends Controller
   }
 
   public function deleteProduct($product_id){
-    
-    
     Product::find($product_id)->delete();
     
     return redirect()->back();

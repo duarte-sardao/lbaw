@@ -11,7 +11,7 @@
         <span>Username</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="username" id="username" placeholder="ExampleUsername1234" required>
+      <input type="text" class="form-control" name="username" id="username" placeholder="(8 characters min)" required>
     </div>
 
     <div class="col-md-6">
@@ -27,7 +27,7 @@
         <span>Password</span> 
         <small class = "required-input">*</small>
       </label>
-      <input type="text" class="form-control" name="password" id="password" placeholder = "MyPassword" required>
+      <input type="text" class="form-control" name="password" id="password" placeholder = "(8 characters min)" required>
     </div>
     
     <div class="col-md-6">
@@ -55,12 +55,7 @@
     </div>
     
     @foreach($errors as $error)
-      <div class="col-12">
-        <div class = "alert alert-danger">
-          <i class="fa fa-times"></i>
-          {{$error}}
-        </div>
-      </div>
+      @include('partials.forms.error', ['error' => $error])
     @endforeach
   </form>
 </div>
