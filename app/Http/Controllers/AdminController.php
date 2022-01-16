@@ -148,7 +148,10 @@ class AdminController extends Controller
     [
       'user' => User::find(Auth::id()),
       'content' => 'partials.admin.product_form',
-      'breadcrumbs' => [route('profile') => Auth::user()->username],
+      'breadcrumbs' => [
+        route('profile') => Auth::user()->username,
+        route('showAllProducts') => 'Products',
+      ],
       'entries' => [],
       'current' => 'Create Product'
     ]);
@@ -158,26 +161,85 @@ class AdminController extends Controller
      //$this->authorize('add', Auth::user());
     $errors = array();
     $name = $request->input('name');
-    $category = $request->input('category');
     $price = $request->input('price');
     $size = $request->input('size');
     $stock = $request->input('stock');
+    $category = $request->input('category');
     $brand = $request->input('brand');
     //$image =
     $description = $request->input('description');
 
     /********************* INPUT VALIDATION ********************/
 
-    if(!is_numeric($price)){
+    $regex = '/[0-9]+.?[0-9]+/';
+    if(!preg_match($regex, $price)){
       array_push($errors, 'Price does not match the specified format.');
+    }
+
+    $regex = '/[0-9]+x[0-9]+x[0-9]/';
+    if(!preg_match($regex, $size) && !is_null($size)){
+      array_push($errors, 'Size does not match the specified format.');
     }
 
     if (!is_numeric($stock) && $stock < 0){
       array_push($errors, 'Stock does not match the specified format or is negative.');
     }
 
+    /***********************************************************/
+    
+    //Insert on the product table first and then...
+    $product = new Product;
+
+    $product->name = $name;
+    $product->category = $category;
+    $product->price = floatval($price);
+    $product->size = $size;
+    $product->stock = $stock;
+    $product->brand = $brand;
+    $product->description = $description;
+    $product->image = 'images/default.jpg';
+
+    $product->save();
+
+    $field1 = $request->input('field1');
+    $field2 = $request->input('field2');
+    $field3 = $request->input('field3');
+    $field4 = $request->input('field4');
+    $field5 = $request->input('field5');
+    
+    //... insert on specialized table
+    switch ($category) {
+      case "CPU":
+        $newErrors = $this->addCpu($field1, $field2, $field3, $field4, $field5, $product->id);
+        break;
+      case "GPU":
+        $newErrors = $this->addGpu($field1, $field2, $field3, $field4, $field5, $product->id);
+        break;
+      case "Motherboard":
+        $newErrors = $this->addMotherboard($field1, $field2, $product->id);
+        break;
+      case "PcCase":
+        $newErrors = $this->addPcCase($field1, $field2, $field3, $product->id);
+        break;
+      case "PowerSupply":
+        $newErrors = $this->addPowerSupply($field1, $field2, $field3, $product->id);
+        break;
+      case "Cooler":
+        $newErrors = $this->addCooler($field1, $product->id);
+        break;
+      case "Storage":
+        $newErrors = $this->addStorage($field1, $field2, $product->id);
+        break;
+      case "Other":
+        $newErrors = $this->addOther($product->id);
+        break;
+    }
+
+    $errors = array_merge($errors, $newErrors);
 
     if(count($errors) != 0){
+      $product->delete();
+
       return view('pages.profile.user_profile', 
       [
         'user' => User::find(Auth::id()),
@@ -191,56 +253,6 @@ class AdminController extends Controller
         'errors' => $errors
       ]);
     }
-
-    /***********************************************************/
-    
-    //Insert on the product table first and then...
-    $product = new Product;
-
-    $product->name = $name;
-    $product->category = $category;
-    $product->price = $price;
-    $product->size = $size;
-    $product->stock = $stock;
-    $product->brand = $brand;
-    $product->description = $description;
-
-    $product->save();
-
-
-    $field1 = $request->input('field1');
-    $field2 = $request->input('field2');
-    $field3 = $request->input('field3');
-    $field4 = $request->input('field4');
-    $field5 = $request->input('field5');
-    
-    //... insert on intermediate table
-    switch ($category) {
-      case "CPU":
-        $this->addCpu($field1, $field2, $field3, $field4, $field5, $product->id);
-        break;
-      case "GPU":
-        $this->addGpu($field1, $field2, $field3, $field4, $field5, $product->id);
-        break;
-      case "Motherboard":
-        $this->addMotherboard($field1, $field2, $product->id);
-        break;
-      case "PcCase":
-        $this->addPcCase($field1, $field2, $field3, $product->id);
-        break;
-      case "PowerSupply":
-        $this->addPowerSupply($field1, $field2, $field3, $product->id);
-        break;
-      case "Cooler":
-        $this->addCooler($field1, $product->id);
-        break;
-      case "Storage":
-        $this->addStorage($field1, $field2, $product->id);
-        break;
-      case "Other":
-        $this->addOther($product->id);
-        break;
-    }
     
     return redirect(route('showAllProducts'));
   }
@@ -248,95 +260,196 @@ class AdminController extends Controller
   public function deleteProduct($product_id){
     $product = Product::find($product_id);
     $product->delete();
-    
+
     return redirect()->back();
   }
 
 
   // Auxiliary functions
-  public function addCpu($basefreq, $turbofreq, $socket, $threads, $cores, $id){
+  public function addCpu($baseFreq, $turboFreq, $socket, $threads, $cores, $id){
+    $errors = array();
     $cpu = new CPU;
     
-    $cpu->basefreq = $basefreq;
-    $cpu->turbofreq = $turbofreq;
+    $regex = '/[0-9]+.?[0-9]+/';
+    if(!preg_match($regex, $baseFreq) || is_null($baseFreq))
+      array_push($errors, 'CPU: Field 1 (Base Frequency) must be a float.');
+
+    if(!preg_match($regex, $turboFreq) || is_null($turboFreq))
+      array_push($errors, 'CPU: Field 2 (Turbo Frequency) must be a float.');
+    
+    if(!is_numeric($threads) || is_null($threads))
+      array_push($errors, "CPU: Field 4 (Threads) must be an integer.");
+
+    if(!is_numeric($cores) || is_null($cores))
+      array_push($errors, "CPU: Field 5 (Cores) must be an integer.");
+
+    if(count($errors) != 0)
+      return $errors;
+
+    $cpu->basefreq = $baseFreq;
+    $cpu->turbofreq = $turboFreq;
     $cpu->socket = $socket;
     $cpu->threads = $threads;
     $cpu->cores = $cores;
     $cpu->id_product = $id;
     
     $cpu->save();
+    return $errors;
   }
   
-  public function addGpu($memory, $coreClock, $boostclock, $hdmiPorts, $displayPorts, $id){
+  public function addGpu($memory, $coreClock, $boostClock, $hdmiPorts, $displayPorts, $id){
+    $errors = array();
     $gpu = new GPU;
+
+    if(!is_numeric($memory) || is_null($memory))
+      array_push($errors, "GPU: Field 1 (Memory) must be an integer.");
+
+    if(!is_numeric($coreClock) || is_null($coreClock))
+      array_push($errors, "GPU: Field 2 (Core Clock) must be an integer.");
+
+    if(!is_numeric($boostClock) || is_null($boostClock))
+      array_push($errors, "GPU: Field 3 (Boost Clock) must be an integer.");
+
+    if(!is_numeric($hdmiPorts) || is_null($hdmiPorts))
+      array_push($errors, "GPU: Field 4 (HDMI Ports) must be an integer.");
+
+    if(!is_numeric($displayPorts) || is_null($displayPorts))
+      array_push($errors, "GPU: Field 5 (Display Ports) must be an integer.");
+
+    if(count($errors) != 0)
+      return $errors;
     
     $gpu->memory = $memory;
-    $gpu->coreClock = $coreClock;
-    $gpu->boostclock = $boostclock;
-    $gpu->hdmiPorts = $hdmiPorts;
-    $gpu->displayPorts = $displayPorts;
+    $gpu->coreclock = $coreClock;
+    $gpu->boostclock = $boostClock;
+    $gpu->hdmiports = $hdmiPorts;
+    $gpu->displayports = $displayPorts;
     $gpu->id_product = $id;
 
     $gpu->save();
+    return $errors;
   }
   
-  public function addNotherboard($chipset, $type, $id){
+  public function addMotherboard($chipset, $type, $id){
+    $errors = array();
     $motherboard = new Motherboard;
+
+    if(is_null($chipset))
+      array_push($errors, "Motherboard: Field 1 (Chipset) can't be empty.");
+    
+    if(is_null($type))
+      array_push($errors, "Motherboard: Field 2 (Type) can't be empty.");
+
+    if(count($errors) != 0)
+      return $errors;
 
     $motherboard->chipset = $chipset;
     $motherboard->type = $type;
     $motherboard->id_product = $id;
 
     $motherboard->save();
+    return $errors;
   }
 
   public function addPcCase($color, $weight, $type, $id){
-    $PcCase = new PcCase;
+    $errors = array();
+    $pcCase = new PcCase;
 
-    $PcCase->color = $color;
-    $PcCase->weight = $weight;
-    $PcCase->type = $type;
-    $PcCase->id_product = $id;
+    if(is_null($color))
+      array_push($errors, "Desktop Case: Field 1 (Color) can't be empty.");
+    
+    if(is_null($weight))
+      array_push($errors, "Desktop Case: Field 2 (Weight) can't be empty.");
+    
+    if(is_null($type))
+      array_push($errors, "Desktop Case: Field 3 (Type) can't be empty.");
 
-    $PcCase->save();
+    if(count($errors) != 0)
+      return $errors;
+
+    $pcCase->color = $color;
+    $pcCase->weight = $weight;
+    $pcCase->type = $type;
+    $pcCase->id_product = $id;
+
+    $pcCase->save();
+    return $errors;
   }
     
   public function addPowerSupply($wattage, $certification, $type, $id){
-    $PowerSupply = new PowerSupply;
+    $errors = array();
+    $powerSupply = new PowerSupply;
     
-    $PowerSupply->wattage = $wattage;
-    $PowerSupply->certification = $certification;
-    $PowerSupply->type = $type;
-    $PowerSupply->id_product = $id;
+    if(is_null($wattage))
+      array_push($errors, "Power Supply: Field 1 (Color) can't be empty.");
+    
+    if(is_null($certification))
+      array_push($errors, "Power Supply: Field 2 (Certification) can't be empty.");
+    
+    if(is_null($type))
+      array_push($errors, "Power Supply: Field 3 (Type) can't be empty.");
 
-    $PowerSupply->save();
+    if(count($errors) != 0)
+      return $errors;
+    
+    $powerSupply->wattage = $wattage;
+    $powerSupply->certification = $certification;
+    $powerSupply->type = $type;
+    $powerSupply->id_product = $id;
+
+    $powerSupply->save();
+    return $errors;
   }
 
   public function addCooler($type, $id){
+    $errors = array();
     $cooler = new Cooler;
+    
+    if(is_null($type))
+      array_push($errors, "Cooler: Field 1 (Type) can't be empty.");
+
+    if(count($errors) != 0)
+      return $errors;
 
     $cooler->type = $type;
     $cooler->id_product = $id;
 
     $cooler->save();
+    return $errors;
   }
 
   public function addStorage($capacity, $type, $id){
-    $Storage = new Storage;
+    $errors = array();
+    $storage = new Storage;
 
-    $Storage->capacity = $capacity;
-    $Storage->type = $type;
-    $Storage->id_product = $id;
+    if(!is_numeric($capacity))
+      array_push($errors, "Storage: Field 1 (Capacity) must be an integer.");
+    
+    if(is_null($type))
+      array_push($errors, "Storage: Field 2 (Type) can't be empty.");
 
-    $Storage->save();
+    if(count($errors) != 0)
+      return $errors;
+
+    $storage->capacity = $capacity;
+    $storage->type = $type;
+    $storage->id_product = $id;
+
+    $storage->save();
+    return $errors;
   }
 
   public function addOther($id){
-    $Other = new Other;
+    $errors = array();
+    $other = new Other;
 
-    $Other->id_product = $id;
+    if(count($errors) != 0)
+      return $errors;
 
-    $Other->save();
+    $other->id_product = $id;
+
+    $other->save();
+    return $errors;
   }
 }
 ?>

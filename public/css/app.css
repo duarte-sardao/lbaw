@@ -108,3 +108,7 @@ input:focus{
 .oy-scroll{
   overflow-y: scroll;
 }
+
+#productCard{
+  min-height: 170px;
+}

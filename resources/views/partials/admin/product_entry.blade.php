@@ -1,5 +1,5 @@
-<div class="card mb-4">
-  <div class="card-body d-flex justify-content-between">
+<div class="card mb-4" id = "productCard">
+  <div class="card-body d-flex justify-content-between align-items-center">
     <a href = {{url('products/'.$entry->id)}}>
       <img src={{asset($entry->image)}} alt={{$entry->name}} height = 100>
     </a>
