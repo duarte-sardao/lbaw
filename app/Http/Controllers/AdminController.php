@@ -137,7 +137,10 @@ class AdminController extends Controller
   }
 
   public function deleteUser($user_id){
+    $user = User::find($user_id);
+    $user->delete();
     
+    return redirect(route('showAllUsers'));
   }
   
   public function getCreateProductForm(){
@@ -243,7 +246,8 @@ class AdminController extends Controller
   }
 
   public function deleteProduct($product_id){
-    Product::find($product_id)->delete();
+    $product = Product::find($product_id);
+    $product->delete();
     
     return redirect()->back();
   }
