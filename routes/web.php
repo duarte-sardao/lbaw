@@ -83,6 +83,7 @@ Route::delete('users/addresses/{address_id}', 'AddressController@delete');
 
 //! Orders
 Route::get('users/orders', 'OrderController@show')->name('orders');
+Route::post('users/orders/cancel/{id}', 'OrderController@cancel');
 
 //! Notifications 
 //Route::get('users/notifications', 'NotificationController@show')->name('notifications');

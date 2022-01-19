@@ -7,6 +7,7 @@ use App\Models\CartProduct;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\Purchase;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -55,6 +56,17 @@ class OrderController extends Controller
       'breadcrumbs' => [],
       'current' => $user->username
     ]);
+  }
+
+  public function cancel($id){
+    $purchase = Purchase::find($id);
+
+    if ($purchase->orderstatus == 'Processing')
+      $purchase->orderstatus = 'Cancelled by Customer';
+
+    $purchase->save();
+
+    return redirect()->back();
   }
 }
 ?>

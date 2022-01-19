@@ -896,7 +896,7 @@ $BODY$
 BEGIN
     IF EXISTS (
         SELECT * from Customer 
-        where New.id_Customer = Customer.id
+        where New.id_Customer = Customer.id 
     )
     THEN INSERT INTO Notification(content, id_User, read) VALUES ('Your order status has been updated' , New.id_Customer, DEFAULT);
     END IF;

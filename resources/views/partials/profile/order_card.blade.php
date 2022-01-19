@@ -41,10 +41,20 @@
       </ul>
       
     </div>
-
+    
     <div class="d-flex justify-content-between mt-1 align-items-center">
       <h5 class = "price">{{$entry['total']}}€</h5>
 
+      @if($entry['order']->orderstatus == 'Processing')
+        <form class = "m-1" method = "POST" action={{url('users/orders/cancel/'.$entry['order']->id)}}>
+          @csrf
+          <button class = "btn btn-outline-danger w-40" type = "submit">
+            <i class="fa fa-ban" aria-hidden="true"></i>
+            Cancel order
+          </button>
+        </form>
+      @endif
+      
       @if($entry['order']->orderstatus == 'Processing')
         <span class = "text-secondary">
           <i class="fa fa-ellipsis-h"></i>
