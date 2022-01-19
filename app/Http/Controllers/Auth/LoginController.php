@@ -39,6 +39,13 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function getRecoverPasswordForm(){
+        return view('auth.recover_password', [
+            'breadcrumbs' => [],
+            'current' => null
+        ]);
+    }
+
     public function showLoginForm(){
         return view('auth.login', 
         [

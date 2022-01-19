@@ -39,7 +39,7 @@
                     <label>
                         <input class = "m-1" type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
                     </label>
-                    <small><a href = "#">Can't remember your password?</a></small>
+                    <small><a href = {{route('getResetPasswordForm')}}>Can't remember your password?</a></small>
                 </div>
                 
                 <div class="form-group d-flex mt-3">
