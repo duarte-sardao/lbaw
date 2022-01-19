@@ -1,71 +1,48 @@
 <div class="card m4-2 mb-4">
   <div class="card-body">
-    <div class="d-flex justify-content-between">
+    <div class="d-flex">
       <h6>
-        <strong>Order number {{$entry['order']->id}}</strong>
+        <strong>Order #{{$entry->id}}</strong>
       </h6> 
-
-      <span>
-        {{$entry['order']->orderdate}} -> {{$entry['order']->orderdate}}
-      </span>
     </div>
 
     <div class="d-flex flex-column mt-2">
       <span>
         {{
-          $entry['address']->streetname.' '
-          .$entry['address']->streetnumber.' '
-          .$entry['address']->aptnumber.' '
-          .$entry['address']->floor
+          $entry->streetname.' '
+          .$entry->streetnumber.' '
+          .$entry->aptnumber.' '
+          .$entry->floor
         }}
       </span>
 
       <span>
-        {{$entry['address']->zipcode}}
+        {{$entry->zipcode}}
       </span>
-    </div>
-    
-    <div class="d-flex flex-column mt-2">
-      <h6>
-        <strong>Items</strong>
-      </h6> 
-
-      <ul>
-        @foreach($entry['products'] as $product)
-          <li>
-            <a class = "text-dark" href={{url('products/'.$product->id)}}>
-              {{$product->name}} - <strong class = "text-primary">{{$product->price}}€</strong>
-            </a>
-          </li>
-        @endforeach
-      </ul>
-      
     </div>
 
     <div class="d-flex justify-content-between mt-1 align-items-center">
-      <h5 class = "price">{{$entry['total']}}€</h5>
-
-      @if($entry['order']->orderstatus == 'Processing')
+      @if($entry->orderstatus == 'Processing')
         <span class = "text-secondary">
           <i class="fa fa-ellipsis-h"></i>
       
-      @elseif($entry['order']->orderstatus == 'Accepted')
+      @elseif($entry->orderstatus == 'Accepted')
         <span class = "text-teal-500">
           <i class="fa fa-check"></i>
 
-      @elseif($entry['order']->orderstatus == 'Packed')
+      @elseif($entry->orderstatus == 'Packed')
         <span class = "text-orange-500">
           <i class="fa fa-gift"></i>  
 
-      @elseif($entry['order']->orderstatus == 'Shipped')
+      @elseif($entry->orderstatus == 'Shipped')
         <span class = "text-info">
           <i class="fa fa-ship"></i>  
       
-      @elseif($entry['order']->orderstatus == 'Cancelled by Store')
+      @elseif($entry->orderstatus == 'Cancelled by Store')
         <span class = "text-red-500">
           <i class="fa fa-ban"></i> 
       
-      @elseif($entry['order']->orderstatus == 'Cancelled by Customer')
+      @elseif($entry->orderstatus == 'Cancelled by Customer')
         <span class = "text-red-500">
           <i class="fa fa-ban"></i>
           
@@ -74,7 +51,7 @@
           <i class="fa fa-truck"></i>    
 
       @endif
-      {{$entry['order']->orderstatus}}
+      {{$entry->orderstatus}}
       </span>
     </div>
   </div>
