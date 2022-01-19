@@ -13,6 +13,9 @@ use App\Models\PcCase;
 use App\Models\Other;
 use App\Models\Review;
 
+use App\Models\Customer;
+use App\Models\User;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -59,8 +62,22 @@ class ProductController extends Controller
   
   public function showProduct($id){
     $product = Product::find($id);
-    $reviews = Review::where('id_product', '=', $id)->get();
+    $entries = Review::where('id_product', '=', $id)->get();
     $details = null;
+
+    $reviews = array();
+    foreach($entries as $entry){
+      $customer = Customer::find($entry->id_customer);
+      $user = User::find($customer->id_user);
+      //dd($customer, $user);
+      array_push($reviews, 
+      [
+        'user' => $user,
+        'content' => $entry
+      ]);
+    }
+
+    //dd($reviews);
     
     return view('pages.products.product', 
     [
@@ -70,6 +87,22 @@ class ProductController extends Controller
       'current' => $product->name,
       'reviews' => $reviews
     ]);
+  }
+
+  public function upvote($id){
+    $review = Review::find($id);
+    $review->yesvotes++;
+    $review->save();
+
+    return redirect()->back();
+  }
+
+  public function downvote($id){
+    $review = Review::find($id);
+    $review->novotes++;
+    $review->save();
+
+    return redirect()->back();
   }
 }
 ?>

@@ -110,6 +110,79 @@
         Submit
       </button>
     </div>
+
+    <table class="tg">
+    <thead>
+      <tr>
+        <th class="tg-ev0v">Category</th>
+        <th class="tg-ev0v">CPU</th>
+        <th class="tg-ev0v">GPU</th>
+        <th class="tg-ev0v">Motherboard</th>
+        <th class="tg-ev0v">Storage</th>
+        <th class="tg-ev0v">PcCase</th>
+        <th class="tg-ev0v">Cooler</th>
+        <th class="tg-ev0v">PowerSupply</th>
+        <th class="tg-ev0v">Other</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="tg-ev0v">Field 1</td>
+        <td class="tg-0pky">baseFreq{float}</td>
+        <td class="tg-0pky">memory{number}</td>
+        <td class="tg-0pky">chipset{text}</td>
+        <td class="tg-0pky">type{text}</td>
+        <td class="tg-0pky">type{text}</td>
+        <td class="tg-0pky">type{text}</td>
+        <td class="tg-0pky">wattage{number}</td>
+        <td class="tg-0pky"></td>
+      </tr>
+      <tr>
+        <td class="tg-ev0v">Field 2</td>
+        <td class="tg-0pky">turboFreq{float}</td>
+        <td class="tg-0pky">coreClock{number}</td>
+        <td class="tg-0pky">type{text}</td>
+        <td class="tg-0pky">capacity{number}</td>
+        <td class="tg-0pky">weight{text}</td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky">certification{text}</td>
+        <td class="tg-0pky"></td>
+      </tr>
+      <tr>
+        <td class="tg-ev0v">Field3</td>
+        <td class="tg-0pky">socket{text}</td>
+        <td class="tg-0pky">boostClock{number}</td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky">color{text}</td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky">type{text}</td>
+        <td class="tg-0pky"></td>
+      </tr>
+      <tr>
+        <td class="tg-ev0v">Field4</td>
+        <td class="tg-0pky">threads{number}</td>
+        <td class="tg-0pky">hdmiPorts{number}</td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+      </tr>
+      <tr>
+        <td class="tg-ev0v">Field5</td>
+        <td class="tg-0pky">cores{number}</td>
+        <td class="tg-0pky">displayPorts{number}</td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+        <td class="tg-0pky"></td>
+      </tr>
+    </tbody>
+    </table>
     
     @foreach($errors as $error)
       <div class="col-12">

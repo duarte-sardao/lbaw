@@ -23,6 +23,7 @@
     <link href="{{ asset('css/faq.css')}}" rel="stylesheet">
     <link href="{{ asset('css/login_register.css')}}" rel ="stylesheet">
     <link href="{{ asset('css/not_found.css')}}" rel ="stylesheet">
+    <link href="{{ asset('css/product_form.css')}}" rel="stylesheet">
     
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">

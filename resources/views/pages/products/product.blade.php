@@ -51,8 +51,8 @@
 
       @include('partials.product.review_form')
 
-      @foreach($product->reviews as $review)
-       {{--  @include('partials.product.review') --}}
+      @foreach($reviews as $review)
+        @include('partials.product.review', ['entry' => $review])
       @endforeach
     </div>
   </div> 

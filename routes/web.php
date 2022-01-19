@@ -86,3 +86,9 @@ Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
 Route::get('products/{id}', 'ProductController@showProduct');
 Route::post('products/search', 'ProductController@search')->name('search');
 Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
+
+
+//! Reviews
+
+Route::post('reviews/upvote/{id}', 'ProductController@upvote');
+Route::post('reviews/downvote/{id}', 'ProductController@downvote');
