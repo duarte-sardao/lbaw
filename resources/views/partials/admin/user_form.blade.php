@@ -1,4 +1,4 @@
-<div class="col w-60 d-flex flex-column">
+<div class="mb-5">
   <div class="d-flex justify-content-between mb-2">
     <h4>New account</h4>
   </div>
@@ -43,8 +43,8 @@
         <small class = "required-input">*</small>
       </label>
       <select name="admin" id="admin" required>
-        <option value="false">False</option>
-        <option value="true">True</option>
+        <option value="false">No</option>
+        <option value="true">Yes</option>
       </select>
     </div>
 

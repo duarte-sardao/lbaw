@@ -1,32 +1,34 @@
 @extends('layouts.app')
 
 @section('content')
-  <section class = "d-flex flex-column">
+  <div class = "d-flex flex-column">
     @include('partials.home.slider')
 
-    <div class = "card-deck container mt-5" id="homeProductGrid">
-      <div class="row">
+    <div class = "container-fluid mt-5" id="homeProductGrid">
+      <div class="row m-5 mt-3">
         <h5>Products in other users carts:</h5>
-      </div>
-      
-      <div class="row d-flex m-1">
-        @foreach($productsList1 as $product)
-          <div class="col-md">
-            @include('partials.product.card', ['product' => $product])
+        <div class="container-fluid">
+          <div class="row">
+            @foreach($productsList1 as $product)
+              <div class="col-lg-3 mt-3">
+                @include('partials.product.card', ['product' => $product])
+              </div>
+            @endforeach
           </div>
-        @endforeach
+        </div>
       </div>  
-
-      <div class="row mt-5">
-        <h5>Products you might like:</h5>
-      </div>
   
-      <div class="row d-flex m-1 mb-5">
-        @foreach($productsList2 as $product)
-          <div class="col-md">
-            @include('partials.product.card', ['product' => $product])
+      <div class="row m-5 mb-5">
+        <h5>Products you might like:</h5>
+        <div class="container-fluid">
+          <div class="row">
+            @foreach($productsList2 as $product)
+              <div class="col-lg-3 mt-3">
+                @include('partials.product.card', ['product' => $product])
+              </div>
+            @endforeach
           </div>
-        @endforeach
+        </div>
       </div>  
-  </section>
+    </div>
 @endsection

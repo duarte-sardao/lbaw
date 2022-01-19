@@ -12,7 +12,7 @@ class Purchase extends Model {
     protected $table = 'purchase';
     
     //Attributes of the relation that can be modified upon creation or update
-    protected $fillable = ['id', 'orderdate', 'deliverydate', 'orderstatus', 'id_customer', 'id_address', 'id_PaymentMethod', 'id_cart'];
+    protected $fillable = ['id', 'orderdate', 'deliverydate', 'orderstatus', 'id_customer', 'id_address', 'id_paymentmethod', 'id_cart'];
 
     //Linking Purchase to Customer table overriding the FK name
     public function customers(){

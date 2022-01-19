@@ -1,4 +1,4 @@
-<div class="card col m-1 h-100">
+<div class="card m-1 h-100">
   
   <div class="card-body d-flex flex-column justify-content-between">
     <a href = {{url('products/'.$product->id)}}>

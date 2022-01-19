@@ -2,7 +2,7 @@
   <div class="card-body">
     <div class="d-flex justify-content-between">
       <h6>
-        <strong>Order number {{$entry['order']->id}}</strong>
+        <strong>Order #{{$entry['order']->id}}</strong>
       </h6> 
 
       <span>

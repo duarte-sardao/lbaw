@@ -2,26 +2,26 @@
   <div class="card-body">
     <div class="d-flex">
       <h6>
-        <strong>Order #{{$entry->id}}</strong>
+        <strong>Order #{{$entry['order']->id}}</strong>
       </h6> 
     </div>
 
     <div class="d-flex flex-column mt-2">
       <span>
         {{
-          $entry->streetname.' '
-          .$entry->streetnumber.' '
-          .$entry->aptnumber.' '
-          .$entry->floor
+          $entry['address']->streetname.' '
+          .$entry['address']->streetnumber.' '
+          .$entry['address']->aptnumber.' '
+          .$entry['address']->floor
         }}
       </span>
 
       <span>
-        {{$entry->zipcode}}
+        {{$entry['address']->zipcode}}
       </span>
     </div>
 
-    <form class = "d-flex" action={{url('admin/orders/edit/'.$entry->id)}} method = "POST">
+    <form class = "d-flex" action={{url('admin/orders/edit/'.$entry['order']->id)}} method = "POST">
       @csrf
       <select class = "m-1" name = "orderStatus">
         <option value="Processing">Processing</option>
@@ -36,27 +36,27 @@
     </form>
 
     <div class="d-flex justify-content-between mt-1 align-items-center">
-      @if($entry->orderstatus == 'Processing')
+      @if($entry['order']->orderstatus == 'Processing')
         <span class = "text-secondary">
           <i class="fa fa-ellipsis-h"></i>
       
-      @elseif($entry->orderstatus == 'Accepted')
+      @elseif($entry['order']->orderstatus == 'Accepted')
         <span class = "text-teal-500">
           <i class="fa fa-check"></i>
 
-      @elseif($entry->orderstatus == 'Packed')
+      @elseif($entry['order']->orderstatus == 'Packed')
         <span class = "text-orange-500">
           <i class="fa fa-gift"></i>  
 
-      @elseif($entry->orderstatus == 'Shipped')
+      @elseif($entry['order']->orderstatus == 'Shipped')
         <span class = "text-info">
           <i class="fa fa-ship"></i>  
       
-      @elseif($entry->orderstatus == 'Cancelled by Store')
+      @elseif($entry['order']->orderstatus == 'Cancelled by Store')
         <span class = "text-red-500">
           <i class="fa fa-ban"></i> 
       
-      @elseif($entry->orderstatus == 'Cancelled by Customer')
+      @elseif($entry['order']->orderstatus == 'Cancelled by Customer')
         <span class = "text-red-500">
           <i class="fa fa-ban"></i>
           
@@ -65,7 +65,7 @@
           <i class="fa fa-truck"></i>    
 
       @endif
-      {{$entry->orderstatus}}
+      {{$entry['order']->orderstatus}}
       </span>
     </div>
   </div>

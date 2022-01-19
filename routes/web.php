@@ -40,6 +40,7 @@ Route::get('admin/products', 'AdminController@showAllProducts')->name('showAllPr
 Route::get('admin/products/create', 'AdminController@getCreateProductForm')->name('newProduct');
 Route::post('admin/products/create', 'AdminController@createProduct')->name('createProduct');
 Route::delete('admin/products/delete/{product_id}', 'AdminController@deleteProduct');
+Route::get('admin/products/edit/{product_id}', 'AdminController@getEditProductForm');
 Route::post('admin/products/edit/{product_id}', 'AdminController@editProduct');
 
 //! Users

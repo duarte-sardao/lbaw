@@ -1,4 +1,4 @@
-<div class="col w-60 d-flex flex-column">
+
   <div class="d-flex justify-content-between mb-2">
     <h4>Accounts</h4>
     @include('partials.buttons.add_button', 
@@ -6,22 +6,21 @@
   </div>
 
   @php($i = 0)
-  <div class="row row-columns-2">
+  <div class="row row-columns-3">
     @foreach($entries as $entry)
-      <div class="col-md">
+      <div class="col-lg">
         @include('partials.admin.user_entry', ['entry' => $entry])
       </div>
 
       @php($i++)
-      <!-- Makes columns of 2 -->
-      @if($i % 2 == 0)
+      <!-- Makes columns of 3 -->
+      @if($i % 3 == 0)
         </div>
-        <div class="row row-columns-2">
+        <div class="row row-columns-3">
       @endif
     @endforeach  
 
-    @for($i = 0; $i < 2 - count($entries) % 2; $i++)
-      <div class="col-md"></div>
+    @for($i = 0; $i < 3 - count($entries) % 3; $i++)
+      <div class="col-lg"></div>
     @endfor
   </div>
-</div>

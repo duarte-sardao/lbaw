@@ -1,4 +1,4 @@
-<div class="w-25">
+<div class="w-100 mb-5">
   <h4 class = "mb-4">Administration Panel</h4>
   
   <hr class = "w-100 mb-3">
@@ -29,4 +29,6 @@
       </div>
     </li>
   </ul>
-</div> 
+</div>
+   
+

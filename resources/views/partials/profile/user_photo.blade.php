@@ -1,4 +1,4 @@
-<div class="user-photo d-flex flex-column w-25">
+<div class="user-photo d-flex flex-column">
   <div class="d-flex justify-content-between align-items-center mb-3">
     <div>
       <h4>{{$user->username}}</h4>
@@ -8,8 +8,6 @@
     <label class = "btn btn-primary" for="profilePic">Upload a picture</label>
     <input type="file" class="form-control-file" id="profilePic" hidden>
   </div>
-
-  <hr class = "w-100 mb-3">
   
   <img src = "{{asset($user->profilepic)}}" alt = "Your profile picture">
 </div>

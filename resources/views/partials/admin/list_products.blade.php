@@ -1,4 +1,4 @@
-<div class="col-md w-60 d-flex flex-column">
+<div class="w-100">
   <div class="d-flex justify-content-between mb-2">
     <h4>List of products in the store</h4>
     @include('partials.buttons.add_button', 

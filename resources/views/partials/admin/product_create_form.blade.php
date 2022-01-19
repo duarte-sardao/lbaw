@@ -1,4 +1,4 @@
-<div class="col w-60 d-flex flex-column h-75">
+<div class="mb-5">
   <div class="d-flex justify-content-between mb-2">
     <h4>New product</h4>
   </div>

@@ -21,14 +21,12 @@
               <i class="fa fa-times"></i>
             </button>
           </form>
-          
-          <form class = "m-1" method = "POST" action={{url('admin/products/edit/'.$entry->id)}}>
-            @csrf
-  
+
+          <a class = "m-1" href="{{url('admin/products/edit/'.$entry->id)}}">
             <button class = "btn btn-outline-primary" type = "submit">
               <i class="fa fa-pencil-square-o"></i>
             </button>
-          </form>
+          </a>
         </div>
       </div>
     </div>
