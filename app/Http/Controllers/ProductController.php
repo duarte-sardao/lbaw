@@ -65,6 +65,12 @@ class ProductController extends Controller
     $entries = Review::where('id_product', '=', $id)->get();
     $details = null;
 
+    if(Auth::guest())
+      $user = null;
+
+    else
+      $user = User::find(Auth::user()->id);
+
     $reviews = array();
     foreach($entries as $entry){
       $customer = Customer::find($entry->id_customer);
@@ -81,6 +87,7 @@ class ProductController extends Controller
     
     return view('pages.products.product', 
     [
+      'user' => $user,
       'product' => $product,
       'details' => $details,
       'breadcrumbs' => [route('allProducts') => 'Products'],
@@ -100,6 +107,21 @@ class ProductController extends Controller
   public function downvote($id){
     $review = Review::find($id);
     $review->novotes++;
+    $review->save();
+
+    return redirect()->back();
+  }
+
+  public function postReview(Request $request, $user_id, $product_id){
+    $review = new Review;
+
+    //dd($request);
+
+    $review->rating = $request->input('rating');
+    $review->text = $request->input('comment');
+    $review->id_customer = $user_id;
+    $review->id_product = $product_id;
+
     $review->save();
 
     return redirect()->back();

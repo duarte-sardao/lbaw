@@ -48,8 +48,12 @@
     <div class="row m-5">
       <h4>Reviews</h4>
       <hr>
-
-      @include('partials.product.review_form')
+      
+      @if(!Auth::guest())
+        @if(!Auth::user()->isadmin)
+          @include('partials.product.review_form', ['user' => $user, 'product' => $product])
+        @endif
+      @endif
 
       @foreach($reviews as $review)
         @include('partials.product.review', ['entry' => $review])

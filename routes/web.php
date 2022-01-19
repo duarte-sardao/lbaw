@@ -12,6 +12,9 @@
 */
 
 //! Home
+
+use App\Models\Product;
+
 Route::get('/', 'HomeController@home')->name('home');
 
 //! Static Pages
@@ -89,6 +92,6 @@ Route::get('products/categories/{category}', 'ProductController@getCategoryProdu
 
 
 //! Reviews
-
 Route::post('reviews/upvote/{id}', 'ProductController@upvote');
 Route::post('reviews/downvote/{id}', 'ProductController@downvote');
+Route::post('reviews/submit/{user_id}/{product_id}', 'ProductController@postReview');
