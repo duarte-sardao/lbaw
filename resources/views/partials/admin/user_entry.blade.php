@@ -20,7 +20,7 @@
           <strong>Email: </strong>
           <span>{{$entry->email}}</span>
         </div>
-
+        
       </div>
     </div>
     <div class="row">
@@ -34,6 +34,23 @@
             Delete
           </button>
         </form>
+      </div>
+
+      <div class="col">
+        <form class = "m-1" method = "POST" action={{url('admin/users/block/'.$entry->id)}}>
+          @csrf
+          @if(!$entry->isbanned)
+          <button class = "btn btn-outline-danger w-100" type = "submit">
+            <i class="fa fa-lock"></i>
+            Block
+          </button>
+          @else
+          <button class = "btn btn-outline-success w-100" type = "submit">
+            <i class="fa fa-unlock"></i>
+            Unblock
+          </button>
+          @endif
+        </form> 
       </div>
 
       <div class="col">

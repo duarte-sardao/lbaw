@@ -813,5 +813,16 @@ class AdminController extends Controller
     $other->save();
     return $errors;
   }
+
+  public function blockUser($id){
+    $user = User::find($id);
+    
+    $user->isbanned = !$user->isbanned;
+    
+
+    $user->save();
+
+    return redirect()->back();
+  }
 }
 ?>

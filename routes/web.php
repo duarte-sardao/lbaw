@@ -13,6 +13,7 @@
 
 //! Home
 
+use App\Http\Controllers\AdminController;
 use App\Models\Product;
 
 Route::get('/', 'HomeController@home')->name('home');
@@ -41,6 +42,8 @@ Route::post('admin/users/edit/{user_id}', 'AdminController@editUser');
 Route::get('admin/users/create', 'AdminController@getCreateUserForm')->name('newUser');
 Route::post('admin/users/create', 'AdminController@createUser')->name('createUser');
 Route::delete('admin/users/delete/{user_id}', 'AdminController@deleteUser');
+
+Route::post('admin/users/block/{id}', 'AdminController@blockUser');
 
 Route::get('admin/orders', 'AdminController@showAllOrders')->name('showAllOrders');
 Route::post('admin/orders/edit/{order_id}', 'AdminController@editOrder');

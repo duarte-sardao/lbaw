@@ -21,6 +21,10 @@
           @if(Auth::guest() || (Auth::check() && !Auth::user()->isadmin))
             @include('partials.product.add_to_wishlist_button', ['sentence' => '', 'product' => $product])
           @endif
+
+          @if(Auth::check() && Auth::user()->isadmin)
+            @include('partials.product.edit_product_button', ['sentence' => '', 'product' => $product])
+          @endif
         </div>
       </div>
     </div>
