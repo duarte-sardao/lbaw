@@ -60,12 +60,18 @@ class AdminController extends Controller
     ]);
   }
 
-  public function editUser(Request $request, $product_id){
+  public function editUser(Request $request, $user_id){
     
   }
 
-  public function editOrder(Request $request, $product_id){
+  public function editOrder(Request $request, $order_id){
+    $order = Purchase::find($order_id);
+    //dd($request->input('orderStatus'));
 
+    $order->orderstatus = $request->input('orderStatus');
+    $order->save();
+
+    return redirect()->back();
   }
 
   public function editProduct(Request $request, $product_id){

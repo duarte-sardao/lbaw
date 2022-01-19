@@ -21,6 +21,20 @@
       </span>
     </div>
 
+    <form class = "d-flex" action={{url('admin/orders/edit/'.$entry->id)}} method = "POST">
+      @csrf
+      <select class = "m-1" name = "orderStatus">
+        <option value="Processing">Processing</option>
+        <option value="Accepted">Accepted</option>
+        <option value="Packed">Packed</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Cancelled by Store">Cancelled</option>
+      </select>
+      <button class = "btn btn-success m-1">
+        <i class="fa fa-check"></i>
+      </button>
+    </form>
+
     <div class="d-flex justify-content-between mt-1 align-items-center">
       @if($entry->orderstatus == 'Processing')
         <span class = "text-secondary">
