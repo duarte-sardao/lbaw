@@ -30,7 +30,7 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-start">
       <div class="d-flex flex-column ms-2 me-auto">
-        <a class="fw-bold" href ="#">Notifications</a>
+        <a class="fw-bold" href ="{{route('notifications')}}">Notifications</a>
         <small>Check your notifications</small>
       </div>
     </li>

@@ -1,6 +1,9 @@
 //!****************************** GLOBAL VARIABLES ******************************!\\
 
 var editProfileButton;
+var priceRange = document.querySelector("input[name = 'price']");
+var ratingRange = document.querySelector("input[name = 'rating']");
+var filterForm;
 
 //!*********************************** EVENTS ***********************************!\\
 
@@ -13,14 +16,29 @@ window.onload = function(){
 
 function getGlobalVariables(){
   editProfileButton = document.getElementById("editProfileButton");
+  /* priceRange = document.querySelector("input[name = 'price']");
+  ratingRange = document.querySelector("input[name = 'rating']"); */
+  filterForm = document.getElementById("filter");
+
+  console.log(priceRange.value);
+  console.log(ratingRange.value);
 }
 
 function addEventListeners(){
   editProfileButton.addEventListener("click", displayEditForm);
 }
 
-//!*********************************** UMA COISA QUALQUER ***********************************!\\
+//!************************************** FILTERS *************************************!\\
 
+priceRange.onmousemove = function(){
+  let span = document.querySelector(".col-md.form-group span#priceSpan");
+  span.innerText = priceRange.value + "€";
+}
+
+ratingRange.onmousemove = function(){
+  let span = document.querySelector(".col-md.form-group span#ratingSpan")
+  span.innerText = ratingRange.value;
+}
 
 //!*********************************** EDIT PROFILE ***********************************!\\
 function displayEditForm(){

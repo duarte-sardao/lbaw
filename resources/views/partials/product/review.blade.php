@@ -5,11 +5,11 @@
     <div class="d-flex justify-content-between">
       <div>
         @for($i = 0; $i < $entry['content']->rating; $i++)
-            <i class="fa fa-star checked"></i>
+            <i class="fa fa-star checked text-success"></i>
           @endfor
           
           @for($i = $entry['content']->rating; $i < 5; $i++)
-            <i class="fa fa-star-o"></i>
+            <i class="fa fa-star-o text-success"></i>
           @endfor
           <span> 
             posted by 

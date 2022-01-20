@@ -776,7 +776,6 @@ class AdminController extends Controller
 
     if (!is_null($type)) $cooler->type = $type;
     
-
     $cooler->save();
     return $errors;
   }
@@ -797,7 +796,6 @@ class AdminController extends Controller
     if (!is_null($capacity)) $storage->capacity = $capacity;
     if (!is_null($type))     $storage->type = $type;
     
-
     $storage->save();
     return $errors;
   }
@@ -809,7 +807,6 @@ class AdminController extends Controller
     if(count($errors) != 0)
       return $errors;
 
-
     $other->save();
     return $errors;
   }
@@ -818,8 +815,6 @@ class AdminController extends Controller
     $user = User::find($id);
     
     $user->isbanned = !$user->isbanned;
-    
-
     $user->save();
 
     return redirect()->back();

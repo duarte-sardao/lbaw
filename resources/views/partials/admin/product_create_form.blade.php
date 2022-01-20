@@ -111,6 +111,15 @@
       </button>
     </div>
 
+    @foreach($errors as $error)
+      <div class="col-12">
+        <div class = "alert alert-danger">
+          <i class="fa fa-times"></i>
+          {{$error}}
+        </div>
+      </div>
+    @endforeach
+
     <table class="tg">
     <thead>
       <tr>
@@ -183,14 +192,5 @@
       </tr>
     </tbody>
     </table>
-    
-    @foreach($errors as $error)
-      <div class="col-12">
-        <div class = "alert alert-danger">
-          <i class="fa fa-times"></i>
-          {{$error}}
-        </div>
-      </div>
-    @endforeach
   </form>
 </div>

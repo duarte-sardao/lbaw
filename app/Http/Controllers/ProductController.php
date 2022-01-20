@@ -113,18 +113,45 @@ class ProductController extends Controller
   }
 
   public function postReview(Request $request, $user_id, $product_id){
+    $customer = Customer::where('id_user', '=', $user_id)->first();
     $review = new Review;
 
     //dd($request);
 
     $review->rating = $request->input('rating');
     $review->text = $request->input('comment');
-    $review->id_customer = $user_id;
+    $review->id_customer = $customer->id;
     $review->id_product = $product_id;
 
     $review->save();
 
     return redirect()->back();
+  }
+
+  public function filter(Request $request){
+    //dd($request);
+    
+    //stock
+    $stock = $request->input('stock');
+    $price = $request->input('price');
+    $rating = $request->input('rating');
+    
+    $char = '>';
+    if($stock == "off")
+      $char = '=';
+
+    $results = Product::
+    where('stock', $char, 0)
+    ->where('price', '<=', $price)
+    ->where('rating', '>=', $rating)
+    ->get();
+
+    return view('pages.products.products_list', 
+    [
+      'products' => $results,
+      'breadcrumbs' => [route('allProducts') => 'Products'],
+      'current' => 'Search'
+    ]);
   }
 }
 ?>

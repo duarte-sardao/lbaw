@@ -304,7 +304,6 @@ CREATE TABLE Notification(
     id SERIAL,
     content TEXT NOT NULL,
     id_User INTEGER NOT NULL,
-    read Boolean NOT NULL DEFAULT false,
 
     CONSTRAINT Notification_PK PRIMARY KEY(id),
     CONSTRAINT Notification_FK FOREIGN KEY(id_User) REFERENCES "User"(id) ON DELETE CASCADE ON UPDATE CASCADE
@@ -898,7 +897,7 @@ BEGIN
         SELECT * from Customer 
         where New.id_Customer = Customer.id 
     )
-    THEN INSERT INTO Notification(content, id_User, read) VALUES ('Your order status has been updated' , New.id_Customer, DEFAULT);
+    THEN INSERT INTO Notification(content, id_User) VALUES ('Your order status has been updated' , New.id_Customer);
     END IF;
     RETURN NULL;
 END
@@ -955,7 +954,7 @@ CREATE FUNCTION paymentApproved() RETURNS TRIGGER AS
 $BODY$
 BEGIN
     IF New.orderStatus = 'Accepted' THEN
-    INSERT INTO Notification(content, id_User, read) VALUES ('Your payment method has been approved by the store' , New.id_Customer, DEFAULT);
+    INSERT INTO Notification(content, id_User) VALUES ('Your payment method has been approved by the store' , New.id_Customer);
     END IF;
     RETURN NULL;
 END
@@ -971,10 +970,11 @@ EXECUTE PROCEDURE paymentApproved();
 CREATE FUNCTION newPurchase() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-    INSERT INTO Notification(content, id_User, read) VALUES ('There has been a new purchase', 1, DEFAULT);
-    INSERT INTO Notification(content, id_User, read) VALUES ('There has been a new purchase', 2, DEFAULT);
-    INSERT INTO Notification(content, id_User, read) VALUES ('There has been a new purchase', 3, DEFAULT);
-    INSERT INTO Notification(content, id_User, read) VALUES ('There has been a new purchase', 4, DEFAULT);
+    INSERT INTO Notification(content, id_User) 
+    select 
+        'There has been a new purchase', id
+    from "User" where isAdmin = true;
+    
     RETURN NULL;
 END
 $BODY$
@@ -1003,7 +1003,7 @@ SELECT id_Customer                                                      -- Selec
 from Wishlist  
 where id_Product = OLD.id;
 
-INSERT INTO NOTIFICATION (content, id_User, read) VALUES ('There has been a price decrease in one of your wishlisted products', id_Customer, DEFAULT);
+INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('There has been a price decrease in one of your wishlisted products', id_Customer, DEFAULT);
 
 END IF;
 RETURN NEW;
@@ -1036,7 +1036,7 @@ SELECT id_Customer                                                      -- Selec
 from Cart  
 where id_Product = OLD.id;
 
-INSERT INTO NOTIFICATION (content, id_User, read) VALUES ('There has been a price decrease in one of the products in your cart', id_Customer, DEFAULT);
+INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('There has been a price decrease in one of the products in your cart', id_Customer, DEFAULT);
 
 END IF;
 RETURN NEW;
@@ -1068,7 +1068,7 @@ SELECT id_Customer                                                      -- Selec
 from Wishlist  
 where id_Product = OLD.id;
 
-INSERT INTO NOTIFICATION (content, id_User, read) VALUES ('A product from your wishlist is back in stock', id_Customer, DEFAULT);
+INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('A product from your wishlist is back in stock', id_Customer, DEFAULT);
 
 END IF;
 RETURN NEW;

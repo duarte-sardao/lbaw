@@ -28,6 +28,12 @@
         <span>Manage Orders</span>
       </div>
     </li>
+    <li class="list-group-item d-flex justify-content-between align-items-start">
+      <div class="ms-2 me-auto d-flex flex-column">
+        <a href = "{{route('notifications')}}" class="fw-bold">Notifications</a>
+        <span>Check your notifications</span>
+      </div>
+    </li>
   </ul>
 </div>
    

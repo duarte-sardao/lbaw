@@ -18,7 +18,7 @@
 
                         <label for="subject">Subject</label>
                         <textarea id="subject" name="subject" placeholder="Write something.." style="height:100px"></textarea>
-                        <input type="submit" value="Submit">
+                        <input type="submit" value="Submit>
                     </form>
                 </div>
             </div>

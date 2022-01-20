@@ -85,13 +85,15 @@ Route::get('users/orders', 'OrderController@show')->name('orders');
 Route::post('users/orders/cancel/{id}', 'OrderController@cancel');
 
 //! Notifications 
-//Route::get('users/notifications', 'NotificationController@show')->name('notifications');
+Route::get('users/notifications', 'NotificationController@show')->name('notifications');
+Route::delete('users/notifications/mark/{id}', 'NotificationController@mark');
 
 //! Products
 Route::get('products', 'ProductController@getAllProducts')->name('allProducts');
 Route::get('products/{id}', 'ProductController@showProduct');
 Route::post('products/search', 'ProductController@search')->name('search');
 Route::get('products/categories/{category}', 'ProductController@getCategoryProducts');
+Route::post('products/search/filter', 'ProductController@filter')->name('filter');
 
 
 //! Reviews

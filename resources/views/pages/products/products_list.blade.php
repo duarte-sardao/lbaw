@@ -4,7 +4,44 @@
   <!-- Products Grid -->
   <div class="container-fluid mb-5">
     @if(count($products) > 0)
-      <p>Your search retrieved <strong>{{count($products)}} products</strong>.</p>
+    <div class="row">
+
+      <div class="col-6 h-75">
+        <p>Your search retrieved <strong>{{count($products)}} products</strong>.</p>
+      </div>
+    </div>
+
+    <div id = "filterRow" class="row">
+      <div class="col card">
+        <form class = "row card-body d-flex align-items-center justify-content-between" 
+        method = "POST" action="{{route('filter')}}" id = "filter">
+          @csrf
+
+          <div class="col-md d-flex justify-content-center">
+            <input type="checkbox" class="btn-check" name = "stock" id="stock" checked>
+            <label class="btn btn-outline-primary" for="stock"> In Stock</label>
+          </div>
+          
+          <div class="col-md form-group">
+            <label for="price" class="form-label">Max Price</label>
+            <input type="range" name = "price" class="form-range" min="0" max="10000" step="1" id="price" value = 100>
+            <span id = "priceSpan">100€</span>
+          </div>
+
+          <div class="col-md form-group">
+            <label for="rating" class="form-label">Min Rating</label>
+            <input type="range" name = "rating" class="form-range" min="0" max="5" step="1" id="rating" value="0">
+            <span id = "ratingSpan">0</span>
+          </div>
+
+          <div class="col-md d-flex justify-content-center">
+            <button id="filterButton" class = "btn btn-success">
+              Filter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
       
       @php($i = 0)
       <div class="row row-columns-4">

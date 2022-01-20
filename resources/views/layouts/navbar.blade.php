@@ -44,8 +44,13 @@
             <span>{{Auth::user()->username}}</span>
           </a> 
 
-          <a title="Notifications" class="btn btn-primary m-2" href = "{{route('home')}}">    {{-- Change this --}}
-              <i class="fa fa-bell"></i>
+          @php
+            $n = DB::table('notification')->where('id_user', '=', Auth::id())->count();
+          @endphp
+
+          <a title="Notifications" class="btn btn-primary m-2" href = "{{route('notifications')}}">   
+            @if($n > 0){{$n}}@endif  
+            <i class="fa fa-bell"></i>
             </a> 
           
           @if(!Auth::user()->isadmin)
