@@ -63,7 +63,6 @@ Route::post('users/edit/{id}', 'UserController@update');
 //! Cart
 Route::get('users/cart', 'CartController@show')->name('cart');
 Route::delete('users/cart', 'CartController@empty')->name('emptyCart');
-Route::get('users/cart/checkout', 'CartController@checkout')->name('checkout');
 Route::put('users/cart/{product_id}', 'CartController@add');
 Route::delete('users/cart/{product_id}', 'CartController@delete');
 Route::post('users/cart/{product_id}/increment', 'CartController@incrementQuantity');
@@ -99,3 +98,8 @@ Route::get('products/categories/{category}', 'ProductController@getCategoryProdu
 Route::post('reviews/upvote/{id}', 'ProductController@upvote');
 Route::post('reviews/downvote/{id}', 'ProductController@downvote');
 Route::post('reviews/submit/{user_id}/{product_id}', 'ProductController@postReview');
+
+//! Payments
+//Route::get('users/cart/checkout', 'PaymentController@showPaymentForm')->name('newPurchase');
+//Route::post('users/cart/checkout', 'PaymentController@add');
+Route::get('users/cart/checkout', 'PaymentController@checkout')->name('checkout');
