@@ -1,4 +1,4 @@
-/*window.onload = function() {
+window.onload = function() {
   let paypal = document.getElementById("paypal-payment-form");
   let card = document.getElementById("card-payment-form");
   let transfer = document.getElementById("transfer-payment-form");
@@ -6,11 +6,10 @@
   hide(card);
   hide(transfer);
   let selector = document.getElementById("payment-type");
-  selector.addEventListener('change', teste);
-  console.log(paypal);
+  selector.addEventListener('change', update);
 }
 
-function teste() {
+function update() {
   let selector = document.getElementById("payment-type");
   let paypal = document.getElementById("paypal-payment-form");
   let card = document.getElementById("card-payment-form");
@@ -35,4 +34,4 @@ function hide(div) {
 function show(div) {
   div.disabled = false;
   div.style.display = "flex";
-}*/
+}
