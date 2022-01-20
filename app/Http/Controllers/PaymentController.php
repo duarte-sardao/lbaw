@@ -52,7 +52,7 @@ class PaymentController extends Controller
 
     return view('partials.cart.checkout', 
     [
-      //'user' => User::find(Auth::id()),
+      'user' => User::find(Auth::id()),
       //'content' => 'partials.profile.user_addresses',
       'entries' => $entries,
       'breadcrumbs' => [route('checkout') => Auth::user()->username],
@@ -63,9 +63,8 @@ class PaymentController extends Controller
   public function add(Request $request){
     $errors = array();
 
-    $ptype = $request->input('paymentType');
+    $ptype = $request->input('payment-type');
     $payment = new PaymentMethod;
-    $purchase = new Purchase;
     $payment->type = $ptype;
     $payment->save();
     switch ($ptype) {
@@ -85,7 +84,7 @@ class PaymentController extends Controller
         $card->name = $cname;
         $card->number = $cnumber;
         $card->expdate = $cexpdate;
-        $card->cvv = $cvv;
+        $card->cvv = $ccvv;
         $card->id_paymentmethod = $payment->id;
         $card->save();
         break;
@@ -101,51 +100,23 @@ class PaymentController extends Controller
         $transfer->save();
         break;
     }
-
+    $purchase = new Purchase;
     $address = $request->input('addressID');
     $cart = getCart();
+    $user = getCustomer();
+    $orderdate = '2022-01-20';
+    $deliverydate = '2022-01-31';
 
+    $purchase->orderdate = $orderdate;
+    $purchase->deliverydate = $deliverydate;
+    $purchase->id_customer = $user->id;
+    $purchase->id_address = $address->id;
+    $purchase->id_paymentmethod = $payment->id;
+    $purchase->id_cart = $cart->id;
+    $purchase.save();
 
     return redirect('home');
   }
 
-  /*public function show(){
-    $user = $this->getCustomer();
-    $orders = $user->Purchases;
-    $entries = array();
-    $products = array();
-    
-    //Gets every order of the user
-    foreach($orders as $order){
-      //Finds all the entries of the cart of the current order
-      $cartEntries = CartProduct::where('id_cart', '=', $order->id_cart)->get();
-      
-      $total = 0;
-      $products = array();
-
-      //Finds the prices and quantities of all products in the cart
-      foreach($cartEntries as $entry){
-        $product = Product::find($entry->id_product);
-        $total += $entry->quantity * $product->price;
-        array_push($products, $product);
-      }
-
-      array_push($entries,
-      [
-        'order' => $order,
-        'products' => $products,
-        'address' => Address::find($order->id_address),
-        'total' => $total
-      ]);
-    }
-
-    return view('pages.profile.user_profile', [
-      'user' => $user,
-      'content' => 'partials.profile.user_orders',
-      'entries' => $entries,
-      'breadcrumbs' => [],
-      'current' => $user->username
-    ]);
-  }*/
 }
 ?>

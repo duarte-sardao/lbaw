@@ -103,3 +103,4 @@ Route::post('reviews/submit/{user_id}/{product_id}', 'ProductController@postRevi
 //Route::get('users/cart/checkout', 'PaymentController@showPaymentForm')->name('newPurchase');
 //Route::post('users/cart/checkout', 'PaymentController@add');
 Route::get('users/cart/checkout', 'PaymentController@checkout')->name('checkout');
+Route::post('users/cart/checkout', 'PaymentController@add');

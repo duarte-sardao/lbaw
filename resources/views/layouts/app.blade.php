@@ -32,6 +32,7 @@
     <!-- Scripts -->
     <script type="text/javascript" src={{ asset('js/app.js') }} defer></script>
     <script type="text/javascript" src={{ asset('js/faq.js')}} defer></script>
+    <script type="text/javascript" src={{ asset('js/payment.js')}} defer></script>
   </head>
 
   <body>
