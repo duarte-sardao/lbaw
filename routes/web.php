@@ -100,6 +100,7 @@ Route::post('products/search/filter', 'ProductController@filter')->name('filter'
 Route::post('reviews/upvote/{id}', 'ProductController@upvote');
 Route::post('reviews/downvote/{id}', 'ProductController@downvote');
 Route::post('reviews/submit/{user_id}/{product_id}', 'ProductController@postReview');
+Route::post('reviews/delete/{id}', 'ProductController@deleteReview');
 
 //! Payments
 //Route::get('users/cart/checkout', 'PaymentController@showPaymentForm')->name('newPurchase');

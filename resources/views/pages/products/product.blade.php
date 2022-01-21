@@ -59,6 +59,7 @@
         @endif
       @endif
 
+      {{-- @php(dd($reviews)) --}}
       @foreach($reviews as $review)
         @include('partials.product.review', ['entry' => $review])
       @endforeach

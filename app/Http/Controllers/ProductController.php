@@ -153,5 +153,14 @@ class ProductController extends Controller
       'current' => 'Search'
     ]);
   }
+
+  public function deleteReview($review_id){
+    $review = Review::find($review_id);
+  
+    $review->delete();
+
+    return redirect()->back();
+  }
+
 }
 ?>

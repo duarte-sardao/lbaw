@@ -20,11 +20,11 @@ use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 { 
-  private function getCustomer(){
+  public function getCustomer(){
     return Customer::where('id_user', '=', Auth::id())->first();
   }
 
-  private function getCart(){
+  public function getCart(){
     $entry = Customer::select('id')
     ->where('id_user', '=', Auth::id())
     ->first();
@@ -34,7 +34,7 @@ class PaymentController extends Controller
     ->first();
   }
 
-  private function getAllCustomerAddresses(){
+  public function getAllCustomerAddresses(){
     $customer = $this->getCustomer();
     return CustomerAddress::where('id_customer', '=', $customer->id)->get();
   }
