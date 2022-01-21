@@ -15,6 +15,7 @@ use App\Models\Review;
 
 use App\Models\Customer;
 use App\Models\User;
+use App\Models\Notification;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -112,7 +113,7 @@ class ProductController extends Controller
     return redirect()->back();
   }
 
-  public function postReview(Request $request, $user_id, $product_id){
+  public function post(Request $request, $user_id, $product_id){
     $customer = Customer::where('id_user', '=', $user_id)->first();
     $review = new Review;
 
@@ -154,10 +155,20 @@ class ProductController extends Controller
     ]);
   }
 
-  public function deleteReview($review_id){
+  public function delete($review_id){
     $review = Review::find($review_id);
   
     $review->delete();
+
+    return redirect()->back();
+  }
+  
+  public function report($review_id){
+    $notification = new Notification;
+    $notification->content = "Someone has reported a review, go check on it";
+    $notification->id_user = 28;  /* --Will have to change this */
+
+    $notification->save();
 
     return redirect()->back();
   }

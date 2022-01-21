@@ -84,6 +84,17 @@
             </form>
           @endif
         @endif
+        @if(!Auth::guest() && !Auth::user()->isadmin)
+          @if($customer->id != $entry['content']->id_customer) 
+            <form class = "m-1" method = "POST" action={{url('reviews/report/'.$entry['content']->id)}}>
+              @csrf
+              <button class= "btn btn-warning" type = "submit">
+                <i class="fa fa-flag"></i>
+                Report Review 
+              </button>
+            </form>
+          @endif 
+        @endif  
       </div>
     </div>
         
