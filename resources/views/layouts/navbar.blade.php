@@ -42,7 +42,11 @@
           <a title="Profile" class="btn btn-primary m-2" href = "{{route('profile')}}">
             <i class="fa fa-user"></i>
             <span>{{Auth::user()->username}}</span>
-          </a> 
+          </a>
+          
+          <a title="Wishlist" class="btn btn-primary m-2" href = "{{route('wishlist')}}">
+            <i class="fa fa-heart"></i>
+          </a>
 
           @php
             $n = DB::table('notification')->where('id_user', '=', Auth::id())->count();

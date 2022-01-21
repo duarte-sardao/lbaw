@@ -5,7 +5,7 @@
     <div class="d-flex flex-column justify-content-between w-100">
       <span class = "card-title">{{$entry->name}}</span>
       <div class="d-flex justify-content-between">
-        <h5 class = "price">{{$entry->price}}€</h5>
+        <a href={{url('products/'.$entry->id)}}  class = "price">{{$entry->price}}€</a>
         <form method = "POST" action={{url('users/wishlist/product/'.$entry->id)}}>
           @csrf
           @method('delete')

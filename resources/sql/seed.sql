@@ -1031,7 +1031,7 @@ BEGIN
     THEN
     INSERT INTO NOTIFICATION (content, id_User) 
         select 'There has been a price decrease in one of the products in your cart', id_Customer
-        from CartProduct join Cart using(id_Cart)  
+        from CartProduct INNER JOIN Cart ON CartProduct.id_cart = Cart.id 
         where id_Product = OLD.id;
     END IF;
 
