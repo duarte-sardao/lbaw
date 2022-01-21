@@ -985,34 +985,32 @@ AFTER INSERT ON Purchase
 FOR EACH ROW
 EXECUTE PROCEDURE newPurchase();
 
-/*
+
 -- Trigger to send a notification when the price of a product in the wishlist has decreased 
 CREATE FUNCTION priceChangeWishlist() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
-AND                                                                     
-EXISTS (                                                                -- And this product is in a wishlist?
-    SELECT *                                                      
-    from Wishlist  
-    where id_Product = OLD.id                                               
-)
-THEN
+    IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
+    AND                                                                     
+    EXISTS (                                                                -- And this product is in a wishlist?
+        SELECT *                                                      
+        from Wishlist  
+        where id_Product = OLD.id                                               
+    )
+    THEN
+    INSERT INTO NOTIFICATION (content, id_User) 
+        select 'There has been a price decrease in one of your wishlisted products', id_Customer
+        from Wishlist
+        where id_Product = OLD.id;
+    END IF;
 
-SELECT id_Customer                                                      -- Selects the id of owner of the wishlist...
-from Wishlist  
-where id_Product = OLD.id;
-
-INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('There has been a price decrease in one of your wishlisted products', id_Customer, DEFAULT);
-
-END IF;
 RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER priceChangeWishlist                  
-BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+AFTER UPDATE ON Product                    -- Before updating a row in the product table
 FOR EACH ROW                        
 EXECUTE PROCEDURE priceChangeWishlist();    -- We will check if the new price is different from the old price 
 
@@ -1023,29 +1021,27 @@ EXECUTE PROCEDURE priceChangeWishlist();    -- We will check if the new price is
 CREATE FUNCTION priceChangeCart() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
-AND                                                                     
-EXISTS (                                                                -- And this product is in a cart?
-    SELECT *                                                      
-    from Cart  
-    where id_Product = OLD.id                                               
-)
-THEN
+    IF OLD.price > NEW.price                                                -- Is the item cheaper after the update?
+    AND                                                                     
+    EXISTS (                                                                -- And this product is in a cart?
+        SELECT *                                                      
+        from CartProduct INNER JOIN Cart ON CartProduct.id_cart=Cart.id 
+        where id_Product = OLD.id                                               
+    )
+    THEN
+    INSERT INTO NOTIFICATION (content, id_User) 
+        select 'There has been a price decrease in one of the products in your cart', id_Customer
+        from CartProduct join Cart using(id_Cart)  
+        where id_Product = OLD.id;
+    END IF;
 
-SELECT id_Customer                                                      -- Selects the id of owner of the cart...
-from Cart  
-where id_Product = OLD.id;
-
-INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('There has been a price decrease in one of the products in your cart', id_Customer, DEFAULT);
-
-END IF;
 RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER priceChangeCart                  
-BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+AFTER UPDATE ON Product                         -- Before updating a row in the product table
 FOR EACH ROW                        
 EXECUTE PROCEDURE priceChangeCart();            -- We will check if the new price is different from the old price 
 
@@ -1055,29 +1051,28 @@ EXECUTE PROCEDURE priceChangeCart();            -- We will check if the new pric
 CREATE FUNCTION productBackInStock() RETURNS TRIGGER AS
 $BODY$
 BEGIN
-IF OLD.stock == 0                                                       -- Was the product out of stock?
-AND NEW.stock > 0                                                       -- And the stock is now greater than 0?           
-EXISTS (                                                                -- And this product is in a wishlist?
-    SELECT *                                                      
-    from Wishlist  
-    where id_Product = OLD.id                                               
-)
-THEN
+    IF OLD.stock = 0                                                       -- Was the product out of stock?
+    AND NEW.stock > 0                                                       -- And the stock is now greater than 0?           
+    EXISTS (                                                                -- And this product is in a wishlist?
+        SELECT *                                                      
+        from Wishlist  
+        where id_Product = OLD.id                                               
+    )
+    THEN
 
-SELECT id_Customer                                                      -- Selects the id of owner of the wishlist...
-from Wishlist  
-where id_Product = OLD.id;
+    INSERT INTO NOTIFICATION (content, id_User)
+        select 'A product from your wishlist is back in stock', 
+        from Wishlist
+        where id_Product = OLD.id;
+    END IF;
 
-INSERT INTO NOTIFICATION (content, id_User, isRead) VALUES ('A product from your wishlist is back in stock', id_Customer, DEFAULT);
-
-END IF;
 RETURN NEW;
 END
 $BODY$
 LANGUAGE plpgsql;
 
 CREATE TRIGGER productBackInStock                  
-BEFORE UPDATE ON Product                    -- Before updating a row in the product table
+AFTER UPDATE ON Product                    -- Before updating a row in the product table
 FOR EACH ROW                        
 EXECUTE PROCEDURE productBackInStock();    -- We will check if the new price is different from the old price */
 
