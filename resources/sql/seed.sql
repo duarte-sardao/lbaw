@@ -1053,7 +1053,7 @@ $BODY$
 BEGIN
     IF OLD.stock = 0                                                       -- Was the product out of stock?
     AND NEW.stock > 0                                                       -- And the stock is now greater than 0?           
-    EXISTS (                                                                -- And this product is in a wishlist?
+    AND EXISTS (                                                                -- And this product is in a wishlist?
         SELECT *                                                      
         from Wishlist  
         where id_Product = OLD.id                                               
@@ -1061,7 +1061,7 @@ BEGIN
     THEN
 
     INSERT INTO NOTIFICATION (content, id_User)
-        select 'A product from your wishlist is back in stock', 
+        select 'A product from your wishlist is back in stock', id_customer
         from Wishlist
         where id_Product = OLD.id;
     END IF;
